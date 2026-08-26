@@ -1,0 +1,56 @@
+# dependencies
+/node_modules
+/.pnpm-store
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# next.js build output
+/.next/
+/out/
+
+# production & custom build outputs
+/build
+/dist
+*.tsbuildinfo
+*.user
+
+# debug & logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files & secrets
+.env
+.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.pfx
+*.p12
+*.p8
+
+# vercel deployment
+.vercel
+
+# IDE / Editor config
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# TypeScript cache
+*.tsbuildinfo
+next-env.d.ts.bak

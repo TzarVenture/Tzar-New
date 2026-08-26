@@ -1,0 +1,328 @@
+// ─────────────────────────────────────────────────────────────────
+//  TZAR VENTURE — Services Data (migrated from legacy servicesDetails.js)
+// ─────────────────────────────────────────────────────────────────
+
+export interface Service {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  badge: string;
+  href: string;
+  icon: string;
+  features: string[];
+  benefits: string[];
+  results?: string;
+}
+
+export const SERVICES: Service[] = [
+  {
+    id: 'website-development',
+    slug: 'website-development-services',
+    href: '/website-development-services',
+    icon: 'Code2',
+    title: 'Website Development',
+    badge: 'High-Speed Tech',
+    subtitle: 'High-performance, bespoke websites & web applications built for speed and conversions.',
+    description:
+      'Build ultra-fast, responsive, and custom React & Next.js websites optimized for SEO, instant page loads, and intuitive UX. We craft state-of-the-art web applications with modern UI aesthetics, lightning-fast execution, and seamless mobile responsiveness.',
+    features: [
+      'Custom React & Next.js Architecture',
+      'Tailwind CSS Responsive Design',
+      'E-Commerce & Shopify Integration',
+      'Page Load < 1.2s, 95+ Lighthouse Score',
+      'Payment Gateway (Razorpay, Stripe)',
+      'Google Analytics & Search Console Setup',
+      'Shiprocket & Third-Party Integrations',
+      '1 Year Maintenance & Support',
+    ],
+    benefits: [
+      'Ultra-fast loading times that reduce bounce rate by 40%',
+      'Mobile-first, fully responsive across all devices',
+      'SEO-ready architecture for top Google rankings',
+      'Integrated lead capture forms and CRM',
+    ],
+    results: '+3x Conversion Rate',
+  },
+  {
+    id: 'seo',
+    slug: 'search-engine-optimization-services',
+    href: '/search-engine-optimization-services',
+    icon: 'Search',
+    title: 'Search Engine Optimization',
+    badge: 'Top Rankings',
+    subtitle: 'Dominate Google search results with data-driven organic SEO strategies.',
+    description:
+      'Our SEO strategies combine technical audits, content creation, and high-authority link building to rank your business on page 1 of Google. We cover local SEO, national SEO, e-commerce SEO, and international SEO campaigns.',
+    features: [
+      'Technical SEO Audit & Fix',
+      'Keyword Research & Content Strategy',
+      'On-Page & Off-Page Optimization',
+      'Local SEO & Google Business Profile',
+      'Monthly Ranking & Traffic Reports',
+      'Link Building & Digital PR',
+      'Core Web Vitals Optimization',
+      'E-Commerce SEO (Amazon, Flipkart)',
+    ],
+    benefits: [
+      'Achieve top 3 Google rankings within 90 days',
+      'Drive qualified organic traffic without paid ads',
+      'Outrank competitors in your city and niche',
+      '300%+ ROI average across our SEO clients',
+    ],
+    results: '+180% Organic Traffic',
+  },
+  {
+    id: 'graphic-designing',
+    slug: 'graphic-designing',
+    href: '/graphic-designing',
+    icon: 'Palette',
+    title: 'Graphic Designing',
+    badge: 'Creative Studio',
+    subtitle: 'Bold brand identities, print designs, and digital creatives that convert.',
+    description:
+      'From brand identity systems to social media creatives, our graphic designers craft visuals that communicate your brand story with clarity and style. We specialize in logo design, brand guidelines, UI/UX, marketing collaterals, and print design.',
+    features: [
+      'Brand Identity & Style Guide',
+      'Logo Design & Brand Refresh',
+      'Social Media Creatives (Posts, Reels)',
+      'Brochure & Flyer Design',
+      'Packaging & Label Design',
+      'Pitch Deck & Presentation Design',
+      'Exhibition & Banner Design',
+      'UI/UX Wireframes & Prototypes',
+    ],
+    benefits: [
+      'Professional visuals that build instant brand trust',
+      'Consistent design language across all touchpoints',
+      'Creatives optimized for high engagement on social media',
+      'Fast turnaround with unlimited revisions',
+    ],
+    results: '3× Engagement Boost',
+  },
+  {
+    id: 'social-media',
+    slug: 'social-media-marketing-services',
+    href: '/social-media-marketing-services',
+    icon: 'Megaphone',
+    title: 'Social Media Marketing',
+    badge: 'Community Growth',
+    subtitle: 'Build engaged communities and drive real business results across all platforms.',
+    description:
+      'Our social media team manages your Instagram, Facebook, LinkedIn, and YouTube presence with a strategy-first approach. We create high-quality content, run targeted ad campaigns, and track performance to deliver real follower growth and lead generation.',
+    features: [
+      'Instagram & Facebook Management',
+      'Content Calendar & Strategy',
+      'Reel & Video Production',
+      'Paid Social Ad Campaigns',
+      'Influencer Marketing',
+      'Community Management & DM Replies',
+      'LinkedIn B2B Marketing',
+      'Monthly Performance Reports',
+    ],
+    benefits: [
+      'Grow a loyal community of potential buyers',
+      'Generate quality leads through social DMs and ads',
+      'Professional content that elevates your brand image',
+      'Data-driven posting schedule for maximum reach',
+    ],
+    results: '+250% Follower Growth',
+  },
+  {
+    id: 'logo-design',
+    slug: 'logo-design-services',
+    href: '/logo-design-services',
+    icon: 'Star',
+    title: 'Logo Design Services',
+    badge: 'Brand Identity',
+    subtitle: 'Memorable, scalable logos that define your brand personality forever.',
+    description:
+      'A great logo is the foundation of your brand identity. Our design team creates unique, timeless logos that work across digital and print — business cards, signage, packaging, websites, and apps — with complete brand kit delivery.',
+    features: [
+      'Multiple Unique Concepts',
+      'Unlimited Revisions Until Satisfied',
+      'Vector Files (AI, EPS, SVG)',
+      'Full Brand Kit Delivery',
+      'Stationery Design (Visiting Card, Letterhead)',
+      'Social Media Logo Variants',
+      'Font & Color Palette Guide',
+      'Trademark-Ready Designs',
+    ],
+    benefits: [
+      'Stand out from competitors with a unique identity',
+      'Pixel-perfect, scalable for any size or medium',
+      'Full IP ownership transferred to you',
+      'Express delivery available in 48 hours',
+    ],
+    results: '500+ Logos Delivered',
+  },
+  {
+    id: 'content-marketing',
+    slug: 'content-marketing-services',
+    href: '/content-marketing-services',
+    icon: 'FileText',
+    title: 'Content Marketing',
+    badge: 'Authority Building',
+    subtitle: 'High-value content that attracts your audience and drives organic discovery.',
+    description:
+      'We craft SEO-optimized blog articles, website copy, email campaigns, product descriptions, and case studies that rank on Google and convert visitors into customers. Our content strategies are built around your buyer journey.',
+    features: [
+      'SEO Blog Writing (2000–4000 words)',
+      'Website Copywriting',
+      'Email Newsletter Campaigns',
+      'Press Releases & Guest Posts',
+      'Product Description Writing',
+      'Case Studies & Whitepapers',
+      'Video Script Writing',
+      'Content Calendar Planning',
+    ],
+    benefits: [
+      'Build domain authority through quality backlinks',
+      'Generate inbound leads without ad spend',
+      'Educate your audience and shorten sales cycles',
+      'Consistent content keeps your brand top-of-mind',
+    ],
+    results: '+120% Organic Leads',
+  },
+  {
+    id: 'ppc',
+    slug: 'pay-per-click-services',
+    href: '/pay-per-click-services',
+    icon: 'BarChart3',
+    title: 'Pay Per Click (PPC)',
+    badge: 'Instant Leads',
+    subtitle: 'Targeted Google & Meta ad campaigns with measurable ROI and zero wasted budget.',
+    description:
+      'Our PPC specialists manage Google Search, Display, Shopping, and YouTube ad campaigns alongside Facebook and Instagram paid ads. We focus on maximizing your ROAS while minimizing cost-per-lead through rigorous A/B testing.',
+    features: [
+      'Google Ads (Search, Display, Shopping)',
+      'Meta Ads (Facebook & Instagram)',
+      'YouTube Video Campaigns',
+      'Landing Page Optimization',
+      'A/B Testing & Creative Rotation',
+      'Daily Budget Monitoring',
+      'Competitor Ad Analysis',
+      'Weekly Performance Reports',
+    ],
+    benefits: [
+      'Get leads within 24 hours of campaign launch',
+      'Transparent ROAS tracking in real-time',
+      'No minimum budget — start from ₹10,000/month',
+      'Industry-leading cost-per-conversion rates',
+    ],
+    results: '+250% Leads via PPC',
+  },
+  {
+    id: 'product-packaging',
+    slug: 'product-design-packaging-services',
+    href: '/product-design-packaging-services',
+    icon: 'Package',
+    title: 'Product Design & Packaging',
+    badge: '3D Design',
+    subtitle: 'Award-worthy packaging and product design that stands out on shelf and online.',
+    description:
+      'We design product packaging, labels, and merchandise that align with your brand identity and convert at the point of purchase. From concept sketches to print-ready dielines, we handle the full design-to-print workflow.',
+    features: [
+      'Custom Box & Pouch Design',
+      '3D Dieline & Mockup Creation',
+      'Label & Sticker Design',
+      'Print-Ready Artwork Files',
+      'Brand-Aligned Visual System',
+      'Food & Beverage Packaging Expertise',
+      'Gifting & Hamper Box Design',
+      'Amazon & Flipkart Packaging Compliance',
+    ],
+    benefits: [
+      'Packaging that sells itself on e-commerce platforms',
+      'Premium shelf presence that outclasses competitors',
+      'Eco-friendly material consultation available',
+      'Compatible with local and international printers',
+    ],
+    results: '200+ SKUs Designed',
+  },
+  {
+    id: 'cloud-kitchen',
+    slug: 'cloud-kitchen-marketing-services',
+    href: '/cloud-kitchen-marketing-services',
+    icon: 'Utensils',
+    title: 'Cloud Kitchen Marketing',
+    badge: 'Food Growth',
+    subtitle: 'Specialist food delivery marketing to dominate Swiggy, Zomato & direct orders.',
+    description:
+      'We help cloud kitchens and food brands grow daily orders through a combination of platform optimization (Swiggy, Zomato), food photography, social media marketing, and Google local SEO.',
+    features: [
+      'Swiggy & Zomato Profile Optimization',
+      'Food Menu Photography & Video',
+      'Instagram Content Strategy',
+      'Google Local SEO',
+      'Loyalty & Repeat Order Campaigns',
+      'WhatsApp Marketing Automation',
+      'FSSAI Compliant Content',
+      'Seasonal Promotion Campaigns',
+    ],
+    benefits: [
+      '90%+ increase in daily orders within 3 months',
+      'Appetizing food shoots that drive platform CTR',
+      'Build a loyal customer base outside delivery apps',
+      'Integrated with Zomato Blinkit & Swiggy Instamart',
+    ],
+    results: '+90% Daily Orders',
+  },
+  {
+    id: 'corporate-gifting',
+    slug: 'corporate-gifting',
+    href: '/corporate-gifting',
+    icon: 'Gift',
+    title: 'Corporate Gifting',
+    badge: 'Bespoke Gifts',
+    subtitle: 'Premium branded corporate gifts that leave a lasting impression on your clients.',
+    description:
+      'We curate and produce customized corporate gifts, branded merchandise, and employee appreciation kits. From customized diaries and USB drives to luxury hampers with branded packaging.',
+    features: [
+      'Custom Branded Merchandise',
+      'Employee Appreciation Kits',
+      'Client Gifting Hampers',
+      'Event Giveaways & Swag',
+      'Minimum Order from 50 units',
+      'Pan-India Delivery',
+      'Luxury Box Packaging',
+      'Brand Logo Printing / Engraving',
+    ],
+    benefits: [
+      'Strengthen B2B relationships with premium gifts',
+      'Boost employee morale and retention',
+      'Memorable brand impressions at events',
+      'Competitive bulk pricing with quality assurance',
+    ],
+    results: '10,000+ Gifts Delivered',
+  },
+  {
+    id: 'outdoor-ads',
+    slug: 'outdoor-ads',
+    href: '/outdoor-ads',
+    icon: 'Globe',
+    title: 'Outdoor Advertising',
+    badge: 'OOH Media',
+    subtitle: 'High-visibility billboard, transit, and outdoor campaigns across Mumbai.',
+    description:
+      'From Mumbai local train branding to billboard placements on major arterial roads, we handle end-to-end outdoor advertising for brand launches, real estate, retail, and FMCG campaigns.',
+    features: [
+      'Billboard & Hoarding Design & Placement',
+      'Local Train & Metro Branding',
+      'Bus Shelter & Transit Advertising',
+      'Mall & Multiplex Campaigns',
+      'LED Display Advertising',
+      'Print Production & Installation',
+      'Pan-Mumbai Media Planning',
+      'Campaign Performance Measurement',
+    ],
+    benefits: [
+      "Massive reach across Mumbai's key arterial routes",
+      'Brand visibility 24/7 without ad fatigue',
+      'Complement digital campaigns for omnichannel impact',
+      'Rapid turnaround from design to installation',
+    ],
+    results: '50+ OOH Campaigns',
+  },
+];

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { TechHeader } from "@/legacy-src/components/layout/TechHeader";
 import { TechFooter } from "@/legacy-src/components/layout/TechFooter";
-import { WhatsAppButton } from "@/legacy-src/components/ui/WhatsAppButton";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.tzar.co"),
@@ -14,11 +13,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="bg-[#090909] text-white min-h-screen flex flex-col justify-between">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+      </head>
+      <body className="bg-[#EFE8E0] text-[#0E2015] min-h-screen flex flex-col justify-between">
         <TechHeader />
-        <main className="flex-1 pt-24">{children}</main>
+        <main className="flex-1">{children}</main>
         <TechFooter />
-        <WhatsAppButton />
       </body>
     </html>
   );

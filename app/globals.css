@@ -1,27 +1,30 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Manrope', sans-serif;
+  --font-montserrat: 'Manrope', sans-serif;
+  --font-inter: 'Manrope', sans-serif;
+  --font-rubik: 'Manrope', sans-serif;
+  --font-manrope: 'Manrope', sans-serif;
+}
+
 /* ══════════════════════════════════════════════════════════════════════════
    TZAR VENTURE — Global Design System Tokens
    ══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  --ink: #10231a;
-  --paper: #faf9f5;
-  --gold: #d4af37;
-  --line: #dfe3da;
-  --bg-primary: #0c0c0d;
-  --bg-secondary: #161618;
-  --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --border-subtle: rgb(255 255 255 / .1);
-}
-
-html.light {
-  --bg-primary: #f8f9fa;
-  --bg-secondary: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #4b5563;
-  --border-subtle: rgb(0 0 0 / .08);
+  --ink: #0E2015;
+  --paper: #EFE8E0;
+  --gold: #FFAE00;
+  --line: rgba(29, 66, 36, 0.08);
+  --bg-primary: #EFE8E0;
+  --bg-secondary: #FFFFFF;
+  --text-primary: #0E2015;
+  --text-secondary: #5C6860;
+  --border-subtle: rgba(29, 66, 36, 0.1);
+  --color-forest-green: #1D4224;
+  --color-gold-bright: #FFAE00;
+  --color-mint-light: #B6F8DD;
 }
 
 *,
@@ -38,16 +41,22 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #090909;
-  color: #f3f4f6;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #EFE8E0;
+  color: #0E2015;
+  font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Universal typography override to force Manrope globally, excluding code blocks */
+*:not(code, pre, kbd, samp) {
+  font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+@layer base {
+  a {
+    text-decoration: none;
+  }
 }
 
 img {
@@ -108,8 +117,8 @@ button {
 }
 
 .framer-btn-primary {
-  background: #FFFFFF;
-  color: #000000;
+  background: #1D4224;
+  color: #FFFFFF;
   font-weight: 600;
   border-radius: 9999px;
   padding: 10px 20px;
@@ -122,15 +131,16 @@ button {
 }
 
 .framer-btn-primary:hover {
-  background: #F0F0F0;
+  background: #FFAE00;
+  color: #0E2015;
   transform: scale(1.03);
 }
 
 .framer-btn-secondary {
-  background: #141414;
-  color: #FFFFFF;
+  background: transparent;
+  color: #1D4224;
   font-weight: 600;
-  border: 1px solid #262626;
+  border: 1px solid rgba(29, 66, 36, 0.2);
   border-radius: 9999px;
   padding: 10px 20px;
   font-size: 14px;
@@ -141,13 +151,13 @@ button {
 }
 
 .framer-btn-secondary:hover {
-  background: #1C1C1C;
-  border-color: #383838;
+  background: rgba(182, 248, 221, 0.25);
+  border-color: rgba(29, 66, 36, 0.4);
 }
 
 .framer-btn-gold {
-  background: #D4AF37;
-  color: #000000;
+  background: #FFAE00;
+  color: #0E2015;
   font-weight: 700;
   border-radius: 9999px;
   padding: 10px 20px;
@@ -184,3 +194,37 @@ button {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Custom infinite marquee animation rules */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 28s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-right {
+  animation: marquee-right 28s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+

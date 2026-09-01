@@ -1,0 +1,100 @@
+.domain-grid-section {
+  padding: 8rem 0 3rem 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .domain-grid-section {
+    padding: 6rem 0 2rem 0;
+  }
+}
+
+.domain-flat-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem 1rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.domain-grid-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.25s ease;
+  cursor: default;
+  user-select: none;
+}
+
+.domain-grid-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: transparent;
+  color: #5c6860; /* muted green-gray */
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.domain-grid-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke-width: 2px;
+}
+
+.domain-grid-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #5c6860;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+  transition: color 0.25s ease;
+}
+
+/* Hover transitions (No Glows) */
+.domain-grid-cell:hover {
+  transform: translateY(-2px);
+}
+
+.domain-grid-cell:hover .domain-grid-icon-box {
+  color: #1D4224; /* Forest Green active hover */
+  transform: scale(1.05);
+}
+
+.domain-grid-cell:hover .domain-grid-name {
+  color: #1D4224;
+}
+
+/* Responsive Grid columns */
+@media (max-width: 1024px) {
+  .domain-flat-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.75rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .domain-flat-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem 0.5rem;
+  }
+
+  .domain-grid-icon-box {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .domain-grid-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .domain-grid-name {
+    font-size: 0.65rem;
+  }
+}

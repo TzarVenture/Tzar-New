@@ -1,352 +1,267 @@
 "use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import {
-  Globe,
-  TrendingUp,
-  Palette,
-  Share2,
-  Box,
-  Package,
-  Zap,
-  Gift,
-  ArrowRight
-} from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import Grainient from "./Grainient";
 
-interface ServiceNode {
-  id: string;
-  title: string;
-  icon: React.ComponentType<{ className?: string }>;
-  href: string;
-  // Canvas coordinate for connecting tracing line
-  xRatio: number; // % relative offset
-  yRatio: number;
-}
-
-const HERO_SERVICES: ServiceNode[] = [
+const SLIDES = [
   {
-    id: 'web',
-    title: 'Website Development',
-    icon: Globe,
-    href: '/website-development-services',
-    xRatio: 15,
-    yRatio: 15,
+    category: "Web Application Development",
+    title: "High-Performance Next.js Web Apps",
+    tagline: "React & Serverless Architectures",
+    description: "We engineer lightning-fast custom web applications optimized for PageSpeed, technical SEO, and high-conversion client acquisition.",
+    link: "/contact"
   },
   {
-    id: 'seo',
-    title: 'Search Engine Optimization',
-    icon: TrendingUp,
-    href: '/search-engine-optimization-services',
-    xRatio: 85,
-    yRatio: 15,
+    category: "Mobile Application Development",
+    title: "Native Mobile Engineering",
+    tagline: "iOS & Android System Apps",
+    description: "High-ROI mobile applications built with React Native and Flutter, fully integrated with live tracking, IoT systems, and clean checkout portals.",
+    link: "/contact"
   },
   {
-    id: 'graphic',
-    title: 'Graphic & Video Design',
-    icon: Palette,
-    href: '/graphic-designing',
-    xRatio: 12,
-    yRatio: 50,
+    category: "Enterprise Business Software",
+    title: "Custom CRM & Operations Trackers",
+    tagline: "Bespoke SaaS Platforms",
+    description: "Ditch generic monthly subscriptions. We construct tailor-made CRMs, Kanban task managers, and lead routers modeled exactly around your team.",
+    link: "/contact"
   },
   {
-    id: 'smm',
-    title: 'Social Media Marketing',
-    icon: Share2,
-    href: '/social-media-marketing-services',
-    xRatio: 88,
-    yRatio: 50,
+    category: "Digital Marketing & SEO",
+    title: "Technical SEO & Ad Spend ROAS",
+    tagline: "Organic Search & PPC Domination",
+    description: "Secure Page 1 rankings on Google. We build custom landing pages and semantic schema wrappers to convert incoming search traffic into sales.",
+    link: "/contact"
   },
   {
-    id: 'studio',
-    title: '3D & 2D Animation',
-    icon: Box,
-    href: '/tzar-studio',
-    xRatio: 15,
-    yRatio: 85,
-  },
-  {
-    id: 'gifting',
-    title: 'Corporate Gifting',
-    icon: Gift,
-    href: '/corporate-gifting',
-    xRatio: 85,
-    yRatio: 85,
-  },
+    category: "Product Designing & Packaging",
+    title: "3D Packaging & Print Dielines",
+    tagline: "Retail Mockups & Brand Kits",
+    description: "Scale your e-commerce and retail presence with custom 3D packaging mockups, print-ready vector dielines, and typography guides.",
+    link: "/contact"
+  }
 ];
 
 export const TechHero: React.FC = () => {
-  const [activeService, setActiveService] = useState<string | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [progress, setProgress] = useState(0);
 
-  const handleScrollToServices = () => {
-    const el = document.getElementById('ServicesOne');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  // Reset progress bar whenever active slide changes
+  useEffect(() => {
+    setProgress(0);
+  }, [activeSlide]);
+
+  // Smooth Auto-scroll countdown interval (approx 6 seconds per slide)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setActiveSlide((slide) => (slide + 1) % SLIDES.length);
+          return 0;
+        }
+        return prev + 1.67; // Increment progress per 100ms
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handlePrev = () => {
+    setActiveSlide((prev) => (prev === 0 ? SLIDES.length - 1 : prev - 1));
   };
 
-  return (
-    <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 bg-[#090d0a] text-white overflow-hidden border-b border-white/10">
+  const handleNext = () => {
+    setActiveSlide((prev) => (prev === SLIDES.length - 1 ? 0 : prev + 1));
+  };
 
-      {/* Subtle Background Glow Elements */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#0e3b22]/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#3ba9a0]/15 rounded-full blur-3xl pointer-events-none" />
+  const currentSlide = SLIDES[activeSlide];
+
+  return (
+    <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 bg-[#EFE8E0] text-[#0E2015] overflow-hidden border-b border-[rgba(29,66,36,0.1)]">
+      {/* Grainient Canvas Background with Instant CSS Gradient Fallback (Zero Dark Overlay / Zero Blink) */}
+      <div 
+        className="absolute inset-0 z-0 opacity-75 pointer-events-none scale-y-[-1]"
+        style={{
+          background: 'radial-gradient(ellipse 70% 60% at 75% 25%, rgba(180, 151, 207, 0.45) 0%, transparent 70%), radial-gradient(ellipse 65% 55% at 20% 75%, rgba(51, 147, 67, 0.4) 0%, transparent 65%), radial-gradient(circle at 50% 50%, rgba(176, 170, 148, 0.4) 0%, transparent 80%), #EFE8E0'
+        }}
+      >
+        <Grainient
+          color1="#339343"
+          color2="#b0aa94"
+          color3="#b497cf"
+          timeSpeed={0.25}
+          colorBalance={0}
+          warpStrength={1}
+          warpFrequency={5}
+          warpSpeed={2}
+          warpAmplitude={50}
+          blendAngle={0}
+          blendSoftness={0.05}
+          rotationAmount={500}
+          noiseScale={2}
+          grainAmount={0.1}
+          grainScale={2}
+          grainAnimated={false}
+          contrast={1.5}
+          gamma={1}
+          saturation={1}
+          centerX={0}
+          centerY={0}
+          zoom={0.9}
+        />
+      </div>
+
+      {/* Background Radial Glow Mesh */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#B6F8DD]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+          
+          {/* LEFT COLUMN: STATIC COPY (NO SLIDING ANIMATION) */}
+          <div className="lg:col-span-6 flex flex-col justify-center min-h-0 lg:min-h-[420px] relative">
+            <div>
+              {/* Main Headline */}
+              <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-[#0E2015] tracking-tight leading-[1.1] mb-3">
+                {currentSlide.title}
+              </h1>
 
-          {/* ════════════════════════════════════════════════════════════════════
-              LEFT COLUMN: EXACT ACETERNITY-STYLE HERO HEADLINE WITH MARKER HIGHLIGHT
-              ════════════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-6 space-y-8 text-left">
+              {/* Subheadline Tagline */}
+              <p className="font-mono text-xs sm:text-sm text-[#1D4224] uppercase tracking-widest font-black mb-4">
+                {currentSlide.tagline}
+              </p>
 
-            {/* Top Eyebrow Tag */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-rubik text-white/80 uppercase tracking-widest">
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-ping" />
-              <span className="font-bold text-[#D4AF37]">INDIA'S FASTEST GROWING</span>
-              <span className="text-white/40">•</span>
-              <span>DIGITAL AGENCY</span>
-            </div>
+              {/* Description Copy (High contrast dark grey text) */}
+              <p className="font-inter text-base sm:text-lg text-[#2B3A30] leading-relaxed max-w-xl mb-8">
+                {currentSlide.description}
+              </p>
 
-            {/* Poster Headline with Aceternity Yellow Marker Highlight */}
-            <h1 className="font-montserrat font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]">
-              Over{' '}
-              <span className="relative inline-block text-[#090d0a] font-black mx-1 z-10 px-2 py-0.5">
-                {/* Yellow Marker Highlight Background Animation Box */}
-                <span className="absolute inset-0 bg-[#D4AF37] -rotate-1 rounded-md -z-10 shadow-lg transform transition-transform duration-300 hover:scale-105" />
-                2500+ Satisfied
-              </span>{' '}
-              Clients Served in 2025.
-            </h1>
-
-            {/* Subtext with Hand-Drawn SVG Animated Underline */}
-            <p className="font-inter text-base sm:text-lg text-white/80 leading-relaxed max-w-xl">
-              Tzar Venture delivers high-impact web design, organic SEO, 3D studio, and performance marketing with{' '}
-              <span className="relative inline-block font-bold text-white whitespace-nowrap">
-                guaranteed ROI
-                {/* Animated Hand-Drawn SVG Underline */}
-                <svg
-                  className="absolute -bottom-1.5 left-0 w-full h-3 text-[#D4AF37] overflow-visible"
-                  viewBox="0 0 100 20"
-                  preserveAspectRatio="none"
+              {/* CTA Action Button (Forced white text contrast) */}
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] !text-white font-rubik font-black text-sm uppercase tracking-wider shadow-lg hover:bg-[#FFAE00] hover:!text-[#0E2015] transition-colors duration-200"
                 >
-                  <path
-                    d="M 0 12 Q 50 2, 100 12"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>{' '}
-              and 25,000+ corporate gifts delivered Pan-India.
-            </p>
-
-            {/* CTA Buttons: Primary Yellow + Secondary Link */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Link
-                href="/services"
-                className="px-8 py-3.5 rounded-full bg-[#D4AF37] text-[#090d0a] font-rubik font-black text-sm uppercase tracking-wider shadow-lg hover:bg-white transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
-              >
-                Our Services
-              </Link>
-
-              <Link
-                href="/contact"
-                className="px-6 py-3.5 rounded-full font-rubik font-bold text-sm text-white hover:text-[#D4AF37] underline decoration-[#D4AF37] decoration-2 underline-offset-8 transition-all flex items-center gap-2 group"
-              >
-                <span>Contact Us</span>
-                <ArrowRight className="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-
-            {/* Quick Metrics Bar */}
-            <div className="pt-6 border-t border-white/10 grid grid-cols-3 gap-4">
-              <div>
-                <span className="font-montserrat font-black text-xl sm:text-2xl text-[#D4AF37]">8,000+</span>
-                <span className="block font-inter text-xs text-white/60">Projects Completed</span>
-              </div>
-              <div>
-                <span className="font-montserrat font-black text-xl sm:text-2xl text-[#3ba9a0]">150+</span>
-                <span className="block font-inter text-xs text-white/60">Active Clients</span>
-              </div>
-              <div>
-                <span className="font-montserrat font-black text-xl sm:text-2xl text-[#74c1c4]">25,000+</span>
-                <span className="block font-inter text-xs text-white/60">Pan-India Gifts</span>
+                  <span>Enquire Now</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
 
+            {/* PROGRESS & NAVIGATION CONTROLS (DESKTOP) */}
+            <div className="hidden lg:flex items-center gap-3 mt-10 pt-6 border-t border-[rgba(29,66,36,0.25)] w-fit">
+              {/* Prev Button */}
+              <button
+                onClick={handlePrev}
+                className="p-2.5 rounded-full border border-[#1D4224]/30 hover:border-[#1D4224] text-[#1D4224] hover:bg-[#1D4224]/10 transition duration-200"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              {/* Progress Dash Lines */}
+              <div className="flex items-center gap-2">
+                {SLIDES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveSlide(idx)}
+                    className="h-1.5 w-12 sm:w-16 bg-black/20 rounded-full overflow-hidden relative cursor-pointer"
+                    aria-label={`Go to slide ${idx + 1}`}
+                  >
+                    <div
+                      className="h-full bg-[#1D4224] rounded-full"
+                      style={{
+                        width: idx === activeSlide ? `${progress}%` : "0%",
+                        transition: idx === activeSlide && progress > 0 ? "width 100ms linear" : "none"
+                      }}
+                    />
+                  </button>
+                ))}
+              </div>
+
+              {/* Next Button */}
+              <button
+                onClick={handleNext}
+                className="p-2.5 rounded-full border border-[#1D4224]/30 hover:border-[#1D4224] text-[#1D4224] hover:bg-[#1D4224]/10 transition duration-200"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
-          {/* ════════════════════════════════════════════════════════════════════
-              RIGHT COLUMN: CENTER TZAR LOGO CARD WITH SURROUNDING SERVICE CARDS & TRACING LINES
-              ════════════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-6 relative min-h-[480px] sm:min-h-[540px] flex items-center justify-center p-4">
-
-            {/* SVG TRACING LINES CONNECTING CENTER LOGO CARD TO SERVICE CARDS */}
-            <div className="absolute inset-0 pointer-events-none z-0">
-              <svg className="w-full h-full" viewBox="0 0 600 500" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="laserGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#D4AF37" stopOpacity="1" />
-                    <stop offset="100%" stopColor="#3ba9a0" stopOpacity="1" />
-                  </linearGradient>
-
-                  <filter id="glowEffect">
-                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
-                    <feMerge>
-                      <feMergeNode in="coloredBlur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-
-                {/* Line 1: Top Left to Center */}
-                <path
-                  d="M 120 70 Q 200 70, 300 250"
-                  fill="none"
-                  stroke={activeService === 'web' ? '#D4AF37' : '#ffffff20'}
-                  strokeWidth={activeService === 'web' ? '3.5' : '2'}
-                  className="transition-colors duration-300"
-                />
-                <path
-                  d="M 120 70 Q 200 70, 300 250"
-                  fill="none"
-                  stroke="url(#laserGold)"
-                  strokeWidth="3"
-                  className="electric-flow-line"
-                  filter="url(#glowEffect)"
-                />
-
-                {/* Line 2: Top Right to Center */}
-                <path
-                  d="M 480 70 Q 400 70, 300 250"
-                  fill="none"
-                  stroke={activeService === 'seo' ? '#D4AF37' : '#ffffff20'}
-                  strokeWidth={activeService === 'seo' ? '3.5' : '2'}
-                  className="transition-colors duration-300"
-                />
-                <path
-                  d="M 480 70 Q 400 70, 300 250"
-                  fill="none"
-                  stroke="url(#laserGold)"
-                  strokeWidth="3"
-                  className="electric-flow-reverse"
-                  filter="url(#glowEffect)"
-                />
-
-                {/* Line 3: Mid Left to Center */}
-                <path
-                  d="M 100 250 H 300"
-                  fill="none"
-                  stroke={activeService === 'graphic' ? '#D4AF37' : '#ffffff20'}
-                  strokeWidth={activeService === 'graphic' ? '3.5' : '2'}
-                  className="transition-colors duration-300"
-                />
-                <path
-                  d="M 100 250 H 300"
-                  fill="none"
-                  stroke="url(#laserGold)"
-                  strokeWidth="3"
-                  className="electric-flow-line"
-                  filter="url(#glowEffect)"
-                />
-
-                {/* Line 4: Mid Right to Center */}
-                <path
-                  d="M 500 250 H 300"
-                  fill="none"
-                  stroke={activeService === 'smm' ? '#D4AF37' : '#ffffff20'}
-                  strokeWidth={activeService === 'smm' ? '3.5' : '2'}
-                  className="transition-colors duration-300"
-                />
-                <path
-                  d="M 500 250 H 300"
-                  fill="none"
-                  stroke="url(#laserGold)"
-                  strokeWidth="3"
-                  className="electric-flow-reverse"
-                  filter="url(#glowEffect)"
-                />
-
-                {/* Line 5: Bottom Left to Center */}
-                <path
-                  d="M 120 430 Q 200 430, 300 250"
-                  fill="none"
-                  stroke={activeService === 'studio' ? '#D4AF37' : '#ffffff20'}
-                  strokeWidth={activeService === 'studio' ? '3.5' : '2'}
-                  className="transition-colors duration-300"
-                />
-                <path
-                  d="M 120 430 Q 200 430, 300 250"
-                  fill="none"
-                  stroke="url(#laserGold)"
-                  strokeWidth="3"
-                  className="electric-flow-reverse"
-                  filter="url(#glowEffect)"
-                />
-
-                {/* Line 6: Bottom Right to Center */}
-                <path
-                  d="M 480 430 Q 400 430, 300 250"
-                  fill="none"
-                  stroke={activeService === 'gifting' ? '#D4AF37' : '#ffffff20'}
-                  strokeWidth={activeService === 'gifting' ? '3.5' : '2'}
-                  className="transition-colors duration-300"
-                />
-                <path
-                  d="M 480 430 Q 400 430, 300 250"
-                  fill="none"
-                  stroke="url(#laserGold)"
-                  strokeWidth="3"
-                  className="electric-flow-line"
-                  filter="url(#glowEffect)"
-                />
-              </svg>
+          {/* RIGHT COLUMN: SINGLE STATIC IMAGE (NO ANIMATION) */}
+          <div className="lg:col-span-6 flex flex-col items-center justify-center relative min-h-0 py-2 lg:py-0 lg:min-h-[460px]">
+            {/* Morphing color background glow aligned with active slides */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+              <div
+                className={`w-80 h-80 rounded-full blur-3xl opacity-20 transition-all duration-1000 ${
+                  activeSlide === 0 ? "bg-[#B6F8DD]" :
+                  activeSlide === 1 ? "bg-emerald-200" :
+                  activeSlide === 2 ? "bg-[#FFAE00]" :
+                  activeSlide === 3 ? "bg-emerald-300" :
+                  "bg-[#FFAE00]"
+                }`}
+              />
             </div>
 
-            {/* CENTER TZAR LOGO CARD */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-              <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-[#0e3b22] border-2 border-[#D4AF37]/50 shadow-[0_0_50px_rgba(212,175,55,0.3)] flex flex-col items-center justify-center p-4 text-center group transition-transform duration-300 hover:scale-110">
-                <img
-                  src="/assets/images/tzar-logo-main.png"
-                  alt="TZAR CENTER"
-                  className="w-full h-auto object-contain filter drop-shadow-md"
-                />
-                <span className="mt-2 text-[9px] font-rubik font-bold tracking-widest text-[#D4AF37] uppercase">
-                  CORE HUB
-                </span>
-              </div>
+            {/* Static Image block without transition loops */}
+            <div className="relative w-full max-w-[550px] flex items-center justify-center z-10">
+              <img
+                src="/assets/images/hero-collage.png"
+                alt="Tzar Venture Services Showcase"
+                className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] max-h-[260px] sm:max-h-[360px] lg:max-h-[460px]"
+                onError={(e) => {
+                  const parent = (e.currentTarget as HTMLImageElement).parentElement;
+                  if (parent) {
+                    (e.currentTarget as HTMLImageElement).style.display = "none";
+                    parent.innerHTML = `<div class="w-full h-80 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center text-neutral-500">Mockup Image</div>`;
+                  }
+                }}
+              />
             </div>
 
-            {/* SURROUNDING SERVICE CARDS (ONLY HEADING AND ONLINE LOGO) */}
-            <div className="w-full h-full grid grid-cols-2 grid-rows-3 gap-y-28 gap-x-6 sm:gap-x-12 relative z-10">
-              {HERO_SERVICES.map((serv) => {
-                const IconComp = serv.icon;
-                const isActive = activeService === serv.id;
+            {/* PROGRESS & NAVIGATION CONTROLS (MOBILE - Rendered under the image collage) */}
+            <div className="flex lg:hidden items-center justify-center gap-3 mt-8 pt-4 border-t border-[rgba(29,66,36,0.25)] w-full relative z-20">
+              {/* Prev Button */}
+              <button
+                onClick={handlePrev}
+                className="p-2.5 rounded-full border border-[#1D4224]/30 hover:border-[#1D4224] text-[#1D4224] hover:bg-[#1D4224]/10 transition duration-200"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
 
-                return (
-                  <Link
-                    key={serv.id}
-                    href={serv.href}
-                    onMouseEnter={() => setActiveService(serv.id)}
-                    onMouseLeave={() => setActiveService(null)}
-                    className={`bg-white/90 backdrop-blur-xl border rounded-2xl p-3.5 sm:p-4 flex items-center gap-3 transition-all duration-300 shadow-xl group hover:bg-white max-w-[210px] w-full mx-auto ${isActive
-                        ? 'border-[#D4AF37] scale-105 shadow-[0_10px_30px_rgba(212,175,55,0.3)]'
-                        : 'border-white/20'
-                      }`}
+              {/* Progress Dash Lines */}
+              <div className="flex items-center gap-2">
+                {SLIDES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveSlide(idx)}
+                    className="h-1.5 w-10 bg-black/20 rounded-full overflow-hidden relative cursor-pointer"
+                    aria-label={`Go to slide ${idx + 1}`}
                   >
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0e3b22] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <IconComp className="w-5 h-5 text-[#D4AF37]" />
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="font-rubik font-bold text-xs sm:text-sm text-[#090d0a] leading-tight group-hover:text-[#0e3b22] transition-colors truncate">
-                        {serv.title}
-                      </h3>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
+                    <div
+                      className="h-full bg-[#1D4224] rounded-full"
+                      style={{
+                        width: idx === activeSlide ? `${progress}%` : "0%",
+                        transition: idx === activeSlide && progress > 0 ? "width 100ms linear" : "none"
+                      }}
+                    />
+                  </button>
+                ))}
+              </div>
 
+              {/* Next Button */}
+              <button
+                onClick={handleNext}
+                className="p-2.5 rounded-full border border-[#1D4224]/30 hover:border-[#1D4224] text-[#1D4224] hover:bg-[#1D4224]/10 transition duration-200"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
         </div>

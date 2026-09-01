@@ -1,0 +1,108 @@
+.domain-marquee-section {
+  width: 100%;
+  padding: 2.5rem 0;
+  background-color: #1D4224; /* Solid Brand Forest Green */
+}
+
+.domain-marquee-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+}
+
+@keyframes marqueeLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.33%, 0, 0);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translate3d(-33.33%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.domain-marquee-track-left {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: marqueeLeft 35s linear infinite;
+  will-change: transform;
+}
+
+.domain-marquee-track-right {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: marqueeRight 35s linear infinite;
+  will-change: transform;
+}
+
+/* Pause animations on hover */
+.domain-marquee-container:hover .domain-marquee-track-left,
+.domain-marquee-container:hover .domain-marquee-track-right {
+  animation-play-state: paused;
+}
+
+.domain-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.06); /* Glassmorphic white */
+  border: 1px solid rgba(255, 255, 255, 0.12); /* Subtle white border */
+  padding: 0.5rem 1.25rem;
+  border-radius: 100px; /* pill shape */
+  min-width: 160px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: default;
+  user-select: none;
+}
+
+.domain-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 174, 0, 0.5); /* Gold hover border */
+  box-shadow: 0 8px 25px rgba(255, 174, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.domain-card-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 174, 0, 0.1);
+  padding: 0.35rem;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.domain-card:hover .domain-card-icon-wrapper {
+  transform: rotate(12deg) scale(1.1);
+}
+
+.domain-card-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .domain-card {
+    min-width: 140px;
+    padding: 0.4rem 1rem;
+  }
+  .domain-card-name {
+    font-size: 0.75rem;
+  }
+}

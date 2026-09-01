@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ArrowUpRight, Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
+import { ArrowUpRight, Phone, Mail, ChevronDown } from 'lucide-react';
 import { COMPANY } from '../../data/company';
+import { StaggeredMenu } from '../ui/StaggeredMenu';
 
 const NAV_ITEMS = [
   {
@@ -37,64 +38,88 @@ const NAV_ITEMS = [
   { name: 'Blog', href: '/blog' },
 ];
 
+const STAGGERED_ITEMS = [
+  ...NAV_ITEMS.map((item) => ({
+    label: item.name,
+    link: item.href,
+    children: item.children,
+  })),
+  { label: 'Contact', link: '/contact' },
+];
+
+const STAGGERED_SOCIALS = [
+  { label: 'LinkedIn', link: 'https://linkedin.com' },
+  { label: 'Instagram', link: 'https://instagram.com' },
+  { label: 'Twitter', link: 'https://twitter.com' },
+  { label: 'WhatsApp', link: 'https://wa.me' }
+];
+
 export const TechHeader: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
   const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
+    let lastScroll = window.scrollY;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentScroll = window.scrollY;
+      setScrollY(currentScroll);
+
+      if (currentScroll > 200) {
+        if (currentScroll > lastScroll) {
+          // Scrolling DOWN -> hide header
+          setIsVisible(false);
+        } else {
+          // Scrolling UP -> show header
+          setIsVisible(true);
+        }
+      } else {
+        // Near the top -> always show header
+        setIsVisible(true);
+      }
+
+      lastScroll = currentScroll;
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    setMobileMenuOpen(false);
     setActiveDropdown(null);
   }, [pathname]);
 
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-inter">
-      {/* Framer Top Banner Ticker */}
-      <div className="bg-[#090909] border-b border-[#262626] py-1.5 px-4 text-xs font-mono text-neutral-400 flex items-center justify-between">
-        <div className="flex items-center gap-3 overflow-hidden whitespace-nowrap">
-          <span className="flex h-2 w-2 relative">
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0099FF]"></span>
-          </span>
-          <span className="text-[#0099FF] font-semibold tracking-wide uppercase">TZAR VENTURE</span>
-          <span className="text-neutral-600">|</span>
-          <span className="text-neutral-300 hidden sm:inline">Production-Grade Digital Systems for Enterprise Founders</span>
-        </div>
-        <div className="flex items-center gap-4 text-neutral-400 text-xs">
-          <a href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`} className="flex items-center gap-1.5 hover:text-white transition">
-            <Phone className="w-3 h-3 text-[#D4AF37]" />
-            <span className="hidden md:inline">{COMPANY.phone}</span>
-          </a>
-          <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-1.5 hover:text-white transition">
-            <Mail className="w-3 h-3 text-[#0099FF]" />
-            <span className="hidden lg:inline">{COMPANY.email}</span>
-          </a>
-        </div>
-      </div>
+  const isSolid = scrollY > 50 || !isHome;
 
-      {/* Main Framer Navbar (56px sticky bar on #090909 canvas) */}
-      <nav className={`transition-all duration-200 ${scrolled ? 'bg-[#090909]/95 backdrop-blur-md border-b border-[#262626] py-3' : 'bg-[#090909]/80 backdrop-blur-sm border-b border-[#262626] py-4'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+  return (
+    <header 
+      className="fixed left-0 right-0 top-0 z-50 font-inter transition-transform duration-300 ease-in-out"
+      style={{
+        transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, -100%, 0)'
+      }}
+    >
+      {/* Main Framer Navbar */}
+      <nav className={`transition-all duration-500 py-3.5 ${
+        isSolid
+          ? 'bg-[#0E2015] border-b border-white/10 shadow-lg'
+          : 'bg-transparent border-b border-transparent'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           
           {/* Logo Brand */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
             <img
               src="/assets/images/tzar-logo-main.png"
               alt="TZAR VENTURE"
-              className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-9 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Nav Items */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1 xl:gap-1.5 shrink-0">
             {NAV_ITEMS.map((item) => (
               <div
                 key={item.name}
@@ -104,21 +129,33 @@ export const TechHeader: React.FC = () => {
               >
                 <Link
                   href={item.href}
-                  className="px-3.5 py-2 text-sm font-medium text-neutral-300 hover:text-white hover:bg-[#141414] rounded-full transition-all flex items-center gap-1"
+                  className={`px-2.5 xl:px-3 py-1.5 text-[11px] xl:text-xs font-bold uppercase tracking-wider rounded-full transition-all flex items-center gap-1 whitespace-nowrap shrink-0 ${
+                    isSolid
+                      ? '!text-white hover:!text-white hover:bg-white/10'
+                      : '!text-[#0E2015] hover:!text-[#1D4224] hover:bg-[rgba(29,66,36,0.06)]'
+                  }`}
                 >
-                  <span>{item.name}</span>
-                  {item.children && <ChevronDown className="w-3.5 h-3.5 text-neutral-500 group-hover:text-white transition" />}
+                  <span className="whitespace-nowrap">{item.name}</span>
+                  {item.children && (
+                    <ChevronDown
+                      className={`w-3 h-3 shrink-0 transition ${
+                        isSolid
+                          ? 'text-white/70 group-hover:text-white'
+                          : 'text-[#0E2015]/75 group-hover:text-[#0E2015]'
+                      }`}
+                    />
+                  )}
                 </Link>
 
                 {/* Dropdown Menu */}
                 {item.children && activeDropdown === item.name && (
                   <div className="absolute top-full left-0 w-64 pt-2 z-50">
-                    <div className="bg-[#141414] border border-[#262626] rounded-2xl p-2 shadow-2xl">
+                    <div className="bg-[#0E2015] text-white border border-white/10 rounded-2xl p-2 shadow-2xl backdrop-blur-xl">
                       {item.children.map((sub) => (
                         <Link
                           key={sub.name}
                           href={sub.href}
-                          className="block px-3 py-2 text-xs font-medium text-neutral-300 hover:text-white hover:bg-[#1C1C1C] rounded-lg transition"
+                          className="block px-3 py-2 text-xs font-medium !text-white/85 hover:!text-white hover:bg-white/10 rounded-lg transition whitespace-nowrap"
                         >
                           {sub.name}
                         </Link>
@@ -131,64 +168,32 @@ export const TechHeader: React.FC = () => {
           </div>
 
           {/* Right Action Framer Pills */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center shrink-0">
             <Link
               href="/contact"
-              className="framer-btn-primary flex items-center gap-2"
+              className="framer-btn-primary border border-white/15 px-4 py-2 text-xs font-bold flex items-center gap-1.5 whitespace-nowrap shrink-0"
             >
               <span>Get Proposal</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-full text-neutral-400 hover:text-white hover:bg-[#141414] focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Staggered Menu */}
+          <div className="lg:hidden flex items-center shrink-0">
+            <StaggeredMenu
+              items={STAGGERED_ITEMS}
+              socialItems={STAGGERED_SOCIALS}
+              displaySocials={true}
+              displayItemNumbering={false}
+              colors={['#FFAE00', '#1D4224', '#0E2015']}
+              accentColor="#FFAE00"
+              menuButtonColor={isSolid ? '#FFFFFF' : '#0E2015'}
+              openMenuButtonColor="#FFFFFF"
+              logoUrl="/assets/images/tzar-logo-main.png"
+            />
+          </div>
         </div>
       </nav>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#090909] border-b border-[#262626] px-4 pt-4 pb-6 space-y-3 font-inter shadow-2xl">
-          {NAV_ITEMS.map((item) => (
-            <div key={item.name} className="space-y-1">
-              <Link
-                href={item.href}
-                className="block px-3 py-2 text-base font-semibold text-white hover:text-[#0099FF]"
-              >
-                {item.name}
-              </Link>
-              {item.children && (
-                <div className="pl-4 space-y-1">
-                  {item.children.map((sub) => (
-                    <Link
-                      key={sub.name}
-                      href={sub.href}
-                      className="block px-3 py-1.5 text-xs text-neutral-400 hover:text-white"
-                    >
-                      {sub.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <div className="pt-4 border-t border-[#262626]">
-            <Link
-              href="/contact"
-              className="w-full framer-btn-primary py-3 flex items-center justify-center gap-2"
-            >
-              <span>Start Project</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

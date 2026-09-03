@@ -9,25 +9,10 @@ import { TechServicesGrid } from "@/legacy-src/components/home/tech/TechServices
 import { TechProofShowcase } from "@/legacy-src/components/home/tech/TechProofShowcase";
 import { TechContactSection } from "@/legacy-src/components/home/tech/TechContactSection";
 import AccordionGallery from "@/legacy-src/components/home/tech/AccordionGallery";
-import FlowingMenu from "@/legacy-src/components/home/tech/FlowingMenu";
+import { SectorCircuitExpertise } from "@/legacy-src/components/home/tech/SectorCircuitExpertise";
 import SeoArticle from "@/legacy-src/components/home/tech/SeoArticle";
 import TechInsights from "@/legacy-src/components/home/tech/TechInsights";
 import { TrafficGrowthSection } from "@/legacy-src/components/home/tech/TrafficGrowthSection";
-
-const DOMAIN_ITEMS = [
-  { link: '#', text: 'Automobiles', image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'Capital', image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'Consulting', image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'E-Commerce', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'Education', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'Energy', image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'Events', image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'Food', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'Hardware', image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'Healthcare', image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'Hospitality', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop' },
-  { link: '#', text: 'Industries', image: 'https://images.unsplash.com/photo-1530646194784-a11950aa577c?q=80&w=800&auto=format&fit=crop' }
-];
 
 const PHOTOSHOOT_ITEMS = [
   { image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=800&auto=format&fit=crop', label: 'Kashmiri Kahva', link: '#' },
@@ -157,23 +142,11 @@ export default function Home() {
         {/* 01.6 • COMPANY ACHIEVEMENTS INSIGHTS */}
         <TechInsights />
 
-        {/* Domains We Have Worked For */}
-        <div className="w-full pt-16 pb-8 relative z-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
-            <span className="font-mono text-sm uppercase tracking-widest text-[#1D4224] font-black">
-              OUR SECTOR EXPERTISE
-            </span>
-            <h2 className="font-montserrat font-black text-2xl sm:text-3xl text-[#0E2015] tracking-tight mt-2 leading-tight">
-              Domains we have worked for
-            </h2>
-          </div>
-          <div className="w-full px-4 sm:px-6 lg:px-0">
-            <FlowingMenu items={DOMAIN_ITEMS} />
-          </div>
-        </div>
+        {/* OUR SECTOR EXPERTISE — Circuit Network & Lighting Animation */}
+        <SectorCircuitExpertise />
 
         {/* Brand Showcase Accordion Gallery */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 mb-16 relative z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 mb-16 relative z-20">
           <div className="text-center mb-10">
             <span className="font-mono text-sm uppercase tracking-widest text-[#1D4224] font-black">
               BRAND CAMPAIGNS & PRODUCT PHOTOSHOOTS

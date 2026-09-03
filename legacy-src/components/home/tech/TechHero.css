@@ -1,0 +1,107 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   TECH HERO — Compact Showcase with Orbiting Feature Pods
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.hero-orbit-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(14, 32, 21, 0.1);
+  border-radius: 0.875rem;
+  padding: 0.75rem 0.95rem;
+  box-shadow: 0 8px 24px -4px rgba(14, 32, 21, 0.07), 0 2px 6px rgba(14, 32, 21, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 20;
+}
+
+.hero-orbit-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: rgba(14, 32, 21, 0.25);
+  box-shadow: 0 12px 28px -4px rgba(14, 32, 21, 0.12);
+}
+
+/* ── ICON GLOW RING VARIATIONS ───────────────────────────────────────── */
+.orbit-icon-halo {
+  position: relative;
+  width: 2.625rem;
+  height: 2.625rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.hero-orbit-card:hover .orbit-icon-halo {
+  transform: scale(1.08);
+}
+
+/* Halo Colors (Inspired by reference diagram) */
+.halo-blue {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.02) 70%);
+  border: 1.5px solid rgba(59, 130, 246, 0.3);
+  color: #2563EB;
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.2);
+}
+
+.halo-green {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.02) 70%);
+  border: 1.5px solid rgba(16, 185, 129, 0.3);
+  color: #059669;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.2);
+}
+
+.halo-amber {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.02) 70%);
+  border: 1.5px solid rgba(245, 158, 11, 0.3);
+  color: #D97706;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.2);
+}
+
+.halo-purple {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.02) 70%);
+  border: 1.5px solid rgba(139, 92, 246, 0.3);
+  color: #7C3AED;
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.2);
+}
+
+/* ── TECH STACK BADGE ROW ────────────────────────────────────────────── */
+.tech-stack-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(14, 32, 21, 0.1);
+  font-family: 'Space Grotesk', monospace, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #0E2015;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(14, 32, 21, 0.03);
+}
+
+.tech-stack-pill:hover {
+  background: #FFFFFF;
+  border-color: #0E2015;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(14, 32, 21, 0.08);
+}
+
+/* ── CENTRAL DEVICE SHADOW & GLOW ────────────────────────────────────── */
+.hero-device-container {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-device-container:hover {
+  transform: scale(1.012);
+}
+
+.hero-device-img {
+  filter: drop-shadow(0 20px 40px rgba(14, 32, 21, 0.14));
+}

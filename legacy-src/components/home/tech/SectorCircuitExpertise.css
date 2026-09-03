@@ -1,0 +1,167 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   SECTOR CIRCUIT EXPERTISE — Flowing Tech Light (#0E2015) & Clean Minimal Cards
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.sector-circuit-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #EFE8E0;
+  overflow: hidden;
+}
+
+/* ── DOMAIN CARD BASE STYLES ────────────────────────────────────────── */
+.circuit-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(14, 32, 21, 0.12);
+  border-radius: 1.125rem;
+  padding: 1.25rem 0.85rem;
+  box-shadow: 0 4px 18px -2px rgba(14, 32, 21, 0.04);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+  min-height: 100px;
+}
+
+.circuit-card:hover {
+  transform: translateY(-4px);
+  border-color: #0E2015;
+  box-shadow: 0 12px 28px -4px rgba(14, 32, 21, 0.16), 0 0 16px rgba(14, 32, 21, 0.18);
+}
+
+.circuit-card.is-active {
+  border-color: #0E2015;
+  box-shadow: 0 10px 24px -4px rgba(14, 32, 21, 0.14), 0 0 14px rgba(14, 32, 21, 0.15);
+}
+
+.circuit-card-icon-box {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background-color: #FAF7F2;
+  border: 1px solid rgba(14, 32, 21, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0E2015;
+  margin-bottom: 0.5rem;
+  transition: all 0.35s ease;
+}
+
+.circuit-card:hover .circuit-card-icon-box,
+.circuit-card.is-active .circuit-card-icon-box {
+  background-color: #0E2015;
+  color: #FFFFFF;
+  border-color: #0E2015;
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(14, 32, 21, 0.25);
+}
+
+.circuit-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  color: #0E2015;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+
+/* ── SMOOTH FLOWING TECH LIGHT (#0E2015 - DESKTOP SVG PATHS) ────────── */
+/* The beam travels along the path from center (0) to card (100) */
+@keyframes flowBeamPulse {
+  0% {
+    stroke-dashoffset: 40;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -100;
+    opacity: 0;
+  }
+}
+
+.circuit-flow-beam {
+  stroke: #0E2015;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 36 100;
+  animation: flowBeamPulse 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  filter: drop-shadow(0 0 1.5px rgba(14, 32, 21, 0.35));
+}
+
+/* Staggered phase offsets for smooth wave cascading from center outward */
+.beam-inner {
+  animation-delay: 0s;
+}
+
+.beam-mid {
+  animation-delay: 0.45s;
+}
+
+.beam-outer {
+  animation-delay: 0.9s;
+}
+
+/* High-intensity hover beam */
+.circuit-flow-beam-hover {
+  stroke: #0E2015;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 45 100;
+  animation: flowBeamPulse 1.4s linear infinite;
+  filter: drop-shadow(0 0 2.5px rgba(14, 32, 21, 0.5));
+}
+
+/* ── MOBILE SMOOTH FLOWING CONDUIT (#0E2015) ────────────────────────── */
+.mobile-trunk-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background-color: #CBD5E1;
+}
+
+.mobile-trunk-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.5px;
+  background-color: #0E2015;
+  box-shadow: 0 0 6px rgba(14, 32, 21, 0.45);
+  transition: height 0.15s ease-out;
+}
+
+/* Mobile responsive card adjustments */
+@media (max-width: 640px) {
+  .circuit-card {
+    padding: 0.9rem 0.5rem;
+    border-radius: 0.875rem;
+    min-height: 86px;
+  }
+
+  .circuit-card-icon-box {
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .circuit-card-title {
+    font-size: 0.725rem;
+  }
+}

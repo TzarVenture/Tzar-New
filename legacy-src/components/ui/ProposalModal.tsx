@@ -27,12 +27,20 @@ export const ProposalModal: React.FC<ProposalModalProps> = ({ isOpen, onClose })
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    const webhookUrl =
+      process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK ||
+      (typeof window !== 'undefined'
+        ? (window as unknown as { __ENV?: { VITE_GOOGLE_SHEETS_WEBHOOK?: string } })
+            .__ENV?.VITE_GOOGLE_SHEETS_WEBHOOK
+        : '');
     try {
-      await fetch(import.meta.env.VITE_GOOGLE_SHEETS_WEBHOOK || '', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      if (webhookUrl) {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+      }
     } catch (_) {}
     setLoading(false);
     setStep(4);

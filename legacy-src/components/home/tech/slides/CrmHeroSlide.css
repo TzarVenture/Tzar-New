@@ -1,0 +1,247 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   CRM HERO SLIDE — Organic Cards & Dedicated Styles (Compact Edition)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.crm-slide-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: crmSlideFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes crmSlideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── TECH STACK ICONS: COMPACT DESKTOP ROW ───────────────────────────── */
+.desktop-tech-stack-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+  margin-bottom: 1.15rem;
+}
+
+.tech-stack-icon-pill {
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.25px solid rgba(14, 32, 21, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(14, 32, 21, 0.04);
+  cursor: default;
+}
+
+.tech-stack-icon-pill:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #1D4224;
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 8px 24px rgba(14, 32, 21, 0.12);
+}
+
+.tech-stack-icon-pill img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
+}
+
+/* ── MOBILE-ONLY GRAPE CLUSTER (HIDDEN ON DESKTOP) ───────────────────── */
+.mobile-grape-cluster {
+  display: none !important;
+}
+
+.grape-row-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.grape-row-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: -0.25rem;
+}
+
+/* ── RESPONSIVE DISPLAY SWITCH ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .desktop-tech-stack-row {
+    display: none !important;
+  }
+
+  .mobile-grape-cluster {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 1.15rem;
+    z-index: 10;
+  }
+
+  .tech-stack-icon-pill {
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0.42rem;
+  }
+
+  .mobile-orbit-card {
+    padding: 0.6rem 0.65rem;
+    border-radius: 0.875rem;
+    gap: 0.5rem;
+    max-width: 100% !important;
+  }
+
+  .mobile-orbit-card .orbit-icon-box {
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 0.5rem;
+  }
+}
+
+/* ── ORBIT FEATURE CARDS (COMPACTED & REFINED) ───────────────────────── */
+.hero-orbit-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.25px solid rgba(14, 32, 21, 0.1);
+  border-radius: 0.95rem;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 6px 20px -4px rgba(14, 32, 21, 0.07), 0 2px 5px rgba(14, 32, 21, 0.02);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-align: left;
+  will-change: transform;
+  width: 100%;
+  max-width: 245px;
+  box-sizing: border-box;
+}
+
+/* ── CARD 1: Top-Left (Natural -2.5deg tilt) ─────────────────────────── */
+.pod-custom-1 {
+  transform: rotate(-2.5deg) translate3d(4px, -2px, 0);
+  animation: podFloat1 5.2s ease-in-out infinite;
+}
+
+@keyframes podFloat1 {
+  0%, 100% {
+    transform: rotate(-2.5deg) translate3d(4px, -2px, 0);
+  }
+  50% {
+    transform: rotate(-1.5deg) translate3d(6px, -7px, 0);
+  }
+}
+
+/* ── CARD 2: Bottom-Left (Natural +2deg tilt) ────────────────────────── */
+.pod-custom-2 {
+  transform: rotate(2deg) translate3d(10px, 3px, 0);
+  animation: podFloat2 5.8s ease-in-out infinite 0.75s;
+}
+
+@keyframes podFloat2 {
+  0%, 100% {
+    transform: rotate(2deg) translate3d(10px, 3px, 0);
+  }
+  50% {
+    transform: rotate(3deg) translate3d(12px, -2px, 0);
+  }
+}
+
+/* ── CARD 3: Top-Right (Natural +2.5deg tilt) ────────────────────────── */
+.pod-custom-3 {
+  transform: rotate(2.5deg) translate3d(-4px, -2px, 0);
+  animation: podFloat3 5.4s ease-in-out infinite 1.3s;
+}
+
+@keyframes podFloat3 {
+  0%, 100% {
+    transform: rotate(2.5deg) translate3d(-4px, -2px, 0);
+  }
+  50% {
+    transform: rotate(1.5deg) translate3d(-2px, -7px, 0);
+  }
+}
+
+/* ── CARD 4: Bottom-Right (Natural -2deg tilt) ───────────────────────── */
+.pod-custom-4 {
+  transform: rotate(-2deg) translate3d(-10px, 3px, 0);
+  animation: podFloat4 5.6s ease-in-out infinite 1.9s;
+}
+
+@keyframes podFloat4 {
+  0%, 100% {
+    transform: rotate(-2deg) translate3d(-10px, 3px, 0);
+  }
+  50% {
+    transform: rotate(-3deg) translate3d(-8px, -2px, 0);
+  }
+}
+
+/* ── COMPACT ICON BOXES ──────────────────────────────────────────────── */
+.orbit-icon-box {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: none !important;
+}
+
+.box-blue {
+  background: #EFF6FF;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  color: #2563EB;
+}
+
+.box-green {
+  background: #ECFDF5;
+  border: 1px solid rgba(5, 150, 105, 0.18);
+  color: #059669;
+}
+
+.box-amber {
+  background: #FFFBEB;
+  border: 1px solid rgba(217, 119, 6, 0.18);
+  color: #D97706;
+}
+
+.box-purple {
+  background: #F5F3FF;
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  color: #7C3AED;
+}
+
+/* ── CENTRAL DEVICE CONTAINER ────────────────────────────────────────── */
+.hero-device-container {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-device-img {
+  filter: drop-shadow(0 18px 36px rgba(14, 32, 21, 0.15));
+}

@@ -28,8 +28,8 @@ export default function Home() {
       {/* 01 • NEXT.JS CONNECTED CENTRAL NODE HERO */}
       <TechHero />
 
-      {/* 01.5 • CLIENT BRANDS INFINITE MARQUEE */}
-      <ClientMarquee />
+      {/* 01.5 • COMPANY ACHIEVEMENTS INSIGHTS (OUR GLOBAL IMPACT) */}
+      <TechInsights />
 
       {/* 01.6 • DYNAMIC SCROLLING CASE STUDY STACK */}
       <section className="bg-[#EFE8E0] pt-6 sm:pt-8 pb-2 relative z-20">
@@ -139,8 +139,8 @@ export default function Home() {
           </ScrollStackItem>
         </ScrollStack>
 
-        {/* 01.6 • COMPANY ACHIEVEMENTS INSIGHTS */}
-        <TechInsights />
+        {/* 01.7 • CLIENT BRANDS INFINITE MARQUEE (Building Success Stories with...) */}
+        <ClientMarquee />
 
         {/* OUR SECTOR EXPERTISE — Circuit Network & Lighting Animation */}
         <SectorCircuitExpertise />

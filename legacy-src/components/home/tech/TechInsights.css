@@ -1,7 +1,7 @@
 .tech-insights-section {
   background: linear-gradient(135deg, #0A160F 0%, #030704 100%);
   padding: 2.5rem 0;
-  margin-top: 6rem;
+  margin-top: 0;
   border-top: 1px solid rgba(29, 66, 36, 0.2);
   border-bottom: 1px solid rgba(29, 66, 36, 0.2);
   overflow: hidden;
@@ -116,7 +116,7 @@
 @media (max-width: 640px) {
   .tech-insights-section {
     padding: 2rem 0;
-    margin-top: 2rem;
+    margin-top: 0;
   }
 
   .tech-insights-grid {

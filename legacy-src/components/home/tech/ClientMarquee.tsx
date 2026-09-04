@@ -15,7 +15,7 @@ export const ClientMarquee: React.FC = () => {
   const marqueeLogos = Array(repeatCount).fill(BRAND_LOGOS).flat();
 
   return (
-    <section className="bg-[#0E2015] py-12 overflow-hidden select-none border-b border-[#1d4224]/30">
+    <section className="bg-[#0E2015] mt-20 sm:mt-24 lg:mt-28 py-12 sm:py-14 overflow-hidden select-none border-t border-b border-[#1d4224]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
         {/* Editorial Heading using brand colors */}
         <h3 className="font-montserrat text-sm sm:text-base font-bold tracking-wider text-[#EFE8E0]/70 uppercase">

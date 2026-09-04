@@ -302,14 +302,6 @@ export const SectorCircuitExpertise: React.FC = () => {
             })}
 
           </div>
-
-          {/* Mobile Scroll Instruction */}
-          <div className="text-center mt-6">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[#0E2015] font-bold bg-white/60 px-3 py-1 rounded-full border border-[#0E2015]/10 shadow-sm inline-flex items-center gap-1.5">
-              Scroll down to view sector circuits
-            </span>
-          </div>
-
         </div>
 
       </div>

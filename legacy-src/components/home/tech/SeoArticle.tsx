@@ -7,7 +7,7 @@ const SeoArticle: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="bg-[#EFE8E0] pb-20 pt-4 relative z-20">
+    <section className="bg-[#EFE8E0] py-16 sm:py-20 relative z-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white/40 backdrop-blur-md border border-[#1D4224]/10 rounded-3xl p-6 sm:p-10 shadow-sm transition-all duration-500">
           

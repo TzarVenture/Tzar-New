@@ -128,8 +128,8 @@
 /* ── MOBILE SMOOTH FLOWING CONDUIT (#0E2015) ────────────────────────── */
 .mobile-trunk-line {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 2.75rem;
+  bottom: 2.75rem;
   left: 50%;
   transform: translateX(-50%);
   width: 2px;
@@ -138,13 +138,14 @@
 
 .mobile-trunk-glow {
   position: absolute;
-  top: 0;
+  top: 2.75rem;
   left: 50%;
   transform: translateX(-50%);
   width: 2.5px;
   background-color: #0E2015;
   box-shadow: 0 0 6px rgba(14, 32, 21, 0.45);
   transition: height 0.15s ease-out;
+  max-height: calc(100% - 5.5rem);
 }
 
 /* Mobile responsive card adjustments */

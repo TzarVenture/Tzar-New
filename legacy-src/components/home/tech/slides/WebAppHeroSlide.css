@@ -1,0 +1,287 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   WEB APPLICATION HERO SLIDE — Dual Mobile Showcase & Orbiting Stack (Compact Edition)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.webapp-slide-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: webappSlideFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes webappSlideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── CENTRAL DUAL PHONE MOCKUPS ──────────────────────────────────────── */
+.webapp-dual-phones-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: -0.75rem;
+}
+
+.webapp-phone-left {
+  position: relative;
+  z-index: 10;
+  transform: rotate(-3deg) translateX(5px) translateY(-3px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 16px 32px rgba(14, 32, 21, 0.14));
+  animation: phoneFloatLeft 5.5s ease-in-out infinite;
+}
+
+.webapp-phone-right {
+  position: relative;
+  z-index: 12;
+  transform: rotate(2.5deg) translateX(-5px) translateY(5px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 18px 36px rgba(14, 32, 21, 0.16));
+  animation: phoneFloatRight 6s ease-in-out infinite 0.5s;
+}
+
+@keyframes phoneFloatLeft {
+  0%, 100% {
+    transform: rotate(-3deg) translate3d(5px, -3px, 0);
+  }
+  50% {
+    transform: rotate(-2deg) translate3d(5px, -9px, 0);
+  }
+}
+
+@keyframes phoneFloatRight {
+  0%, 100% {
+    transform: rotate(2.5deg) translate3d(-5px, 5px, 0);
+  }
+  50% {
+    transform: rotate(3.5deg) translate3d(-5px, -1px, 0);
+  }
+}
+
+/* ── ORBITING TECH STACK ICONS AROUND DUAL PHONES ────────────────────── */
+.orbit-stack-badge {
+  position: absolute;
+  width: 2.45rem;
+  height: 2.45rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.25px solid rgba(14, 32, 21, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem;
+  box-shadow: 0 5px 16px -3px rgba(14, 32, 21, 0.09);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 25;
+}
+
+.orbit-stack-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Satellite floating animations safely framing the phones */
+@keyframes satFloatA {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -5px, 0) scale(1.04); }
+}
+
+@keyframes satFloatB {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, 5px, 0) scale(1.04); }
+}
+
+.sat-top-left {
+  top: 7%;
+  left: 2px;
+  animation: satFloatA 4.8s ease-in-out infinite;
+}
+
+.sat-mid-left {
+  top: 48%;
+  left: -8px;
+  animation: satFloatB 5.2s ease-in-out infinite 0.6s;
+}
+
+.sat-bottom-left {
+  bottom: 11%;
+  left: 6px;
+  animation: satFloatA 5.6s ease-in-out infinite 1.2s;
+}
+
+.sat-top-right {
+  top: 7%;
+  right: 2px;
+  animation: satFloatB 4.6s ease-in-out infinite 0.4s;
+}
+
+.sat-mid-right {
+  top: 48%;
+  right: -8px;
+  animation: satFloatA 5.4s ease-in-out infinite 1s;
+}
+
+.sat-bottom-right {
+  bottom: 11%;
+  right: 6px;
+  animation: satFloatB 5.8s ease-in-out infinite 1.6s;
+}
+
+/* ── FEATURE CARDS (COMPACTED & REFINED) ─────────────────────────────── */
+.webapp-feature-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.25px solid rgba(14, 32, 21, 0.1);
+  border-radius: 0.95rem;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 6px 20px -4px rgba(14, 32, 21, 0.07), 0 2px 5px rgba(14, 32, 21, 0.02);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-align: left;
+  will-change: transform;
+  width: 100%;
+  max-width: 245px;
+  box-sizing: border-box;
+}
+
+/* Angled rotations with safe inward offsets */
+.webapp-card-1 {
+  transform: rotate(-2.5deg) translate3d(4px, -2px, 0);
+  animation: webappCardFloat1 5.2s ease-in-out infinite;
+}
+
+@keyframes webappCardFloat1 {
+  0%, 100% {
+    transform: rotate(-2.5deg) translate3d(4px, -2px, 0);
+  }
+  50% {
+    transform: rotate(-1.5deg) translate3d(6px, -7px, 0);
+  }
+}
+
+.webapp-card-2 {
+  transform: rotate(2deg) translate3d(10px, 3px, 0);
+  animation: webappCardFloat2 5.8s ease-in-out infinite 0.75s;
+}
+
+@keyframes webappCardFloat2 {
+  0%, 100% {
+    transform: rotate(2deg) translate3d(10px, 3px, 0);
+  }
+  50% {
+    transform: rotate(3deg) translate3d(12px, -2px, 0);
+  }
+}
+
+.webapp-card-3 {
+  transform: rotate(2.5deg) translate3d(-4px, -2px, 0);
+  animation: webappCardFloat3 5.4s ease-in-out infinite 1.3s;
+}
+
+@keyframes webappCardFloat3 {
+  0%, 100% {
+    transform: rotate(2.5deg) translate3d(-4px, -2px, 0);
+  }
+  50% {
+    transform: rotate(1.5deg) translate3d(-2px, -7px, 0);
+  }
+}
+
+.webapp-card-4 {
+  transform: rotate(-2deg) translate3d(-10px, 3px, 0);
+  animation: webappCardFloat4 5.6s ease-in-out infinite 1.9s;
+}
+
+@keyframes webappCardFloat4 {
+  0%, 100% {
+    transform: rotate(-2deg) translate3d(-10px, 3px, 0);
+  }
+  50% {
+    transform: rotate(-3deg) translate3d(-8px, -2px, 0);
+  }
+}
+
+/* ── COMPACT ICON BOXES ──────────────────────────────────────────────── */
+.webapp-icon-box {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: none !important;
+}
+
+.box-teal {
+  background: #F0FDFA;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  color: #0D9488;
+}
+
+.box-emerald {
+  background: #ECFDF5;
+  border: 1px solid rgba(5, 150, 105, 0.2);
+  color: #059669;
+}
+
+.box-indigo {
+  background: #EEF2FF;
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  color: #4F46E5;
+}
+
+.box-orange {
+  background: #FFF7ED;
+  border: 1px solid rgba(234, 88, 12, 0.2);
+  color: #EA580C;
+}
+
+/* ── MOBILE MEDIA QUERIES (< 1024px / < 640px) ───────────────────────── */
+@media (max-width: 1023px) {
+  .orbit-stack-badge {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .webapp-dual-phones-wrapper {
+    max-width: 290px;
+    margin: 0 auto;
+  }
+
+  .webapp-phone-left,
+  .webapp-phone-right {
+    max-width: 145px;
+  }
+
+  .webapp-mobile-card {
+    padding: 0.6rem 0.65rem;
+    border-radius: 0.875rem;
+    gap: 0.5rem;
+    max-width: 100% !important;
+  }
+
+  .webapp-mobile-card .webapp-icon-box {
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 0.5rem;
+  }
+}

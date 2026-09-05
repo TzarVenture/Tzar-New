@@ -54,7 +54,7 @@ export interface LeadCaptureFormProps {
 export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   bgColor = '#0E2015',
   textColor = '#FFFFFF',
-  title = "From Architecture to Execution: Let's Build Together",
+  title = "Let's Build Together",
   titleColor = '#FFAE00',
   buttonBgColor = '#1D4224',
   buttonTextColor = '#FFFFFF',
@@ -146,11 +146,11 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
   return (
     <div className={`relative group w-full ${className}`}>
-      {/* ── AMBIENT MULTI-LAYER MESH AURA (SITE THEME: FOREST GREEN + GOLD + MINT) ── */}
-      <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#1D4224]/60 via-[#FFAE00]/25 to-[#B6F8DD]/25 blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      {/* ── AMBIENT MULTI-LAYER MESH AURA (DESKTOP ONLY, HIDDEN ON MOBILE) ── */}
+      <div className="hidden sm:block absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#1D4224]/60 via-[#FFAE00]/25 to-[#B6F8DD]/25 blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-      {/* ── GRADIENT BORDER FRAME ── */}
-      <div className="relative p-[1.5px] rounded-2xl bg-gradient-to-b from-[#FFAE00]/50 via-white/10 to-[#B6F8DD]/40 shadow-2xl overflow-hidden">
+      {/* ── GRADIENT BORDER FRAME (SHADOW REMOVED ON MOBILE) ── */}
+      <div className="relative p-[1.5px] rounded-2xl bg-gradient-to-b from-[#FFAE00]/50 via-white/10 to-[#B6F8DD]/40 shadow-none sm:shadow-2xl overflow-hidden">
         
         {/* ── MAIN CARD BODY ── */}
         <div
@@ -166,14 +166,28 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
           {/* ── HEADER TITLE (Clean, No Badges or Sub-description) ── */}
           <div className="relative z-10 mb-4 sm:mb-5">
             <h3 className="font-montserrat font-black text-base sm:text-lg text-white tracking-tight leading-snug">
-              {title.includes(':') ? (
-                <>
-                  {title.split(':')[0]}:{' '}
-                  <span style={{ color: titleColor }}>{title.split(':')[1]}</span>
-                </>
-              ) : (
-                title
-              )}
+              {(() => {
+                if (title.includes(':')) {
+                  const [first, ...rest] = title.split(':');
+                  return (
+                    <>
+                      {first}:{' '}
+                      <span style={{ color: titleColor }}>{rest.join(':').trim()}</span>
+                    </>
+                  );
+                }
+                const words = title.trim().split(' ');
+                if (words.length > 1) {
+                  const lastWord = words.pop();
+                  return (
+                    <>
+                      {words.join(' ')}{' '}
+                      <span style={{ color: titleColor }}>{lastWord}</span>
+                    </>
+                  );
+                }
+                return title;
+              })()}
             </h3>
           </div>
 
@@ -353,7 +367,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="group relative overflow-hidden w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-[#1D4224] text-white font-montserrat font-black text-xs sm:text-sm uppercase tracking-wider shadow-md hover:shadow-xl hover:shadow-black/25 hover:brightness-110 active:scale-[0.99] transition-all duration-300 transform cursor-pointer"
+                  className="group relative overflow-hidden w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-[#1D4224] text-white font-montserrat font-black text-xs sm:text-sm uppercase tracking-wider shadow-none sm:shadow-md hover:shadow-xl hover:shadow-black/25 hover:brightness-110 active:scale-[0.99] transition-all duration-300 transform cursor-pointer"
                   style={
                     buttonBgColor && buttonBgColor !== '#1D4224'
                       ? { backgroundColor: buttonBgColor, color: buttonTextColor }

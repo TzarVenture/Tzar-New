@@ -23,52 +23,133 @@
   }
 }
 
-/* ── CENTRAL DUAL PHONE MOCKUPS ──────────────────────────────────────── */
-.webapp-dual-phones-wrapper {
+/* ── CENTRAL MULTI-DEVICE SHOWCASE (MACBOOK + ANDROID DUO) ──────────── */
+.webapp-devices-showcase {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: -0.75rem;
+  width: 100%;
 }
 
-.webapp-phone-left {
+.webapp-device-pair {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  user-select: none;
+}
+
+/* MacBook Mockup (Primary Desktop Web Experience) */
+.webapp-macbook-wrapper {
   position: relative;
   z-index: 10;
-  transform: rotate(-3deg) translateX(5px) translateY(-3px);
+  width: 250px;
+  max-width: 100%;
+  filter: drop-shadow(0 20px 38px rgba(14, 32, 21, 0.16)) drop-shadow(0 4px 12px rgba(14, 32, 21, 0.08));
+  animation: macbookFloat 6s ease-in-out infinite;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: drop-shadow(0 16px 32px rgba(14, 32, 21, 0.14));
-  animation: phoneFloatLeft 5.5s ease-in-out infinite;
 }
 
-.webapp-phone-right {
-  position: relative;
-  z-index: 12;
-  transform: rotate(2.5deg) translateX(-5px) translateY(5px);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: drop-shadow(0 18px 36px rgba(14, 32, 21, 0.16));
-  animation: phoneFloatRight 6s ease-in-out infinite 0.5s;
+.webapp-macbook-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
-@keyframes phoneFloatLeft {
+/* Android Phone (Responsive Mobile Companion) */
+.webapp-android-wrapper {
+  position: absolute;
+  right: -10px;
+  bottom: -6px;
+  z-index: 15;
+  width: 78px;
+  filter: drop-shadow(-10px 18px 28px rgba(14, 32, 21, 0.28)) drop-shadow(0 4px 10px rgba(14, 32, 21, 0.15));
+  animation: androidFloat 5.5s ease-in-out infinite 0.35s;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.webapp-android-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Interactive subtle lift on hover */
+.webapp-device-pair:hover .webapp-macbook-wrapper {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.webapp-device-pair:hover .webapp-android-wrapper {
+  transform: translateY(-7px) rotate(3deg) scale(1.03);
+}
+
+/* Responsive scaling across screen sizes */
+@media (min-width: 480px) {
+  .webapp-macbook-wrapper {
+    width: 300px;
+  }
+  .webapp-android-wrapper {
+    width: 92px;
+    right: -12px;
+    bottom: -8px;
+  }
+}
+
+@media (min-width: 768px) {
+  .webapp-macbook-wrapper {
+    width: 360px;
+  }
+  .webapp-android-wrapper {
+    width: 108px;
+    right: -14px;
+    bottom: -10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .webapp-macbook-wrapper {
+    width: 400px;
+  }
+  .webapp-android-wrapper {
+    width: 118px;
+    right: -16px;
+    bottom: -10px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .webapp-macbook-wrapper {
+    width: 440px;
+  }
+  .webapp-android-wrapper {
+    width: 128px;
+    right: -18px;
+    bottom: -12px;
+  }
+}
+
+@keyframes macbookFloat {
   0%, 100% {
-    transform: rotate(-3deg) translate3d(5px, -3px, 0);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: rotate(-2deg) translate3d(5px, -9px, 0);
+    transform: translate3d(0, -5px, 0);
   }
 }
 
-@keyframes phoneFloatRight {
+@keyframes androidFloat {
   0%, 100% {
-    transform: rotate(2.5deg) translate3d(-5px, 5px, 0);
+    transform: translate3d(0, 0, 0) rotate(1.5deg);
   }
   50% {
-    transform: rotate(3.5deg) translate3d(-5px, -1px, 0);
+    transform: translate3d(0, -8px, 0) rotate(2.5deg);
   }
 }
 
-/* ── ORBITING TECH STACK ICONS AROUND DUAL PHONES ────────────────────── */
+/* ── ORBITING TECH STACK ICONS AROUND MULTI-DEVICE DUO ──────────────── */
 .orbit-stack-badge {
   position: absolute;
   width: 2.45rem;
@@ -93,7 +174,7 @@
   object-fit: contain;
 }
 
-/* Satellite floating animations safely framing the phones */
+/* Satellite floating animations safely framing the devices */
 @keyframes satFloatA {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
   50% { transform: translate3d(0, -5px, 0) scale(1.04); }
@@ -105,38 +186,38 @@
 }
 
 .sat-top-left {
-  top: 7%;
-  left: 2px;
+  top: -2%;
+  left: 12px;
   animation: satFloatA 4.8s ease-in-out infinite;
 }
 
 .sat-mid-left {
-  top: 48%;
-  left: -8px;
+  top: 42%;
+  left: -12px;
   animation: satFloatB 5.2s ease-in-out infinite 0.6s;
 }
 
 .sat-bottom-left {
-  bottom: 11%;
-  left: 6px;
+  bottom: 2%;
+  left: 12px;
   animation: satFloatA 5.6s ease-in-out infinite 1.2s;
 }
 
 .sat-top-right {
-  top: 7%;
-  right: 2px;
+  top: -2%;
+  right: 28px;
   animation: satFloatB 4.6s ease-in-out infinite 0.4s;
 }
 
 .sat-mid-right {
-  top: 48%;
-  right: -8px;
+  top: 36%;
+  right: -16px;
   animation: satFloatA 5.4s ease-in-out infinite 1s;
 }
 
 .sat-bottom-right {
-  bottom: 11%;
-  right: 6px;
+  bottom: -4%;
+  right: -8px;
   animation: satFloatB 5.8s ease-in-out infinite 1.6s;
 }
 

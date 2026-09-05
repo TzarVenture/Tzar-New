@@ -105,15 +105,6 @@ export const TechInsights: React.FC = () => {
       <div className="tech-insights-grid-overlay" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-10">
-          <span className="font-mono text-xs uppercase tracking-widest text-[#FFAE00] font-black">
-            OUR GLOBAL IMPACT
-          </span>
-          <h2 className="font-montserrat font-black text-2xl sm:text-3xl text-white tracking-tight mt-2 leading-tight">
-            Our Global Achievements
-          </h2>
-        </div>
-
         <div className="tech-insights-grid">
           {STAT_ITEMS.map((stat, idx) => {
             const Icon = stat.icon;

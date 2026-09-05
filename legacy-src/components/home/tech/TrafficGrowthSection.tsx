@@ -47,7 +47,7 @@ export const TrafficGrowthSection: React.FC<TrafficGrowthSectionProps> = ({
             <LeadCaptureForm
               bgColor={formBgColor}
               textColor={formTextColor}
-              title="From Architecture to Execution: Let's Build Together"
+              title="Let's Build Together"
               titleColor="#FFAE00"
               buttonBgColor="#1D4224"
               buttonTextColor="#FFFFFF"

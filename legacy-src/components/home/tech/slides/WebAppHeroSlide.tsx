@@ -96,40 +96,43 @@ export const WebAppHeroSlide: React.FC = () => {
             </div>
           </div>
 
-          {/* ── CENTER: BOTH IMAGES WITH ORBITING TECH STACK ICONS ───── */}
+          {/* ── CENTER: BOTH IMAGES (MACBOOK + ANDROID) WITH ORBITING TECH STACK ICONS ───── */}
           <div className="lg:col-span-6 flex items-center justify-center relative z-10 px-2 sm:px-3 py-1">
             
-            {/* Orbiting Tech Stack Badges around the phones (Desktop) */}
-            <div className="hidden lg:block">
-              {STACK_SATELLITES.map((tech) => (
-                <div
-                  key={tech.name}
-                  title={tech.name}
-                  className={`orbit-stack-badge ${tech.posClass}`}
-                >
-                  <img src={tech.src} alt={tech.name} />
-                </div>
-              ))}
-            </div>
-
-            {/* Dual Phone Showcase (Proportionally Compacted) */}
-            <div className="webapp-dual-phones-wrapper">
-              {/* Phone 1: Left (iPhone Mockup) */}
-              <div className="webapp-phone-left w-[130px] sm:w-[155px] md:w-[165px] lg:w-[175px] xl:w-[190px]">
-                <img
-                  src="/assets/images/web-app-mobile-1.png"
-                  alt="High Performance Mobile Web Application"
-                  className="w-full h-auto object-contain select-none pointer-events-none"
-                />
+            {/* Responsive Device Showcase (MacBook + Android Mockup Duo) */}
+            <div className="webapp-devices-showcase">
+              {/* Orbiting Tech Stack Badges around the devices (Desktop) */}
+              <div className="hidden lg:block">
+                {STACK_SATELLITES.map((tech) => (
+                  <div
+                    key={tech.name}
+                    title={tech.name}
+                    className={`orbit-stack-badge ${tech.posClass}`}
+                  >
+                    <img src={tech.src} alt={tech.name} />
+                  </div>
+                ))}
               </div>
 
-              {/* Phone 2: Right (Android Mockup) */}
-              <div className="webapp-phone-right w-[130px] sm:w-[155px] md:w-[165px] lg:w-[175px] xl:w-[190px]">
-                <img
-                  src="/assets/images/web-app-mobile-2.png"
-                  alt="Cross-Platform Web Application Experience"
-                  className="w-full h-auto object-contain select-none pointer-events-none"
-                />
+              {/* Multi-Device Composition */}
+              <div className="webapp-device-pair">
+                {/* Device 1: MacBook Air (Desktop Web Application) */}
+                <div className="webapp-macbook-wrapper">
+                  <img
+                    src="/assets/images/web-app-macbook.png"
+                    alt="High Performance Responsive Web Application on MacBook"
+                    className="webapp-macbook-img select-none pointer-events-none"
+                  />
+                </div>
+
+                {/* Device 2: Android Phone (Mobile Web App Experience) */}
+                <div className="webapp-android-wrapper">
+                  <img
+                    src="/assets/images/web-app-mobile-2.png"
+                    alt="Cross-Platform Mobile Web Application on Android"
+                    className="webapp-android-img select-none pointer-events-none"
+                  />
+                </div>
               </div>
             </div>
 

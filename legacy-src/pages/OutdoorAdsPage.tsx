@@ -1,185 +1,234 @@
 "use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { Megaphone, ArrowRight, CheckCircle2, Building, ShieldCheck, MapPin, Send } from 'lucide-react';
-import { COMPANY } from '@/data/company';
+import React from 'react';
+import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 
 const OUTDOOR_SERVICES = [
-  { title: 'HOARDING ADVERTISEMENT', img: '/assets/images/resources/Ads-service/a1.png', desc: 'Large format billboards along major highways and arterial roads across Mumbai.' },
-  { title: 'BUS PANEL BRANDING', img: '/assets/images/resources/Ads-service/a2.png', desc: 'BEST bus side and back panel wraps covering high-density commuter routes.' },
-  { title: 'BUS SHELTER ADVERTISING', img: '/assets/images/resources/Ads-service/a3.png', desc: 'Illuminated bus stop shelters capturing pedestrian and street traffic.' },
-  { title: 'RADIO ADVERTISING', img: '/assets/images/resources/Ads-service/a4.png', desc: 'Prime time audio spots on Red FM, Radio Mirchi, and Big FM.' },
-  { title: 'CINEMA ADVERTISING', img: '/assets/images/resources/Ads-service/a5.png', desc: 'On-screen slides and video ads across PVR, INOX, and Cinepolis multiplexes.' },
-  { title: 'RICKSHAW ADVERTISING', img: '/assets/images/resources/Ads-service/a6.png', desc: 'Hyper-local auto rickshaw hood and back panel branding.' },
-  { title: 'CAB BRANDING', img: '/assets/images/resources/Ads-service/a7.png', desc: 'Ola, Uber, and radio taxi wraps for high-status brand visibility.' },
-  { title: 'POLE KIOSK BRANDING', img: '/assets/images/resources/Ads-service/a8.png', desc: 'Street light pole kiosks lining major commercial streets.' },
-  { title: 'RAILWAY STATION BRANDING', img: '/assets/images/resources/Ads-service/a9.png', desc: 'Western & Central railway platform hoardings and bridge banners.' },
-  { title: 'TRAIN BRANDING (EXT & INT)', img: '/assets/images/resources/Ads-service/a10.png', desc: 'Mumbai local train exterior vinyl wraps and interior poster ads.' },
-  { title: 'MALL ADVERTISING', img: '/assets/images/resources/Ads-service/a11.png', desc: 'Atrium banners, digital screens, and drop downs in premier Mumbai malls.' },
-  { title: 'AIRPORT & INFLIGHT BRANDING', img: '/assets/images/resources/Ads-service/a12.png', desc: 'Terminal baggage belts, digital screens, and inflight magazine branding.' },
+  { id: '1', title: 'HOARDING ADVERTISEMENT', img: '/assets/images/resources/Ads-service/a1.png' },
+  { id: '2', title: 'BUS PANEL BRANDING', img: '/assets/images/resources/Ads-service/a2.png' },
+  { id: '3', title: 'BUS SHELTER', img: '/assets/images/resources/Ads-service/a3.png' },
+  { id: '4', title: 'RADIO ADVERTISING', img: '/assets/images/resources/Ads-service/a4.png' },
+  { id: '5', title: 'CINEMA ADVERTISING', img: '/assets/images/resources/Ads-service/a5.png' },
+  { id: '6', title: 'RICKSHAW ADVERTISING', img: '/assets/images/resources/Ads-service/a6.png' },
+  { id: '7', title: 'CAB BRANDING', img: '/assets/images/resources/Ads-service/a7.png' },
+  { id: '8', title: 'POLE KIOSK BRANDING', img: '/assets/images/resources/Ads-service/a8.png' },
+  { id: '9', title: 'RAILWAY STATION BRANDING', img: '/assets/images/resources/Ads-service/a9.png' },
+  { id: '10', title: 'TRAIN BRANDING - EXT & INT', img: '/assets/images/resources/Ads-service/a10.png' },
+  { id: '11', title: 'MALL ADVERTISING', img: '/assets/images/resources/Ads-service/a11.png' },
+  { id: '12', title: 'AIRPORT & INFLIGHT BRANDING', img: '/assets/images/resources/Ads-service/a12.png' },
+];
+
+const OUTDOOR_FORM_SERVICES = [
+  'Hoarding Advertisement',
+  'Bus Panel Branding',
+  'Bus Shelter',
+  'Radio Advertising',
+  'Cinema Advertising',
+  'Rickshaw Advertising',
+  'Cab Branding',
+  'Pole Kiosk Branding',
+  'Railway Station Branding',
+  'Train Branding - Ext & Int',
+  'Mall Advertising',
+  'Airport & Inflight Branding',
+  'Websites Design & Development',
+  'Social Media (SMO | SMM)',
+  'Performance Marketing',
+  'Search Engine Optimization (SEO)',
+  'Product Shoot',
+  'Logo Design & Packaging',
+];
+
+const BRAND_LOGOS = [
+  { name: 'State Bank of India', img: '/assets/images/iconicbrands/p1.png' },
+  { name: 'Raymond', img: '/assets/images/iconicbrands/p2.png' },
+  { name: 'Hero', img: '/assets/images/iconicbrands/p3.png' },
+  { name: 'Brand 4', img: '/assets/images/iconicbrands/p4.png' },
+  { name: 'Brand 5', img: '/assets/images/iconicbrands/p5.png' },
+  { name: 'Brand 6', img: '/assets/images/iconicbrands/p6.png' },
+  { name: 'Brand 7', img: '/assets/images/iconicbrands/p7.png' },
+  { name: 'Brand 8', img: '/assets/images/iconicbrands/p8.png' },
+  { name: 'Brand 9', img: '/assets/images/iconicbrands/p9.png' },
+  { name: 'Brand 10', img: '/assets/images/iconicbrands/p10.png' },
 ];
 
 export const OutdoorAdsPage: React.FC = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', city: '', format: 'Hoarding Advertisement' });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      await fetch(import.meta.env.VITE_GOOGLE_SHEETS_WEBHOOK || '', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, service: 'Outdoor Advertising' }),
-      });
-    } catch (_) {}
-    setLoading(false);
-    setSubmitted(true);
-  };
-
   return (
-    <div style={{ paddingTop: 'clamp(7rem, 14vw, 10rem)', background: '#FAF9F5' }}>
+    <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
 
-      {/* ── Standardized Page Banner ── */}
-      <section
-        className="bg-grid"
-        style={{ borderBottom: '1px solid #E5E5DC', padding: 'clamp(3rem, 6vw, 5rem) 0', textAlign: 'center' }}
-      >
-        <div className="container-site" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.25rem' }}>
-          <span className="badge-green">OOH Media & Transit Campaigns</span>
-          <h1 className="display-lg" style={{ maxWidth: '750px' }}>
-            We Don't Sell Products — <span style={{ color: '#1D4224' }}>WE MAKE ICONIC BRANDS</span>
-          </h1>
-          <div className="section-divider" />
-          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '1rem', color: '#4B5563', maxWidth: '580px', lineHeight: 1.7 }}>
-            High-impact outdoor advertising campaigns across Mumbai: Billboards, Local Trains, Metro Branding, Bus Shelters, Cinemas, and Airport Media.
-          </p>
+      {/* ── 01. ABOVE THE FOLD (ATF) HERO SECTION WITH BACKGROUND MARKETING VIDEO ── */}
+      <section className="relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-center pt-20 sm:pt-20 pb-6 sm:pb-6 overflow-hidden border-b border-[#1D4224]/10 bg-[#0E2015]">
+        {/* Background Marketing Video - Visible across PC & Mobile */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover opacity-60"
+            src="/marketing-bg.mp4"
+          >
+            <source src="/marketing-bg.mp4" type="video/mp4" />
+            <source src="/assets/videos/marketing-bg.mp4" type="video/mp4" />
+          </video>
+          {/* Subtle gradient overlay to keep text and form highly readable while video motion stays vivid */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0E2015]/90 via-[#0E2015]/65 to-[#0E2015]/60" />
+        </div>
 
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '.5rem' }}>
-            <a href="#quote-form" className="btn-primary">
-              Request Media Plan <ArrowRight className="w-4 h-4" style={{ color: '#D4AF37' }} />
-            </a>
-            <a href={`tel:${COMPANY.phone.replace(/\s+/g,'')}`} className="btn-outline">
-              Call OOH Media Team: {COMPANY.phone}
-            </a>
+        <div className="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10 my-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-6 lg:gap-10 items-center">
+            
+            {/* Left Column: Normal Crisp Typography (No description below heading) */}
+            <div className="lg:col-span-7 space-y-2.5 sm:space-y-3">
+              <p className="font-serif italic text-2xl sm:text-3xl text-[#FFAE00]">
+                We Dont Sell Products
+              </p>
+              <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase leading-[1.1] sm:leading-[1.05]">
+                WE MAKE ICONIC BRANDS
+              </h1>
+            </div>
+
+            {/* Right Column: Lead Capture Form (Exact project style & size) */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end w-full">
+              <div className="w-full max-w-md">
+                <LeadCaptureForm
+                  bgColor="#0E2015"
+                  textColor="#FFFFFF"
+                  title="From Concept to Capture: We Do It All"
+                  titleColor="#FFAE00"
+                  buttonBgColor="#1D4224"
+                  buttonTextColor="#FFFFFF"
+                  serviceOptions={OUTDOOR_FORM_SERVICES}
+                  defaultService="Hoarding Advertisement"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ── 12 Outdoor Services Grid ── */}
-      <section style={{ padding: 'clamp(4rem, 8vw, 6rem) 0', background: '#fff', borderBottom: '1px solid #E5E5DC' }}>
-        <div className="container-site">
-          <div style={{ textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <span className="badge-green">Media Formats</span>
-            <h2 className="display-xl">Outdoor Advertising <span style={{ color: '#1D4224' }}>Services</span></h2>
-            <div className="section-divider" />
-          </div>
+      {/* ── 02. OUTDOOR ADVERTISING SERVICES (12 CARDS) ── */}
+      <section className="py-7 sm:py-9">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <h2 className="font-montserrat font-black text-2xl sm:text-3xl text-center text-[#0E2015] tracking-tight mb-5 sm:mb-6">
+            Outdoor Advertising Services
+          </h2>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: '1.75rem',
-          }}>
-            {OUTDOOR_SERVICES.map((s, i) => (
-              <div key={i} className="card" style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', gap: '1.25rem', textAlign: 'center', alignItems: 'center' }}>
-                <div style={{
-                  width: 84, height: 84, borderRadius: '1rem',
-                  background: 'rgba(29,66,36,.06)', border: '1px solid rgba(29,66,36,.1)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  padding: '.75rem',
-                }}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+            {OUTDOOR_SERVICES.map((service) => (
+              <div
+                key={service.id}
+                className="bg-white rounded-xl p-3.5 sm:p-4 border border-[#1D4224]/8 shadow-xs hover:shadow-md transition-shadow duration-200 flex flex-col items-center text-center"
+              >
+                <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center mb-2 sm:mb-2.5">
                   <img
-                    src={s.img}
-                    alt={s.title}
-                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
-                    onError={(e) => {
-                      const parent = (e.currentTarget as HTMLImageElement).parentElement;
-                      if (parent) {
-                        (e.currentTarget as HTMLImageElement).style.display = 'none';
-                      }
-                    }}
+                    src={service.img}
+                    alt={service.title}
+                    className="max-h-full max-w-full object-contain"
                   />
                 </div>
-
-                <div>
-                  <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '.95rem', color: '#0F1510', lineHeight: 1.35, marginBottom: '.5rem' }}>
-                    {s.title}
-                  </h3>
-                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '.8rem', color: '#6B7280', lineHeight: 1.6 }}>
-                    {s.desc}
-                  </p>
-                </div>
-
-                <a href="#quote-form" style={{ display: 'inline-flex', alignItems: 'center', gap: '.35rem', fontFamily: 'Rubik, sans-serif', fontWeight: 700, fontSize: '.7rem', color: '#1D4224', textTransform: 'uppercase', letterSpacing: '.08em', marginTop: 'auto', textDecoration: 'none' }}>
-                  Check Availability <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                <h3 className="font-montserrat font-bold text-xs sm:text-sm text-[#0E2015] leading-snug tracking-tight">
+                  {service.title}
+                </h3>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* ── Quote Form ── */}
-      <section id="quote-form" style={{ padding: 'clamp(4rem, 8vw, 6rem) 0' }}>
-        <div className="container-site" style={{ maxWidth: '800px' }}>
-          <div className="card" style={{ padding: '2.5rem' }}>
-            {submitted ? (
-              <div style={{ textAlign: 'center', padding: '3rem 1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                <div className="icon-circle-green"><CheckCircle2 className="w-8 h-8" /></div>
-                <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '1.4rem', color: '#0F1510' }}>
-                  Outdoor Campaign Inquiry Received!
-                </h3>
-                <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '.9rem', color: '#6B7280' }}>
-                  Our OOH media manager will contact you with availability and rates.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div>
-                  <span className="badge-green" style={{ marginBottom: '.5rem' }}>Media Planning</span>
-                  <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '1.35rem', color: '#0F1510' }}>
-                    Request Outdoor Media Rates & Availability
-                  </h3>
-                  <div className="section-divider" style={{ marginTop: '.5rem' }} />
-                </div>
+      {/* ── 03. HOW IT WORKS? ── */}
+      <section className="py-7 sm:py-9 border-t border-[#1D4224]/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          
+          <h2 className="font-montserrat font-black text-2xl sm:text-3xl text-[#0E2015] tracking-tight mb-4 sm:mb-5">
+            How it works?
+          </h2>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="max-sm:grid-cols-1">
-                  <div>
-                    <label style={{ display: 'block', fontFamily: 'Rubik, sans-serif', fontSize: '.7rem', fontWeight: 700, color: '#374151', marginBottom: '.35rem', textTransform: 'uppercase' }}>Full Name</label>
-                    <input className="field" type="text" required placeholder="John Doe" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
-                  </div>
-                  <div>
-                    <label style={{ display: 'block', fontFamily: 'Rubik, sans-serif', fontSize: '.7rem', fontWeight: 700, color: '#374151', marginBottom: '.35rem', textTransform: 'uppercase' }}>Email Address</label>
-                    <input className="field" type="email" required placeholder="john@company.com" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} />
-                  </div>
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="max-sm:grid-cols-1">
-                  <div>
-                    <label style={{ display: 'block', fontFamily: 'Rubik, sans-serif', fontSize: '.7rem', fontWeight: 700, color: '#374151', marginBottom: '.35rem', textTransform: 'uppercase' }}>Phone Number</label>
-                    <input className="field" type="tel" required placeholder="+91 98765 43210" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} />
-                  </div>
-                  <div>
-                    <label style={{ display: 'block', fontFamily: 'Rubik, sans-serif', fontSize: '.7rem', fontWeight: 700, color: '#374151', marginBottom: '.35rem', textTransform: 'uppercase' }}>Format Required</label>
-                    <select className="field" value={formData.format} onChange={e => setFormData({ ...formData, format: e.target.value })}>
-                      {OUTDOOR_SERVICES.map(s => (
-                        <option key={s.title}>{s.title}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <button type="submit" className="btn-primary" disabled={loading} style={{ justifyContent: 'center' }}>
-                  <Send className="w-4 h-4" style={{ color: '#D4AF37' }} />
-                  {loading ? 'Sending Request…' : 'Get OOH Media Proposal'}
-                </button>
-              </form>
-            )}
+          <div className="max-w-3xl lg:max-w-4xl mx-auto">
+            <img
+              src="/assets/images/resources/flow4.png"
+              alt="How it works flowchart"
+              className="w-full h-auto object-contain mx-auto"
+            />
           </div>
+
         </div>
       </section>
+
+      {/* ── 04. BRANDS WHO TRUST US WITH THEIR ADVERTISING CAMPAIGNS ── */}
+      <section className="py-6 sm:py-8 border-t border-[#1D4224]/10 bg-white/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
+            
+            {/* Left Title */}
+            <div className="lg:col-span-4 text-left space-y-0.5 sm:space-y-1">
+              <p className="text-xs sm:text-sm text-[#5C6860]">
+                Brands Who Trust Us With Their
+              </p>
+              <h2 className="font-montserrat font-black text-xl sm:text-2xl text-[#0E2015] tracking-tight">
+                Advertising Campaigns
+              </h2>
+            </div>
+
+            {/* Right Brand Logos */}
+            <div className="lg:col-span-8 space-y-3">
+              {/* Primary 3 Brand Cards (matching reference image) */}
+              <div className="grid grid-cols-3 gap-2.5 sm:gap-3">
+                <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-[#1D4224]/10 shadow-xs flex items-center justify-center h-14 sm:h-16">
+                  <img
+                    src="/assets/images/iconicbrands/p1.png"
+                    alt="State Bank of India"
+                    className="max-h-8 sm:max-h-10 max-w-full object-contain"
+                  />
+                </div>
+                <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-[#1D4224]/10 shadow-xs flex items-center justify-center h-14 sm:h-16">
+                  <img
+                    src="/assets/images/iconicbrands/p2.png"
+                    alt="Raymond"
+                    className="max-h-8 sm:max-h-10 max-w-full object-contain"
+                  />
+                </div>
+                <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-[#1D4224]/10 shadow-xs flex items-center justify-center h-14 sm:h-16">
+                  <img
+                    src="/assets/images/iconicbrands/p3.png"
+                    alt="Hero"
+                    className="max-h-8 sm:max-h-10 max-w-full object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Clean infinite ticker for the rest */}
+              <div className="overflow-hidden">
+                <div className="ticker-track flex items-center gap-2.5 sm:gap-3">
+                  {BRAND_LOGOS.concat(BRAND_LOGOS).map((brand, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white rounded-lg px-2.5 py-1 border border-neutral-200/70 flex items-center justify-center min-w-[90px] sm:min-w-[100px] h-10 sm:h-11 shrink-0"
+                    >
+                      <img
+                        src={brand.img}
+                        alt={brand.name}
+                        className="max-h-5 sm:max-h-6 max-w-full object-contain grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
     </div>
   );
 };

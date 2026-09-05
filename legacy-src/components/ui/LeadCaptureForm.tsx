@@ -45,6 +45,10 @@ export interface LeadCaptureFormProps {
   inputBgColor?: string;
   /** Input fields text color */
   inputTextColor?: string;
+  /** Custom service options dropdown */
+  serviceOptions?: string[];
+  /** Default selected service */
+  defaultService?: string;
   /** Optional custom class name for the wrapper */
   className?: string;
   /** Callback fired upon successful submission */
@@ -58,6 +62,8 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   titleColor = '#FFAE00',
   buttonBgColor = '#1D4224',
   buttonTextColor = '#FFFFFF',
+  serviceOptions = SERVICE_OPTIONS,
+  defaultService,
   className = '',
   onSuccess,
 }) => {
@@ -65,7 +71,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     name: '',
     phone: '',
     email: '',
-    service: 'Websites Design & Development',
+    service: defaultService || (serviceOptions && serviceOptions[0]) || 'Websites Design & Development',
     city: '',
     country: '',
     agreeToTerms: true,
@@ -154,7 +160,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         
         {/* ── MAIN CARD BODY ── */}
         <div
-          className="relative rounded-[15px] p-5 sm:p-6 sm:py-7 overflow-hidden backdrop-blur-xl transition-all duration-300"
+          className="relative rounded-[15px] p-4 sm:p-5 sm:py-5 overflow-hidden backdrop-blur-xl transition-all duration-300"
           style={{
             backgroundColor: bgColor,
             color: textColor,
@@ -164,7 +170,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#FFAE00]/40 to-transparent pointer-events-none" />
 
           {/* ── HEADER TITLE (Clean, No Badges or Sub-description) ── */}
-          <div className="relative z-10 mb-4 sm:mb-5">
+          <div className="relative z-10 mb-3 sm:mb-4">
             <h3 className="font-montserrat font-black text-base sm:text-lg text-white tracking-tight leading-snug">
               {(() => {
                 if (title.includes(':')) {
@@ -237,7 +243,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Full Name"
-                  className="w-full pl-10 pr-3.5 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
+                  className="w-full pl-10 pr-3.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
                 />
               </div>
 
@@ -252,7 +258,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Phone Number"
-                  className="w-full pl-10 pr-3.5 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
+                  className="w-full pl-10 pr-3.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
                 />
               </div>
 
@@ -268,7 +274,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email Address"
-                  className="w-full pl-10 pr-3.5 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
+                  className="w-full pl-10 pr-3.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
                 />
               </div>
 
@@ -281,12 +287,12 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full appearance-none pl-10 pr-10 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white focus:outline-none shadow-sm cursor-pointer transition-all duration-200"
+                  className="w-full appearance-none pl-10 pr-10 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white focus:outline-none shadow-sm cursor-pointer transition-all duration-200"
                 >
                   <option value="" disabled className="bg-[#0E2015] text-white/50">
                     Select a Service
                   </option>
-                  {SERVICE_OPTIONS.map((srv) => (
+                  {serviceOptions.map((srv) => (
                     <option
                       key={srv}
                       value={srv}
@@ -311,7 +317,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                     value={formData.city}
                     onChange={handleChange}
                     placeholder="City"
-                    className="w-full pl-8 sm:pl-9 pr-2.5 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
+                    className="w-full pl-8 sm:pl-9 pr-2.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
                   />
                 </div>
 
@@ -325,13 +331,13 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                     value={formData.country}
                     onChange={handleChange}
                     placeholder="Country"
-                    className="w-full pl-8 sm:pl-9 pr-2.5 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
+                    className="w-full pl-8 sm:pl-9 pr-2.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
                   />
                 </div>
               </div>
 
               {/* 6. Original WhatsApp & Legal Consent Checkbox Text */}
-              <div className="flex items-start gap-2.5 pt-1">
+              <div className="flex items-start gap-2.5 pt-0.5">
                 <input
                   type="checkbox"
                   id="lead-terms-check"
@@ -363,11 +369,11 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
               </div>
 
               {/* 7. Submit Button (Identical Design to "ENQUIRE NOW", No Glow) */}
-              <div className="pt-2">
+              <div className="pt-1.5">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="group relative overflow-hidden w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-[#1D4224] text-white font-montserrat font-black text-xs sm:text-sm uppercase tracking-wider shadow-none sm:shadow-md hover:shadow-xl hover:shadow-black/25 hover:brightness-110 active:scale-[0.99] transition-all duration-300 transform cursor-pointer"
+                  className="group relative overflow-hidden w-full inline-flex items-center justify-center gap-2.5 px-8 py-2.5 sm:py-3 rounded-full bg-[#1D4224] text-white font-montserrat font-black text-xs sm:text-sm uppercase tracking-wider shadow-none sm:shadow-md hover:shadow-xl hover:shadow-black/25 hover:brightness-110 active:scale-[0.99] transition-all duration-300 transform cursor-pointer"
                   style={
                     buttonBgColor && buttonBgColor !== '#1D4224'
                       ? { backgroundColor: buttonBgColor, color: buttonTextColor }

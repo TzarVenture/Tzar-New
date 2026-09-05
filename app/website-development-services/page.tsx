@@ -1,10 +1,11 @@
-import { ServiceDetailPage } from "@/legacy-src/pages/ServiceDetailPage";
+import { WebsiteDevelopmentPage } from "@/legacy-src/pages/WebsiteDevelopmentPage";
 
 export const metadata = {
-  title: "Website & App Development Services | Tzar Venture",
-  description: "Custom high-speed website development, web apps, and enterprise platforms built to convert.",
+  title: "Website Development Services | Custom Shopify, WordPress, React & Next.js",
+  description: "Custom high-speed website development, Shopify e-commerce, WordPress, and Next.js web applications built to convert.",
 };
 
 export default function WebsiteDevService() {
-  return <ServiceDetailPage slug="website-development-services" />;
+  return <WebsiteDevelopmentPage />;
 }
+

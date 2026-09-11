@@ -69,10 +69,36 @@ const PRICING_PACKAGES: PricingPackage[] = [
     ],
   },
   {
+    id: 'nextjs',
+    name: 'React.js | Adv. React Next',
+    badge: 'Most Popular Choice',
+    isPopular: true,
+    timeline: '8 - 12 weeks / Starting Package',
+    price: '79,999/- INR',
+    iconImg: '/assets/images/icons/nextjs2.png',
+    features: [
+      'Bespoke Custom Page Design',
+      'Up to 20 High-Speed Pages',
+      'Product Setup (Up to 100 Products)',
+      'Custom Creative Banners & Motion',
+      'Tailored Brand Content Flow',
+      'Customer Portal & Login Page',
+      'Advanced Headless SEO Setup',
+      'Interactive Custom Lead Forms',
+      'Third-Party REST / GraphQL APIs',
+      'Google Analytics Setup',
+      'Custom Domain & SSL Setup',
+      'Search Console Integration',
+      'Social OAuth Login',
+      'Payment Gateway Integration',
+      'Shiprocket Integration',
+      '1 Year Maintenance & Support',
+    ],
+  },
+  {
     id: 'shopify',
     name: 'Shopify E-Commerce',
     badge: 'B2C / D2C Flagship',
-    isPopular: true,
     timeline: '3 - 4 weeks / Starting Package',
     price: '49,999/- INR',
     iconImg: '/assets/images/icons/shopify2.png',
@@ -93,32 +119,6 @@ const PRICING_PACKAGES: PricingPackage[] = [
       'Search Console Integration',
       'Social Login Option',
       'Extended Admin Training',
-      '1 Year Maintenance & Support',
-    ],
-  },
-  {
-    id: 'nextjs',
-    name: 'React.js | Adv. React Next',
-    badge: 'Enterprise Headless',
-    timeline: '8 - 12 weeks / Starting Package',
-    price: '79,999/- INR',
-    iconImg: '/assets/images/icons/nextjs2.png',
-    features: [
-      'Bespoke Custom Page Design',
-      'Up to 20 High-Speed Pages',
-      'Product Setup (Up to 100 Products)',
-      'Custom Creative Banners & Motion',
-      'Tailored Brand Content Flow',
-      'Customer Portal & Login Page',
-      'Advanced Headless SEO Setup',
-      'Interactive Custom Lead Forms',
-      'Third-Party REST / GraphQL APIs',
-      'Google Analytics Setup',
-      'Custom Domain & SSL Setup',
-      'Search Console Integration',
-      'Social OAuth Login',
-      'Payment Gateway Integration',
-      'Shiprocket Integration',
       '1 Year Maintenance & Support',
     ],
   },
@@ -164,7 +164,7 @@ const CORE_CAPABILITIES = [
     id: 2,
     title: 'Website Re-designing',
     desc: 'Turn your legacy website into a modern, dynamic, and attractive customer conversion engine.',
-    icon: <Layers className="w-6 h-6 text-[#1D4224]" />,
+    icon: <Layers className="w-6 h-6 text-[#FFAE00]" />,
   },
   {
     id: 3,
@@ -176,7 +176,7 @@ const CORE_CAPABILITIES = [
     id: 4,
     title: 'Magento Architecture',
     desc: 'Enterprise open-source storefronts engineered for high-volume catalogs and complex B2B workflows.',
-    icon: <Server className="w-6 h-6 text-[#1D4224]" />,
+    icon: <Server className="w-6 h-6 text-[#FFAE00]" />,
   },
   {
     id: 5,
@@ -188,7 +188,7 @@ const CORE_CAPABILITIES = [
     id: 6,
     title: 'WordPress & WooCommerce',
     desc: 'Intuitive, easily manageable, and SEO-optimized content management systems for modern brands.',
-    icon: <Globe className="w-6 h-6 text-[#1D4224]" />,
+    icon: <Globe className="w-6 h-6 text-[#FFAE00]" />,
   },
   {
     id: 7,
@@ -200,7 +200,7 @@ const CORE_CAPABILITIES = [
     id: 8,
     title: 'Core PHP Solutions',
     desc: 'Custom PHP frameworks engineered for robust database operations, custom portals, and APIs.',
-    icon: <Server className="w-6 h-6 text-[#1D4224]" />,
+    icon: <Server className="w-6 h-6 text-[#FFAE00]" />,
   },
   {
     id: 9,
@@ -212,7 +212,7 @@ const CORE_CAPABILITIES = [
     id: 10,
     title: 'Joomla Development',
     desc: 'Advanced web applications powered by custom plugins, modular extensions, and multilingual setups.',
-    icon: <Layers className="w-6 h-6 text-[#1D4224]" />,
+    icon: <Layers className="w-6 h-6 text-[#FFAE00]" />,
   },
   {
     id: 11,
@@ -224,7 +224,7 @@ const CORE_CAPABILITIES = [
     id: 12,
     title: 'React & Next.js Web Apps',
     desc: 'Sub-second page loads, server-side rendering, and ultra-smooth interactive user interfaces.',
-    icon: <Smartphone className="w-6 h-6 text-[#1D4224]" />,
+    icon: <Smartphone className="w-6 h-6 text-[#FFAE00]" />,
   },
 ];
 
@@ -254,7 +254,6 @@ const MOCKUP_SLIDES = [
   { id: 9, img: '/assets/images/MobileShowcase/Home/Showcase-09.png', title: 'Order Tracking Screen' },
   { id: 10, img: '/assets/images/MobileShowcase/Home/Showcase-10.png', title: 'Customer Profile Page' },
   { id: 11, img: '/assets/images/MobileShowcase/Home/Showcase-11.png', title: 'Filter & Search Grid' },
-  { id: 12, img: '/assets/images/MobileShowcase/Home/Showcase-12.png', title: 'Hero Banner Layout' },
   { id: 13, img: '/assets/images/MobileShowcase/Home/Showcase-13.png', title: 'Brand Story Showcase' },
   { id: 14, img: '/assets/images/MobileShowcase/Home/Showcase-14.png', title: 'Promotion Grid Screen' },
   { id: 15, img: '/assets/images/MobileShowcase/Home/Showcase-15.png', title: 'Interactive Review Carousel' },
@@ -316,7 +315,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           01. LUXURY HERO BANNER (100% VH / DVH HEIGHT ON ALL DEVICES)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-center pt-24 pb-12 sm:pt-28 sm:pb-16 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30">
+      <section className="relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-center pt-20 pb-10 sm:pt-24 sm:pb-12 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30">
         {/* Ambient Dark Spruce & Gold Glows */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1D4224]/25 rounded-full blur-3xl" />
@@ -418,10 +417,10 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           02. WEBSITE DEVELOPMENT PACKAGES & PRICING
       ────────────────────────────────────────────────────────────────── */}
-      <section id="packages-pricing" className="py-20 sm:py-28 bg-[#EFE8E0] relative">
+      <section id="packages-pricing" className="py-12 sm:py-16 bg-[#EFE8E0] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center space-y-3 mb-14 sm:mb-16">
+          <div className="text-center space-y-2 mb-8 sm:mb-10">
             <span className="font-montserrat font-bold text-xs sm:text-sm text-[#1D4224] tracking-widest uppercase">
               Transparent &amp; ROI-Driven Pricing
             </span>
@@ -548,10 +547,10 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           03. BUILT IN SHOPIFY - LIVE STORES SHOWCASE
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-20 sm:py-28 bg-white border-y border-[#0E2015]/10">
+      <section className="py-12 sm:py-16 bg-white border-y border-[#0E2015]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center space-y-3 mb-14">
+          <div className="text-center space-y-2 mb-8 sm:mb-10">
             <span className="font-montserrat font-bold text-xs sm:text-sm text-[#1D4224] tracking-widest uppercase">
               Proven Commercial Flagships
             </span>
@@ -614,10 +613,10 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           04. 12 CORE CAPABILITIES GRID
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-20 sm:py-28 bg-[#FAF9F5] relative">
+      <section className="py-12 sm:py-16 bg-[#FAF9F5] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="text-center space-y-3 mb-14">
+          <div className="text-center space-y-2 mb-8 sm:mb-10">
             <span className="font-montserrat font-bold text-xs sm:text-sm text-[#1D4224] tracking-widest uppercase">
               Full-Stack Architecture
             </span>
@@ -667,10 +666,10 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           05. OUR INDUSTRY EXPERTISE GRID
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-20 sm:py-28 bg-white border-y border-[#0E2015]/10">
+      <section className="py-12 sm:py-16 bg-white border-y border-[#0E2015]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="text-center space-y-3 mb-14">
+          <div className="text-center space-y-2 mb-8 sm:mb-10">
             <span className="font-montserrat font-bold text-xs sm:text-sm text-[#1D4224] tracking-widest uppercase">
               Specialized Vertical Experience
             </span>
@@ -711,18 +710,21 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           06. MOBILE UI/UX SHOWCASE CAROUSEL (MOCKUPS)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-20 sm:py-28 bg-[#1D4224] text-white relative overflow-hidden">
+      <section className="py-12 sm:py-16 bg-[#EFE8E0] relative overflow-hidden border-b border-[#0E2015]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
             <div className="space-y-2">
-              <span className="font-montserrat font-bold text-xs sm:text-sm text-[#FFAE00] tracking-widest uppercase">
+              <span className="font-montserrat font-bold text-xs sm:text-sm text-[#1D4224] tracking-widest uppercase">
                 Website Design &amp; Development
               </span>
-              <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight uppercase">
+              <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight uppercase">
                 Showcase Mockup
               </h2>
+              <p className="font-inter text-sm sm:text-base text-[#0E2015]/75 max-w-xl leading-relaxed">
+                Live mobile experiences engineered for sub-second speeds, fluid touch navigation, and high-conversion checkouts.
+              </p>
             </div>
 
             {/* Navigation Controls */}
@@ -731,7 +733,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                 type="button"
                 onClick={() => scrollMockups('left')}
                 aria-label="Previous mockup"
-                className="w-11 h-11 rounded-full bg-[#0E2015] hover:bg-[#07130A] text-white flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer border border-[#FFAE00]/30"
+                className="w-11 h-11 rounded-full bg-[#0E2015] hover:bg-[#1D4224] text-[#FFAE00] flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer border border-[#FFAE00]/30"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -739,14 +741,14 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                 type="button"
                 onClick={() => scrollMockups('right')}
                 aria-label="Next mockup"
-                className="w-11 h-11 rounded-full bg-[#0E2015] hover:bg-[#07130A] text-white flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer border border-[#FFAE00]/30"
+                className="w-11 h-11 rounded-full bg-[#0E2015] hover:bg-[#1D4224] text-[#FFAE00] flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer border border-[#FFAE00]/30"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           </div>
 
-          {/* Scrolling Mockup Track */}
+          {/* Scrolling Mockup Track (Direct Screenshots) */}
           <div
             ref={mockupScrollRef}
             className="flex gap-5 sm:gap-6 overflow-x-auto pb-4 pt-2 no-scrollbar scroll-smooth snap-x snap-mandatory"
@@ -755,17 +757,21 @@ export const WebsiteDevelopmentPage: React.FC = () => {
             {MOCKUP_SLIDES.map((slide) => (
               <div
                 key={slide.id}
-                className="flex-none w-[200px] sm:w-[240px] md:w-[270px] snap-center group cursor-pointer"
+                className="flex-none w-[200px] sm:w-[230px] md:w-[260px] snap-center group cursor-pointer"
               >
-                <div className="relative aspect-[9/16] rounded-2xl overflow-hidden bg-[#0E2015] border border-white/15 shadow-xl group-hover:shadow-2xl group-hover:border-[#FFAE00]/60 transition-all duration-300">
-                  <img
-                    src={slide.img}
-                    alt={slide.title}
-                    className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0E2015] via-[#0E2015]/60 to-transparent p-3 text-center">
-                    <span className="font-montserrat font-bold text-xs text-white drop-shadow">
+                {/* Clean Direct Screenshot Card */}
+                <div className="rounded-2xl overflow-hidden bg-white border border-[#0E2015]/10 shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col">
+                  <div className="relative aspect-[9/18] overflow-hidden bg-neutral-100">
+                    <img
+                      src={slide.img}
+                      alt={slide.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="p-3 text-center bg-white border-t border-[#0E2015]/10">
+                    <span className="font-montserrat font-bold text-xs text-[#0E2015] group-hover:text-[#1D4224] transition-colors block truncate">
                       {slide.title}
                     </span>
                   </div>
@@ -775,7 +781,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
           </div>
 
           <div className="mt-4 text-center sm:hidden">
-            <span className="font-inter text-xs text-white/70">← Swipe to explore mobile designs →</span>
+            <span className="font-inter text-xs text-[#0E2015]/60">← Swipe to explore mobile designs →</span>
           </div>
 
         </div>
@@ -784,10 +790,10 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           07. BACK-END DEVELOPMENT TECHNOLOGIES (MARQUEE)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-24 bg-white border-b border-[#0E2015]/10">
+      <section className="py-12 sm:py-16 bg-white border-b border-[#0E2015]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="text-center space-y-2 mb-12">
+          <div className="text-center space-y-2 mb-8">
             <span className="font-montserrat font-bold text-xs sm:text-sm text-[#1D4224] tracking-widest uppercase">
               Our Programming Language &amp; Architecture
             </span>
@@ -820,13 +826,13 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           08. HIGH-TRAFFIC CONVERSION BANNER (AUTHENTIC COPY & CTAS)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-20 sm:py-28 bg-[#0E2015] text-white relative overflow-hidden">
+      <section className="py-14 sm:py-18 bg-[#0E2015] text-white relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1D4224] border border-[#FFAE00]/30 text-[#FFAE00] text-xs font-montserrat font-bold uppercase tracking-wider">
             <Zap className="w-3.5 h-3.5" />
             <span>TZAR DIGITAL MARKETING AGENCY</span>

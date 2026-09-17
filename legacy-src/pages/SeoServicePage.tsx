@@ -124,8 +124,7 @@ interface SeoPlanDetail {
 interface SeoPlan {
   id: string;
   name: string;
-  theme?: 'white' | 'dark' | 'forest';
-  keywordsPlan?: string;
+  keywordsPlan: string;
   subDetails?: SeoPlanDetail[];
   features: string[];
 }
@@ -134,12 +133,7 @@ const NATIONAL_SEO_PLANS: SeoPlan[] = [
   {
     id: 'growth',
     name: 'Growth',
-    theme: 'white',
     keywordsPlan: 'Upto 25 Keywords',
-    subDetails: [
-      { label: 'Keywords Scope', value: 'Upto 25 Keywords' },
-      { label: 'Reporting', value: 'Monthly Ranking & Traffic' },
-    ],
     features: [
       'In-Depth Site Analysis',
       'Duplicate Content Check',
@@ -154,12 +148,7 @@ const NATIONAL_SEO_PLANS: SeoPlan[] = [
   {
     id: 'premium',
     name: 'Premium',
-    theme: 'dark',
     keywordsPlan: 'Upto 40 Keywords',
-    subDetails: [
-      { label: 'Keywords Scope', value: 'Upto 40 Keywords' },
-      { label: 'Reporting', value: 'Bi-Weekly Progress Report' },
-    ],
     features: [
       'In-Depth Site Analysis & Audit',
       'Competition & Keyword Analysis',
@@ -175,12 +164,7 @@ const NATIONAL_SEO_PLANS: SeoPlan[] = [
   {
     id: 'high-volume',
     name: 'High Volume',
-    theme: 'white',
     keywordsPlan: 'Upto 75 Keywords',
-    subDetails: [
-      { label: 'Keywords Scope', value: 'Upto 75 Keywords' },
-      { label: 'Reporting', value: 'Bi-Weekly Performance Report' },
-    ],
     features: [
       'Comprehensive Site Audit & Analysis',
       'Deep Keyword URL Mapping',
@@ -195,12 +179,7 @@ const NATIONAL_SEO_PLANS: SeoPlan[] = [
   {
     id: 'max',
     name: 'Max',
-    theme: 'forest',
     keywordsPlan: 'Upto 100 Keywords',
-    subDetails: [
-      { label: 'Keywords Scope', value: 'Upto 100 Keywords' },
-      { label: 'Reporting', value: 'Executive Bi-Weekly Reports' },
-    ],
     features: [
       'Full-Scale National Search Domination',
       'Extensive Keyword Research & Mapping',
@@ -218,12 +197,10 @@ const LOCAL_SEO_PLANS: SeoPlan[] = [
   {
     id: 'basic',
     name: 'Basic',
-    theme: 'white',
     keywordsPlan: 'Upto 10 Keywords',
     subDetails: [
       { label: 'Keywords', value: '5 Primary + 5 Secondary' },
       { label: 'Best Suited For', value: 'Business with 1 location' },
-      { label: 'Expected Results', value: 'Google Maps Ranking + More Calls' },
     ],
     features: [
       'Local SEO Audit & Site Analysis',
@@ -236,12 +213,10 @@ const LOCAL_SEO_PLANS: SeoPlan[] = [
   {
     id: 'growth',
     name: 'Growth',
-    theme: 'dark',
     keywordsPlan: 'Upto 20 Keywords',
     subDetails: [
       { label: 'Keywords', value: '10 Primary + 10 Secondary' },
       { label: 'Best Suited For', value: 'Business with 2 locations' },
-      { label: 'Expected Results', value: 'Google Maps Ranking + More Calls' },
     ],
     features: [
       'Multi-Location GMB Optimization',
@@ -255,12 +230,10 @@ const LOCAL_SEO_PLANS: SeoPlan[] = [
   {
     id: 'booster',
     name: 'Booster',
-    theme: 'forest',
     keywordsPlan: 'Upto 40 Keywords',
     subDetails: [
       { label: 'Keywords', value: '20 Primary + 20 Secondary' },
       { label: 'Best Suited For', value: 'Business with >2 locations' },
-      { label: 'Expected Results', value: 'Google Maps Ranking + More Calls' },
     ],
     features: [
       'Regional & Multi-City Map Pack Strategy',
@@ -277,11 +250,9 @@ const ECOM_SEO_PLANS: SeoPlan[] = [
   {
     id: 'nano',
     name: 'Nano',
-    theme: 'white',
     keywordsPlan: 'Upto 30 Keywords',
     subDetails: [
       { label: 'Focus Keywords', value: '15 Focus Keywords' },
-      { label: 'Reporting', value: 'Monthly Sales & Traffic' },
     ],
     features: [
       'E-Commerce Store Site Audit',
@@ -294,11 +265,9 @@ const ECOM_SEO_PLANS: SeoPlan[] = [
   {
     id: 'enterprise',
     name: 'Enterprise',
-    theme: 'dark',
     keywordsPlan: 'Upto 50 Keywords',
     subDetails: [
       { label: 'Focus Keywords', value: '25 Focus Keywords' },
-      { label: 'Reporting', value: 'Bi-Weekly Revenue & Traffic' },
     ],
     features: [
       'Store Architecture & Crawl Fixes',
@@ -312,11 +281,9 @@ const ECOM_SEO_PLANS: SeoPlan[] = [
   {
     id: 'blast',
     name: 'Blast',
-    theme: 'white',
     keywordsPlan: 'Upto 100 Keywords',
     subDetails: [
       { label: 'Focus Keywords', value: '50 Focus Keywords' },
-      { label: 'Reporting', value: 'Bi-Weekly Growth & Conversion' },
     ],
     features: [
       'High-SKU Catalog SEO Strategy',
@@ -330,11 +297,9 @@ const ECOM_SEO_PLANS: SeoPlan[] = [
   {
     id: 'mega',
     name: 'Mega',
-    theme: 'forest',
     keywordsPlan: 'Upto 200 Keywords',
     subDetails: [
       { label: 'Focus Keywords', value: '100 Focus Keywords' },
-      { label: 'Reporting', value: 'Bi-Weekly Sales & Revenue' },
     ],
     features: [
       'Full Enterprise E-Commerce Domination',
@@ -445,7 +410,7 @@ export const SeoServicePage: React.FC = () => {
             </div>
 
             {/* Right Column: High-Converting Lead Capture Form Component */}
-            <div className="lg:col-span-5 flex justify-center items-center w-full">
+            <div id="Contactform" className="lg:col-span-5 flex justify-center items-center w-full">
               <div className="w-full max-w-md rounded-3xl bg-[#0E2015] p-2 border border-[#1D4224]/50 shadow-2xl shadow-black/20">
                 <LeadCaptureForm
                   title="Claim Your Free SEO Audit"
@@ -645,112 +610,60 @@ export const SeoServicePage: React.FC = () => {
           </div>
 
           {/* Render Plans Based on Active Tab */}
-          <div
-            className={`grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch pt-2 ${
-              activePackageTab === 'local'
-                ? 'lg:grid-cols-3 max-w-5xl mx-auto'
-                : 'lg:grid-cols-3 xl:grid-cols-4'
-            }`}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch pt-2">
             {(activePackageTab === 'national'
               ? NATIONAL_SEO_PLANS
               : activePackageTab === 'local'
               ? LOCAL_SEO_PLANS
               : ECOM_SEO_PLANS
-            ).map((plan) => {
-              const isDark = plan.theme === 'dark';
-              const isForest = plan.theme === 'forest';
-              const isColored = isDark || isForest;
+            ).map((plan) => (
+              <div
+                key={plan.id}
+                className="bg-white text-[#0E2015] rounded-3xl p-6 sm:p-7 shadow-md border border-[#1D4224]/10 hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <h3 className="font-montserrat font-black text-2xl text-[#0E2015] mb-2">
+                    {plan.name}
+                  </h3>
 
-              return (
-                <div
-                  key={plan.id}
-                  className={`rounded-3xl p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between ${
-                    isDark
-                      ? 'bg-[#0E2015] text-white shadow-2xl border-2 border-[#FFAE00] lg:-translate-y-2 relative'
-                      : isForest
-                      ? 'bg-[#1D4224] text-white shadow-xl border border-[#FFAE00]/40 hover:border-[#FFAE00] hover:shadow-2xl'
-                      : 'bg-white text-[#0E2015] shadow-md border border-[#1D4224]/10 hover:shadow-xl hover:border-[#1D4224]/30'
-                  }`}
-                >
-                  <div>
-                    <h3
-                      className={`font-montserrat font-black text-2xl mb-4 ${
-                        isColored ? 'text-white' : 'text-[#0E2015]'
-                      }`}
-                    >
-                      {plan.name}
-                    </h3>
-
-                    {/* Sub-Details (Primary/Secondary, Best Suited For, Reporting, Focus Keywords) */}
-                    {plan.subDetails && plan.subDetails.length > 0 && (
-                      <div
-                        className={`space-y-1.5 py-3 my-3 border-y font-inter text-xs ${
-                          isColored
-                            ? 'border-white/15 text-white/80'
-                            : 'border-[#1D4224]/10 text-[#5C6860]'
-                        }`}
-                      >
-                        {plan.subDetails.map((detail, dIdx) => (
-                          <div key={dIdx} className="flex justify-between items-start gap-2">
-                            <span
-                              className={`font-semibold shrink-0 ${
-                                isColored ? 'text-[#FFAE00]' : 'text-[#0E2015]'
-                              }`}
-                            >
-                              {detail.label}:
-                            </span>
-                            <span className={isColored ? 'text-white/90 text-right' : 'text-right'}>
-                              {detail.value}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    <div
-                      className={`w-full h-px mb-4 ${
-                        isColored ? 'bg-white/15' : 'bg-[#1D4224]/10'
-                      }`}
-                    />
-
-                    {/* Feature List */}
-                    <ul className="space-y-2.5 text-xs font-inter mb-6">
-                      {plan.features.map((feat, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2.5">
-                          <Check
-                            className={`w-4 h-4 shrink-0 mt-0.5 ${
-                              isColored ? 'text-[#FFAE00]' : 'text-[#1D4224]'
-                            }`}
-                          />
-                          <span
-                            className={`leading-relaxed ${
-                              isColored ? 'text-white/85' : 'text-[#5C6860]'
-                            }`}
-                          >
-                            {feat}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="inline-block px-3 py-1 rounded-full bg-[#1D4224]/10 text-[#1D4224] text-xs font-mono font-bold mb-4">
+                    {plan.keywordsPlan}
                   </div>
 
-                  <button
-                    onClick={scrollToContactForm}
-                    className={`w-full py-3 rounded-xl font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-md ${
-                      isDark
-                        ? 'bg-[#FFAE00] text-[#0E2015] hover:bg-white hover:text-[#0E2015]'
-                        : isForest
-                        ? 'bg-white text-[#1D4224] hover:bg-[#FFAE00] hover:text-[#0E2015]'
-                        : 'bg-[#1D4224] text-white hover:bg-[#FFAE00] hover:text-[#0E2015]'
-                    }`}
-                  >
-                    <span>Get Pricing</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  {/* Sub-Details (Primary/Secondary, Best Suited For, Focus Keywords) */}
+                  {plan.subDetails && plan.subDetails.length > 0 && (
+                    <div className="space-y-1.5 py-3 my-3 border-y border-[#1D4224]/10 font-inter text-xs text-[#5C6860]">
+                      {plan.subDetails.map((detail, dIdx) => (
+                        <div key={dIdx} className="flex justify-between items-start gap-2">
+                          <span className="font-semibold text-[#0E2015] shrink-0">{detail.label}:</span>
+                          <span className="text-right">{detail.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="w-full h-px bg-[#1D4224]/10 mb-4" />
+
+                  {/* Feature List */}
+                  <ul className="space-y-2.5 text-xs font-inter mb-6">
+                    {plan.features.map((feat, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 shrink-0 mt-0.5 text-[#1D4224]" />
+                        <span className="text-[#5C6860] leading-relaxed">{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              );
-            })}
+
+                <button
+                  onClick={scrollToContactForm}
+                  className="w-full py-3 rounded-xl font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer bg-[#1D4224] text-white hover:bg-[#FFAE00] hover:text-[#0E2015]"
+                >
+                  <span>Get Pricing</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            ))}
           </div>
 
         </div>
@@ -759,10 +672,10 @@ export const SeoServicePage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           05. ICONIC BRANDS PROOF GRID: "WE MAKE ICONIC BRANDS"
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-white border-b border-[#1D4224]/10 relative">
+      <section className="py-14 sm:py-16 bg-white border-b border-[#1D4224]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center space-y-2 mb-12">
+          <div className="text-center space-y-2 mb-10">
             <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#1D4224]">
               We Don&apos;t Sell Products
             </span>
@@ -772,17 +685,17 @@ export const SeoServicePage: React.FC = () => {
             <div className="w-16 h-1 bg-[#FFAE00] mx-auto rounded-full mt-2" />
           </div>
 
-          {/* Logo Showcase Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4 items-center">
+          {/* Logo Showcase Grid: Increased Logo Size with Reduced Padding */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-3 sm:gap-3.5 items-center">
             {CLIENT_LOGOS.map((client, idx) => (
               <div
                 key={idx}
-                className="bg-[#FAF9F5] border border-[#1D4224]/10 rounded-2xl p-4 flex items-center justify-center aspect-square hover:shadow-md hover:border-[#1D4224]/30 transition-all duration-200"
+                className="bg-[#FAF9F5] border border-[#1D4224]/10 rounded-2xl p-2 sm:p-2.5 flex items-center justify-center aspect-square hover:shadow-md hover:border-[#1D4224]/30 transition-all duration-200"
               >
                 <img
                   src={client.image}
                   alt={client.name}
-                  className="max-h-12 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="max-h-20 sm:max-h-22 w-auto max-w-[85%] object-contain filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105"
                   onError={(e) => {
                     const parent = (e.currentTarget as HTMLImageElement).parentElement;
                     if (parent) {
@@ -803,163 +716,6 @@ export const SeoServicePage: React.FC = () => {
               <span>View All 100+ Partner Clients</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ──────────────────────────────────────────────────────────────────
-          06. MASSIVE TRAFFIC CONSULTATION FUNNEL SECTION (With Form)
-      ────────────────────────────────────────────────────────────────── */}
-      <section id="Contactform" className="py-16 sm:py-24 bg-[#0E2015] text-white relative overflow-hidden">
-        {/* Decorative background aura */}
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#1D4224]/40 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          <div className="text-center space-y-2 mb-12">
-            <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
-              We Can Get Massive Traffic To Your Website
-            </h2>
-            <p className="font-mono text-xs sm:text-sm text-[#FFAE00] uppercase tracking-widest font-bold">
-              TZAR DIGITAL MARKETING AGENCY
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            {/* LEFT: Standardized LeadCaptureForm Component */}
-            <div className="lg:col-span-6 flex justify-center w-full">
-              <div className="w-full max-w-lg rounded-3xl bg-[#07130A] p-2 sm:p-4 border border-[#1D4224]/60 shadow-2xl">
-                <LeadCaptureForm
-                  title="Accelerate Your Search Traffic"
-                  titleColor="#FFAE00"
-                  bgColor="#07130A"
-                  textColor="#FFFFFF"
-                  buttonBgColor="#1D4224"
-                  buttonTextColor="#FFFFFF"
-                  defaultService="Search Engine Optimization (SEO)"
-                  serviceOptions={[
-                    'Search Engine Optimization (SEO)',
-                    'Websites Design & Development',
-                    'Performance Marketing (PPC)',
-                    'Social Media (SMO | SMM)',
-                    'Product Design & 3D Packaging',
-                  ]}
-                />
-              </div>
-            </div>
-
-            {/* RIGHT: High-Impact Strategic Advantage Copy */}
-            <div className="lg:col-span-6 space-y-6 lg:pl-6">
-              
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 font-mono text-xs text-[#FFAE00]">
-                SEO | Content Marketing | Paid Search Marketing | Social Media | Analytics | Programmatic Advertising
-              </div>
-
-              <div className="space-y-4 font-inter">
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FFAE00]/40 transition-all duration-200">
-                  <h4 className="font-montserrat font-bold text-lg text-white mb-1.5 flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFAE00]" />
-                    <span className="text-[#FFAE00]">SEO Strategy</span> – Sustainable Long-Term Inbound Pipeline
-                  </h4>
-                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
-                    Bring massive qualified buyer traffic through algorithmic SEO architectures designed to withstand Google core updates and dominate page-one search volume.
-                  </p>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FFAE00]/40 transition-all duration-200">
-                  <h4 className="font-montserrat font-bold text-lg text-white mb-1.5 flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFAE00]" />
-                    <span className="text-[#FFAE00]">Paid Media</span> – Direct Customer Acquisition with Guaranteed ROI
-                  </h4>
-                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
-                    Laser-targeted Google Search &amp; Shopping ads coordinated with organic landing pages to achieve optimal blended customer acquisition cost (CAC).
-                  </p>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#FFAE00]/40 transition-all duration-200">
-                  <h4 className="font-montserrat font-bold text-lg text-white mb-1.5 flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFAE00]" />
-                    <span className="text-[#FFAE00]">Content Marketing</span> – Engaging Editorial Authority
-                  </h4>
-                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
-                    Attractive, conversion-focused content designed to elevate domain authority, improve visitor dwell time, and drive measurable client inquiries.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ──────────────────────────────────────────────────────────────────
-          07. IN-DEPTH EDITORIAL SEO KNOWLEDGE SECTION (For Search Dominance)
-      ────────────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-24 bg-[#EFE8E0] relative border-t border-[#1D4224]/10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#1D4224]/15 shadow-xl space-y-8 font-inter text-[#0E2015] leading-relaxed">
-            
-            <div>
-              <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#1D4224] block mb-2">
-                Deep Dive Technical Insights
-              </span>
-              <h2 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
-                Benefits of Using Search Engine Optimization Services
-              </h2>
-            </div>
-
-            <p className="text-sm sm:text-base text-[#5C6860] leading-relaxed">
-              <strong className="text-[#1D4224] font-bold bg-[#1D4224]/10 px-1.5 py-0.5 rounded">Organic search engine optimization</strong>, leading to substantial increases in <strong className="text-[#1D4224] font-bold bg-[#1D4224]/10 px-1.5 py-0.5 rounded">website traffic</strong>, is the paramount advantage of professional SEO execution. SEO is an organic technical process that enhances the rank position of your commercial website on search engine results pages (SERPs). An effective enterprise SEO roadmap places your conversion assets directly in front of targeted decision-makers querying high-intent search terms.
-            </p>
-
-            <p className="text-sm sm:text-base text-[#5C6860] leading-relaxed">
-              The most critical outcome of search engine optimization is qualified inbound traffic. This traffic drives new customer acquisition, generates qualified B2B leads, and accelerates direct D2C sales. Because organic search users proactively seek solutions, their conversion rates consistently outperform non-organic traffic channels.
-            </p>
-
-            <div className="w-full h-px bg-[#1D4224]/10" />
-
-            <div>
-              <h3 className="font-montserrat font-black text-xl sm:text-2xl text-[#0E2015] mb-3">
-                Social Media &amp; Link Building Authority
-              </h3>
-              <p className="text-sm sm:text-base text-[#5C6860] leading-relaxed">
-                Social media tactics remain an integral multiplier for modern organic search presence. With continual algorithmic updates, Google places tremendous scrutiny upon link quality, referring domains, and brand co-occurrences. Active social distribution amplifies content discovery, facilitates natural link acquisition, and establishes undeniable digital brand authority across major networks.
-              </p>
-              <p className="text-sm sm:text-base text-[#5C6860] leading-relaxed mt-3">
-                Crucially, search algorithms evaluate domain authority based on the quality and contextual relevance of incoming backlinks. A domain with few or substandard links cannot compete for competitive keywords. Partnering with seasoned search architects ensures your backlink footprint is built upon trusted, high-DA digital publications.
-              </p>
-            </div>
-
-            <div className="w-full h-px bg-[#1D4224]/10" />
-
-            <div>
-              <h3 className="font-montserrat font-black text-xl sm:text-2xl text-[#0E2015] mb-3">
-                Strategic Search Engine Optimization Execution
-              </h3>
-              <p className="text-sm sm:text-base text-[#5C6860] leading-relaxed">
-                Professional search engine optimization delivers maximum return on investment for your total marketing spend. By employing white-hat methods and technical rigor, we insulate your business from penalty risks while driving sustained keyword growth. From local maps to national multi-state search results, Tzar Venture structures campaigns that dominate page one.
-              </p>
-            </div>
-
-            <div className="pt-4 flex items-center justify-between flex-wrap gap-4 border-t border-[#1D4224]/10">
-              <span className="font-mono text-xs text-[#5C6860]">
-                TZAR VENTURE • TECHNICAL SEO &amp; ORGANIC GROWTH
-              </span>
-              <button
-                onClick={scrollToContactForm}
-                className="inline-flex items-center gap-2 text-xs font-montserrat font-bold text-[#1D4224] hover:text-[#FFAE00] uppercase tracking-wider transition-colors cursor-pointer"
-              >
-                <span>Request Custom SEO Proposal</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
           </div>
 
         </div>

@@ -49,29 +49,69 @@ export const SectorCircuitExpertise: React.FC = () => {
   const [mobileScrollProgress, setMobileScrollProgress] = useState<number>(0);
   const mobileContainerRef = useRef<HTMLDivElement>(null);
 
-  // ── MOBILE SCROLL TRACKER ────────────────────────────────────────────
+  // ── OPTIMIZED MOBILE SCROLL TRACKER ─────────────────────────────────
+  // Only listens when component is actually in viewport, throttled with RAF
   useEffect(() => {
-    const handleScroll = () => {
+    // Only needed on mobile (< 1024px)
+    if (typeof window === "undefined" || window.innerWidth >= 1024) return;
+
+    let ticking = false;
+    let lastProgress = -1;
+    let isIntersecting = false;
+
+    const calculateScroll = () => {
       const el = mobileContainerRef.current;
-      if (!el) return;
+      if (!el || !isIntersecting) {
+        ticking = false;
+        return;
+      }
 
       const rect = el.getBoundingClientRect();
       const windowHeight = window.innerHeight || 800;
 
-      // Smooth progress calculation across the section
       const startY = windowHeight * 0.8;
       const endY = windowHeight * 0.2;
       const totalDistance = rect.height + (startY - endY);
       const currentProgress = (startY - rect.top) / totalDistance;
 
       const clamped = Math.max(0, Math.min(1, currentProgress));
-      setMobileScrollProgress(clamped);
+      const rounded = Math.round(clamped * 50) / 50; // Step in 0.02 increments to avoid micro-renders
+
+      if (Math.abs(rounded - lastProgress) >= 0.02) {
+        lastProgress = rounded;
+        setMobileScrollProgress(rounded);
+      }
+
+      ticking = false;
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    const handleScroll = () => {
+      if (!ticking && isIntersecting) {
+        ticking = true;
+        requestAnimationFrame(calculateScroll);
+      }
+    };
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting) {
+          handleScroll();
+        }
+      },
+      { rootMargin: "100px 0px" }
+    );
+
+    if (mobileContainerRef.current) {
+      observer.observe(mobileContainerRef.current);
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const upperDomains = DOMAINS.filter((d) => d.isUpper);

@@ -72,14 +72,21 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     phone: '',
     email: '',
     service: defaultService || (serviceOptions && serviceOptions[0]) || 'Websites Design & Development',
+    pincode: '',
     city: '',
-    country: '',
+    state: '',
+    country: 'India',
     agreeToTerms: true,
   });
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // India Post API state
+  const [fetchingPincode, setFetchingPincode] = useState(false);
+  const [pincodeStatus, setPincodeStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [pincodeMessage, setPincodeMessage] = useState<string>('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -93,17 +100,74 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     }
   };
 
+  const handlePincodeChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawVal = e.target.value;
+    const cleanPin = rawVal.replace(/\D/g, '').slice(0, 6);
+
+    setFormData((prev) => ({ ...prev, pincode: cleanPin }));
+
+    if (cleanPin.length === 6) {
+      setFetchingPincode(true);
+      setPincodeStatus('idle');
+      setPincodeMessage('');
+
+      try {
+        const res = await fetch(`https://api.postalpincode.in/pincode/${cleanPin}`);
+        if (!res.ok) throw new Error('Network error');
+        const data = await res.json();
+
+        if (
+          Array.isArray(data) &&
+          data[0] &&
+          data[0].Status === 'Success' &&
+          Array.isArray(data[0].PostOffice) &&
+          data[0].PostOffice.length > 0
+        ) {
+          const po = data[0].PostOffice[0];
+          const fetchedCity = po.District || po.Division || po.Circle || '';
+          const fetchedState = po.State || '';
+
+          setFormData((prev) => ({
+            ...prev,
+            pincode: cleanPin,
+            city: fetchedCity || prev.city,
+            state: fetchedState || prev.state,
+            country: 'India',
+          }));
+          setPincodeStatus('success');
+          setPincodeMessage(`Detected: ${fetchedCity ? fetchedCity + ', ' : ''}${fetchedState}`);
+        } else {
+          setPincodeStatus('error');
+          setPincodeMessage('No records found for this PIN code');
+        }
+      } catch (err) {
+        console.error('India Post API error:', err);
+        setPincodeStatus('error');
+        setPincodeMessage('Unable to auto-detect location');
+      } finally {
+        setFetchingPincode(false);
+      }
+    } else {
+      setPincodeStatus('idle');
+      setPincodeMessage('');
+    }
+  };
+
   const handleReset = () => {
     setSubmitted(false);
     setFormData({
       name: '',
       phone: '',
       email: '',
-      service: 'Websites Design & Development',
+      service: defaultService || (serviceOptions && serviceOptions[0]) || 'Websites Design & Development',
+      pincode: '',
       city: '',
-      country: '',
+      state: '',
+      country: 'India',
       agreeToTerms: true,
     });
+    setPincodeStatus('idle');
+    setPincodeMessage('');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -305,7 +369,50 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                 <ChevronDown className="w-4 h-4 text-white/50 pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 transition-transform duration-200 group-hover:text-white" />
               </div>
 
-              {/* 5. City & Country (Side by Side with Location Icons) */}
+              {/* 5. PIN Code Field (With India Post API Auto-Lookup) */}
+              <div className="space-y-1">
+                <div className="relative flex items-center group">
+                  <div className="absolute left-3.5 text-[#FFAE00]/80 pointer-events-none transition-all duration-200 group-focus-within:text-[#FFAE00] group-focus-within:scale-110">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    maxLength={6}
+                    name="pincode"
+                    value={formData.pincode}
+                    onChange={handlePincodeChange}
+                    placeholder="6-Digit PIN Code (e.g. 110001)"
+                    className="w-full pl-10 pr-28 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200 font-mono"
+                  />
+                  <div className="absolute right-3 flex items-center gap-1.5 pointer-events-none">
+                    {fetchingPincode && (
+                      <span className="flex items-center gap-1 text-[10px] font-mono text-[#FFAE00]">
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                        <span className="hidden sm:inline">Fetching...</span>
+                      </span>
+                    )}
+                    {!fetchingPincode && pincodeStatus === 'success' && (
+                      <span className="flex items-center gap-1 text-[10px] font-mono text-emerald-400 font-semibold">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                        <span className="hidden sm:inline">Verified</span>
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Status message for PIN code auto-fill */}
+                {pincodeMessage && (
+                  <div className={`text-[10px] font-mono pl-1 ${
+                    pincodeStatus === 'success' ? 'text-emerald-400/90 font-medium' : 'text-amber-400/90'
+                  }`}>
+                    {pincodeMessage}
+                  </div>
+                )}
+              </div>
+
+              {/* 6. City & State (Side by Side Auto-Populated from PIN code) */}
               <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
                 <div className="relative flex items-center group">
                   <div className="absolute left-3 text-[#FFAE00]/80 pointer-events-none transition-all duration-200 group-focus-within:text-[#FFAE00]">
@@ -327,10 +434,10 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   </div>
                   <input
                     type="text"
-                    name="country"
-                    value={formData.country}
+                    name="state"
+                    value={formData.state}
                     onChange={handleChange}
-                    placeholder="Country"
+                    placeholder="State"
                     className="w-full pl-8 sm:pl-9 pr-2.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
                   />
                 </div>

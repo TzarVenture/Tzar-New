@@ -1,27 +1,18 @@
 "use client";
 
-import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { gsap } from 'gsap';
-
+import React, { useRef, useEffect, useState } from 'react';
 import './AccordionGallery.css';
 
-interface GalleryItem {
+export interface GalleryItem {
   image: string;
   label: string;
+  tag?: string;
   link?: string;
   alt?: string;
 }
 
-const DEFAULT_ITEMS: GalleryItem[] = [
-  { image: 'https://picsum.photos/id/1015/900/1200', label: 'Canyon', link: '#' },
-  { image: 'https://picsum.photos/id/1018/900/1200', label: 'Ridgeline', link: '#' },
-  { image: 'https://picsum.photos/id/1039/900/1200', label: 'Falls', link: '#' },
-  { image: 'https://picsum.photos/id/1043/900/1200', label: 'Harbour', link: '#' },
-  { image: 'https://picsum.photos/id/1044/900/1200', label: 'Skyline', link: '#' }
-];
-
 interface AccordionGalleryProps {
-  items?: GalleryItem[];
+  items: GalleryItem[];
   defaultIndex?: number;
   accentColor?: string;
   overlayColor?: string;
@@ -29,48 +20,28 @@ interface AccordionGalleryProps {
   height?: number;
   gap?: number;
   radius?: number;
-  expandRatio?: number;
   orientation?: 'horizontal' | 'vertical';
-  duration?: number;
-  ease?: string;
-  parallax?: number;
-  tilt?: number;
-  stagger?: number;
   trigger?: 'hover' | 'click';
   showLabels?: boolean;
-  grayscale?: boolean;
   className?: string;
 }
 
 const AccordionGallery: React.FC<AccordionGalleryProps> = ({
-  items = DEFAULT_ITEMS,
+  items,
   defaultIndex = 2,
-  accentColor = '#ffffff',
-  overlayColor = '#060010',
+  accentColor = '#FFAE00',
+  overlayColor = '#0E2015',
   textColor = '#ffffff',
-  height = 460,
-  gap = 10,
-  radius = 16,
-  expandRatio = 0.52,
+  height = 480,
+  gap = 14,
+  radius = 20,
   orientation = 'horizontal',
-  duration = 0.6,
-  ease = 'power3.out',
-  parallax = 0.5,
-  tilt = 8,
-  stagger = 0.06,
   trigger = 'hover',
   showLabels = true,
-  grayscale = true,
   className = ''
 }) => {
   const rootRef = useRef<HTMLDivElement>(null);
-  const panelRefs = useRef<(HTMLAnchorElement | HTMLDivElement | null)[]>([]);
-  const mediaRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const barRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const textRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const firstRunRef = useRef(true);
-  const mediaSizeRef = useRef(320);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -79,7 +50,7 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({
       setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener('resize', checkMobile, { passive: true });
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -93,122 +64,19 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({
     activeRef.current = active;
   }, [active]);
 
-  const prefersReduced =
-    typeof window !== 'undefined' && window.matchMedia
-      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      : false;
-
-  const applyLayout = useCallback(
-    (animate: boolean) => {
-      const panels = panelRefs.current;
-      if (!panels.length) return;
-
-      const r = Math.min(Math.max(expandRatio, 0.2), 0.9);
-      const grow = count > 1 ? (r * (count - 1)) / (1 - r) : 1;
-      const mediaSize = mediaSizeRef.current;
-
-      tlRef.current?.kill();
-      const dur = animate && !prefersReduced ? duration : 0;
-      const tl = gsap.timeline();
-
-      panels.forEach((panel, i) => {
-        if (!panel) return;
-        const isActive = i === active;
-        const media = mediaRefs.current[i];
-        const bar = barRefs.current[i];
-        const text = textRefs.current[i];
-
-        const rot = isActive ? 0 : i < active ? tilt : -tilt;
-        const rotProp = vertical ? { rotateX: -rot } : { rotateY: rot };
-
-        tl.to(panel, { flexGrow: isActive ? grow : 1, ...rotProp, duration: dur, ease }, 0);
-
-        if (media) {
-          const drift = Math.max(-1.5, Math.min(1.5, active - i));
-          const shift = drift * parallax * mediaSize * 0.06;
-          const gray = grayscale ? (isActive ? 0 : 1) : 0;
-          tl.to(
-            media,
-            {
-              xPercent: -50,
-              yPercent: -50,
-              x: vertical ? 0 : isActive ? 0 : shift,
-              y: vertical ? (isActive ? 0 : shift) : 0,
-              '--ag-gray': gray,
-              '--ag-dim': isActive ? 0 : 0.35,
-              duration: dur,
-              ease
-            },
-            0
-          );
-        }
-
-        if (showLabels && bar && text) {
-          if (isActive) {
-            tl.to([bar, text], { opacity: 1, x: 0, duration: dur, ease, stagger: prefersReduced ? 0 : stagger }, 0);
-          } else {
-            tl.to([bar, text], { opacity: 0, x: -14, duration: dur * 0.6, ease }, 0);
-          }
-        }
-      });
-
-      tlRef.current = tl;
-    },
-    [
-      active,
-      count,
-      expandRatio,
-      duration,
-      ease,
-      vertical,
-      tilt,
-      parallax,
-      grayscale,
-      showLabels,
-      stagger,
-      prefersReduced
-    ]
-  );
-
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-
-    const measure = () => {
-      const rect = el.getBoundingClientRect();
-      const total = vertical ? rect.height : rect.width;
-      const usable = Math.max(total - gap * (count - 1), 120);
-      const size = Math.max(140, usable * Math.min(Math.max(expandRatio, 0.2), 0.9) * 1.22);
-      mediaSizeRef.current = size;
-      el.style.setProperty('--ag-media-size', `${size}px`);
-      applyLayout(!firstRunRef.current);
-    };
-
-    measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, [applyLayout, gap, count, expandRatio, vertical]);
-
-  useEffect(() => {
-    applyLayout(!firstRunRef.current);
-    firstRunRef.current = false;
-  }, [applyLayout]);
-
-  useEffect(
-    () => () => {
-      tlRef.current?.kill();
-    },
-    []
-  );
-
-  // Mobile scroll-linked activation with hysteresis to prevent jitter and delay expansion
+  // Mobile scroll-linked activation (Optimized with IntersectionObserver & RAF)
   useEffect(() => {
     if (!isMobile) return;
 
-    const handleScroll = () => {
+    let ticking = false;
+    let isIntersecting = false;
+
+    const checkScroll = () => {
       const el = rootRef.current;
-      if (!el) return;
+      if (!el || !isIntersecting) {
+        ticking = false;
+        return;
+      }
 
       const rect = el.getBoundingClientRect();
       const viewportCenter = window.innerHeight / 2;
@@ -217,7 +85,6 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({
       const currentActive = activeRef.current;
       let nextActive = currentActive;
 
-      // Hysteresis thresholds to avoid toggling on boundaries and delay expansion
       const forwardThresholds = [0.25, 0.45, 0.65, 0.85];
       const reverseThresholds = [0.15, 0.35, 0.55, 0.75];
 
@@ -238,19 +105,54 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({
       if (nextActive !== currentActive) {
         setActive(nextActive);
       }
+
+      ticking = false;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    const handleScroll = () => {
+      if (!ticking && isIntersecting) {
+        ticking = true;
+        requestAnimationFrame(checkScroll);
+      }
+    };
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting) {
+          handleScroll();
+        }
+      },
+      { rootMargin: "150px 0px" }
+    );
+
+    if (rootRef.current) {
+      observer.observe(rootRef.current);
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [isMobile, count]);
 
+  // Smooth hover intent threshold (50ms) prevents fast jumpy triggers when sweeping the cursor
   const handleEnter = (i: number) => {
-    if (trigger === 'hover') setActive(i);
+    if (trigger !== 'hover') return;
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActive(i);
+    }, 50);
+  };
+
+  const handleLeave = () => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
   };
 
   const handleClick = (i: number) => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
     setActive(i);
   };
 
@@ -264,6 +166,12 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({
     }
   };
 
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    };
+  }, []);
+
   return (
     <div
       ref={rootRef}
@@ -274,40 +182,47 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({
         '--ag-text': textColor,
         '--ag-gap': `${gap}px`,
         '--ag-radius': `${radius}px`,
-        height: vertical ? `${Math.round(height * 1.6)}px` : `${height}px`
+        height: vertical ? `${Math.round(height * 1.5)}px` : `${height}px`
       } as React.CSSProperties}
       role="list"
-      aria-label="Image accordion gallery"
+      aria-label="Brand campaigns and product photography gallery"
+      onMouseLeave={handleLeave}
     >
       {items.map((item, i) => {
         const isActive = i === active;
         return (
           <div
             key={i}
-            ref={el => { panelRefs.current[i] = el; }}
             className={`ag-panel${isActive ? ' ag-panel--active' : ''}`}
-            style={{ borderRadius: `${radius}px` }}
             onClick={() => handleClick(i)}
             onMouseEnter={() => handleEnter(i)}
             onFocus={() => setActive(i)}
             onKeyDown={e => handleKeyDown(i, e)}
             role="listitem"
             tabIndex={0}
-            aria-current={isActive ? "true" : undefined}
+            aria-current={isActive ? 'true' : undefined}
             aria-label={item.label}
           >
             <span className="ag-panel__frame">
-              <span className="ag-panel__media" ref={el => { mediaRefs.current[i] = el; }}>
-                <img src={item.image} alt={item.alt || item.label || ''} draggable="false" />
+              <span className="ag-panel__media">
+                <img
+                  src={item.image}
+                  alt={item.alt || item.label || ''}
+                  draggable="false"
+                  loading="lazy"
+                />
               </span>
               <span className="ag-panel__overlay" aria-hidden="true" />
             </span>
             {showLabels && (
               <span className="ag-panel__label" aria-hidden="true">
-                <span className="ag-panel__bar" ref={el => { barRefs.current[i] = el; }} />
-                <span className="ag-panel__text" ref={el => { textRefs.current[i] = el; }}>
-                  {item.label}
+                <span className="flex items-center gap-2.5">
+                  <span className="ag-panel__bar" />
+                  <span className="ag-panel__text">{item.label}</span>
                 </span>
+                {item.tag && (
+                  <span className="ag-panel__subtext">{item.tag}</span>
+                )}
               </span>
             )}
           </div>

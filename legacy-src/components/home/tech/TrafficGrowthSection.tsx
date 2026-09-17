@@ -16,7 +16,7 @@ export const TrafficGrowthSection: React.FC<TrafficGrowthSectionProps> = ({
   formTextColor = '#FFFFFF',
 }) => {
   return (
-    <section className="relative py-16 sm:py-20 bg-[#FAF7F2] overflow-hidden border-t border-b border-[rgba(29,66,36,0.1)]">
+    <section id="contact-form" className="relative py-16 sm:py-20 bg-[#FAF7F2] overflow-hidden border-t border-b border-[rgba(29,66,36,0.1)] scroll-mt-8">
       {/* Subtle diagonal micro-pattern backdrop */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-[0.035]"

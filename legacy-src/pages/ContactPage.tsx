@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, MessageSquare } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, MessageSquare, Loader2 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 
 const CONTACT_INFO = [
@@ -34,15 +34,74 @@ const CONTACT_INFO = [
 export const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [fetchingPincode, setFetchingPincode] = useState(false);
+  const [pincodeStatus, setPincodeStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [pincodeMessage, setPincodeMessage] = useState('');
+
   const [formData, setFormData] = useState({
     fullname: '',
     email: '',
     phone: '',
     services: 'Website Development',
+    pincode: '',
     city: '',
+    state: '',
     country: 'India',
     message: '',
   });
+
+  const handlePincodeChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawVal = e.target.value;
+    const cleanPin = rawVal.replace(/\D/g, '').slice(0, 6);
+
+    setFormData((prev) => ({ ...prev, pincode: cleanPin }));
+
+    if (cleanPin.length === 6) {
+      setFetchingPincode(true);
+      setPincodeStatus('idle');
+      setPincodeMessage('');
+
+      try {
+        const res = await fetch(`https://api.postalpincode.in/pincode/${cleanPin}`);
+        if (!res.ok) throw new Error('Network error');
+        const data = await res.json();
+
+        if (
+          Array.isArray(data) &&
+          data[0] &&
+          data[0].Status === 'Success' &&
+          Array.isArray(data[0].PostOffice) &&
+          data[0].PostOffice.length > 0
+        ) {
+          const po = data[0].PostOffice[0];
+          const fetchedCity = po.District || po.Division || po.Circle || '';
+          const fetchedState = po.State || '';
+
+          setFormData((prev) => ({
+            ...prev,
+            pincode: cleanPin,
+            city: fetchedCity || prev.city,
+            state: fetchedState || prev.state,
+            country: 'India',
+          }));
+          setPincodeStatus('success');
+          setPincodeMessage(`Detected: ${fetchedCity ? fetchedCity + ', ' : ''}${fetchedState}`);
+        } else {
+          setPincodeStatus('error');
+          setPincodeMessage('No records found for this PIN code');
+        }
+      } catch (err) {
+        console.error('India Post API error:', err);
+        setPincodeStatus('error');
+        setPincodeMessage('Unable to auto-detect location');
+      } finally {
+        setFetchingPincode(false);
+      }
+    } else {
+      setPincodeStatus('idle');
+      setPincodeMessage('');
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -219,10 +278,42 @@ export const ContactPage: React.FC = () => {
                       </select>
                     </div>
                     <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '.375rem' }}>
+                        <label style={{ display: 'block', fontFamily: 'Rubik, sans-serif', fontSize: '.7rem', fontWeight: 600, color: '#374151', textTransform: 'uppercase', letterSpacing: '.06em' }}>PIN Code</label>
+                        {fetchingPincode && (
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.25rem', fontSize: '.65rem', color: '#D4AF37', fontFamily: 'monospace' }}>
+                            <Loader2 className="w-3 h-3 animate-spin" /> Fetching...
+                          </span>
+                        )}
+                        {!fetchingPincode && pincodeStatus === 'success' && (
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.25rem', fontSize: '.65rem', color: '#10B981', fontFamily: 'monospace', fontWeight: 600 }}>
+                            <CheckCircle2 className="w-3 h-3" /> Auto-filled
+                          </span>
+                        )}
+                      </div>
+                      <input className="field" type="text" maxLength={6} placeholder="6-digit PIN (e.g. 110001)"
+                        value={formData.pincode}
+                        onChange={handlePincodeChange} />
+                      {pincodeMessage && (
+                        <span style={{ display: 'block', fontSize: '.65rem', marginTop: '.25rem', color: pincodeStatus === 'success' ? '#10B981' : '#F59E0B', fontFamily: 'monospace' }}>
+                          {pincodeMessage}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                    <div>
                       <label style={{ display: 'block', fontFamily: 'Rubik, sans-serif', fontSize: '.7rem', fontWeight: 600, color: '#374151', marginBottom: '.375rem', textTransform: 'uppercase', letterSpacing: '.06em' }}>City</label>
-                      <input className="field" type="text" required placeholder="Mumbai"
+                      <input className="field" type="text" required placeholder="City"
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Rubik, sans-serif', fontSize: '.7rem', fontWeight: 600, color: '#374151', marginBottom: '.375rem', textTransform: 'uppercase', letterSpacing: '.06em' }}>State</label>
+                      <input className="field" type="text" placeholder="State"
+                        value={formData.state}
+                        onChange={(e) => setFormData({ ...formData, state: e.target.value })} />
                     </div>
                   </div>
 

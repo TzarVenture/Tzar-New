@@ -44,6 +44,7 @@ const STAGGERED_ITEMS = [
     link: item.href,
     children: item.children,
   })),
+  { label: 'Get Proposal', link: '/#contact-form' },
   { label: 'Contact', link: '/contact' },
 ];
 
@@ -56,43 +57,62 @@ const STAGGERED_SOCIALS = [
 
 export const TechHeader: React.FC = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [scrollY, setScrollY] = useState(0);
+  const [isSolid, setIsSolid] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const pathname = usePathname();
   const isHome = pathname === '/';
 
   useEffect(() => {
     let lastScroll = window.scrollY;
+    let ticking = false;
 
     const handleScroll = () => {
-      const currentScroll = window.scrollY;
-      setScrollY(currentScroll);
+      if (ticking) return;
+      ticking = true;
 
-      if (currentScroll > 200) {
-        if (currentScroll > lastScroll) {
-          // Scrolling DOWN -> hide header
-          setIsVisible(false);
+      requestAnimationFrame(() => {
+        const currentScroll = window.scrollY;
+
+        // Solid header threshold (> 50px)
+        const shouldBeSolid = currentScroll > 50 || !isHome;
+        setIsSolid((prev) => (prev !== shouldBeSolid ? shouldBeSolid : prev));
+
+        // Visibility direction check
+        if (currentScroll > 200) {
+          if (currentScroll > lastScroll + 5) {
+            setIsVisible(false);
+          } else if (currentScroll < lastScroll - 5) {
+            setIsVisible(true);
+          }
         } else {
-          // Scrolling UP -> show header
           setIsVisible(true);
         }
-      } else {
-        // Near the top -> always show header
-        setIsVisible(true);
-      }
 
-      lastScroll = currentScroll;
+        lastScroll = currentScroll;
+        ticking = false;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    // Initial check
+    setIsSolid(window.scrollY > 50 || !isHome);
+
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     setActiveDropdown(null);
   }, [pathname]);
 
-  const isSolid = scrollY > 50 || !isHome;
+  const handleProposalClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isHome) {
+      e.preventDefault();
+      const target = document.getElementById('contact-form') || document.getElementById('lead-form');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
 
   return (
     <header 
@@ -109,41 +129,31 @@ export const TechHeader: React.FC = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           
-          {/* Logo Brand */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <img
-              src="/assets/images/tzar-logo-main.png"
-              alt="TZAR VENTURE"
-              className="h-9 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          {/* Logo & Node Indicator */}
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+            <img 
+              src="/assets/images/tzar-logo-main.png" 
+              alt="Tzar Venture Logo" 
+              className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Nav Items */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-1.5 shrink-0">
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
             {NAV_ITEMS.map((item) => (
-              <div
+              <div 
                 key={item.name}
-                className="relative group"
+                className="relative"
                 onMouseEnter={() => item.children && setActiveDropdown(item.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseLeave={() => item.children && setActiveDropdown(null)}
               >
                 <Link
                   href={item.href}
-                  className={`px-2.5 xl:px-3 py-1.5 text-[11px] xl:text-xs font-bold uppercase tracking-wider rounded-full transition-all flex items-center gap-1 whitespace-nowrap shrink-0 ${
-                    isSolid
-                      ? '!text-white hover:!text-white hover:bg-white/10'
-                      : '!text-[#0E2015] hover:!text-[#1D4224] hover:bg-[rgba(29,66,36,0.06)]'
-                  }`}
+                  className="px-3.5 py-2 text-xs font-semibold !text-white/80 hover:!text-white flex items-center gap-1 rounded-full hover:bg-white/10 transition"
                 >
-                  <span className="whitespace-nowrap">{item.name}</span>
+                  <span>{item.name}</span>
                   {item.children && (
-                    <ChevronDown
-                      className={`w-3 h-3 shrink-0 transition ${
-                        isSolid
-                          ? 'text-white/70 group-hover:text-white'
-                          : 'text-[#0E2015]/75 group-hover:text-[#0E2015]'
-                      }`}
-                    />
+                    <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
                   )}
                 </Link>
 
@@ -170,8 +180,9 @@ export const TechHeader: React.FC = () => {
           {/* Right Action Framer Pills */}
           <div className="hidden sm:flex items-center shrink-0">
             <Link
-              href="/contact"
-              className="framer-btn-primary border border-white/15 px-4 py-2 text-xs font-bold flex items-center gap-1.5 whitespace-nowrap shrink-0"
+              href={isHome ? "#contact-form" : "/#contact-form"}
+              onClick={handleProposalClick}
+              className="framer-btn-primary border border-white/15 px-4 py-2 text-xs font-bold flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer"
             >
               <span>Get Proposal</span>
               <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />

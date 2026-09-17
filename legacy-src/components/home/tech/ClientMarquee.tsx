@@ -43,7 +43,7 @@ export const ClientMarquee: React.FC = () => {
                 alt={logo.name}
                 className="h-10 w-auto object-contain transition-all duration-300"
                 style={{
-                  filter: 'brightness(0) invert(0.85) drop-shadow(0 0 0.35px #C8D1CC)'
+                  filter: 'brightness(0) invert(0.85)'
                 }}
               />
             </div>
@@ -69,7 +69,7 @@ export const ClientMarquee: React.FC = () => {
                 alt={logo.name}
                 className="h-10 w-auto object-contain transition-all duration-300"
                 style={{
-                  filter: 'brightness(0) invert(0.85) drop-shadow(0 0 0.35px #C8D1CC)'
+                  filter: 'brightness(0) invert(0.85)'
                 }}
               />
             </div>

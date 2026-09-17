@@ -350,18 +350,25 @@ export const TechHero: React.FC = () => {
             </div>
           </div>
 
-          {/* Center: Primary CTA Button */}
+          {/* Center: Primary CTA Button (Enlarged & Linked to Form) */}
           <div className="hero-bottom-cta-center">
-            <Link
-              href="/contact"
-              className="group relative overflow-hidden inline-flex items-center gap-2.5 px-8 py-3 rounded-full bg-[#1D4224] text-white font-montserrat font-black text-xs sm:text-sm uppercase tracking-wider shadow-md hover:shadow-xl hover:shadow-black/25 hover:brightness-110 active:scale-[0.99] transition-all duration-300 transform whitespace-nowrap"
+            <a
+              href="#contact-form"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.getElementById('contact-form') || document.getElementById('lead-form');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className="group relative overflow-hidden inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#1D4224] hover:bg-[#15321B] text-white font-montserrat font-black text-sm sm:text-base uppercase tracking-widest shadow-lg hover:shadow-2xl hover:shadow-[#1D4224]/35 border border-white/20 hover:scale-105 active:scale-95 transition-all duration-300 transform whitespace-nowrap cursor-pointer"
             >
               {/* Micro-shimmer shine effect on hover */}
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none" />
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none" />
 
-              <CalendarCheck size={18} weight="duotone" className="text-[#FFAE00] relative z-10 shrink-0" />
+              <CalendarCheck size={22} weight="duotone" className="text-[#FFAE00] relative z-10 shrink-0" />
               <span className="relative z-10">ENQUIRE NOW</span>
-            </Link>
+            </a>
           </div>
 
           {/* Right on PC: Reference Navigation Section (Hidden on Mobile) */}

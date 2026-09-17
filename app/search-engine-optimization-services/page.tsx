@@ -1,10 +1,11 @@
-import { SeoPackagesPage } from "@/legacy-src/pages/SeoPackagesPage";
+import { SeoServicePage } from "@/legacy-src/pages/SeoServicePage";
 
 export const metadata = {
-  title: "SEO Packages & Strategy | Tzar Venture",
-  description: "Dominating organic search engine results with technical SEO audits, semantic schema, and high-authority links.",
+  title: "TZAR VENTURE- Digital Marketing Agency Search Engine Optimization - SEO Services Online, SEO On page & SEO Off page Optimization, SEO Agency in India. | Tzar Venture",
+  description: "SEO Agency - 100% Guaranteed Result in 6 Month. Grow Organic Traffic online through On page and Off page Search Engine Optimization technique. | Tzar Venture",
 };
 
 export default function SeoService() {
-  return <SeoPackagesPage />;
+  return <SeoServicePage />;
 }
+

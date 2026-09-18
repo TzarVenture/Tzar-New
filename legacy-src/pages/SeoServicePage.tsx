@@ -346,7 +346,7 @@ export const SeoServicePage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           01. HERO BANNER WITH EMBEDDED FORM & BACKGROUND GIF
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 overflow-hidden border-b border-[#1D4224]/10">
+      <section className="relative pt-24 pb-8 sm:pt-28 sm:pb-12 overflow-hidden border-b border-[#1D4224]/10">
         {/* Subtle Background Pattern & Gradient */}
         <div
           className="absolute inset-0 z-0 opacity-15 pointer-events-none bg-cover bg-center"
@@ -355,10 +355,10 @@ export const SeoServicePage: React.FC = () => {
         <div className="absolute inset-0 z-0 bg-linear-to-b from-[#EFE8E0]/70 via-[#EFE8E0]/90 to-[#EFE8E0] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
             {/* Left Column: Punchy Hero Content */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-5">
               
               {/* Breadcrumb & Clean Guarantee Badge */}
               <div className="flex flex-col gap-2.5">
@@ -438,32 +438,32 @@ export const SeoServicePage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           02. THE 8-STEP SEO JOURNEY: THE JOURNEY UNVEILED
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-24 bg-[#FAF9F5] border-b border-[#1D4224]/10 relative">
+      <section className="py-10 sm:py-14 bg-[#FAF9F5] border-b border-[#1D4224]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Heading: Minimalist 4-Word Title */}
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-6 sm:mb-8">
             <h2 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight">
               The SEO Journey Unveiled
             </h2>
           </div>
 
           {/* 8-Step Responsive Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {SEO_STEPS.map((step, idx) => (
               <div
                 key={idx}
-                className="group relative bg-white rounded-2xl p-6 sm:p-7 border border-[#1D4224]/10 shadow-sm hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col items-center text-center"
+                className="group relative bg-white rounded-2xl p-5 sm:p-5 border border-[#1D4224]/10 shadow-sm hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col items-center text-center"
               >
                 {/* Step Badge */}
-                <div className="w-full flex justify-center items-center mb-4">
+                <div className="w-full flex justify-center items-center mb-3">
                   <span className="px-3 py-1 rounded-full bg-[#1D4224] text-[#FFAE00] font-montserrat font-black text-xs uppercase tracking-wider">
                     {step.stepNumber}
                   </span>
                 </div>
 
                 {/* Step Icon */}
-                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-[#EFE8E0]/60 p-3 flex items-center justify-center border border-[#1D4224]/10 group-hover:scale-105 transition-transform duration-300 mb-5">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#EFE8E0]/60 p-2.5 flex items-center justify-center border border-[#1D4224]/10 group-hover:scale-105 transition-transform duration-300 mb-3 sm:mb-4">
                   <img
                     src={step.iconSrc}
                     alt={step.title}
@@ -476,7 +476,7 @@ export const SeoServicePage: React.FC = () => {
                 </div>
 
                 {/* Step Title & Copy */}
-                <h3 className="font-montserrat font-bold text-lg sm:text-xl text-[#0E2015] mb-2.5 group-hover:text-[#1D4224] transition-colors">
+                <h3 className="font-montserrat font-bold text-base sm:text-lg text-[#0E2015] mb-2 group-hover:text-[#1D4224] transition-colors">
                   {step.title}
                 </h3>
                 <p className="font-inter text-xs sm:text-sm text-[#5C6860] leading-relaxed">
@@ -492,25 +492,25 @@ export const SeoServicePage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           03. THREE-CARD DELIVERABLES MATRIX (24 Deliverables)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-24 bg-[#EFE8E0] border-b border-[#1D4224]/10 relative">
+      <section className="py-10 sm:py-14 bg-[#EFE8E0] border-b border-[#1D4224]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-6 sm:mb-8">
             <h2 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight">
               Complete Optimization Scope
             </h2>
           </div>
 
           {/* Three Column Matrix Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             
             {/* Column 01: Technical Foundation */}
-            <div className="bg-white rounded-3xl p-7 sm:p-8 border border-[#1D4224]/10 shadow-lg hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col">
-              <div className="mb-6 pb-4 border-b border-[#1D4224]/10">
-                <h3 className="font-montserrat font-black text-xl text-[#0E2015]">Technical Foundation</h3>
+            <div className="bg-white rounded-3xl p-5 sm:p-6 border border-[#1D4224]/10 shadow-lg hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col">
+              <div className="mb-4 pb-3 border-b border-[#1D4224]/10">
+                <h3 className="font-montserrat font-black text-lg sm:text-xl text-[#0E2015]">Technical Foundation</h3>
               </div>
 
-              <ul className="space-y-3.5 font-inter text-xs sm:text-sm text-[#0E2015]">
+              <ul className="space-y-2.5 font-inter text-xs sm:text-sm text-[#0E2015]">
                 {DELIVERABLES_COL_1.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-[#1D4224] text-white flex items-center justify-center shrink-0 mt-0.5">
@@ -523,12 +523,12 @@ export const SeoServicePage: React.FC = () => {
             </div>
 
             {/* Column 02: On-Page Architecture */}
-            <div className="bg-white rounded-3xl p-7 sm:p-8 border border-[#1D4224]/10 shadow-lg hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col">
-              <div className="mb-6 pb-4 border-b border-[#1D4224]/10">
-                <h3 className="font-montserrat font-black text-xl text-[#0E2015]">On-Page Architecture</h3>
+            <div className="bg-white rounded-3xl p-5 sm:p-6 border border-[#1D4224]/10 shadow-lg hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col">
+              <div className="mb-4 pb-3 border-b border-[#1D4224]/10">
+                <h3 className="font-montserrat font-black text-lg sm:text-xl text-[#0E2015]">On-Page Architecture</h3>
               </div>
 
-              <ul className="space-y-3.5 font-inter text-xs sm:text-sm text-[#0E2015]">
+              <ul className="space-y-2.5 font-inter text-xs sm:text-sm text-[#0E2015]">
                 {DELIVERABLES_COL_2.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-[#1D4224] text-white flex items-center justify-center shrink-0 mt-0.5">
@@ -541,12 +541,12 @@ export const SeoServicePage: React.FC = () => {
             </div>
 
             {/* Column 03: Code Hygiene & PR */}
-            <div className="bg-white rounded-3xl p-7 sm:p-8 border border-[#1D4224]/10 shadow-lg hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col">
-              <div className="mb-6 pb-4 border-b border-[#1D4224]/10">
-                <h3 className="font-montserrat font-black text-xl text-[#0E2015]">Code Hygiene &amp; PR</h3>
+            <div className="bg-white rounded-3xl p-5 sm:p-6 border border-[#1D4224]/10 shadow-lg hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col">
+              <div className="mb-4 pb-3 border-b border-[#1D4224]/10">
+                <h3 className="font-montserrat font-black text-lg sm:text-xl text-[#0E2015]">Code Hygiene &amp; PR</h3>
               </div>
 
-              <ul className="space-y-3.5 font-inter text-xs sm:text-sm text-[#0E2015]">
+              <ul className="space-y-2.5 font-inter text-xs sm:text-sm text-[#0E2015]">
                 {DELIVERABLES_COL_3.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-[#1D4224] text-white flex items-center justify-center shrink-0 mt-0.5">
@@ -566,16 +566,16 @@ export const SeoServicePage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           04. INTERACTIVE SEO PACKAGES & PRICING
       ────────────────────────────────────────────────────────────────── */}
-      <section id="packages-pricing" className="py-16 sm:py-24 bg-[#FAF9F5] border-b border-[#1D4224]/10 relative">
+      <section id="packages-pricing" className="py-10 sm:py-14 bg-[#FAF9F5] border-b border-[#1D4224]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-6 sm:mb-8">
             <h2 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight">
               SEO Plans &amp; Packages
             </h2>
 
             {/* Tab Switcher */}
-            <div className="inline-flex p-1.5 rounded-2xl bg-[#EFE8E0] border border-[#1D4224]/15 mt-6">
+            <div className="inline-flex p-1.5 rounded-2xl bg-[#EFE8E0] border border-[#1D4224]/15 mt-4 sm:mt-5">
               <button
                 onClick={() => setActivePackageTab('national')}
                 className={`px-5 sm:px-6 py-2.5 rounded-xl font-montserrat font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
@@ -610,7 +610,7 @@ export const SeoServicePage: React.FC = () => {
           </div>
 
           {/* Render Plans Based on Active Tab */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch pt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 items-stretch pt-2">
             {(activePackageTab === 'national'
               ? NATIONAL_SEO_PLANS
               : activePackageTab === 'local'
@@ -619,20 +619,20 @@ export const SeoServicePage: React.FC = () => {
             ).map((plan) => (
               <div
                 key={plan.id}
-                className="bg-white text-[#0E2015] rounded-3xl p-6 sm:p-7 shadow-md border border-[#1D4224]/10 hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col justify-between"
+                className="bg-white text-[#0E2015] rounded-3xl p-5 sm:p-6 shadow-md border border-[#1D4224]/10 hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="font-montserrat font-black text-2xl text-[#0E2015] mb-2">
+                  <h3 className="font-montserrat font-black text-xl sm:text-2xl text-[#0E2015] mb-2">
                     {plan.name}
                   </h3>
 
-                  <div className="inline-block px-3 py-1 rounded-full bg-[#1D4224]/10 text-[#1D4224] text-xs font-mono font-bold mb-4">
+                  <div className="inline-block px-3 py-1 rounded-full bg-[#1D4224]/10 text-[#1D4224] text-xs font-mono font-bold mb-3">
                     {plan.keywordsPlan}
                   </div>
 
                   {/* Sub-Details (Primary/Secondary, Best Suited For, Focus Keywords) */}
                   {plan.subDetails && plan.subDetails.length > 0 && (
-                    <div className="space-y-1.5 py-3 my-3 border-y border-[#1D4224]/10 font-inter text-xs text-[#5C6860]">
+                    <div className="space-y-1.5 py-2.5 my-2.5 border-y border-[#1D4224]/10 font-inter text-xs text-[#5C6860]">
                       {plan.subDetails.map((detail, dIdx) => (
                         <div key={dIdx} className="flex justify-between items-start gap-2">
                           <span className="font-semibold text-[#0E2015] shrink-0">{detail.label}:</span>
@@ -642,10 +642,10 @@ export const SeoServicePage: React.FC = () => {
                     </div>
                   )}
 
-                  <div className="w-full h-px bg-[#1D4224]/10 mb-4" />
+                  <div className="w-full h-px bg-[#1D4224]/10 mb-3" />
 
                   {/* Feature List */}
-                  <ul className="space-y-2.5 text-xs font-inter mb-6">
+                  <ul className="space-y-2 text-xs font-inter mb-4 sm:mb-5">
                     {plan.features.map((feat, fIdx) => (
                       <li key={fIdx} className="flex items-start gap-2.5">
                         <Check className="w-4 h-4 shrink-0 mt-0.5 text-[#1D4224]" />
@@ -672,10 +672,10 @@ export const SeoServicePage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           05. ICONIC BRANDS PROOF GRID: "WE MAKE ICONIC BRANDS"
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-14 sm:py-16 bg-white border-b border-[#1D4224]/10 relative">
+      <section className="py-10 sm:py-12 bg-white border-b border-[#1D4224]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center space-y-2 mb-10">
+          <div className="text-center space-y-1.5 mb-6 sm:mb-8">
             <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#1D4224]">
               We Don&apos;t Sell Products
             </span>
@@ -708,7 +708,7 @@ export const SeoServicePage: React.FC = () => {
             ))}
           </div>
 
-          <div className="text-center mt-10">
+          <div className="text-center mt-6 sm:mt-8">
             <Link
               href="/our-client"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-[#1D4224] text-[#1D4224] font-montserrat font-bold text-xs uppercase tracking-wider hover:bg-[#1D4224] hover:text-white transition-all duration-200"

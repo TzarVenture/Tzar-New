@@ -72,7 +72,7 @@ export const TechFooter: React.FC = () => {
                 <li><Link href="/search-engine-optimization-services" className="hover:text-[#FFAE00] transition-colors">SEO Domination</Link></li>
                 <li><Link href="/graphic-designing" className="hover:text-[#FFAE00] transition-colors">Graphic & Brand Design</Link></li>
                 <li><Link href="/social-media-marketing-services" className="hover:text-[#FFAE00] transition-colors">Social Media Marketing</Link></li>
-                <li><Link href="/pay-per-click-services" className="hover:text-[#FFAE00] transition-colors">Pay Per Click Ads</Link></li>
+                <li><Link href="/content-marketing-services" className="hover:text-[#FFAE00] transition-colors">Content Marketing</Link></li>
                 <li><Link href="/product-design-packaging-services" className="hover:text-[#FFAE00] transition-colors">3D Packaging Studio</Link></li>
               </ul>
             </div>

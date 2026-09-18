@@ -11,7 +11,6 @@ const SERVICES_LINKS = [
   { name: 'Social Media Marketing', href: '/social-media-marketing-services' },
   { name: 'Logo Design Services', href: '/logo-design-services' },
   { name: 'Content Marketing', href: '/content-marketing-services' },
-  { name: 'Pay Per Click (PPC)', href: '/pay-per-click-services' },
   { name: 'Product Design & Packaging', href: '/product-design-packaging-services' },
 ];
 

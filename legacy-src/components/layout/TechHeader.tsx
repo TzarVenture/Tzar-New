@@ -27,7 +27,7 @@ const NAV_ITEMS = [
       { name: 'Graphic Designing', href: '/graphic-designing' },
       { name: 'Social Media Marketing', href: '/social-media-marketing-services' },
       { name: 'Logo & Brand Identity', href: '/logo-design-services' },
-      { name: 'Pay Per Click (PPC)', href: '/pay-per-click-services' },
+      { name: 'Content Marketing', href: '/content-marketing-services' },
       { name: 'Product Packaging', href: '/product-design-packaging-services' },
     ],
   },

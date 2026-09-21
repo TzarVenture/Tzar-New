@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "aos/dist/aos.css";
 import { TechHeader } from "@/legacy-src/components/layout/TechHeader";
 import { TechFooter } from "@/legacy-src/components/layout/TechFooter";
 

@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import React, { useLayoutEffect, useRef, useCallback } from 'react';
+import React, { useLayoutEffect, useEffect, useRef, useCallback } from 'react';
 import Lenis from 'lenis';
+import AOS from 'aos';
 import './ScrollStack.css';
 
 interface ScrollStackItemProps {
@@ -46,17 +47,25 @@ interface CachedLayoutMetrics {
 const ScrollStack: React.FC<ScrollStackProps> = ({
   children,
   className = '',
-  itemDistance = 90,
+  itemDistance = 280,
   itemScale = 0.03,
-  itemStackDistance = 16,
-  stackPosition = '64px',
+  itemStackDistance = 22,
+  stackPosition = '50px',
   scaleEndPosition = '24px',
-  baseScale = 0.92,
+  baseScale = 0.96,
   rotationAmount = 0,
   blurAmount = 0,
   useWindowScroll = false,
   onStackComplete
 }) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+      easing: 'ease-out-cubic',
+      once: false,
+      offset: 30,
+    });
+  }, []);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const stackCompletedRef = useRef<boolean>(false);
   const animationFrameRef = useRef<number | null>(null);
@@ -114,9 +123,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       : (scroller ? scroller.clientHeight : 800);
 
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const finalStackPos = isMobile ? '56px' : (typeof stackPosition === 'number' ? `${stackPosition}px` : stackPosition);
-    const finalScalePos = isMobile ? '24px' : (typeof scaleEndPosition === 'number' ? `${scaleEndPosition}px` : scaleEndPosition);
-    const finalItemStackDist = isMobile ? 10 : (typeof itemStackDistance === 'number' ? itemStackDistance : 16);
+    const finalStackPos = isMobile ? '44px' : (typeof stackPosition === 'number' ? `${stackPosition}px` : stackPosition);
+    const finalScalePos = isMobile ? '20px' : (typeof scaleEndPosition === 'number' ? `${scaleEndPosition}px` : scaleEndPosition);
+    const finalItemStackDist = isMobile ? 16 : (typeof itemStackDistance === 'number' ? itemStackDistance : 22);
 
     const stackPositionPx = parsePercentage(finalStackPos, containerHeight);
     const scaleEndPositionPx = parsePercentage(finalScalePos, containerHeight);
@@ -186,16 +195,22 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       const cardHeight = metric ? metric.cardHeight : 500;
 
       const triggerStart = cardTop - stackPositionPx - finalItemStackDist * i;
-      const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = triggerStart;
       const pinEnd = isMobile
         ? endElementTop - cardHeight - stackPositionPx - 20
         : endElementTop - Math.max(cardHeight, containerHeight / 2);
 
-      const scaleProgress = calculateProgress(scrollTop, triggerStart, triggerEnd);
-      const targetScale = baseScale + i * itemScale;
-      const scale = 1 - scaleProgress * (1 - targetScale);
-      const rotation = rotationAmount ? i * rotationAmount * scaleProgress : 0;
+      // Card remains in full view at scale 1; only gently scales down by 3.5% as next card covers it
+      let scale = 1;
+      const nextMetric = cardMetrics[i + 1];
+      if (nextMetric) {
+        const nextPinStart = nextMetric.cardTop - stackPositionPx - finalItemStackDist * (i + 1);
+        if (scrollTop >= pinStart) {
+          const overlapProgress = calculateProgress(scrollTop, pinStart, nextPinStart);
+          scale = 1 - overlapProgress * 0.035;
+        }
+      }
+      const rotation = 0;
 
       let translateY = 0;
       if (scrollTop >= pinStart && scrollTop <= pinEnd) {

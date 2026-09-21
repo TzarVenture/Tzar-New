@@ -123,9 +123,10 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       : (scroller ? scroller.clientHeight : 800);
 
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const finalStackPos = isMobile ? '44px' : (typeof stackPosition === 'number' ? `${stackPosition}px` : stackPosition);
+    // On mobile, pin cleanly at 70px below the fixed navbar with a compact 8px deck offset
+    const finalStackPos = isMobile ? '70px' : (typeof stackPosition === 'number' ? `${stackPosition}px` : stackPosition);
     const finalScalePos = isMobile ? '20px' : (typeof scaleEndPosition === 'number' ? `${scaleEndPosition}px` : scaleEndPosition);
-    const finalItemStackDist = isMobile ? 16 : (typeof itemStackDistance === 'number' ? itemStackDistance : 22);
+    const finalItemStackDist = isMobile ? 8 : (typeof itemStackDistance === 'number' ? itemStackDistance : 22);
 
     const stackPositionPx = parsePercentage(finalStackPos, containerHeight);
     const scaleEndPositionPx = parsePercentage(finalScalePos, containerHeight);
@@ -185,6 +186,19 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     } = metrics;
 
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const windowH = typeof window !== 'undefined' ? window.innerHeight : 800;
+    const finalDistance = isMobile
+      ? Math.max(440, Math.min(560, Math.round(windowH * 0.65)))
+      : itemDistance;
+
+    // Pin end for the entire deck: all cards remain pinned until the last card
+    // has had its full dedicated viewing duration, then the deck smoothly glides off together.
+    const lastCardIdx = cards.length - 1;
+    const lastMetric = cardMetrics[lastCardIdx];
+    const lastPinStart = lastMetric
+      ? lastMetric.cardTop - stackPositionPx - finalItemStackDist * lastCardIdx
+      : endElementTop - stackPositionPx;
+    const deckPinEnd = lastPinStart + finalDistance;
 
     for (let i = 0; i < cards.length; i++) {
       const card = cards[i];
@@ -196,18 +210,18 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
       const triggerStart = cardTop - stackPositionPx - finalItemStackDist * i;
       const pinStart = triggerStart;
-      const pinEnd = isMobile
-        ? endElementTop - cardHeight - stackPositionPx - 20
-        : endElementTop - Math.max(cardHeight, containerHeight / 2);
+      const pinEnd = deckPinEnd;
 
-      // Card remains in full view at scale 1; only gently scales down by 3.5% as next card covers it
+      // Card remains 100% full scale while in full view.
+      // It only gently recedes (by 3%) during the actual overlap phase as card i+1 slides over it.
       let scale = 1;
       const nextMetric = cardMetrics[i + 1];
       if (nextMetric) {
         const nextPinStart = nextMetric.cardTop - stackPositionPx - finalItemStackDist * (i + 1);
-        if (scrollTop >= pinStart) {
-          const overlapProgress = calculateProgress(scrollTop, pinStart, nextPinStart);
-          scale = 1 - overlapProgress * 0.035;
+        const overlapStart = Math.max(pinStart, nextPinStart - cardHeight);
+        if (scrollTop >= overlapStart) {
+          const overlapProgress = calculateProgress(scrollTop, overlapStart, nextPinStart);
+          scale = 1 - overlapProgress * (isMobile ? 0.03 : 0.035);
         }
       }
       const rotation = 0;
@@ -331,7 +345,11 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const transformsCache = lastTransformsRef.current;
 
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const finalDistance = isMobile ? Math.max(36, Math.round(itemDistance * 0.5)) : itemDistance;
+    const windowH = typeof window !== 'undefined' ? window.innerHeight : 800;
+    // On mobile, calibrated dwell distance gives each card dedicated viewing time before next card arrives
+    const finalDistance = isMobile
+      ? Math.max(440, Math.min(560, Math.round(windowH * 0.65)))
+      : itemDistance;
 
     cards.forEach((card, i) => {
       if (i < cards.length - 1) {
@@ -343,6 +361,14 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       card.style.transform = 'translateZ(0)';
       card.style.setProperty('-webkit-transform', 'translateZ(0)');
     });
+
+    // Provide scroll travel for the final card so it gets equal dwell time before exiting
+    const endElement = useWindowScroll
+      ? (document.querySelector('.scroll-stack-end') as HTMLElement)
+      : (scroller?.querySelector('.scroll-stack-end') as HTMLElement);
+    if (endElement) {
+      endElement.style.height = `${finalDistance}px`;
+    }
 
     // Initial batch layout measurement
     measureMetrics();
@@ -356,6 +382,25 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const handleResize = () => {
       if (resizeTimer) cancelAnimationFrame(resizeTimer);
       resizeTimer = requestAnimationFrame(() => {
+        const isMobileNow = typeof window !== 'undefined' && window.innerWidth < 768;
+        const currentWinH = typeof window !== 'undefined' ? window.innerHeight : 800;
+        const currentDistance = isMobileNow
+          ? Math.max(440, Math.min(560, Math.round(currentWinH * 0.65)))
+          : itemDistance;
+
+        cards.forEach((card, i) => {
+          if (i < cards.length - 1) {
+            card.style.marginBottom = `${currentDistance}px`;
+          }
+        });
+
+        const endEl = useWindowScroll
+          ? (document.querySelector('.scroll-stack-end') as HTMLElement)
+          : (scroller?.querySelector('.scroll-stack-end') as HTMLElement);
+        if (endEl) {
+          endEl.style.height = `${currentDistance}px`;
+        }
+
         measureMetrics();
         updateCardTransforms();
       });

@@ -41,6 +41,10 @@ export const ClientMarquee: React.FC = () => {
               <img
                 src={logo.src}
                 alt={logo.name}
+                loading="lazy"
+                decoding="async"
+                width={120}
+                height={40}
                 className="h-10 w-auto object-contain transition-all duration-300"
                 style={{
                   filter: 'brightness(0) invert(0.85)'
@@ -67,6 +71,10 @@ export const ClientMarquee: React.FC = () => {
               <img
                 src={logo.src}
                 alt={logo.name}
+                loading="lazy"
+                decoding="async"
+                width={120}
+                height={40}
                 className="h-10 w-auto object-contain transition-all duration-300"
                 style={{
                   filter: 'brightness(0) invert(0.85)'

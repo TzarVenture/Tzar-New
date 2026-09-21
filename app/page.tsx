@@ -16,31 +16,31 @@ import { TrafficGrowthSection } from "@/legacy-src/components/home/tech/TrafficG
 
 const PHOTOSHOOT_ITEMS = [
   {
-    image: '/assets/images/MobileShowcase/show1-3.jpg',
+    image: '/assets/images/MobileShowcase/show1-3.webp',
     label: 'Kashmiri Kahwa Tea',
     tag: 'Happy Brews • Artisanal Food Styling',
     link: '#'
   },
   {
-    image: '/assets/images/MobileShowcase/show4.jpg',
+    image: '/assets/images/MobileShowcase/show4.webp',
     label: 'Cherry Blossom Serum',
     tag: 'Ellixee • Botanical Daily Glow',
     link: '#'
   },
   {
-    image: '/assets/images/MobileShowcase/show1-2.jpg',
+    image: '/assets/images/MobileShowcase/show1-2.webp',
     label: 'Rose Cardamom Brew',
     tag: 'Happy Brews • Floral Infusion',
     link: '#'
   },
   {
-    image: '/assets/images/MobileShowcase/show2.jpg',
+    image: '/assets/images/MobileShowcase/show2.webp',
     label: 'Grapevine Face Wash',
     tag: 'Ellixee • Cryo Mist Studio',
     link: '#'
   },
   {
-    image: '/assets/images/MobileShowcase/show1-1.jpg',
+    image: '/assets/images/MobileShowcase/show1-1.webp',
     label: 'Sunscreen SPF 50',
     tag: 'Ellixee • Botanical Sun Care',
     link: '#'
@@ -85,8 +85,9 @@ export default function Home() {
                 <div className="bg-black/25 hover:bg-black/35 border border-white/10 hover:border-white/20 transition-all rounded-2xl p-3 sm:p-4 flex flex-col justify-between shrink-0 w-[82%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 sm:p-2 overflow-hidden">
                     <img
-                      src="/mockups/next-website/all-devices-black.png"
+                      src="/mockups/next-website/all-devices-black.webp"
                       alt="Multi-Platform Web Ecosystem"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -101,6 +102,7 @@ export default function Home() {
                     <img
                       src="/mockups/Macbook-Air-ambrior.vercel.app.webp"
                       alt="Ambrior Infrastructure"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -115,6 +117,7 @@ export default function Home() {
                     <img
                       src="/mockups/Macbook-Air-beleorix.com-shopify.webp"
                       alt="Leorix E-Commerce"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -140,8 +143,9 @@ export default function Home() {
                 <div className="bg-black/30 hover:bg-black/40 border border-white/10 hover:border-[#FFAE00]/30 transition-all rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-between shrink-0 w-[70%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 overflow-hidden">
                     <img
-                      src="/mockups/app-kaammilega-native.png"
+                      src="/mockups/app-kaammilega-native.webp"
                       alt="Kaam Milega Native Android App"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -154,8 +158,9 @@ export default function Home() {
                 <div className="bg-black/30 hover:bg-black/40 border border-white/10 hover:border-[#FFAE00]/30 transition-all rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-between shrink-0 w-[70%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 overflow-hidden">
                     <img
-                      src="/mockups/app-leorix-native.png"
+                      src="/mockups/app-leorix-native.webp"
                       alt="Leorix Luxury Drops iOS App"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -168,8 +173,9 @@ export default function Home() {
                 <div className="bg-black/30 hover:bg-black/40 border border-white/10 hover:border-[#FFAE00]/30 transition-all rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-between shrink-0 w-[70%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 overflow-hidden">
                     <img
-                      src="/mockups/app-adshalaa-native.png"
+                      src="/mockups/app-adshalaa-native.webp"
                       alt="Adshalaa Learning & Placement App"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -182,8 +188,9 @@ export default function Home() {
                 <div className="bg-black/30 hover:bg-black/40 border border-white/10 hover:border-[#FFAE00]/30 transition-all rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-between shrink-0 w-[70%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 overflow-hidden">
                     <img
-                      src="/mockups/app-ambrior-native.png"
+                      src="/mockups/app-ambrior-native.webp"
                       alt="Ambrior Operations Enterprise iOS App"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -211,11 +218,13 @@ export default function Home() {
                     <img
                       src="/mockups/Macbook-Air-tzar-crm.vercel.app.webp"
                       alt="Tzar CRM Enterprise Suite"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                     <img
                       src="/mockups/iPad-PRO-11-tzar-crm.vercel.app.webp"
                       alt="Tzar CRM Tablet"
+                      decoding="async"
                       className="absolute bottom-2 right-2 sm:right-4 w-20 sm:w-28 object-contain drop-shadow-2xl"
                     />
                   </div>
@@ -230,11 +239,13 @@ export default function Home() {
                     <img
                       src="/mockups/Macbook-Air-ay-astute-group-crm.vercel.app (1).webp"
                       alt="AY Astute Group CRM"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                     <img
                       src="/mockups/iPad-PRO-11-ay-astute-group-crm.vercel.app.webp"
                       alt="AY Astute Tablet"
+                      decoding="async"
                       className="absolute bottom-2 right-2 sm:right-4 w-20 sm:w-28 object-contain drop-shadow-2xl"
                     />
                   </div>
@@ -260,8 +271,9 @@ export default function Home() {
                 <div className="bg-black/30 hover:bg-black/40 border border-white/10 hover:border-[#FFAE00]/30 transition-all rounded-2xl p-3 sm:p-4 flex flex-col justify-between shrink-0 w-[82%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 sm:p-2 overflow-hidden">
                     <img
-                      src="/assets/images/seo-growth-dashboard.jpg"
+                      src="/assets/images/seo-growth-dashboard.webp"
                       alt="Organic Traffic & Keyword Domination Dashboard"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl rounded-xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -274,8 +286,9 @@ export default function Home() {
                 <div className="bg-black/30 hover:bg-black/40 border border-white/10 hover:border-[#FFAE00]/30 transition-all rounded-2xl p-3 sm:p-4 flex flex-col justify-between shrink-0 w-[82%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 sm:p-2 overflow-hidden">
                     <img
-                      src="/assets/images/paid-performance-dashboard.jpg"
+                      src="/assets/images/paid-performance-dashboard.webp"
                       alt="Full-Funnel Paid Acquisition & ROAS Dashboard"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl rounded-xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -301,8 +314,9 @@ export default function Home() {
                 <div className="bg-black/25 hover:bg-black/35 border border-white/10 hover:border-white/20 transition-all rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between shrink-0 w-[70%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 overflow-hidden">
                     <img
-                      src="/assets/images/projects/printPackaging1.png"
+                      src="/assets/images/projects/printPackaging1.webp"
                       alt="Happy Brews"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -315,8 +329,9 @@ export default function Home() {
                 <div className="bg-black/25 hover:bg-black/35 border border-white/10 hover:border-white/20 transition-all rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between shrink-0 w-[70%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 overflow-hidden">
                     <img
-                      src="/assets/images/projects/printPackaging2.png"
+                      src="/assets/images/projects/printPackaging2.webp"
                       alt="Skin Easi"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -329,8 +344,9 @@ export default function Home() {
                 <div className="bg-black/25 hover:bg-black/35 border border-white/10 hover:border-white/20 transition-all rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between shrink-0 w-[70%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 overflow-hidden">
                     <img
-                      src="/assets/images/projects/printPackaging3.png"
+                      src="/assets/images/projects/printPackaging3.webp"
                       alt="Happee Lifestyle"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -343,8 +359,9 @@ export default function Home() {
                 <div className="bg-black/25 hover:bg-black/35 border border-white/10 hover:border-white/20 transition-all rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between shrink-0 w-[70%] sm:w-auto snap-center h-full min-h-0 group">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-1 overflow-hidden">
                     <img
-                      src="/assets/images/projects/printPackaging4.png"
+                      src="/assets/images/projects/printPackaging4.webp"
                       alt="Escarl Jewels"
+                      decoding="async"
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>

@@ -60,45 +60,50 @@ export const TechHeader: React.FC = () => {
   const [isSolid, setIsSolid] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const pathname = usePathname();
-  const isHome = pathname === '/';
+  // Safe home detection for SSR, hydration, and hash anchors
+  const isHome = !pathname || pathname === '/' || pathname === '' || pathname.startsWith('/#');
 
   useEffect(() => {
-    let lastScroll = window.scrollY;
+    let lastScroll = typeof window !== 'undefined' ? window.scrollY : 0;
     let ticking = false;
+
+    const checkHeaderState = () => {
+      const currentScroll = typeof window !== 'undefined' ? (window.scrollY || document.documentElement.scrollTop || 0) : 0;
+      const isClientHome = typeof window !== 'undefined' 
+        ? (window.location.pathname === '/' || window.location.pathname === '' || isHome)
+        : isHome;
+
+      // Solid header threshold: Only solid after scrolling > 40px down, or on non-home pages
+      const shouldBeSolid = currentScroll > 40 || !isClientHome;
+      setIsSolid(shouldBeSolid);
+
+      // Visibility direction check
+      if (currentScroll > 200) {
+        if (currentScroll > lastScroll + 5) {
+          setIsVisible(false);
+        } else if (currentScroll < lastScroll - 5) {
+          setIsVisible(true);
+        }
+      } else {
+        setIsVisible(true);
+      }
+
+      lastScroll = currentScroll;
+      ticking = false;
+    };
 
     const handleScroll = () => {
       if (ticking) return;
       ticking = true;
-
-      requestAnimationFrame(() => {
-        const currentScroll = window.scrollY;
-
-        // Solid header threshold (> 50px)
-        const shouldBeSolid = currentScroll > 50 || !isHome;
-        setIsSolid((prev) => (prev !== shouldBeSolid ? shouldBeSolid : prev));
-
-        // Visibility direction check
-        if (currentScroll > 200) {
-          if (currentScroll > lastScroll + 5) {
-            setIsVisible(false);
-          } else if (currentScroll < lastScroll - 5) {
-            setIsVisible(true);
-          }
-        } else {
-          setIsVisible(true);
-        }
-
-        lastScroll = currentScroll;
-        ticking = false;
-      });
+      requestAnimationFrame(checkHeaderState);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Initial check
-    setIsSolid(window.scrollY > 50 || !isHome);
+    // Immediate evaluation on client mount
+    checkHeaderState();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHome]);
+  }, [pathname, isHome]);
 
   useEffect(() => {
     setActiveDropdown(null);
@@ -122,7 +127,7 @@ export const TechHeader: React.FC = () => {
       }}
     >
       {/* Main Framer Navbar */}
-      <nav className={`transition-all duration-500 py-3.5 ${
+      <nav className={`transition-all duration-300 py-3.5 ${
         isSolid
           ? 'bg-[#0E2015] border-b border-white/10 shadow-lg'
           : 'bg-transparent border-b border-transparent'
@@ -149,11 +154,17 @@ export const TechHeader: React.FC = () => {
               >
                 <Link
                   href={item.href}
-                  className="px-3.5 py-2 text-xs font-semibold !text-white/80 hover:!text-white flex items-center gap-1 rounded-full hover:bg-white/10 transition"
+                  className={`px-3.5 py-2 text-xs font-semibold flex items-center gap-1 rounded-full transition-colors duration-200 ${
+                    isSolid
+                      ? '!text-white/90 hover:!text-white hover:bg-white/10'
+                      : '!text-[#0E2015] hover:!text-[#1D4224] hover:bg-[#0E2015]/[0.07]'
+                  }`}
                 >
                   <span>{item.name}</span>
                   {item.children && (
-                    <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''} ${
+                      isSolid ? '!text-white/70' : '!text-[#0E2015]/70'
+                    }`} />
                   )}
                 </Link>
 

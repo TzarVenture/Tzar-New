@@ -210,6 +210,7 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                   alt={item.alt || item.label || ''}
                   draggable="false"
                   loading="lazy"
+                  decoding="async"
                 />
               </span>
               <span className="ag-panel__overlay" aria-hidden="true" />

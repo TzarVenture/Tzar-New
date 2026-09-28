@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import {
   ResponsiveContainer,
-  AreaChart,
-  Area,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -56,12 +56,12 @@ const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     const data: GrowthPoint = payload[0].payload;
     return (
-      <div className="relative z-50 rounded-xl bg-[#08130B]/95 border border-[#22C55E]/40 p-2.5 sm:p-3 shadow-[0_20px_40px_-5px_rgba(0,0,0,0.95)] backdrop-blur-xl text-white min-w-[160px] sm:min-w-[180px]">
-        <div className="flex items-center justify-between gap-2 border-b border-[#22C55E]/20 pb-1.5 mb-1.5">
+      <div className="relative z-50 rounded-xl bg-[#0E2015] border border-[#1D4224] p-2.5 sm:p-3 shadow-2xl shadow-black/90 text-white min-w-[160px] sm:min-w-[180px]">
+        <div className="flex items-center justify-between gap-2 border-b border-[#1D4224]/60 pb-1.5 mb-1.5">
           <span className="font-montserrat font-bold text-xs text-[#FFAE00]">
             {data.fullMonth} ({data.month})
           </span>
-          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#1D4224]/80 text-[#22C55E] border border-[#22C55E]/30">
+          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#1D4224] text-[#22C55E]">
             {data.growth}
           </span>
         </div>
@@ -84,12 +84,12 @@ const CustomDot = (props: any) => {
 
   if (isTarget) {
     return (
-      <circle cx={cx} cy={cy} r={4.5} fill="#FFAE00" stroke="#FFFFFF" strokeWidth={2} />
+      <circle cx={cx} cy={cy} r={4.5} fill="#22C55E" stroke="#FFAE00" strokeWidth={2} />
     );
   }
 
   return (
-    <circle cx={cx} cy={cy} r={3.5} fill="#22C55E" stroke="#050B07" strokeWidth={1.5} />
+    <circle cx={cx} cy={cy} r={3.5} fill="#22C55E" stroke="#09160E" strokeWidth={1.5} />
   );
 };
 
@@ -149,7 +149,7 @@ export default function SeoTrafficGrowthChart({ className = '' }: SeoTrafficGrow
       {/* Reduced Height on Mobile (220px) while maintaining Desktop (460px) */}
       <div className="w-full h-[220px] sm:h-[260px] md:h-[380px] lg:h-[460px]">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
+          <LineChart
             data={chartData}
             margin={
               isMobile
@@ -160,13 +160,8 @@ export default function SeoTrafficGrowthChart({ className = '' }: SeoTrafficGrow
             <defs>
               <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0%" stopColor="#1D4224" />
-                <stop offset="45%" stopColor="#22C55E" />
+                <stop offset="50%" stopColor="#22C55E" />
                 <stop offset="100%" stopColor="#FFAE00" />
-              </linearGradient>
-              <linearGradient id="areaGlow" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#22C55E" stopOpacity={0.25} />
-                <stop offset="50%" stopColor="#1D4224" stopOpacity={0.08} />
-                <stop offset="100%" stopColor="#050B07" stopOpacity={0} />
               </linearGradient>
               <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
                 <feGaussianBlur stdDeviation="2.5" result="glow" />
@@ -176,8 +171,8 @@ export default function SeoTrafficGrowthChart({ className = '' }: SeoTrafficGrow
 
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke="#22C55E"
-              opacity={0.12}
+              stroke="#1D4224"
+              opacity={0.2}
               vertical={false}
             />
 
@@ -205,21 +200,20 @@ export default function SeoTrafficGrowthChart({ className = '' }: SeoTrafficGrow
               content={<CustomTooltip />}
             />
 
-            <Area
+            <Line
               type="monotone"
               dataKey="visitors"
               stroke="url(#lineGradient)"
               strokeWidth={isMobile ? 2.5 : 3.5}
-              fill="url(#areaGlow)"
               dot={<CustomDot />}
-              activeDot={{ r: 6.5, fill: '#FFAE00', stroke: '#FFFFFF', strokeWidth: 2 }}
+              activeDot={{ r: 6, fill: '#FFAE00', stroke: '#FFFFFF', strokeWidth: 2 }}
               label={<CustomLabel />}
               filter="url(#glow)"
               isAnimationActive={true}
-              animationDuration={1100}
+              animationDuration={1000}
               animationEasing="ease-out"
             />
-          </AreaChart>
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>

@@ -348,28 +348,39 @@ export const SeoServicePage: React.FC = () => {
           01. HERO BANNER: 100VW PROGRESSIVE GROWTH GRAPH WITH FORM ON RIGHT
       ────────────────────────────────────────────────────────────────── */}
       {/* ──────────────────────────────────────────────────────────────────
-          01. HERO BANNER: RECHARTS LINE CHART (LEFT) + FORM (RIGHT)
+          01. HERO BANNER: RECHARTS AREA/LINE CHART (LEFT) + FORM (RIGHT)
+          Option 1: Velvety Obsidian & Aurora Mesh Glow
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative pt-20 pb-8 sm:pt-24 sm:pb-12 lg:pt-32 lg:pb-24 overflow-hidden border-b border-[#1D4224]/30 bg-[#09160E] flex items-center justify-center">
-        {/* Ambient background glow accents matching dark luxury theme */}
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#1D4224]/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative pt-20 pb-8 sm:pt-24 sm:pb-12 lg:pt-32 lg:pb-24 overflow-hidden border-b border-[#22C55E]/15 bg-[#050B07] bg-gradient-to-b from-[#050B07] via-[#09140D] to-[#040805] flex items-center justify-center">
+        {/* Micro dot grid background texture */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-35 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_60%,transparent_100%)]"
+          style={{
+            backgroundImage: 'radial-gradient(rgba(34, 197, 94, 0.22) 1px, transparent 1px)',
+            backgroundSize: '24px 24px',
+          }}
+        />
+
+        {/* Ambient Aurora blooms: Deep Emerald behind chart & Warm Amber accent */}
+        <div className="absolute top-1/4 left-1/4 -translate-y-1/2 w-[520px] h-[520px] bg-[#22C55E]/12 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute -bottom-16 left-1/3 w-[620px] h-[320px] bg-[#1D4224]/30 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-12 right-12 w-[400px] h-[400px] bg-[#FFAE00]/10 rounded-full blur-[110px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-10 items-center">
 
-            {/* Left Side: Line Chart from Recharts (top on mobile) */}
+            {/* Left Side: Growth Chart from Recharts (top on mobile) */}
             <div className="lg:col-span-7 xl:col-span-7 w-full flex flex-col justify-center">
               <SeoTrafficGrowthChart />
             </div>
 
             {/* Right Side: Contact Form (bottom on mobile) */}
             <div id="Contactform" className="lg:col-span-5 xl:col-span-5 w-full flex justify-center items-center mt-2 lg:mt-0">
-              <div className="w-full max-w-md rounded-3xl bg-[#0E2015]/95 backdrop-blur-md p-2.5 sm:p-3 border border-[#1D4224]/70 shadow-2xl shadow-black/80">
+              <div className="w-full max-w-md rounded-3xl bg-[#09140E]/90 backdrop-blur-2xl p-2.5 sm:p-3.5 border border-white/10 ring-1 ring-[#22C55E]/20 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]">
                 <LeadCaptureForm
                   title="Claim Your Free SEO Audit"
                   titleColor="#FFAE00"
-                  bgColor="#0E2015"
+                  bgColor="#09140E"
                   textColor="#FFFFFF"
                   buttonBgColor="#1D4224"
                   buttonTextColor="#FFFFFF"

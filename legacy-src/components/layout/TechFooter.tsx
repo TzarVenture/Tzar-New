@@ -19,6 +19,8 @@ export const TechFooter: React.FC = () => {
               <img
                 src="/assets/images/tzar-logo-main.png"
                 alt="TZAR VENTURE"
+                loading="lazy"
+                decoding="async"
                 className="h-11 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </Link>

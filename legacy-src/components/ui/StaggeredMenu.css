@@ -9,10 +9,21 @@
   pointer-events: none;
   overflow: hidden;
   touch-action: none;
+  visibility: hidden;
+  transition: visibility 0s linear 0.35s;
 }
 
 .staggered-menu-overlay.is-open {
   pointer-events: auto;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.staggered-menu-overlay:not(.is-open) .staggered-menu-panel,
+.staggered-menu-overlay:not(.is-open) .sm-prelayers,
+.staggered-menu-overlay:not(.is-open) .staggered-menu-backdrop {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .staggered-menu-backdrop {

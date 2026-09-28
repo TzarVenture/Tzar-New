@@ -20,7 +20,7 @@
   max-width: 80rem; /* 1280px (max-w-7xl) - matches site header and primary grid */
   margin-left: auto;
   margin-right: auto;
-  padding: 0.5rem 1rem 2.5rem; /* Mobile: compact bottom clearance */
+  padding: 0.5rem 0.75rem 2.5rem; /* Mobile: proper edge gutters maximizing width */
   min-height: 90vh;
   box-sizing: border-box;
 }
@@ -33,7 +33,7 @@
 
 @media (min-width: 1024px) {
   .scroll-stack-inner {
-    padding: 0.5rem 2rem 14rem; /* Desktop: unchanged (space is fine on PC) */
+    padding: 0.5rem 2rem 14rem; /* Desktop: unchanged */
   }
 }
 
@@ -45,33 +45,45 @@
   transform-origin: top center;
   will-change: transform;
   backface-visibility: hidden;
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.1);
-  height: auto;
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
   width: 100%;
-  margin: 6px 0 16px;
-  padding: 1.25rem 1.25rem 1.5rem;
+  margin: 0 auto;
+  padding: 1.1rem 1rem 1rem;
   border-radius: 24px;
   box-sizing: border-box;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   position: relative;
   overflow: hidden;
+  /* Dynamically vertically long for all mobile viewport heights */
+  height: clamp(500px, calc(100vh - 96px), 720px);
+  height: clamp(500px, calc(100dvh - 92px), 740px);
 }
 
 @media (min-width: 768px) {
   .scroll-stack-card {
-    margin: 10px 0 22px;
-    padding: 1.75rem 2.25rem 2rem;
-    border-radius: 30px;
-    box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.12);
+    padding: 1.25rem 1.75rem 1.25rem;
+    border-radius: 26px;
+    height: clamp(460px, 68vh, 510px);
   }
 }
 
 @media (min-width: 1024px) {
   .scroll-stack-card {
-    padding: 2rem 2.5rem 2.25rem;
-    border-radius: 32px;
+    padding: 1.5rem 2rem 1.5rem;
+    border-radius: 28px;
+    height: clamp(480px, 66vh, 520px);
   }
+}
+
+.stack-card-header {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
 }
 
 
@@ -88,4 +100,28 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ── Strict Responsive Device Visibility Guards ── */
+.stack-mobile-only {
+  display: block !important;
+}
+.stack-desktop-only {
+  display: none !important;
+}
+.stack-desktop-flex {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .stack-mobile-only {
+    display: none !important;
+  }
+  .stack-desktop-only {
+    display: block !important;
+  }
+  .stack-desktop-flex {
+    display: flex !important;
+  }
+}
+
 

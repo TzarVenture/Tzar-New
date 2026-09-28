@@ -61,15 +61,13 @@ body {
   a {
     text-decoration: none;
   }
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-button {
-  cursor: pointer;
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  button {
+    cursor: pointer;
+  }
 }
 
 /* ── CONTAINER ───────────────────────────────────────────────────────── */

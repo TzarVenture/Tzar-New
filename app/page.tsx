@@ -16,31 +16,31 @@ import { TrafficGrowthSection } from "@/legacy-src/components/home/tech/TrafficG
 
 const PHOTOSHOOT_ITEMS = [
   {
-    image: '/assets/images/MobileShowcase/show1-3.jpg',
+    image: '/assets/images/MobileShowcase/show1-3.webp',
     label: 'Kashmiri Kahwa Tea',
     tag: 'Happy Brews • Artisanal Food Styling',
     link: '#'
   },
   {
-    image: '/assets/images/MobileShowcase/show4.jpg',
+    image: '/assets/images/MobileShowcase/show4.webp',
     label: 'Cherry Blossom Serum',
     tag: 'Ellixee • Botanical Daily Glow',
     link: '#'
   },
   {
-    image: '/assets/images/MobileShowcase/show1-2.jpg',
+    image: '/assets/images/MobileShowcase/show1-2.webp',
     label: 'Rose Cardamom Brew',
     tag: 'Happy Brews • Floral Infusion',
     link: '#'
   },
   {
-    image: '/assets/images/MobileShowcase/show2.jpg',
+    image: '/assets/images/MobileShowcase/show2.webp',
     label: 'Grapevine Face Wash',
     tag: 'Ellixee • Cryo Mist Studio',
     link: '#'
   },
   {
-    image: '/assets/images/MobileShowcase/show1-1.jpg',
+    image: '/assets/images/MobileShowcase/show1-1.webp',
     label: 'Sunscreen SPF 50',
     tag: 'Ellixee • Botanical Sun Care',
     link: '#'
@@ -56,586 +56,432 @@ export default function Home() {
       {/* 01.5 • COMPANY ACHIEVEMENTS INSIGHTS (OUR GLOBAL IMPACT) */}
       <TechInsights />
 
-      {/* 01.6 • DYNAMIC SCROLLING CASE STUDY STACK */}
-      <section className="bg-[#EFE8E0] pt-6 sm:pt-8 pb-2 relative z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-1">
-          <span className="font-mono text-sm sm:text-base uppercase tracking-widest text-[#1D4224] font-black">
-            OUR CLIENT WORK & SYSTEM PROOF
+      {/* 01.6 • DYNAMIC SCROLLING CASE STUDY STACK (SHIPROCKET INSPIRED) */}
+      <section className="bg-[#EFE8E0] pt-10 sm:pt-14 pb-4 relative z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14 text-center">
+          <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-[#1D4224] font-black inline-block mb-2.5">
+            OUR CORE DISCIPLINES
           </span>
-          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight mt-1.5 max-w-3xl mx-auto leading-tight">
-            Systems Built for Peak Operational Performance
+          <h2 className="font-montserrat font-extrabold text-3xl sm:text-4xl lg:text-[42px] text-[#0E2015] tracking-tight max-w-3xl mx-auto leading-tight">
+            Why High-Growth Brands Partner with Tzar Venture
           </h2>
+          <p className="text-sm sm:text-base lg:text-lg text-[#5C6860] max-w-2xl mx-auto mt-3.5 leading-relaxed font-inter">
+            From high-converting web and mobile platforms to bespoke enterprise software, performance SEO, and packaging design—we engineer the complete systems that drive modern commercial scale.
+          </p>
         </div>
 
-        <ScrollStack useWindowScroll={true} stackPosition="64px" itemDistance={95} itemStackDistance={16} baseScale={0.92}>
-          {/* Card 01: Web Application Development */}
-          <ScrollStackItem itemClassName="bg-[#FDFBF7] text-[#0E2015] border border-[#1D4224]/10 shadow-xl">
-            <div className="flex flex-col gap-3 lg:gap-4 w-full text-left">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-[#1D4224]/10 pb-3">
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#1D4224] font-bold">01 • WEB APPLICATION DEVELOPMENT</span>
-                  <h3 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-[#0E2015] mt-0.5 mb-1">High-Performance Next.js Web Apps</h3>
-                  <p className="font-inter text-xs sm:text-sm text-[#5C6860] max-w-2xl leading-snug">
-                    We engineer lightning-fast custom web applications optimized for PageSpeed, technical SEO, and high-conversion client acquisition.
-                  </p>
+        <ScrollStack useWindowScroll={true} stackPosition="50px" itemDistance={280} itemStackDistance={22} baseScale={0.96}>
+          {/* ── CARD 01: WEB APPLICATION DEVELOPMENT ── */}
+          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#16331B] via-[#0F2413] to-[#07130A] text-white border border-white/10 shadow-2xl">
+            <div className="flex flex-col h-full justify-between">
+              {/* Card Header */}
+              <div className="pb-2.5 sm:pb-3 border-b border-white/10 shrink-0">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#B6F8DD]/70 font-medium">
+                    01 • Engineering Discipline
+                  </span>
+                  <span className="text-[11px] font-mono text-white/40 md:hidden">
+                    Swipe →
+                  </span>
                 </div>
-                <div className="flex flex-wrap items-center gap-1.5 shrink-0">
-                  <span className="px-2.5 py-1 rounded-full bg-[#1D4224]/5 border border-[#1D4224]/15 font-mono text-[11px] font-semibold text-[#1D4224]">Next.js 14</span>
-                  <span className="px-2.5 py-1 rounded-full bg-[#1D4224]/5 border border-[#1D4224]/15 font-mono text-[11px] font-semibold text-[#1D4224]">Sub-Second TTFB</span>
-                  <span className="px-2.5 py-1 rounded-full bg-[#1D4224]/5 border border-[#1D4224]/15 font-mono text-[11px] font-semibold text-[#1D4224]">Edge SSR</span>
-                </div>
+                <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight mt-1">
+                  Web Application Development
+                </h3>
+                <p className="text-xs sm:text-sm text-white/60 font-inter mt-1 leading-relaxed max-w-2xl">
+                  High-performance web platforms, headless commerce, and digital infrastructure engineered for commercial scale.
+                </p>
               </div>
 
-              {/* Desktop Showcase - Adshalaa Multi-Platform Hero & Ecosystem */}
-              <div className="hidden md:grid md:grid-cols-12 gap-4 items-stretch">
-                <div className="md:col-span-7 bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-4 rounded-2xl border border-[#1D4224]/10 shadow-inner group flex flex-col justify-between">
-                  <div className="flex items-center justify-between text-xs font-mono text-[#1D4224] font-semibold mb-2">
-                    <span className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
-                      Adshalaa Multi-Platform Ecosystem
-                    </span>
+              {/* Showcase Visual Area */}
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar md:grid md:grid-cols-3 md:gap-5 md:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
+                {/* Showcase 1: Multi-Platform Ecosystem */}
+                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
+                    <picture className="contents">
+                      <source media="(max-width: 767px)" srcSet="/mockups/duo-adshalaa-platform.webp" />
+                      <img
+                        src="/mockups/next-website/all-devices-black.webp"
+                        alt="Adshalaa Multi-Platform Architecture"
+                        decoding="async"
+                        className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                      />
+                    </picture>
                   </div>
-                  <div className="flex-1 flex items-center justify-center py-2">
-                    <img
-                      src="/mockups/next-website/all-devices-black.png"
-                      alt="Adshalaa Multi-Platform Web Ecosystem"
-                      className="w-full h-56 lg:h-64 object-contain drop-shadow-2xl group-hover:scale-[1.02] transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="flex items-center justify-between pt-2 border-t border-[#1D4224]/10 text-[11px] font-mono text-[#5C6860]">
-                    <span>Full-Stack EdTech Learning Architecture</span>
-                    <span className="text-[#1D4224] font-semibold">Cross-Platform Sync</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Adshalaa Platform</span>
+                    <span className="text-white/50 font-mono text-[11px]">Next.js • Cross-Device Ecosystem</span>
                   </div>
                 </div>
 
-                <div className="md:col-span-5 flex flex-col gap-3">
-                  <div className="flex-1 bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/10 shadow-inner group hover:border-[#1D4224]/30 transition-colors flex flex-col justify-between">
-                    <div className="flex items-center justify-between text-[11px] font-mono text-[#1D4224] font-semibold mb-1">
-                      <span>Ambrior Infrastructure Platform</span>
-                    </div>
-                    <div className="flex-1 flex items-center justify-center py-1">
+                {/* Showcase 2: Ambrior Infrastructure */}
+                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
+                    <picture className="contents">
+                      <source media="(max-width: 767px)" srcSet="/mockups/duo-ambrior-ecosystem.webp" />
                       <img
                         src="/mockups/Macbook-Air-ambrior.vercel.app.webp"
-                        alt="Ambrior Web Application Macbook Mockup"
-                        className="w-full h-24 lg:h-28 object-contain drop-shadow-md group-hover:scale-[1.02] transition-transform duration-300"
+                        alt="Ambrior Infrastructure"
+                        decoding="async"
+                        className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                       />
-                    </div>
-                    <div className="text-[10px] font-mono text-[#5C6860] text-center">Custom ERP Dashboard &amp; Heavy Industry SLA</div>
+                    </picture>
                   </div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Ambrior Infrastructure</span>
+                    <span className="text-white/50 font-mono text-[11px]">React • Cloud Operations Portal</span>
+                  </div>
+                </div>
 
-                  <div className="flex-1 bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/10 shadow-inner group hover:border-[#1D4224]/30 transition-colors flex flex-col justify-between">
-                    <div className="flex items-center justify-between text-[11px] font-mono text-[#1D4224] font-semibold mb-1">
-                      <span>Leorix E-Commerce Storefront</span>
-                      <span className="text-neutral-500">Shopify Custom</span>
-                    </div>
-                    <div className="flex-1 flex items-center justify-center py-1">
+                {/* Showcase 3: Leorix Luxury E-Commerce */}
+                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
+                    <picture className="contents">
+                      <source media="(max-width: 767px)" srcSet="/mockups/duo-leorix-luxury.webp" />
                       <img
                         src="/mockups/Macbook-Air-beleorix.com-shopify.webp"
-                        alt="Leorix Footwear Web Platform"
-                        className="w-full h-24 lg:h-28 object-contain drop-shadow-md group-hover:scale-[1.02] transition-transform duration-300"
+                        alt="Leorix Luxury E-Commerce"
+                        decoding="async"
+                        className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                       />
-                    </div>
-                    <div className="text-[10px] font-mono text-[#5C6860] text-center">Custom Cart Drawer &amp; Instant Search Grid</div>
+                    </picture>
                   </div>
-                </div>
-              </div>
-
-              {/* Mobile Showcase - Rich & Prominent */}
-              <div className="md:hidden flex flex-col gap-3">
-                <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/10 shadow-sm text-center">
-                  <div className="flex items-center justify-center font-mono text-[10px] text-[#1D4224] font-bold mb-1.5">
-                    <span>Adshalaa Multi-Platform</span>
-                  </div>
-                  <img
-                    src="/mockups/next-website/all-devices-black.png"
-                    alt="Adshalaa Multi-Platform Web Suite"
-                    className="w-full h-44 sm:h-52 object-contain drop-shadow-xl mx-auto"
-                  />
-                  <div className="font-mono text-[9px] text-[#5C6860] mt-1.5">Full Stack Next.js 14 Responsive Ecosystem</div>
-                </div>
-                <div className="grid grid-cols-2 gap-2.5">
-                  <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-2.5 rounded-xl border border-[#1D4224]/10 text-center flex flex-col justify-between">
-                    <div className="font-mono text-[10px] text-[#1D4224] font-bold mb-1">Ambrior ERP</div>
-                    <img src="/mockups/Macbook-Air-ambrior.vercel.app.webp" alt="Ambrior ERP" className="w-full h-16 sm:h-20 object-contain mx-auto my-1" />
-                    <div className="font-mono text-[8px] text-[#5C6860]">Infrastructure Portal</div>
-                  </div>
-                  <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-2.5 rounded-xl border border-[#1D4224]/10 text-center flex flex-col justify-between">
-                    <div className="font-mono text-[10px] text-[#1D4224] font-bold mb-1">Leorix Store</div>
-                    <img src="/mockups/Macbook-Air-beleorix.com-shopify.webp" alt="Leorix Footwear" className="w-full h-16 sm:h-20 object-contain mx-auto my-1" />
-                    <div className="font-mono text-[8px] text-[#5C6860]">Custom Shopify</div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Leorix E-Commerce</span>
+                    <span className="text-white/50 font-mono text-[11px]">Headless Shopify • Luxury Drops</span>
                   </div>
                 </div>
               </div>
             </div>
           </ScrollStackItem>
 
-          {/* Card 02: Mobile Application Development */}
-          <ScrollStackItem itemClassName="bg-[#1D4224] text-white border border-white/10 shadow-xl">
-            <div className="flex flex-col gap-3 lg:gap-4 w-full text-left">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-white/10 pb-3">
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#B6F8DD] font-bold">02 • MOBILE APPLICATION DEVELOPMENT</span>
-                  <h3 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-white mt-0.5 mb-1">Native Mobile Engineering</h3>
-                  <p className="font-inter text-xs sm:text-sm text-[#B6F8DD]/80 max-w-2xl leading-snug">
-                    High-ROI mobile applications built with React Native and Flutter, fully integrated with live tracking, IoT systems, and clean checkout portals.
-                  </p>
+          {/* ── CARD 02: MOBILE APPLICATION DEVELOPMENT ── */}
+          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#0B1724] via-[#0D1C1B] to-[#060D0B] text-white border border-[#B6F8DD]/20 shadow-2xl">
+            <div className="flex flex-col h-full justify-between">
+              {/* Card Header */}
+              <div className="pb-2.5 sm:pb-3 border-b border-white/10 shrink-0">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#B6F8DD]/70 font-medium">
+                    02 • Mobile Discipline
+                  </span>
+                  <span className="text-[11px] font-mono text-white/40 md:hidden">
+                    Swipe →
+                  </span>
                 </div>
-                <div className="flex flex-wrap items-center gap-1.5 shrink-0">
-                  <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 font-mono text-[11px] font-semibold text-[#B6F8DD]">React Native &amp; Flutter</span>
-                  <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 font-mono text-[11px] font-semibold text-[#B6F8DD]">Offline-First Sync</span>
-                  <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 font-mono text-[11px] font-semibold text-[#B6F8DD]">Live Sockets</span>
-                </div>
+                <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight mt-1">
+                  Mobile Application Development
+                </h3>
+                <p className="text-xs sm:text-sm text-white/60 font-inter mt-1 leading-relaxed max-w-2xl">
+                  Native iOS and Android platforms built with fluid 120Hz interactions, biometric security, and offline-first data sync.
+                </p>
               </div>
 
-              {/* Desktop Showcase - 4 Tall Hero iPhone 14 Pro Max devices */}
-              <div className="hidden md:grid md:grid-cols-4 gap-3 lg:gap-4 items-stretch justify-center pt-1">
-                <div className="bg-white/5 hover:bg-white/10 p-2.5 lg:p-3 rounded-2xl border border-white/10 text-center group hover:border-[#B6F8DD]/40 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
-                  <div className="flex-1 flex items-center justify-center py-1">
+              {/* Showcase Visual Area */}
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-4 sm:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
+                {/* Phone 1: Kaam Milega */}
+                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
-                      src="/mockups/iPhone-14-PRO-MAX-kaammilega.com.webp"
-                      alt="Kaam Milega Mobile App"
-                      className="w-full h-48 lg:h-54 object-contain drop-shadow-2xl mx-auto group-hover:scale-105 transition-transform duration-300"
+                      src="/mockups/app-kaammilega-native.webp"
+                      alt="Kaam Milega Android App"
+                      decoding="async"
+                      className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="pt-2 border-t border-white/10">
-                    <div className="font-mono text-xs lg:text-sm text-white font-bold">Kaam Milega</div>
-                    <div className="font-inter text-[10px] text-[#B6F8DD]/80 mt-0.5">Recruitment Engine • iOS &amp; Android</div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Kaam Milega</span>
+                    <span className="text-white/50 font-mono text-[11px]">Android • Workforce Engine</span>
                   </div>
                 </div>
 
-                <div className="bg-white/5 hover:bg-white/10 p-2.5 lg:p-3 rounded-2xl border border-white/10 text-center group hover:border-[#B6F8DD]/40 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
-                  <div className="flex-1 flex items-center justify-center py-1">
+                {/* Phone 2: Leorix Commerce */}
+                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
-                      src="/mockups/iPhone-14-PRO-MAX-beleorix.com-shopify.webp"
-                      alt="Leorix Mobile Commerce"
-                      className="w-full h-48 lg:h-54 object-contain drop-shadow-2xl mx-auto group-hover:scale-105 transition-transform duration-300"
+                      src="/mockups/app-leorix-native.webp"
+                      alt="Leorix Commerce iOS App"
+                      decoding="async"
+                      className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="pt-2 border-t border-white/10">
-                    <div className="font-mono text-xs lg:text-sm text-white font-bold">Leorix Commerce</div>
-                    <div className="font-inter text-[10px] text-[#B6F8DD]/80 mt-0.5">D2C Mobile Store • Fast Checkout</div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Leorix Commerce</span>
+                    <span className="text-white/50 font-mono text-[11px]">iOS • Luxury Drops</span>
                   </div>
                 </div>
 
-                <div className="bg-white/5 hover:bg-white/10 p-2.5 lg:p-3 rounded-2xl border border-white/10 text-center group hover:border-[#B6F8DD]/40 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
-                  <div className="flex-1 flex items-center justify-center py-1">
+                {/* Phone 3: Adshalaa Learning */}
+                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
-                      src="/mockups/iPhone-14-PRO-MAX-ambrior.vercel.app.webp"
-                      alt="Ambrior Field Tracking"
-                      className="w-full h-48 lg:h-54 object-contain drop-shadow-2xl mx-auto group-hover:scale-105 transition-transform duration-300"
+                      src="/mockups/app-adshalaa-native.webp"
+                      alt="Adshalaa Learning App"
+                      decoding="async"
+                      className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="pt-2 border-t border-white/10">
-                    <div className="font-mono text-xs lg:text-sm text-white font-bold">Ambrior Ops</div>
-                    <div className="font-inter text-[10px] text-[#B6F8DD]/80 mt-0.5">Civil Field Tracking • Offline Sync</div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Adshalaa Learning</span>
+                    <span className="text-white/50 font-mono text-[11px]">Android • Interactive Streaming</span>
                   </div>
                 </div>
 
-                <div className="bg-white/5 hover:bg-white/10 p-2.5 lg:p-3 rounded-2xl border border-white/10 text-center group hover:border-[#B6F8DD]/40 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
-                  <div className="flex-1 flex items-center justify-center py-1">
+                {/* Phone 4: Ambrior Operations */}
+                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
-                      src="/mockups/next-website/iPhone-14-PRO-MAX-clicks4coupon.xyz.png"
-                      alt="ClicksTracker Mobile"
-                      className="w-full h-48 lg:h-54 object-contain drop-shadow-2xl mx-auto group-hover:scale-105 transition-transform duration-300"
+                      src="/mockups/app-ambrior-native.webp"
+                      alt="Ambrior Operations iOS App"
+                      decoding="async"
+                      className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="pt-2 border-t border-white/10">
-                    <div className="font-mono text-xs lg:text-sm text-white font-bold">ClicksTracker</div>
-                    <div className="font-inter text-[10px] text-[#B6F8DD]/80 mt-0.5">Live Ad Spend • Socket Analytics</div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Ambrior Operations</span>
+                    <span className="text-white/50 font-mono text-[11px]">iOS • Field Telemetry</span>
                   </div>
-                </div>
-              </div>
-
-              {/* Mobile Showcase - Luxurious Full-Card Carousel */}
-              <div className="md:hidden flex flex-col gap-2">
-                <div className="flex gap-3 overflow-x-auto no-scrollbar snap-x snap-mandatory py-1">
-                  <div className="snap-center shrink-0 w-[68%] bg-white/5 p-3 rounded-2xl border border-white/15 text-center flex flex-col justify-between shadow-lg">
-                    <img src="/mockups/iPhone-14-PRO-MAX-kaammilega.com.webp" alt="Kaam Milega" className="w-full h-52 sm:h-60 object-contain mx-auto my-1 drop-shadow-xl" />
-                    <div>
-                      <div className="font-mono text-xs text-white font-bold">Kaam Milega</div>
-                      <div className="font-mono text-[9px] text-[#B6F8DD]/70">Recruitment Platform • iOS &amp; Android</div>
-                    </div>
-                  </div>
-                  <div className="snap-center shrink-0 w-[68%] bg-white/5 p-3 rounded-2xl border border-white/15 text-center flex flex-col justify-between shadow-lg">
-                    <img src="/mockups/iPhone-14-PRO-MAX-beleorix.com-shopify.webp" alt="Leorix Commerce" className="w-full h-52 sm:h-60 object-contain mx-auto my-1 drop-shadow-xl" />
-                    <div>
-                      <div className="font-mono text-xs text-white font-bold">Leorix Commerce</div>
-                      <div className="font-mono text-[9px] text-[#B6F8DD]/70">D2C Mobile Store • Flutter</div>
-                    </div>
-                  </div>
-                  <div className="snap-center shrink-0 w-[68%] bg-white/5 p-3 rounded-2xl border border-white/15 text-center flex flex-col justify-between shadow-lg">
-                    <img src="/mockups/iPhone-14-PRO-MAX-ambrior.vercel.app.webp" alt="Ambrior Mobile" className="w-full h-52 sm:h-60 object-contain mx-auto my-1 drop-shadow-xl" />
-                    <div>
-                      <div className="font-mono text-xs text-white font-bold">Ambrior Mobile</div>
-                      <div className="font-mono text-[9px] text-[#B6F8DD]/70">Field Ops Tracker • Offline Sync</div>
-                    </div>
-                  </div>
-                  <div className="snap-center shrink-0 w-[68%] bg-white/5 p-3 rounded-2xl border border-white/15 text-center flex flex-col justify-between shadow-lg">
-                    <img src="/mockups/next-website/iPhone-14-PRO-MAX-clicks4coupon.xyz.png" alt="ClicksTracker" className="w-full h-52 sm:h-60 object-contain mx-auto my-1 drop-shadow-xl" />
-                    <div>
-                      <div className="font-mono text-xs text-white font-bold">ClicksTracker</div>
-                      <div className="font-mono text-[9px] text-[#B6F8DD]/70">Ad Spend Routing • Live Sockets</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-center font-mono text-[9px] text-[#B6F8DD]/60">Swipe to explore 4 native mobile apps</div>
-              </div>
-            </div>
-          </ScrollStackItem>
-
-          {/* Card 03: Enterprise Business Software */}
-          <ScrollStackItem itemClassName="bg-[#FDFBF7] text-[#0E2015] border border-[#1D4224]/10 shadow-xl">
-            <div className="flex flex-col gap-3 lg:gap-4 w-full text-left">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-[#1D4224]/10 pb-3">
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#1D4224] font-bold">03 • ENTERPRISE BUSINESS SOFTWARE</span>
-                  <h3 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-[#0E2015] mt-0.5 mb-1">Custom CRM &amp; Operations Trackers</h3>
-                  <p className="font-inter text-xs sm:text-sm text-[#5C6860] max-w-2xl leading-snug">
-                    Ditch generic monthly subscriptions. We construct tailor-made CRMs, Kanban task managers, and lead routers modeled exactly around your team.
-                  </p>
-                </div>
-                <div className="flex flex-wrap items-center gap-1.5 shrink-0">
-                  <span className="px-2.5 py-1 rounded-full bg-[#1D4224]/5 border border-[#1D4224]/15 font-mono text-[11px] font-semibold text-[#1D4224]">Multi-Tenant SaaS</span>
-                  <span className="px-2.5 py-1 rounded-full bg-[#1D4224]/5 border border-[#1D4224]/15 font-mono text-[11px] font-semibold text-[#1D4224]">Automated Lead Dispatch</span>
-                  <span className="px-2.5 py-1 rounded-full bg-[#1D4224]/5 border border-[#1D4224]/15 font-mono text-[11px] font-semibold text-[#1D4224]">Revenue BI</span>
-                </div>
-              </div>
-
-              {/* Desktop Showcase - Dual Enterprise CRM Systems */}
-              <div className="hidden md:grid md:grid-cols-2 gap-4 mt-1">
-                <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-4 rounded-2xl border border-[#1D4224]/10 shadow-inner group hover:border-[#1D4224]/30 transition-all flex flex-col justify-between">
-                  <div className="flex items-center justify-between font-mono text-xs text-[#1D4224] font-bold mb-2">
-                    <span className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
-                      Tzar CRM Enterprise Suite
-                    </span>
-                  </div>
-                  <div className="relative my-2">
-                    <img
-                      src="/mockups/Macbook-Air-tzar-crm.vercel.app.webp"
-                      alt="Tzar CRM Macbook"
-                      className="w-full h-44 lg:h-52 object-contain drop-shadow-xl group-hover:scale-[1.01] transition-transform"
-                    />
-                    <img
-                      src="/mockups/iPad-PRO-11-tzar-crm.vercel.app.webp"
-                      alt="Tzar CRM iPad Pro"
-                      className="absolute -bottom-2 -right-1 w-24 lg:w-28 object-contain drop-shadow-2xl rounded-lg"
-                    />
-                  </div>
-                  <div className="pt-2 border-t border-[#1D4224]/10 flex items-center justify-between text-[11px] font-mono text-[#5C6860]">
-                    <span>Lead Pipeline &amp; Won Deals Forecasting</span>
-                    <span className="text-[#1D4224] font-semibold">Real-Time BI</span>
-                  </div>
-                </div>
-
-                <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-4 rounded-2xl border border-[#1D4224]/10 shadow-inner group hover:border-[#1D4224]/30 transition-all flex flex-col justify-between">
-                  <div className="flex items-center justify-between font-mono text-xs text-[#1D4224] font-bold mb-2">
-                    <span className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
-                      AY Astute Group CRM
-                    </span>
-                  </div>
-                  <div className="relative my-2">
-                    <img
-                      src="/mockups/Macbook-Air-ay-astute-group-crm.vercel.app (1).webp"
-                      alt="AY Astute CRM Macbook"
-                      className="w-full h-44 lg:h-52 object-contain drop-shadow-xl group-hover:scale-[1.01] transition-transform"
-                    />
-                    <img
-                      src="/mockups/iPad-PRO-11-ay-astute-group-crm.vercel.app.webp"
-                      alt="AY Astute CRM iPad Pro"
-                      className="absolute -bottom-2 -right-1 w-24 lg:w-28 object-contain drop-shadow-2xl rounded-lg"
-                    />
-                  </div>
-                  <div className="pt-2 border-t border-[#1D4224]/10 flex items-center justify-between text-[11px] font-mono text-[#5C6860]">
-                    <span>FTA Corporate Tax Retainers &amp; Audit Logs</span>
-                    <span className="text-[#1D4224] font-semibold">UAE Compliance</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mobile Showcase - Rich Dual Card */}
-              <div className="md:hidden flex flex-col gap-3">
-                <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/10 text-center relative">
-                  <div className="flex items-center justify-center font-mono text-[10px] text-[#1D4224] font-bold mb-1.5">
-                    <span>Tzar CRM Suite</span>
-                  </div>
-                  <div className="relative">
-                    <img src="/mockups/Macbook-Air-tzar-crm.vercel.app.webp" alt="Tzar CRM" className="w-full h-32 sm:h-36 object-contain mx-auto" />
-                    <img src="/mockups/iPad-PRO-11-tzar-crm.vercel.app.webp" alt="Tzar CRM iPad" className="absolute -bottom-1 right-2 w-16 object-contain drop-shadow-lg" />
-                  </div>
-                  <div className="font-mono text-[9px] text-[#5C6860] mt-1.5">Lead Pipeline &amp; Won Deals Tracker</div>
-                </div>
-                <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/10 text-center relative">
-                  <div className="flex items-center justify-center font-mono text-[10px] text-[#1D4224] font-bold mb-1.5">
-                    <span>AY Astute Group CRM</span>
-                  </div>
-                  <div className="relative">
-                    <img src="/mockups/Macbook-Air-ay-astute-group-crm.vercel.app (1).webp" alt="AY Astute CRM" className="w-full h-32 sm:h-36 object-contain mx-auto" />
-                    <img src="/mockups/iPad-PRO-11-ay-astute-group-crm.vercel.app.webp" alt="AY Astute CRM iPad" className="absolute -bottom-1 right-2 w-16 object-contain drop-shadow-lg" />
-                  </div>
-                  <div className="font-mono text-[9px] text-[#5C6860] mt-1.5">Corporate Tax Retainers &amp; Audit Logs</div>
                 </div>
               </div>
             </div>
           </ScrollStackItem>
 
-          {/* Card 04: Digital Marketing & SEO */}
-          <ScrollStackItem itemClassName="bg-[#1D4224] text-white border border-white/10 shadow-xl">
-            <div className="flex flex-col gap-3 lg:gap-4 w-full text-left">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-white/10 pb-3">
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#B6F8DD] font-bold">04 • DIGITAL MARKETING &amp; SEO</span>
-                  <h3 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-white mt-0.5 mb-1">Technical SEO &amp; Ad Spend ROAS</h3>
-                  <p className="font-inter text-xs sm:text-sm text-[#B6F8DD]/80 max-w-2xl leading-snug">
-                    Secure Page 1 rankings on Google. We build custom landing pages and semantic schema wrappers to convert incoming search traffic into sales.
-                  </p>
+          {/* ── CARD 03: ENTERPRISE BUSINESS SOFTWARE & CRM ── */}
+          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#1C1C18] via-[#1F261D] to-[#0E130F] text-white border border-[#FFAE00]/20 shadow-2xl">
+            <div className="flex flex-col h-full justify-between">
+              {/* Card Header */}
+              <div className="pb-2.5 sm:pb-3 border-b border-white/10 shrink-0">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#FFAE00]/80 font-medium">
+                    03 • Enterprise Discipline
+                  </span>
+                  <span className="text-[11px] font-mono text-white/40 md:hidden">
+                    Swipe →
+                  </span>
                 </div>
-                <div className="flex flex-wrap items-center gap-1.5 shrink-0">
-                  <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 font-mono text-[11px] font-semibold text-[#B6F8DD]">Google Page 1 Indexing</span>
-                  <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 font-mono text-[11px] font-semibold text-[#B6F8DD]">Attribution Engine</span>
-                  <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 font-mono text-[11px] font-semibold text-[#B6F8DD]">ROAS Funnels</span>
-                </div>
+                <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight mt-1">
+                  Enterprise Business Software &amp; CRM
+                </h3>
+                <p className="text-xs sm:text-sm text-white/60 font-inter mt-1 leading-relaxed max-w-2xl">
+                  Bespoke enterprise portals, automated client onboarding workflows, and centralized revenue analytics pipelines.
+                </p>
               </div>
 
-              {/* Desktop Showcase - Video Walkthrough & Traffic Engine */}
-              <div className="hidden md:grid md:grid-cols-12 gap-4 items-stretch">
-                <div className="md:col-span-7 bg-white/5 p-4 rounded-2xl border border-white/10 relative overflow-hidden group flex flex-col justify-between shadow-inner">
-                  <div className="flex items-center justify-between text-xs font-mono text-[#B6F8DD] font-bold mb-2">
-                    <span className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                      Live Store E-Commerce Walkthrough
-                    </span>
-                  </div>
-                  <div className="flex-1 flex items-center justify-center py-1">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="auto"
-                      poster="/mockups/Macbook-Air-beleorix.com-shopify.webp"
-                      className="w-full h-56 lg:h-64 object-contain drop-shadow-2xl group-hover:scale-[1.01] transition-transform duration-300"
-                    >
-                      <source src="/mockups/Macbook-Air-beleorix.com-1o-n_uq5l3zs3r.webm" type="video/webm" />
-                    </video>
-                  </div>
-                  <div className="flex items-center justify-between pt-2 border-t border-white/10 text-[11px] font-mono text-[#B6F8DD]/80">
-                    <span>High-Velocity D2C Funnel &amp; Checkout Optimization</span>
-                    <span className="text-white font-semibold">+340% ROAS Lift</span>
-                  </div>
-                </div>
-
-                <div className="md:col-span-5 flex flex-col gap-3 justify-between">
-                  <div className="flex-1 bg-white/5 hover:bg-white/10 p-3.5 rounded-2xl border border-white/10 group transition-all flex flex-col justify-between">
-                    <div className="flex items-center justify-between text-[11px] font-mono text-[#B6F8DD] font-semibold mb-1">
-                      <span>ClicksTracker Analytics Engine</span>
-                    </div>
-                    <div className="flex-1 flex items-center justify-center py-1">
+              {/* Showcase Visual Area */}
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar md:grid md:grid-cols-2 md:gap-6 md:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
+                {/* Showcase 1: Tzar CRM Platform */}
+                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
+                    {/* Mobile Only (< 768px): High-End Responsive Duo */}
+                    <div className="stack-mobile-only w-full h-full">
                       <img
-                        src="/mockups/next-website/Macbook-Air-clicks4coupon.xyz.png"
-                        alt="ClicksTracker Traffic Engine"
-                        className="w-full h-24 lg:h-28 object-contain drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-300"
+                        src="/mockups/duo-tzar-crm.webp"
+                        alt="Tzar CRM Enterprise Suite"
+                        decoding="async"
+                        className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl mx-auto"
                       />
                     </div>
-                    <div className="pt-1.5 border-t border-white/10 text-[10px] font-mono text-[#B6F8DD]/70 text-center">
-                      Real-Time Ad Fraud Filter &amp; Multi-Touch Conversion Attribution
-                    </div>
-                  </div>
-
-                  <div className="flex-1 bg-white/5 hover:bg-white/10 p-3.5 rounded-2xl border border-white/10 group transition-all flex flex-col justify-between">
-                    <div className="flex items-center justify-between text-[11px] font-mono text-[#B6F8DD] font-semibold mb-1">
-                      <span>Multi-Channel Conversion Portal</span>
-                      <span className="text-white/70">Search &amp; Paid Traffic</span>
-                    </div>
-                    <div className="flex-1 flex items-center justify-center py-1">
+                    {/* Desktop Only (>= 768px): Original MacBook + iPad Corner Overlay */}
+                    <div className="stack-desktop-flex flex-1 min-h-0 w-full h-full items-center justify-center relative overflow-hidden">
                       <img
-                        src="/mockups/next-website/all-devices-black.png"
-                        alt="Multi-Channel Portal"
-                        className="w-full h-24 lg:h-28 object-contain drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-300"
+                        src="/mockups/Macbook-Air-tzar-crm.vercel.app.webp"
+                        alt="Tzar CRM Enterprise Suite"
+                        decoding="async"
+                        className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                      />
+                      <img
+                        src="/mockups/iPad-PRO-11-tzar-crm.vercel.app.webp"
+                        alt="Tzar CRM Tablet"
+                        decoding="async"
+                        className="absolute bottom-2 right-2 sm:right-4 w-24 sm:w-32 object-contain drop-shadow-2xl"
                       />
                     </div>
-                    <div className="pt-1.5 border-t border-white/10 text-[10px] font-mono text-[#B6F8DD]/70 text-center">
-                      Google Page 1 Schema, Meta CAPI &amp; Omnichannel Lead Routing
+                  </div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Tzar CRM Suite</span>
+                    <span className="text-white/50 font-mono text-[11px]">PostgreSQL • Revenue Pipeline</span>
+                  </div>
+                </div>
+
+                {/* Showcase 2: AY Astute Group CRM */}
+                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
+                    {/* Mobile Only (< 768px): High-End Responsive Duo */}
+                    <div className="stack-mobile-only w-full h-full">
+                      <img
+                        src="/mockups/duo-ay-astute-crm.webp"
+                        alt="AY Astute Group CRM"
+                        decoding="async"
+                        className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl mx-auto"
+                      />
+                    </div>
+                    {/* Desktop Only (>= 768px): Original MacBook + iPad Corner Overlay */}
+                    <div className="stack-desktop-flex flex-1 min-h-0 w-full h-full items-center justify-center relative overflow-hidden">
+                      <img
+                        src="/mockups/Macbook-Air-ay-astute-group-crm.vercel.app (1).webp"
+                        alt="AY Astute Group CRM"
+                        decoding="async"
+                        className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                      />
+                      <img
+                        src="/mockups/iPad-PRO-11-ay-astute-group-crm.vercel.app.webp"
+                        alt="AY Astute Tablet"
+                        decoding="async"
+                        className="absolute bottom-2 right-2 sm:right-4 w-24 sm:w-32 object-contain drop-shadow-2xl"
+                      />
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Mobile Showcase - Rich & Visually Attractive */}
-              <div className="md:hidden flex flex-col gap-3">
-                <div className="bg-white/5 p-3 rounded-2xl border border-white/10 shadow-sm text-center">
-                  <div className="flex items-center justify-between font-mono text-[10px] text-[#B6F8DD] font-bold mb-1.5">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                      Live Store Walkthrough
-                    </span>
-                  </div>
-                  <div className="relative py-1">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="auto"
-                      poster="/mockups/Macbook-Air-beleorix.com-shopify.webp"
-                      className="w-full h-44 sm:h-52 object-contain drop-shadow-xl mx-auto"
-                    >
-                      <source src="/mockups/Macbook-Air-beleorix.com-1o-n_uq5l3zs3r.webm" type="video/webm" />
-                    </video>
-                  </div>
-                  <div className="flex items-center justify-between pt-1.5 border-t border-white/10 font-mono text-[9px] text-[#B6F8DD]/90">
-                    <span>Shopify Custom Architecture</span>
-                    <span className="text-white font-semibold">+340% ROAS</span>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-2.5">
-                  <div className="bg-white/5 p-2.5 rounded-xl border border-white/10 text-center flex flex-col justify-between shadow-md">
-                    <div className="font-mono text-[10px] text-[#B6F8DD] font-bold">ClicksTracker</div>
-                    <img src="/mockups/next-website/Macbook-Air-clicks4coupon.xyz.png" alt="ClicksTracker" className="w-full h-16 sm:h-20 object-contain mx-auto my-1 drop-shadow-md" />
-                    <div className="font-mono text-[8px] text-white/70">Ad Attribution</div>
-                  </div>
-                  <div className="bg-white/5 p-2.5 rounded-xl border border-white/10 text-center flex flex-col justify-between shadow-md">
-                    <div className="font-mono text-[10px] text-[#B6F8DD] font-bold">Multi-Channel</div>
-                    <img src="/mockups/next-website/all-devices-black.png" alt="Multi-Channel" className="w-full h-16 sm:h-20 object-contain mx-auto my-1 drop-shadow-md" />
-                    <div className="font-mono text-[8px] text-white/70">Paid Traffic</div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">AY Astute Portal</span>
+                    <span className="text-white/50 font-mono text-[11px]">Next.js • Governance Workflow</span>
                   </div>
                 </div>
               </div>
             </div>
           </ScrollStackItem>
 
-          {/* Card 05: Product Designing & Packaging */}
-          <ScrollStackItem itemClassName="bg-[#FDFBF7] text-[#0E2015] border border-[#1D4224]/10 shadow-xl">
-            <div className="flex flex-col gap-3 lg:gap-4 w-full text-left">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-[#1D4224]/10 pb-3">
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#1D4224] font-bold">05 • PRODUCT DESIGNING &amp; PACKAGING</span>
-                  <h3 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-[#0E2015] mt-0.5 mb-1">3D Packaging &amp; Print Dielines</h3>
-                  <p className="font-inter text-xs sm:text-sm text-[#5C6860] max-w-2xl leading-snug">
-                    Scale your e-commerce and retail presence with custom 3D packaging mockups, print-ready vector dielines, and typography guides.
-                  </p>
+          {/* ── CARD 04: DIGITAL MARKETING & TECHNICAL SEO ── */}
+          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#0E1A12] via-[#15281B] to-[#08120A] text-white border border-white/10 shadow-2xl">
+            <div className="flex flex-col h-full justify-between">
+              {/* Card Header */}
+              <div className="pb-2.5 sm:pb-3 border-b border-white/10 shrink-0">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#B6F8DD]/70 font-medium">
+                    04 • Growth Discipline
+                  </span>
+                  <span className="text-[11px] font-mono text-white/40 md:hidden">
+                    Swipe →
+                  </span>
                 </div>
-                <div className="flex flex-wrap items-center gap-1.5 shrink-0">
-                  <span className="px-2.5 py-1 rounded-full bg-[#1D4224]/5 border border-[#1D4224]/15 font-mono text-[11px] font-semibold text-[#1D4224]">3D CAD &amp; Photoreal Renders</span>
-                  <span className="px-2.5 py-1 rounded-full bg-[#1D4224]/5 border border-[#1D4224]/15 font-mono text-[11px] font-semibold text-[#1D4224]">Vector Dielines</span>
-                  <span className="px-2.5 py-1 rounded-full bg-[#1D4224]/5 border border-[#1D4224]/15 font-mono text-[11px] font-semibold text-[#1D4224]">Shelf Impact</span>
-                </div>
+                <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight mt-1">
+                  Digital Marketing &amp; Technical SEO
+                </h3>
+                <p className="text-xs sm:text-sm text-white/60 font-inter mt-1 leading-relaxed max-w-2xl">
+                  Data-driven organic search domination, programmatic architecture, and full-funnel paid media acquisition.
+                </p>
               </div>
 
-              {/* Desktop Showcase - 5 Luxury Packaging Pedestals */}
-              <div className="hidden md:grid md:grid-cols-5 gap-3 lg:gap-3.5 mt-1">
-                <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/10 text-center group hover:border-[#1D4224]/40 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-                  <div className="overflow-hidden rounded-xl bg-neutral-900/5 p-2 flex items-center justify-center my-1">
+              {/* Showcase Visual Area */}
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar md:grid md:grid-cols-2 md:gap-6 md:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
+                {/* Showcase 1: Organic SEO */}
+                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
                     <img
-                      src="/assets/images/projects/printPackaging1.png"
-                      alt="Happy Brews Tea Canister Packaging"
-                      className="w-full aspect-square h-36 lg:h-44 object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
+                      src="/assets/images/seo-growth-dashboard.webp"
+                      alt="Organic Traffic Growth Dashboard"
+                      decoding="async"
+                      className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl rounded-lg hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="pt-2 border-t border-[#1D4224]/10">
-                    <div className="font-mono text-xs lg:text-sm text-[#0E2015] font-bold">Happy Brews</div>
-                    <div className="font-inter text-[10px] text-[#5C6860] mt-0.5">Luxury Tea Canister</div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Organic Search Authority</span>
+                    <span className="text-white/50 font-mono text-[11px]">Programmatic SEO • Core Web Vitals</span>
                   </div>
                 </div>
 
-                <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/10 text-center group hover:border-[#1D4224]/40 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-                  <div className="overflow-hidden rounded-xl bg-neutral-900/5 p-2 flex items-center justify-center my-1">
+                {/* Showcase 2: Paid ROAS */}
+                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
                     <img
-                      src="/assets/images/projects/printPackaging2.png"
-                      alt="Skin Easi Dermatological Packaging"
-                      className="w-full aspect-square h-36 lg:h-44 object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
+                      src="/assets/images/paid-performance-dashboard.webp"
+                      alt="Paid Acquisition Performance Dashboard"
+                      decoding="async"
+                      className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl rounded-lg hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="pt-2 border-t border-[#1D4224]/10">
-                    <div className="font-mono text-xs lg:text-sm text-[#0E2015] font-bold">Skin Easi</div>
-                    <div className="font-inter text-[10px] text-[#5C6860] mt-0.5">Dieline Box &amp; Tube</div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Paid Acquisition Suite</span>
+                    <span className="text-white/50 font-mono text-[11px]">Meta &amp; Google Performance Max</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollStackItem>
+
+          {/* ── CARD 05: PRODUCT DESIGNING & PACKAGING ── */}
+          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#1E3B24] via-[#152E1D] to-[#0A1A10] text-white border border-white/10 shadow-2xl">
+            <div className="flex flex-col h-full justify-between">
+              {/* Card Header */}
+              <div className="pb-2.5 sm:pb-3 border-b border-white/10 shrink-0">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#B6F8DD]/70 font-medium">
+                    05 • Industrial Discipline
+                  </span>
+                  <span className="text-[11px] font-mono text-white/40 md:hidden">
+                    Swipe →
+                  </span>
+                </div>
+                <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight mt-1">
+                  Product Designing &amp; Packaging
+                </h3>
+                <p className="text-xs sm:text-sm text-white/60 font-inter mt-1 leading-relaxed max-w-2xl">
+                  Physical industrial design, structural 3D packaging, and production-ready print finishes for consumer brands.
+                </p>
+              </div>
+
+              {/* Showcase Visual Area */}
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar lg:grid lg:grid-cols-4 lg:gap-4 lg:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
+                {/* Packaging 1 */}
+                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
+                    <img
+                      src="/assets/images/projects/printPackaging1.webp"
+                      alt="Happy Brews Canister"
+                      decoding="async"
+                      className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Happy Brews</span>
+                    <span className="text-white/50 font-mono text-[11px]">Pantone Foil • 3D Tin</span>
                   </div>
                 </div>
 
-                <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/10 text-center group hover:border-[#1D4224]/40 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-                  <div className="overflow-hidden rounded-xl bg-neutral-900/5 p-2 flex items-center justify-center my-1">
+                {/* Packaging 2 */}
+                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
-                      src="/assets/images/projects/printPackaging3.png"
+                      src="/assets/images/projects/printPackaging2.webp"
+                      alt="Skin Easi Dermatology"
+                      decoding="async"
+                      className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Skin Easi</span>
+                    <span className="text-white/50 font-mono text-[11px]">Clinical Dispenser Bottle</span>
+                  </div>
+                </div>
+
+                {/* Packaging 3 */}
+                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
+                    <img
+                      src="/assets/images/projects/printPackaging3.webp"
                       alt="Happee Lifestyle Box"
-                      className="w-full aspect-square h-36 lg:h-44 object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
+                      decoding="async"
+                      className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="pt-2 border-t border-[#1D4224]/10">
-                    <div className="font-mono text-xs lg:text-sm text-[#0E2015] font-bold">Happee Lifestyle</div>
-                    <div className="font-inter text-[10px] text-[#5C6860] mt-0.5">Active Lifestyle Box</div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Happee Lifestyle</span>
+                    <span className="text-white/50 font-mono text-[11px]">Rigid Magnetic Box</span>
                   </div>
                 </div>
 
-                <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/10 text-center group hover:border-[#1D4224]/40 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-                  <div className="overflow-hidden rounded-xl bg-neutral-900/5 p-2 flex items-center justify-center my-1">
+                {/* Packaging 4 */}
+                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
-                      src="/assets/images/projects/printPackaging4.png"
-                      alt="Escarl Jewels Luxury Velvet Box"
-                      className="w-full aspect-square h-36 lg:h-44 object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
+                      src="/assets/images/projects/printPackaging4.webp"
+                      alt="Escarl Luxury Box"
+                      decoding="async"
+                      className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="pt-2 border-t border-[#1D4224]/10">
-                    <div className="font-mono text-xs lg:text-sm text-[#0E2015] font-bold">Escarl Jewels</div>
-                    <div className="font-inter text-[10px] text-[#5C6860] mt-0.5">Velvet Luxury Casket</div>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-white">Escarl Luxury</span>
+                    <span className="text-white/50 font-mono text-[11px]">Slide-Out Velvet Drawer</span>
                   </div>
                 </div>
-
-                <div className="bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/10 text-center group hover:border-[#1D4224]/40 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-                  <div className="overflow-hidden rounded-xl bg-neutral-900/5 p-2 flex items-center justify-center my-1">
-                    <img
-                      src="/assets/images/projects/printPackaging5.png"
-                      alt="Velvex Lubricants 3D Canister"
-                      className="w-full aspect-square h-36 lg:h-44 object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="pt-2 border-t border-[#1D4224]/10">
-                    <div className="font-mono text-xs lg:text-sm text-[#0E2015] font-bold">Velvex Lubricants</div>
-                    <div className="font-inter text-[10px] text-[#5C6860] mt-0.5">3D Canister &amp; Label</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mobile Showcase - Full Gallery Snap Carousel */}
-              <div className="md:hidden flex flex-col gap-2">
-                <div className="flex gap-3 overflow-x-auto no-scrollbar snap-x snap-mandatory py-1">
-                  <div className="snap-center shrink-0 w-[65%] bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/15 text-center flex flex-col justify-between shadow-lg">
-                    <img src="/assets/images/projects/printPackaging1.png" alt="Happy Brews" className="w-full h-44 sm:h-52 aspect-square object-contain mx-auto my-1 drop-shadow-xl" />
-                    <div>
-                      <div className="font-mono text-xs text-[#0E2015] font-bold">Happy Brews</div>
-                      <div className="font-mono text-[9px] text-[#5C6860]">Luxury Tea Canister Dieline</div>
-                    </div>
-                  </div>
-                  <div className="snap-center shrink-0 w-[65%] bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/15 text-center flex flex-col justify-between shadow-lg">
-                    <img src="/assets/images/projects/printPackaging2.png" alt="Skin Easi" className="w-full h-44 sm:h-52 aspect-square object-contain mx-auto my-1 drop-shadow-xl" />
-                    <div>
-                      <div className="font-mono text-xs text-[#0E2015] font-bold">Skin Easi</div>
-                      <div className="font-mono text-[9px] text-[#5C6860]">Dermatology Box &amp; Tube</div>
-                    </div>
-                  </div>
-                  <div className="snap-center shrink-0 w-[65%] bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/15 text-center flex flex-col justify-between shadow-lg">
-                    <img src="/assets/images/projects/printPackaging3.png" alt="Happee" className="w-full h-44 sm:h-52 aspect-square object-contain mx-auto my-1 drop-shadow-xl" />
-                    <div>
-                      <div className="font-mono text-xs text-[#0E2015] font-bold">Happee Lifestyle</div>
-                      <div className="font-mono text-[9px] text-[#5C6860]">Active Retail Box Design</div>
-                    </div>
-                  </div>
-                  <div className="snap-center shrink-0 w-[65%] bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/15 text-center flex flex-col justify-between shadow-lg">
-                    <img src="/assets/images/projects/printPackaging4.png" alt="Escarl" className="w-full h-44 sm:h-52 aspect-square object-contain mx-auto my-1 drop-shadow-xl" />
-                    <div>
-                      <div className="font-mono text-xs text-[#0E2015] font-bold">Escarl Jewels</div>
-                      <div className="font-mono text-[9px] text-[#5C6860]">Luxury Velvet Casket</div>
-                    </div>
-                  </div>
-                  <div className="snap-center shrink-0 w-[65%] bg-linear-to-br from-[#F5F3EF] to-[#ECE6DC] p-3 rounded-2xl border border-[#1D4224]/15 text-center flex flex-col justify-between shadow-lg">
-                    <img src="/assets/images/projects/printPackaging5.png" alt="Velvex" className="w-full h-44 sm:h-52 aspect-square object-contain mx-auto my-1 drop-shadow-xl" />
-                    <div>
-                      <div className="font-mono text-xs text-[#0E2015] font-bold">Velvex Lubricants</div>
-                      <div className="font-mono text-[9px] text-[#5C6860]">3D Industrial Canister</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-center font-mono text-[9px] text-[#5C6860]/80">Swipe to explore 5 custom packaging dielies</div>
               </div>
             </div>
           </ScrollStackItem>

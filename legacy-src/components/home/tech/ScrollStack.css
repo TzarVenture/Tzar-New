@@ -17,23 +17,23 @@
 
 .scroll-stack-inner {
   width: 100%;
-  max-width: 80rem; /* 1280px (max-w-7xl) - matches site header and primary grid */
+  max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 0.5rem 0.75rem 2.5rem; /* Mobile: proper edge gutters maximizing width */
+  padding: 0.5rem 0.75rem 1rem;
   min-height: 90vh;
   box-sizing: border-box;
 }
 
 @media (min-width: 640px) {
   .scroll-stack-inner {
-    padding: 0.5rem 1.5rem 5rem; /* Tablet */
+    padding: 0.5rem 1.5rem 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .scroll-stack-inner {
-    padding: 0.5rem 2rem 14rem; /* Desktop: unchanged */
+    padding: 0.5rem 2rem 2rem;
   }
 }
 
@@ -45,34 +45,32 @@
   transform-origin: top center;
   will-change: transform;
   backface-visibility: hidden;
-  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 8px 32px -4px rgba(14, 32, 21, 0.12),
+    0 2px 8px -2px rgba(14, 32, 21, 0.08),
+    0 0 0 1px rgba(14, 32, 21, 0.06);
   width: 100%;
   margin: 0 auto;
-  padding: 1.1rem 1rem 1rem;
-  border-radius: 24px;
+  padding: clamp(1rem, 2.5vw, 1.75rem) clamp(0.875rem, 2vw, 1.5rem) clamp(0.875rem, 2vw, 1.25rem);
+  border-radius: clamp(20px, 3vw, 30px);
   box-sizing: border-box;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   position: relative;
   overflow: hidden;
-  /* Dynamically vertically long for all mobile viewport heights */
-  height: clamp(500px, calc(100vh - 96px), 720px);
-  height: clamp(500px, calc(100dvh - 92px), 740px);
+  /* Nearly full-viewport on mobile */
+  height: clamp(540px, calc(100dvh - 90px), 800px);
 }
 
 @media (min-width: 768px) {
   .scroll-stack-card {
-    padding: 1.25rem 1.75rem 1.25rem;
-    border-radius: 26px;
-    height: clamp(460px, 68vh, 510px);
+    height: clamp(520px, 78vh, 720px);
   }
 }
 
 @media (min-width: 1024px) {
   .scroll-stack-card {
-    padding: 1.5rem 2rem 1.5rem;
-    border-radius: 28px;
-    height: clamp(480px, 66vh, 520px);
+    height: clamp(560px, 80vh, 780px);
   }
 }
 
@@ -81,7 +79,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(14, 32, 21, 0.1);
   margin-bottom: 0.75rem;
   flex-shrink: 0;
 }
@@ -90,6 +88,146 @@
 .scroll-stack-end {
   width: 100%;
   height: 1px;
+}
+
+/* ── Stack Card Hover Overlay — Bottom-half faded gradient ── */
+.scroll-stack-card .stack-card-hover-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  border-radius: 0 0 inherit inherit;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  background: linear-gradient(
+    to top,
+    rgba(14, 32, 21, 0.94) 0%,
+    rgba(14, 32, 21, 0.78) 40%,
+    rgba(14, 32, 21, 0.35) 72%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity;
+  pointer-events: none;
+}
+
+/* Gold variant */
+.scroll-stack-card .stack-card-hover-overlay--gold {
+  background: linear-gradient(
+    to top,
+    rgba(30, 22, 5, 0.94) 0%,
+    rgba(30, 22, 5, 0.78) 40%,
+    rgba(30, 22, 5, 0.35) 72%,
+    transparent 100%
+  );
+}
+
+/* Reveal on hover — smooth opacity fade only */
+.scroll-stack-card:hover .stack-card-hover-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.stack-card-hover-content {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.stack-card-hover-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.8rem, 1.1vw, 0.925rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.stack-card-hover-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.stack-card-hover-features li {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.stack-card-hover-features li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #B6F8DD;
+  flex-shrink: 0;
+}
+
+.stack-card-hover-features--gold li::before {
+  background: #FFAE00;
+}
+
+/* CTA button with animated arrow */
+.stack-card-hover-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0E2015;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  padding: 0.6rem 1.1rem;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.2s ease, transform 0.15s ease;
+  margin-top: 0.35rem;
+}
+
+.stack-card-hover-cta:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Arrow animation on hover */
+.stack-card-hover-cta svg {
+  transition: transform 0.25s ease;
+}
+
+.stack-card-hover-cta:hover svg {
+  animation: arrow-nudge 0.6s ease infinite;
+}
+
+@keyframes arrow-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+/* Gold CTA variant */
+.stack-card-hover-cta--gold {
+  color: #1a1200;
+  background: #FFAE00;
+}
+
+.stack-card-hover-cta--gold:hover {
+  background: #FFC030;
 }
 
 .no-scrollbar::-webkit-scrollbar {

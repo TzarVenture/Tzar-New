@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { COMPANY } from '@/data/company';
+import WebTechFlowCanvas from '@/legacy-src/components/webdev/WebTechFlowCanvas';
 
 /* --------------------------------------------------------------------------
    01. AUTHENTIC DATA FROM LIVE SITE (website-development-services)
@@ -315,7 +316,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           01. LUXURY HERO BANNER (100% VH / DVH HEIGHT ON ALL DEVICES)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-center pt-20 pb-10 sm:pt-24 sm:pb-12 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30">
+      <section className="relative w-full flex items-center justify-center pt-16 pb-6 sm:pt-20 sm:pb-8 lg:pt-24 lg:pb-10 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30">
         {/* Ambient Dark Spruce & Gold Glows */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1D4224]/25 rounded-full blur-3xl" />
@@ -329,69 +330,14 @@ export const WebsiteDevelopmentPage: React.FC = () => {
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             
-            {/* ── Left Column: Value Proposition & Tech Stack ── */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1D4224]/80 border border-[#FFAE00]/30 text-[#FFAE00] text-xs font-montserrat font-bold uppercase tracking-widest">
-                <Code2 className="w-3.5 h-3.5" />
-                <span>Web Engineering &amp; Architecture</span>
-              </div>
-
-              <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase leading-[1.12]">
-                Power Up Your <br />
-                <span className="text-[#FFAE00]">Online Presence</span>
-              </h1>
-
-              {/* Technologies Badges */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
-                {['Shopify', 'WordPress', 'React.js', 'Next.js'].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3.5 py-1 rounded-full bg-white/[0.07] border border-white/15 text-white/90 font-montserrat font-semibold text-xs tracking-wider uppercase"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <p className="font-inter text-sm sm:text-base text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                We design and engineer lightning-fast, custom-coded web flagships that convert traffic into loyal customers. From headless e-commerce to enterprise platforms, experience flawless UX and zero technical debt.
-              </p>
-
-              {/* Key Features Quick Strip */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-left">
-                {[
-                  'Sub-Second Load Times',
-                  'Conversion-Led UI/UX',
-                  'Shiprocket & Payment Gateways',
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 text-white/75 text-xs font-inter">
-                    <CheckCircle2 className="w-4 h-4 text-[#FFAE00] shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-                <button
-                  type="button"
-                  onClick={() => scrollToSection('packages-pricing')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 group cursor-pointer"
-                >
-                  <span>Explore Packages</span>
-                  <ArrowRight className="w-4 h-4 text-[#FFAE00] group-hover:translate-x-0.5 transition-transform" />
-                </button>
-
-                <a
-                  href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all border border-white/20"
-                >
-                  <Phone className="w-4 h-4 text-[#FFAE00]" />
-                  <span>Call: {COMPANY.phone}</span>
-                </a>
+            {/* ── Left Column: Interactive ReactFlow Tech Architecture Canvas ── */}
+            <div className="lg:col-span-7 flex flex-col justify-center text-center lg:text-left">
+              {/* Interactive ReactFlow Architecture Canvas */}
+              <div className="w-full">
+                <WebTechFlowCanvas />
               </div>
             </div>
 

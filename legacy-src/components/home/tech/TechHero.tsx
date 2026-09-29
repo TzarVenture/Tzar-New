@@ -1,9 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import Grainient from "./Grainient";
+import dynamic from "next/dynamic";
+// import Grainient from "./Grainient";
 import { CrmHeroSlide } from "./slides/CrmHeroSlide";
+
+const HeroShaderBackground = dynamic(
+  () => import("./HeroShaderBackground"),
+  { ssr: false }
+);
 import { WebAppHeroSlide } from "./slides/WebAppHeroSlide";
 import { AppDevHeroSlide } from "./slides/AppDevHeroSlide";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -242,7 +247,8 @@ export const TechHero: React.FC = () => {
 
   return (
     <section className="tech-hero-section relative w-full">
-      {/* ── GRAINIENT BACKGROUND CANVAS SHADER ────────────────────────── */}
+      {/* ── CURRENT HERO BACKGROUND (COMMENTED OUT AS REQUESTED) ────────── */}
+      {/*
       <div
         className="absolute inset-0 z-0 opacity-75 pointer-events-none scale-y-[-1]"
         style={{
@@ -275,6 +281,10 @@ export const TechHero: React.FC = () => {
           zoom={0.9}
         />
       </div>
+      */}
+
+      {/* ── NEW 3D WATERPLANE SHADER GRADIENT BACKGROUND ─────────────────── */}
+      <HeroShaderBackground />
 
       {/* Background Soft Glow Mesh Accents */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />

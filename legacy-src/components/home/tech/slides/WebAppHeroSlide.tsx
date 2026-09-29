@@ -39,8 +39,8 @@ export const WebAppHeroSlide: React.FC = () => {
   return (
     <div className="webapp-slide-container">
       {/* ── 1. COMPACT 3-WORD HEADLINE ───────────────────────────────── */}
-      <h1 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight leading-[1.08] max-w-4xl mx-auto mb-2 sm:mb-3">
-        HIGH-PERFORMANCE <span className="text-[#1D4224]">WEB APPS</span>
+      <h1 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.08] max-w-4xl mx-auto mb-2 sm:mb-3 drop-shadow-[0_2px_18px_rgba(0,0,0,0.65)]">
+        HIGH-PERFORMANCE <span className="text-[#FFAE00] drop-shadow-[0_0_24px_rgba(255,174,0,0.45)]">WEB APPS</span>
       </h1>
 
       {/* ── MOBILE-ONLY GRAPE STACK CLUSTER (< 768px) ────────────────── */}
@@ -50,7 +50,7 @@ export const WebAppHeroSlide: React.FC = () => {
             <div
               key={tech.name}
               title={tech.name}
-              className="w-8 h-8 rounded-full bg-white/70 backdrop-blur-md border border-[#0E2015]/10 flex items-center justify-center p-1.5 shadow-sm"
+              className="w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-white/90 flex items-center justify-center p-1.5 shadow-md"
             >
               <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" />
             </div>
@@ -61,7 +61,7 @@ export const WebAppHeroSlide: React.FC = () => {
             <div
               key={tech.name}
               title={tech.name}
-              className="w-8 h-8 rounded-full bg-white/70 backdrop-blur-md border border-[#0E2015]/10 flex items-center justify-center p-1.5 shadow-sm"
+              className="w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-white/90 flex items-center justify-center p-1.5 shadow-md"
             >
               <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" />
             </div>

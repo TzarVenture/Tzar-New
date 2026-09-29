@@ -30,8 +30,8 @@ export const CrmHeroSlide: React.FC = () => {
   return (
     <div className="crm-slide-container">
       {/* ── 1. COMPACT 3-WORD HEADLINE ───────────────────────────────── */}
-      <h1 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight leading-[1.08] max-w-4xl mx-auto mb-2 sm:mb-3">
-        CUSTOM ENTERPRISE <span className="text-[#1D4224]">CRM</span>
+      <h1 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.08] max-w-4xl mx-auto mb-2 sm:mb-3 drop-shadow-[0_2px_18px_rgba(0,0,0,0.65)]">
+        CUSTOM ENTERPRISE <span className="text-[#FFAE00] drop-shadow-[0_0_24px_rgba(255,174,0,0.45)]">CRM</span>
       </h1>
 
       {/* ── 2. TECH STACK ICONS ──────────────────────────────────────── */}

@@ -51,11 +51,11 @@ export const HomePage: React.FC = () => {
       {/* 03 • FRAMER MOTION INSPIRED INTERACTIVE BENTO GRID */}
       <TechBentoGrid />
 
-      {/* 04 • TECH ARCHITECTURE COMPARISON MATRIX */}
-      <TechArchitectureMatrix />
-
-      {/* 05 • FULL-STACK SERVICE CATALOG GRID */}
+      {/* 04 • FULL-STACK SERVICE CATALOG GRID */}
       <TechServicesGrid />
+
+      {/* 05 • TECH ARCHITECTURE COMPARISON MATRIX */}
+      <TechArchitectureMatrix />
 
       {/* 06 • VERIFIED CASE STUDIES & PROOF SHOWCASE */}
       <TechProofShowcase />

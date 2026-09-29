@@ -53,43 +53,55 @@ export default function Home() {
       {/* 01 • NEXT.JS CONNECTED CENTRAL NODE HERO */}
       <TechHero />
 
-      {/* 01.5 • COMPANY ACHIEVEMENTS INSIGHTS (OUR GLOBAL IMPACT) */}
-      <TechInsights />
 
       {/* 01.6 • DYNAMIC SCROLLING CASE STUDY STACK (SHIPROCKET INSPIRED) */}
       <section className="bg-[#EFE8E0] pt-10 sm:pt-14 pb-4 relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14 text-center">
-          <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-[#1D4224] font-black inline-block mb-2.5">
+          <span className="font-mono text-sm uppercase tracking-widest text-[#1D4224] font-black block mb-2">
             OUR CORE DISCIPLINES
           </span>
-          <h2 className="font-montserrat font-extrabold text-3xl sm:text-4xl lg:text-[42px] text-[#0E2015] tracking-tight max-w-3xl mx-auto leading-tight">
-            Why High-Growth Brands Partner with Tzar Venture
+          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight leading-tight">
+            Services we specialize in
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-[#5C6860] max-w-2xl mx-auto mt-3.5 leading-relaxed font-inter">
-            From high-converting web and mobile platforms to bespoke enterprise software, performance SEO, and packaging design—we engineer the complete systems that drive modern commercial scale.
-          </p>
         </div>
 
-        <ScrollStack useWindowScroll={true} stackPosition="50px" itemDistance={280} itemStackDistance={22} baseScale={0.96}>
+        <ScrollStack useWindowScroll={true} stackPosition="50px" itemDistance={480} itemStackDistance={30} baseScale={0.96}>
           {/* ── CARD 01: WEB APPLICATION DEVELOPMENT ── */}
-          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#16331B] via-[#0F2413] to-[#07130A] text-white border border-white/10 shadow-2xl">
+          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#EEF4E8] via-[#E4EDDC] to-[#D9E6D0] border border-[#1D4224]/10">
+            {/* Hover Overlay */}
+            <div className="stack-card-hover-overlay">
+              <div className="stack-card-hover-content">
+                <p className="stack-card-hover-tagline">High-performance platforms engineered for commercial scale — from headless commerce to enterprise portals.</p>
+                <ul className="stack-card-hover-features">
+                  <li>Sub-second load times</li>
+                  <li>Custom e-commerce &amp; web apps</li>
+                  <li>100% mobile responsive</li>
+                </ul>
+                <a href="/website-development-services" className="stack-card-hover-cta">
+                  Explore Service
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
             <div className="flex flex-col h-full justify-between">
               {/* Card Header */}
-              <div className="pb-2.5 sm:pb-3 border-b border-white/10 shrink-0">
+              <div className="pb-2.5 sm:pb-3 border-b border-[#1D4224]/10 shrink-0">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#B6F8DD]/70 font-medium">
-                    01 • Engineering Discipline
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#1D4224]/60 font-medium">
+                    01 • Engineering
                   </span>
-                  <span className="text-[11px] font-mono text-white/40 md:hidden">
+                  <span className="text-[11px] font-mono text-[#1D4224]/30 md:hidden">
                     Swipe →
                   </span>
                 </div>
-                <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight mt-1">
-                  Web Application Development
-                </h3>
-                <p className="text-xs sm:text-sm text-white/60 font-inter mt-1 leading-relaxed max-w-2xl">
-                  High-performance web platforms, headless commerce, and digital infrastructure engineered for commercial scale.
-                </p>
+                <div className="flex items-center gap-2.5 mt-1.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#1D4224]/8 flex items-center justify-center shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4224" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                  </div>
+                  <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-[#0E2015] tracking-tight">
+                    Web Application Development
+                  </h3>
+                </div>
               </div>
 
               {/* Showcase Visual Area */}
@@ -107,9 +119,9 @@ export default function Home() {
                       />
                     </picture>
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Adshalaa Platform</span>
-                    <span className="text-white/50 font-mono text-[11px]">Next.js • Cross-Device Ecosystem</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Adshalaa Platform</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Next.js • Cross-Device</span>
                   </div>
                 </div>
 
@@ -126,9 +138,9 @@ export default function Home() {
                       />
                     </picture>
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Ambrior Infrastructure</span>
-                    <span className="text-white/50 font-mono text-[11px]">React • Cloud Operations Portal</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Ambrior Infrastructure</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">React • Cloud Portal</span>
                   </div>
                 </div>
 
@@ -145,9 +157,9 @@ export default function Home() {
                       />
                     </picture>
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Leorix E-Commerce</span>
-                    <span className="text-white/50 font-mono text-[11px]">Headless Shopify • Luxury Drops</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Leorix E-Commerce</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Headless Shopify</span>
                   </div>
                 </div>
               </div>
@@ -155,24 +167,41 @@ export default function Home() {
           </ScrollStackItem>
 
           {/* ── CARD 02: MOBILE APPLICATION DEVELOPMENT ── */}
-          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#0B1724] via-[#0D1C1B] to-[#060D0B] text-white border border-[#B6F8DD]/20 shadow-2xl">
+          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#E8F0F2] via-[#DEE9ED] to-[#D2E0E6] border border-[#1D4224]/10">
+            {/* Hover Overlay */}
+            <div className="stack-card-hover-overlay">
+              <div className="stack-card-hover-content">
+                <p className="stack-card-hover-tagline">Native iOS &amp; Android apps with fluid 120Hz interactions, biometric security, and offline-first sync.</p>
+                <ul className="stack-card-hover-features">
+                  <li>Cross-platform React Native</li>
+                  <li>Native iOS &amp; Android builds</li>
+                  <li>Biometric &amp; secure auth</li>
+                </ul>
+                <a href="/website-development-services" className="stack-card-hover-cta">
+                  Explore Service
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
             <div className="flex flex-col h-full justify-between">
               {/* Card Header */}
-              <div className="pb-2.5 sm:pb-3 border-b border-white/10 shrink-0">
+              <div className="pb-2.5 sm:pb-3 border-b border-[#1D4224]/10 shrink-0">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#B6F8DD]/70 font-medium">
-                    02 • Mobile Discipline
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#1D4224]/60 font-medium">
+                    02 • Mobile
                   </span>
-                  <span className="text-[11px] font-mono text-white/40 md:hidden">
+                  <span className="text-[11px] font-mono text-[#1D4224]/30 md:hidden">
                     Swipe →
                   </span>
                 </div>
-                <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight mt-1">
-                  Mobile Application Development
-                </h3>
-                <p className="text-xs sm:text-sm text-white/60 font-inter mt-1 leading-relaxed max-w-2xl">
-                  Native iOS and Android platforms built with fluid 120Hz interactions, biometric security, and offline-first data sync.
-                </p>
+                <div className="flex items-center gap-2.5 mt-1.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#1D4224]/8 flex items-center justify-center shrink-0">
+                    <svg width="16" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4224" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+                  </div>
+                  <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-[#0E2015] tracking-tight">
+                    Mobile Application Development
+                  </h3>
+                </div>
               </div>
 
               {/* Showcase Visual Area */}
@@ -187,9 +216,9 @@ export default function Home() {
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Kaam Milega</span>
-                    <span className="text-white/50 font-mono text-[11px]">Android • Workforce Engine</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Kaam Milega</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Android</span>
                   </div>
                 </div>
 
@@ -203,9 +232,9 @@ export default function Home() {
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Leorix Commerce</span>
-                    <span className="text-white/50 font-mono text-[11px]">iOS • Luxury Drops</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Leorix Commerce</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">iOS</span>
                   </div>
                 </div>
 
@@ -219,9 +248,9 @@ export default function Home() {
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Adshalaa Learning</span>
-                    <span className="text-white/50 font-mono text-[11px]">Android • Interactive Streaming</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Adshalaa Learning</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Android</span>
                   </div>
                 </div>
 
@@ -235,9 +264,9 @@ export default function Home() {
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Ambrior Operations</span>
-                    <span className="text-white/50 font-mono text-[11px]">iOS • Field Telemetry</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Ambrior Operations</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">iOS</span>
                   </div>
                 </div>
               </div>
@@ -245,24 +274,41 @@ export default function Home() {
           </ScrollStackItem>
 
           {/* ── CARD 03: ENTERPRISE BUSINESS SOFTWARE & CRM ── */}
-          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#1C1C18] via-[#1F261D] to-[#0E130F] text-white border border-[#FFAE00]/20 shadow-2xl">
+          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#F5F0E2] via-[#EDE5D3] to-[#E3DAC4] border border-[#B8860B]/12">
+            {/* Hover Overlay */}
+            <div className="stack-card-hover-overlay stack-card-hover-overlay--gold">
+              <div className="stack-card-hover-content">
+                <p className="stack-card-hover-tagline">Bespoke enterprise portals, automated onboarding workflows, and centralized revenue pipelines for complex organizations.</p>
+                <ul className="stack-card-hover-features stack-card-hover-features--gold">
+                  <li>Custom CRM &amp; ERP platforms</li>
+                  <li>Automated workflow engines</li>
+                  <li>Revenue analytics dashboards</li>
+                </ul>
+                <a href="/website-development-services" className="stack-card-hover-cta stack-card-hover-cta--gold">
+                  Explore Service
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
             <div className="flex flex-col h-full justify-between">
               {/* Card Header */}
-              <div className="pb-2.5 sm:pb-3 border-b border-white/10 shrink-0">
+              <div className="pb-2.5 sm:pb-3 border-b border-[#B8860B]/12 shrink-0">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#FFAE00]/80 font-medium">
-                    03 • Enterprise Discipline
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#B8860B]/70 font-medium">
+                    03 • Enterprise
                   </span>
-                  <span className="text-[11px] font-mono text-white/40 md:hidden">
+                  <span className="text-[11px] font-mono text-[#B8860B]/30 md:hidden">
                     Swipe →
                   </span>
                 </div>
-                <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight mt-1">
-                  Enterprise Business Software &amp; CRM
-                </h3>
-                <p className="text-xs sm:text-sm text-white/60 font-inter mt-1 leading-relaxed max-w-2xl">
-                  Bespoke enterprise portals, automated client onboarding workflows, and centralized revenue analytics pipelines.
-                </p>
+                <div className="flex items-center gap-2.5 mt-1.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#B8860B]/10 flex items-center justify-center shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B6914" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+                  </div>
+                  <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-[#0E2015] tracking-tight">
+                    Enterprise Business Software &amp; CRM
+                  </h3>
+                </div>
               </div>
 
               {/* Showcase Visual Area */}
@@ -295,9 +341,9 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Tzar CRM Suite</span>
-                    <span className="text-white/50 font-mono text-[11px]">PostgreSQL • Revenue Pipeline</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#B8860B]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Tzar CRM Suite</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">PostgreSQL • Revenue Pipeline</span>
                   </div>
                 </div>
 
@@ -329,9 +375,9 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">AY Astute Portal</span>
-                    <span className="text-white/50 font-mono text-[11px]">Next.js • Governance Workflow</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#B8860B]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">AY Astute Portal</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Next.js • Governance</span>
                   </div>
                 </div>
               </div>
@@ -339,24 +385,41 @@ export default function Home() {
           </ScrollStackItem>
 
           {/* ── CARD 04: DIGITAL MARKETING & TECHNICAL SEO ── */}
-          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#0E1A12] via-[#15281B] to-[#08120A] text-white border border-white/10 shadow-2xl">
+          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#E6F0E4] via-[#DBEAD6] to-[#CDE1C8] border border-[#1D4224]/10">
+            {/* Hover Overlay */}
+            <div className="stack-card-hover-overlay">
+              <div className="stack-card-hover-content">
+                <p className="stack-card-hover-tagline">Data-driven organic search domination, programmatic architecture, and full-funnel paid media acquisition.</p>
+                <ul className="stack-card-hover-features">
+                  <li>Programmatic SEO &amp; Core Web Vitals</li>
+                  <li>Google &amp; Meta performance ads</li>
+                  <li>Full-funnel conversion strategy</li>
+                </ul>
+                <a href="/search-engine-optimization-services" className="stack-card-hover-cta">
+                  Explore Service
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
             <div className="flex flex-col h-full justify-between">
               {/* Card Header */}
-              <div className="pb-2.5 sm:pb-3 border-b border-white/10 shrink-0">
+              <div className="pb-2.5 sm:pb-3 border-b border-[#1D4224]/10 shrink-0">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#B6F8DD]/70 font-medium">
-                    04 • Growth Discipline
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#1D4224]/60 font-medium">
+                    04 • Growth
                   </span>
-                  <span className="text-[11px] font-mono text-white/40 md:hidden">
+                  <span className="text-[11px] font-mono text-[#1D4224]/30 md:hidden">
                     Swipe →
                   </span>
                 </div>
-                <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight mt-1">
-                  Digital Marketing &amp; Technical SEO
-                </h3>
-                <p className="text-xs sm:text-sm text-white/60 font-inter mt-1 leading-relaxed max-w-2xl">
-                  Data-driven organic search domination, programmatic architecture, and full-funnel paid media acquisition.
-                </p>
+                <div className="flex items-center gap-2.5 mt-1.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#1D4224]/8 flex items-center justify-center shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4224" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 7v4l2.5 2.5" strokeWidth="1.5"/></svg>
+                  </div>
+                  <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-[#0E2015] tracking-tight">
+                    Digital Marketing &amp; Technical SEO
+                  </h3>
+                </div>
               </div>
 
               {/* Showcase Visual Area */}
@@ -371,9 +434,9 @@ export default function Home() {
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl rounded-lg hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Organic Search Authority</span>
-                    <span className="text-white/50 font-mono text-[11px]">Programmatic SEO • Core Web Vitals</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Organic Search Authority</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Programmatic SEO</span>
                   </div>
                 </div>
 
@@ -387,9 +450,9 @@ export default function Home() {
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl rounded-lg hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Paid Acquisition Suite</span>
-                    <span className="text-white/50 font-mono text-[11px]">Meta &amp; Google Performance Max</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Paid Acquisition Suite</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Meta &amp; Google Ads</span>
                   </div>
                 </div>
               </div>
@@ -397,24 +460,41 @@ export default function Home() {
           </ScrollStackItem>
 
           {/* ── CARD 05: PRODUCT DESIGNING & PACKAGING ── */}
-          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#1E3B24] via-[#152E1D] to-[#0A1A10] text-white border border-white/10 shadow-2xl">
+          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#EDEBE4] via-[#E3E0D6] to-[#D8D4C8] border border-[#1D4224]/10">
+            {/* Hover Overlay */}
+            <div className="stack-card-hover-overlay">
+              <div className="stack-card-hover-content">
+                <p className="stack-card-hover-tagline">Physical industrial design, structural 3D packaging, and production-ready print finishes for consumer brands.</p>
+                <ul className="stack-card-hover-features">
+                  <li>3D box &amp; bottle renders</li>
+                  <li>Prepress-ready print files</li>
+                  <li>Luxury dieline layouts</li>
+                </ul>
+                <a href="/product-design-packaging-services" className="stack-card-hover-cta">
+                  Explore Service
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
             <div className="flex flex-col h-full justify-between">
               {/* Card Header */}
-              <div className="pb-2.5 sm:pb-3 border-b border-white/10 shrink-0">
+              <div className="pb-2.5 sm:pb-3 border-b border-[#1D4224]/10 shrink-0">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#B6F8DD]/70 font-medium">
-                    05 • Industrial Discipline
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#1D4224]/60 font-medium">
+                    05 • Industrial Design
                   </span>
-                  <span className="text-[11px] font-mono text-white/40 md:hidden">
+                  <span className="text-[11px] font-mono text-[#1D4224]/30 md:hidden">
                     Swipe →
                   </span>
                 </div>
-                <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight mt-1">
-                  Product Designing &amp; Packaging
-                </h3>
-                <p className="text-xs sm:text-sm text-white/60 font-inter mt-1 leading-relaxed max-w-2xl">
-                  Physical industrial design, structural 3D packaging, and production-ready print finishes for consumer brands.
-                </p>
+                <div className="flex items-center gap-2.5 mt-1.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#1D4224]/8 flex items-center justify-center shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4224" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                  </div>
+                  <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-[#0E2015] tracking-tight">
+                    Product Designing &amp; Packaging
+                  </h3>
+                </div>
               </div>
 
               {/* Showcase Visual Area */}
@@ -429,9 +509,9 @@ export default function Home() {
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Happy Brews</span>
-                    <span className="text-white/50 font-mono text-[11px]">Pantone Foil • 3D Tin</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Happy Brews</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Pantone Foil • 3D Tin</span>
                   </div>
                 </div>
 
@@ -445,9 +525,9 @@ export default function Home() {
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Skin Easi</span>
-                    <span className="text-white/50 font-mono text-[11px]">Clinical Dispenser Bottle</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Skin Easi</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Clinical Dispenser</span>
                   </div>
                 </div>
 
@@ -461,9 +541,9 @@ export default function Home() {
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Happee Lifestyle</span>
-                    <span className="text-white/50 font-mono text-[11px]">Rigid Magnetic Box</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Happee Lifestyle</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Magnetic Box</span>
                   </div>
                 </div>
 
@@ -477,9 +557,9 @@ export default function Home() {
                       className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/80 font-inter border-t border-white/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-white">Escarl Luxury</span>
-                    <span className="text-white/50 font-mono text-[11px]">Slide-Out Velvet Drawer</span>
+                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
+                    <span className="font-montserrat font-semibold text-[#0E2015]">Escarl Luxury</span>
+                    <span className="text-[#4B5563] font-mono text-[11px]">Velvet Drawer</span>
                   </div>
                 </div>
               </div>
@@ -487,11 +567,16 @@ export default function Home() {
           </ScrollStackItem>
         </ScrollStack>
 
-        {/* 01.7 • CLIENT BRANDS INFINITE MARQUEE (Building Success Stories with...) */}
-        <ClientMarquee />
+        {/* 01.65 • COMPANY ACHIEVEMENTS INSIGHTS (GLOBAL IMPACT METRICS) */}
+        <div className="w-full">
+          <TechInsights />
+        </div>
 
         {/* OUR SECTOR EXPERTISE — Circuit Network & Lighting Animation */}
         <SectorCircuitExpertise />
+
+        {/* 01.7 • CLIENT BRANDS INFINITE MARQUEE (Building Success Stories with...) */}
+        <ClientMarquee />
 
         {/* Brand Showcase Accordion Gallery */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 mb-16 relative z-20">

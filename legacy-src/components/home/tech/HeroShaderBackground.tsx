@@ -23,7 +23,7 @@ export default function HeroShaderBackground() {
     cPolarAngle: 115,
     cameraZoom: 1,
     color1: "#51ac49",
-    color2: "#d0ac3b",
+    color2: "#51ac49",
     color3: "#194020",
     destination: "onCanvas",
     embedMode: "off",

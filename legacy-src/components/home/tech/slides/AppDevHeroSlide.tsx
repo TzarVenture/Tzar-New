@@ -70,7 +70,7 @@ export const AppDevHeroSlide: React.FC = () => {
       </div>
 
       {/* ── 2. MAIN STAGE: CENTER DUAL PHONES & COMPACT VALUE CARDS ──── */}
-      <div className="relative w-full max-w-5xl lg:max-w-[1040px] xl:max-w-[1120px] mx-auto px-4 sm:px-6 lg:mt-3">
+      <div className="relative w-full max-w-5xl lg:max-w-260 xl:max-w-280 mx-auto px-4 sm:px-6 lg:mt-3">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 xl:gap-5 items-center">
           
           {/* ── LEFT FEATURE CARDS (Desktop: Inset towards center) ── */}
@@ -115,7 +115,7 @@ export const AppDevHeroSlide: React.FC = () => {
             {/* Dual Phone Showcase */}
             <div className="appdev-dual-phones-wrapper">
               {/* Phone 1: Left (iPhone Mockup) */}
-              <div className="appdev-phone-left w-[130px] sm:w-[155px] md:w-[165px] lg:w-[175px] xl:w-[190px]">
+              <div className="appdev-phone-left w-32.5 sm:w-38.75 md:w-41.25 lg:w-43.75 xl:w-47.5">
                 <img
                   src="/assets/images/app-dev-mobile-1.png"
                   alt="High-Performance Native Mobile Application"
@@ -124,7 +124,7 @@ export const AppDevHeroSlide: React.FC = () => {
               </div>
 
               {/* Phone 2: Right (Android Mockup) */}
-              <div className="appdev-phone-right w-[130px] sm:w-[155px] md:w-[165px] lg:w-[175px] xl:w-[190px]">
+              <div className="appdev-phone-right w-32.5 sm:w-38.75 md:w-41.25 lg:w-43.75 xl:w-47.5">
                 <img
                   src="/assets/images/app-dev-mobile-2.png"
                   alt="Cross-Platform Android and iOS Engineering"

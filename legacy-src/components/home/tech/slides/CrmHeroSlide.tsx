@@ -89,7 +89,7 @@ export const CrmHeroSlide: React.FC = () => {
       </div>
 
       {/* ── 3. EXPANDED PC SHOWCASE & CARDS (COMPACTED PROPORTIONS) ──── */}
-      <div className="relative w-full max-w-5xl lg:max-w-[1040px] xl:max-w-[1120px] mx-auto px-4 sm:px-6">
+      <div className="relative w-full max-w-5xl lg:max-w-260 xl:max-w-280 mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 xl:gap-5 items-center">
           
           {/* ── LEFT CARDS (Desktop: Inset towards center) ── */}
@@ -117,7 +117,7 @@ export const CrmHeroSlide: React.FC = () => {
 
           {/* ── CENTER PROMINENT PC SHOWCASE ── */}
           <div className="lg:col-span-6 flex items-center justify-center relative z-10 px-2 sm:px-3">
-            <div className="hero-device-container w-full max-w-[400px] lg:max-w-[440px] xl:max-w-[480px]">
+            <div className="hero-device-container w-full max-w-100 lg:max-w-110 xl:max-w-120">
               <img
                 src="/assets/images/hero-crm-showcase.png"
                 alt="Custom Enterprise CRM Dashboard & Operations System"

@@ -70,7 +70,7 @@ export const WebAppHeroSlide: React.FC = () => {
       </div>
 
       {/* ── 2. MAIN STAGE: CENTER DUAL PHONES & COMPACT CARDS ────────── */}
-      <div className="relative w-full max-w-5xl lg:max-w-[1040px] xl:max-w-[1120px] mx-auto px-4 sm:px-6 lg:mt-3">
+      <div className="relative w-full max-w-5xl lg:max-w-260 xl:max-w-280 mx-auto px-4 sm:px-6 lg:mt-3">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 xl:gap-5 items-center">
           
           {/* ── LEFT FEATURE CARDS (Desktop: Inset towards center) ── */}

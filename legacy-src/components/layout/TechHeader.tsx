@@ -158,8 +158,8 @@ export const TechHeader: React.FC = () => {
                     href={item.href}
                     className={`px-[clamp(0.65rem,0.8vw,1.1rem)] py-2 text-[clamp(13.5px,0.88vw,15.5px)] font-semibold tracking-[-0.01em] flex items-center gap-1.5 rounded-full transition-all duration-200 whitespace-nowrap drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)] ${
                       isActive
-                        ? 'text-[#FFAE00] bg-white/[0.08]'
-                        : 'text-white/90 hover:text-[#FFAE00] hover:bg-white/[0.08]'
+                        ? 'text-[#FFAE00] bg-white/8'
+                        : 'text-white/90 hover:text-[#FFAE00] hover:bg-white/8'
                     }`}
                   >
                     <span>{item.name}</span>
@@ -172,7 +172,7 @@ export const TechHeader: React.FC = () => {
 
                   {/* Dropdown Menu */}
                   {item.children && activeDropdown === item.name && (
-                    <div className="absolute top-full left-0 min-w-[240px] pt-2 z-50">
+                    <div className="absolute top-full left-0 min-w-60 pt-2 z-50">
                       <div className="bg-[#0E2015]/95 text-white border border-white/15 rounded-2xl p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
                         {item.children.map((sub) => {
                           const isSubActive = pathname === sub.href;
@@ -182,8 +182,8 @@ export const TechHeader: React.FC = () => {
                               href={sub.href}
                               className={`block px-3.5 py-2.5 text-[14px] font-medium rounded-xl transition whitespace-nowrap ${
                                 isSubActive
-                                  ? 'text-[#FFAE00] bg-white/[0.08]'
-                                  : 'text-white/85 hover:text-[#FFAE00] hover:bg-white/[0.08]'
+                                  ? 'text-[#FFAE00] bg-white/8'
+                                  : 'text-white/85 hover:text-[#FFAE00] hover:bg-white/8'
                               }`}
                             >
                               {sub.name}

@@ -291,7 +291,7 @@ export const TechHero: React.FC = () => {
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#2FE594]/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* ── MAIN STAGE CONTAINER ─────────────────────────────────────── */}
-      <div className="w-full max-w-[1440px] xl:max-w-[1600px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 hero-stage-container">
+      <div className="w-full max-w-360 xl:max-w-[1600px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 hero-stage-container">
         
         {/* ── AUTO-SLIDE SCROLLING CAROUSEL TRACK (WITH LIVE THUMB DRAG) ──── */}
         <div
@@ -374,7 +374,7 @@ export const TechHero: React.FC = () => {
               className="group relative overflow-hidden inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#1D4224] hover:bg-[#15321B] text-white font-montserrat font-black text-sm sm:text-base uppercase tracking-widest shadow-lg hover:shadow-2xl hover:shadow-[#1D4224]/35 border border-white/20 hover:scale-105 active:scale-95 transition-all duration-300 transform whitespace-nowrap cursor-pointer"
             >
               {/* Micro-shimmer shine effect on hover */}
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none" />
+              <span className="absolute inset-0 w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none" />
 
               <CalendarCheck size={22} weight="duotone" className="text-[#FFAE00] relative z-10 shrink-0" />
               <span className="relative z-10">ENQUIRE NOW</span>

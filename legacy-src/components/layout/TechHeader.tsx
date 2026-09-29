@@ -129,10 +129,10 @@ export const TechHeader: React.FC = () => {
       {/* Main Framer Navbar */}
       <nav className={`transition-all duration-300 py-3.5 ${
         isSolid
-          ? 'bg-[#0E2015] border-b border-white/10 shadow-lg'
+          ? 'bg-[#0E2015]/95 backdrop-blur-md border-b border-white/10 shadow-lg'
           : 'bg-transparent border-b border-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="w-full max-w-[clamp(1200px,94vw,1700px)] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-[clamp(1rem,2vw,2.5rem)]">
           
           {/* Logo & Node Indicator */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
@@ -144,48 +144,58 @@ export const TechHeader: React.FC = () => {
           </Link>
 
           {/* Desktop Nav Items */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {NAV_ITEMS.map((item) => (
-              <div 
-                key={item.name}
-                className="relative"
-                onMouseEnter={() => item.children && setActiveDropdown(item.name)}
-                onMouseLeave={() => item.children && setActiveDropdown(null)}
-              >
-                <Link
-                  href={item.href}
-                  className={`px-3.5 py-2 text-xs font-semibold flex items-center gap-1 rounded-full transition-colors duration-200 ${
-                    isSolid
-                      ? '!text-white/90 hover:!text-white hover:bg-white/10'
-                      : '!text-[#0E2015] hover:!text-[#1D4224] hover:bg-[#0E2015]/[0.07]'
-                  }`}
+          <div className="hidden lg:flex items-center gap-[clamp(0.25rem,0.55vw,1rem)]">
+            {NAV_ITEMS.map((item) => {
+              const isActive = pathname === item.href || (Boolean(item.children) && item.children!.some(sub => pathname === sub.href));
+              return (
+                <div 
+                  key={item.name}
+                  className="relative"
+                  onMouseEnter={() => item.children && setActiveDropdown(item.name)}
+                  onMouseLeave={() => item.children && setActiveDropdown(null)}
                 >
-                  <span>{item.name}</span>
-                  {item.children && (
-                    <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''} ${
-                      isSolid ? '!text-white/70' : '!text-[#0E2015]/70'
-                    }`} />
-                  )}
-                </Link>
+                  <Link
+                    href={item.href}
+                    className={`px-[clamp(0.65rem,0.8vw,1.1rem)] py-2 text-[clamp(13.5px,0.88vw,15.5px)] font-semibold tracking-[-0.01em] flex items-center gap-1.5 rounded-full transition-all duration-200 whitespace-nowrap drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)] ${
+                      isActive
+                        ? 'text-[#FFAE00] bg-white/[0.08]'
+                        : 'text-white/90 hover:text-[#FFAE00] hover:bg-white/[0.08]'
+                    }`}
+                  >
+                    <span>{item.name}</span>
+                    {item.children && (
+                      <ChevronDown className={`w-3.5 h-3.5 stroke-[2.2] transition-transform duration-200 ${
+                        activeDropdown === item.name ? 'rotate-180 text-[#FFAE00]' : 'text-white/70'
+                      }`} />
+                    )}
+                  </Link>
 
-                {/* Dropdown Menu */}
-                {item.children && activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 w-64 pt-2 z-50">
-                    <div className="bg-[#0E2015] text-white border border-white/10 rounded-2xl p-2 shadow-2xl backdrop-blur-xl">
-                      {item.children.map((sub) => (
-                        <Link
-                          key={sub.name}
-                          href={sub.href}
-                          className="block px-3 py-2 text-xs font-medium !text-white/85 hover:!text-white hover:bg-white/10 rounded-lg transition whitespace-nowrap"
-                        >
-                          {sub.name}
-                        </Link>
-                      ))}
+                  {/* Dropdown Menu */}
+                  {item.children && activeDropdown === item.name && (
+                    <div className="absolute top-full left-0 min-w-[240px] pt-2 z-50">
+                      <div className="bg-[#0E2015]/95 text-white border border-white/15 rounded-2xl p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
+                        {item.children.map((sub) => {
+                          const isSubActive = pathname === sub.href;
+                          return (
+                            <Link
+                              key={sub.name}
+                              href={sub.href}
+                              className={`block px-3.5 py-2.5 text-[14px] font-medium rounded-xl transition whitespace-nowrap ${
+                                isSubActive
+                                  ? 'text-[#FFAE00] bg-white/[0.08]'
+                                  : 'text-white/85 hover:text-[#FFAE00] hover:bg-white/[0.08]'
+                              }`}
+                            >
+                              {sub.name}
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* Right Action Framer Pills */}
@@ -193,10 +203,10 @@ export const TechHeader: React.FC = () => {
             <Link
               href={isHome ? "#contact-form" : "/#contact-form"}
               onClick={handleProposalClick}
-              className="framer-btn-primary border border-white/15 px-4 py-2 text-xs font-bold flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer"
+              className="framer-btn-primary border border-white/20 px-[clamp(1rem,1.25vw,1.45rem)] py-[clamp(0.55rem,0.65vw,0.75rem)] text-[clamp(13.5px,0.85vw,15px)] font-bold flex items-center gap-2 whitespace-nowrap shrink-0 cursor-pointer shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200"
             >
               <span>Get Proposal</span>
-              <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+              <ArrowUpRight className="w-4 h-4 shrink-0 stroke-[2.2]" />
             </Link>
           </div>
 
@@ -209,7 +219,7 @@ export const TechHeader: React.FC = () => {
               displayItemNumbering={false}
               colors={['#FFAE00', '#1D4224', '#0E2015']}
               accentColor="#FFAE00"
-              menuButtonColor={isSolid ? '#FFFFFF' : '#0E2015'}
+              menuButtonColor="#FFFFFF"
               openMenuButtonColor="#FFFFFF"
               logoUrl="/assets/images/tzar-logo-main.png"
             />

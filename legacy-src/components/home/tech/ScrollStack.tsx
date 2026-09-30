@@ -2,7 +2,6 @@
 
 import React, { useLayoutEffect, useEffect, useRef, useCallback } from 'react';
 import Lenis from 'lenis';
-import AOS from 'aos';
 import './ScrollStack.css';
 
 interface ScrollStackItemProps {
@@ -58,14 +57,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   useWindowScroll = false,
   onStackComplete
 }) => {
-  useEffect(() => {
-    AOS.init({
-      duration: 500,
-      easing: 'ease-out-cubic',
-      once: false,
-      offset: 30,
-    });
-  }, []);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const stackCompletedRef = useRef<boolean>(false);
   const animationFrameRef = useRef<number | null>(null);
@@ -161,6 +152,12 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
   // Update visual transforms with zero DOM layout reads during scroll
   const updateCardTransforms = useCallback((currentScrollTop?: number) => {
+    // On mobile (< 768px), cards use 100% native hardware compositor CSS position: sticky.
+    // Completely skipping JS translate3d transforms on mobile eliminates the scroll vibration/jitter!
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return;
+    }
+
     const cards = cardsRef.current;
     if (!cards.length || isUpdatingRef.current) return;
 
@@ -277,14 +274,16 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const setupLenis = useCallback(() => {
     if (typeof window === 'undefined') return;
 
+    // Mobile screens (< 768px) use native browser compositor sticky
+    if (window.innerWidth < 768) return null;
+
     const scroller = scrollerRef.current;
     if (!useWindowScroll && !scroller) return;
 
-    // Detect touch-enabled devices (phones, tablets)
+    // Detect touch-enabled devices on desktop/tablet
     const isTouch = 'ontouchstart' in window || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
 
-    // On mobile & touch devices, preserve 100% native 120Hz/60Hz hardware compositor momentum
-    // Virtual smooth scrolling on touch screens causes heavy input lag and stuttering
+    // On touch devices, preserve native momentum scrolling
     if (isTouch) {
       let ticking = false;
       const handleNativeScroll = () => {
@@ -345,37 +344,54 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const transformsCache = lastTransformsRef.current;
 
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const windowH = typeof window !== 'undefined' ? window.innerHeight : 800;
-    // On mobile, calibrated dwell distance gives each card dedicated viewing time before next card arrives
-    const finalDistance = isMobile
-      ? Math.max(440, Math.min(560, Math.round(windowH * 0.65)))
-      : itemDistance;
 
-    cards.forEach((card, i) => {
-      if (i < cards.length - 1) {
-        card.style.marginBottom = `${finalDistance}px`;
+    if (isMobile) {
+      // Mobile (< 768px): Zero JS transforms, pure native CSS position: sticky
+      cards.forEach((card, i) => {
+        card.style.zIndex = `${10 + i}`;
+        card.style.willChange = 'auto';
+        card.style.transform = 'none';
+        card.style.setProperty('-webkit-transform', 'none');
+        if (i < cards.length - 1) {
+          card.style.marginBottom = '240px';
+        } else {
+          card.style.marginBottom = '24px';
+        }
+      });
+
+      const endElement = useWindowScroll
+        ? (document.querySelector('.scroll-stack-end') as HTMLElement)
+        : (scroller?.querySelector('.scroll-stack-end') as HTMLElement);
+      if (endElement) {
+        endElement.style.height = '0px';
       }
-      card.style.willChange = 'transform';
-      card.style.transformOrigin = 'top center';
-      card.style.backfaceVisibility = 'hidden';
-      card.style.transform = 'translateZ(0)';
-      card.style.setProperty('-webkit-transform', 'translateZ(0)');
-    });
+    } else {
+      // Desktop (≥ 768px): Full Lenis & 3D transform metrics (100% UNTOUCHED)
+      cards.forEach((card, i) => {
+        card.style.zIndex = `${10 + i}`;
+        if (i < cards.length - 1) {
+          card.style.marginBottom = `${itemDistance}px`;
+        } else {
+          card.style.marginBottom = '0px';
+        }
+        card.style.willChange = 'transform';
+        card.style.transformOrigin = 'top center';
+        card.style.backfaceVisibility = 'hidden';
+        card.style.transform = 'translateZ(0)';
+        card.style.setProperty('-webkit-transform', 'translateZ(0)');
+      });
 
-    // Provide scroll travel for the final card so it gets equal dwell time before exiting
-    const endElement = useWindowScroll
-      ? (document.querySelector('.scroll-stack-end') as HTMLElement)
-      : (scroller?.querySelector('.scroll-stack-end') as HTMLElement);
-    if (endElement) {
-      endElement.style.height = `${finalDistance}px`;
+      const endElement = useWindowScroll
+        ? (document.querySelector('.scroll-stack-end') as HTMLElement)
+        : (scroller?.querySelector('.scroll-stack-end') as HTMLElement);
+      if (endElement) {
+        endElement.style.height = `${itemDistance}px`;
+      }
+
+      measureMetrics();
+      setupLenis();
+      updateCardTransforms();
     }
-
-    // Initial batch layout measurement
-    measureMetrics();
-
-    setupLenis();
-
-    updateCardTransforms();
 
     // Responsive resize handler with debounced measurement
     let resizeTimer: any = null;
@@ -383,35 +399,55 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       if (resizeTimer) cancelAnimationFrame(resizeTimer);
       resizeTimer = requestAnimationFrame(() => {
         const isMobileNow = typeof window !== 'undefined' && window.innerWidth < 768;
-        const currentWinH = typeof window !== 'undefined' ? window.innerHeight : 800;
-        const currentDistance = isMobileNow
-          ? Math.max(440, Math.min(560, Math.round(currentWinH * 0.65)))
-          : itemDistance;
-
-        cards.forEach((card, i) => {
-          if (i < cards.length - 1) {
-            card.style.marginBottom = `${currentDistance}px`;
+        if (isMobileNow) {
+          cards.forEach((card, i) => {
+            card.style.zIndex = `${10 + i}`;
+            card.style.willChange = 'auto';
+            card.style.transform = 'none';
+            card.style.setProperty('-webkit-transform', 'none');
+            if (i < cards.length - 1) {
+              card.style.marginBottom = '240px';
+            } else {
+              card.style.marginBottom = '24px';
+            }
+          });
+          const endEl = useWindowScroll
+            ? (document.querySelector('.scroll-stack-end') as HTMLElement)
+            : (scroller?.querySelector('.scroll-stack-end') as HTMLElement);
+          if (endEl) {
+            endEl.style.height = '0px';
           }
-        });
+        } else {
+          cards.forEach((card, i) => {
+            card.style.zIndex = `${10 + i}`;
+            card.style.willChange = 'transform';
+            card.style.transformOrigin = 'top center';
+            card.style.backfaceVisibility = 'hidden';
+            if (i < cards.length - 1) {
+              card.style.marginBottom = `${itemDistance}px`;
+            } else {
+              card.style.marginBottom = '0px';
+            }
+          });
+          const endEl = useWindowScroll
+            ? (document.querySelector('.scroll-stack-end') as HTMLElement)
+            : (scroller?.querySelector('.scroll-stack-end') as HTMLElement);
+          if (endEl) {
+            endEl.style.height = `${itemDistance}px`;
+          }
 
-        const endEl = useWindowScroll
-          ? (document.querySelector('.scroll-stack-end') as HTMLElement)
-          : (scroller?.querySelector('.scroll-stack-end') as HTMLElement);
-        if (endEl) {
-          endEl.style.height = `${currentDistance}px`;
+          measureMetrics();
+          updateCardTransforms();
         }
-
-        measureMetrics();
-        updateCardTransforms();
       });
     };
 
     window.addEventListener('resize', handleResize, { passive: true });
     window.addEventListener('orientationchange', handleResize, { passive: true });
 
-    // Observe changes in card content sizes (e.g. image loads)
+    // Observe changes in card content sizes (Desktop only, avoids mobile address bar resize thrashing)
     let resizeObserver: ResizeObserver | null = null;
-    if (typeof ResizeObserver !== 'undefined') {
+    if (typeof ResizeObserver !== 'undefined' && !isMobile) {
       resizeObserver = new ResizeObserver(() => {
         measureMetrics();
         updateCardTransforms();

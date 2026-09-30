@@ -90,9 +90,20 @@ export default function Home() {
                   <span className="text-[11px] font-mono uppercase tracking-widest text-[#1D4224]/60 font-medium">
                     01 • Engineering
                   </span>
-                  <span className="text-[11px] font-mono text-[#1D4224]/30 md:hidden">
-                    Swipe →
-                  </span>
+                  <div className="flex items-center gap-2 md:hidden">
+                    <span className="text-[11px] font-mono text-[#1D4224]/40">
+                      Swipe →
+                    </span>
+                    <a
+                      href="/website-development-services"
+                      className="inline-flex items-center gap-1 text-[11px] font-montserrat font-bold text-[#0E2015] bg-[#1D4224]/10 hover:bg-[#1D4224]/20 active:scale-95 px-2.5 py-0.5 rounded-full transition-all"
+                    >
+                      Explore
+                      <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2.5 mt-1.5">
                   <div className="w-8 h-8 rounded-lg bg-[#1D4224]/8 flex items-center justify-center shrink-0">
@@ -107,7 +118,7 @@ export default function Home() {
               {/* Showcase Visual Area */}
               <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar md:grid md:grid-cols-3 md:gap-5 md:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
                 {/* Showcase 1: Multi-Platform Ecosystem */}
-                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[88%] md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
                     <picture className="contents">
                       <source media="(max-width: 767px)" srcSet="/mockups/duo-adshalaa-platform.webp" />
@@ -126,7 +137,7 @@ export default function Home() {
                 </div>
 
                 {/* Showcase 2: Ambrior Infrastructure */}
-                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[88%] md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
                     <picture className="contents">
                       <source media="(max-width: 767px)" srcSet="/mockups/duo-ambrior-ecosystem.webp" />
@@ -145,7 +156,7 @@ export default function Home() {
                 </div>
 
                 {/* Showcase 3: Leorix Luxury E-Commerce */}
-                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[88%] md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
                     <picture className="contents">
                       <source media="(max-width: 767px)" srcSet="/mockups/duo-leorix-luxury.webp" />
@@ -190,9 +201,20 @@ export default function Home() {
                   <span className="text-[11px] font-mono uppercase tracking-widest text-[#1D4224]/60 font-medium">
                     02 • Mobile
                   </span>
-                  <span className="text-[11px] font-mono text-[#1D4224]/30 md:hidden">
-                    Swipe →
-                  </span>
+                  <div className="flex items-center gap-2 md:hidden">
+                    <span className="text-[11px] font-mono text-[#1D4224]/40">
+                      Swipe →
+                    </span>
+                    <a
+                      href="/website-development-services"
+                      className="inline-flex items-center gap-1 text-[11px] font-montserrat font-bold text-[#0E2015] bg-[#1D4224]/10 hover:bg-[#1D4224]/20 active:scale-95 px-2.5 py-0.5 rounded-full transition-all"
+                    >
+                      Explore
+                      <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2.5 mt-1.5">
                   <div className="w-8 h-8 rounded-lg bg-[#1D4224]/8 flex items-center justify-center shrink-0">
@@ -207,7 +229,7 @@ export default function Home() {
               {/* Showcase Visual Area */}
               <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-4 sm:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
                 {/* Phone 1: Kaam Milega */}
-                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[85%] sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
                       src="/mockups/app-kaammilega-native.webp"
@@ -223,7 +245,7 @@ export default function Home() {
                 </div>
 
                 {/* Phone 2: Leorix Commerce */}
-                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[85%] sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
                       src="/mockups/app-leorix-native.webp"
@@ -239,7 +261,7 @@ export default function Home() {
                 </div>
 
                 {/* Phone 3: Adshalaa Learning */}
-                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[85%] sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
                       src="/mockups/app-adshalaa-native.webp"
@@ -255,7 +277,7 @@ export default function Home() {
                 </div>
 
                 {/* Phone 4: Ambrior Operations */}
-                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[85%] sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
                       src="/mockups/app-ambrior-native.webp"
@@ -297,9 +319,20 @@ export default function Home() {
                   <span className="text-[11px] font-mono uppercase tracking-widest text-[#B8860B]/70 font-medium">
                     03 • Enterprise
                   </span>
-                  <span className="text-[11px] font-mono text-[#B8860B]/30 md:hidden">
-                    Swipe →
-                  </span>
+                  <div className="flex items-center gap-2 md:hidden">
+                    <span className="text-[11px] font-mono text-[#B8860B]/40">
+                      Swipe →
+                    </span>
+                    <a
+                      href="/website-development-services"
+                      className="inline-flex items-center gap-1 text-[11px] font-montserrat font-bold text-[#8B6914] bg-[#B8860B]/12 hover:bg-[#B8860B]/20 active:scale-95 px-2.5 py-0.5 rounded-full transition-all"
+                    >
+                      Explore
+                      <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2.5 mt-1.5">
                   <div className="w-8 h-8 rounded-lg bg-[#B8860B]/10 flex items-center justify-center shrink-0">
@@ -314,7 +347,7 @@ export default function Home() {
               {/* Showcase Visual Area */}
               <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar md:grid md:grid-cols-2 md:gap-6 md:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
                 {/* Showcase 1: Tzar CRM Platform */}
-                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[88%] md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
                     {/* Mobile Only (< 768px): High-End Responsive Duo */}
                     <div className="stack-mobile-only w-full h-full">
@@ -348,7 +381,7 @@ export default function Home() {
                 </div>
 
                 {/* Showcase 2: AY Astute Group CRM */}
-                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[88%] md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
                     {/* Mobile Only (< 768px): High-End Responsive Duo */}
                     <div className="stack-mobile-only w-full h-full">
@@ -408,9 +441,20 @@ export default function Home() {
                   <span className="text-[11px] font-mono uppercase tracking-widest text-[#1D4224]/60 font-medium">
                     04 • Growth
                   </span>
-                  <span className="text-[11px] font-mono text-[#1D4224]/30 md:hidden">
-                    Swipe →
-                  </span>
+                  <div className="flex items-center gap-2 md:hidden">
+                    <span className="text-[11px] font-mono text-[#1D4224]/40">
+                      Swipe →
+                    </span>
+                    <a
+                      href="/search-engine-optimization-services"
+                      className="inline-flex items-center gap-1 text-[11px] font-montserrat font-bold text-[#0E2015] bg-[#1D4224]/10 hover:bg-[#1D4224]/20 active:scale-95 px-2.5 py-0.5 rounded-full transition-all"
+                    >
+                      Explore
+                      <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2.5 mt-1.5">
                   <div className="w-8 h-8 rounded-lg bg-[#1D4224]/8 flex items-center justify-center shrink-0">
@@ -425,7 +469,7 @@ export default function Home() {
               {/* Showcase Visual Area */}
               <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar md:grid md:grid-cols-2 md:gap-6 md:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
                 {/* Showcase 1: Organic SEO */}
-                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[88%] md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
                     <img
                       src="/assets/images/seo-growth-dashboard.webp"
@@ -441,7 +485,7 @@ export default function Home() {
                 </div>
 
                 {/* Showcase 2: Paid ROAS */}
-                <div className="shrink-0 w-full md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[88%] md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
                     <img
                       src="/assets/images/paid-performance-dashboard.webp"
@@ -483,9 +527,20 @@ export default function Home() {
                   <span className="text-[11px] font-mono uppercase tracking-widest text-[#1D4224]/60 font-medium">
                     05 • Industrial Design
                   </span>
-                  <span className="text-[11px] font-mono text-[#1D4224]/30 md:hidden">
-                    Swipe →
-                  </span>
+                  <div className="flex items-center gap-2 md:hidden">
+                    <span className="text-[11px] font-mono text-[#1D4224]/40">
+                      Swipe →
+                    </span>
+                    <a
+                      href="/product-design-packaging-services"
+                      className="inline-flex items-center gap-1 text-[11px] font-montserrat font-bold text-[#0E2015] bg-[#1D4224]/10 hover:bg-[#1D4224]/20 active:scale-95 px-2.5 py-0.5 rounded-full transition-all"
+                    >
+                      Explore
+                      <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2.5 mt-1.5">
                   <div className="w-8 h-8 rounded-lg bg-[#1D4224]/8 flex items-center justify-center shrink-0">
@@ -500,7 +555,7 @@ export default function Home() {
               {/* Showcase Visual Area */}
               <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar lg:grid lg:grid-cols-4 lg:gap-4 lg:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
                 {/* Packaging 1 */}
-                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[85%] sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
                       src="/assets/images/projects/printPackaging1.webp"
@@ -516,7 +571,7 @@ export default function Home() {
                 </div>
 
                 {/* Packaging 2 */}
-                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[85%] sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
                       src="/assets/images/projects/printPackaging2.webp"
@@ -532,7 +587,7 @@ export default function Home() {
                 </div>
 
                 {/* Packaging 3 */}
-                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[85%] sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
                       src="/assets/images/projects/printPackaging3.webp"
@@ -548,7 +603,7 @@ export default function Home() {
                 </div>
 
                 {/* Packaging 4 */}
-                <div className="shrink-0 w-full sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
+                <div className="shrink-0 w-[85%] sm:w-auto snap-center flex flex-col justify-between h-full min-h-0">
                   <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 overflow-hidden">
                     <img
                       src="/assets/images/projects/printPackaging4.webp"

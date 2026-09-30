@@ -3,7 +3,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowDown } from "lucide-react";
+import { DotLottieReact, setWasmUrl } from "@lottiefiles/dotlottie-react";
+
+// Configure local WASM URL immediately to prevent remote CDN network waterfall delays
+if (typeof window !== "undefined") {
+  setWasmUrl("/assets/lottie/dotlottie-player.wasm");
+}
 
 interface TeamMember {
   id: number;
@@ -134,22 +140,25 @@ export default function OurTeamView() {
 
   return (
     <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
-      {/* ── 01. EDITORIAL PAGE HEADER BANNER ── */}
-      <section className="relative overflow-hidden bg-[#1D4224] text-white pt-28 pb-12 sm:pt-36 sm:pb-16">
-        {/* Background Image with Rich Tint */}
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity"
-          style={{
-            backgroundImage: "url('/assets/images/backgrounds/page-header-bgOur-Team.jpg')",
-          }}
-        />
+      {/* ── 01. EDITORIAL PAGE HEADER BANNER (90% VIEWPORT HEIGHT) ── */}
+      <section className="relative overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30 text-white min-h-[90vh] flex flex-col justify-between pt-28 pb-14 sm:pt-36 sm:pb-20">
+        {/* Ambient Dark Spruce & Gold Glows with Subtle Dot-Matrix Grid */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1D4224]/25 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, #FFFFFF 1px, transparent 0)',
+              backgroundSize: '32px 32px',
+            }}
+          />
+        </div>
 
-        {/* Ambient Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1D4224]/90 via-[#1D4224]/95 to-[#0E2015]" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Foreground Content Grid (relative z-10, completely above all background overlays) */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full">
           {/* Breadcrumb Strip */}
-          <nav className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wider mb-4 text-[#FFAE00]">
+          <nav className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wider mb-6 text-[#FFAE00]">
             <Link href="/" className="hover:underline opacity-80 hover:opacity-100">
               HOME
             </Link>
@@ -157,28 +166,98 @@ export default function OurTeamView() {
             <span className="text-white font-bold">OUR TEAM</span>
           </nav>
 
-          <div className="max-w-3xl space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFAE00]/15 border border-[#FFAE00]/30 text-[#FFAE00] text-xs font-mono font-bold uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>PEOPLE BEHIND IT</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Equal 50% Space with Simplified Copywriting & Modern Tech Stack */}
+            <div className="space-y-6 relative z-20">
+              {/* Clean Typographic Eyebrow (No pill badge, No sparkles) */}
+              <div className="flex items-center gap-3 text-xs sm:text-sm font-mono tracking-[0.25em] text-[#FFAE00] uppercase font-bold">
+                <span className="w-8 h-px bg-[#FFAE00]" />
+                <span>Specialist Practitioners & Leadership</span>
+              </div>
+
+              {/* Bold Editorial Headline */}
+              <div className="space-y-2">
+                <h1 className="font-montserrat font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
+                  Meet Our <span className="text-[#FFAE00]">Specialists</span>
+                </h1>
+                <p className="font-montserrat font-bold text-lg sm:text-2xl text-white/95 tracking-tight leading-snug">
+                  Engineers, product designers, and growth tacticians.
+                </p>
+              </div>
+
+              {/* Simplified, Impactful Copywriting */}
+              <p className="font-sans text-sm sm:text-base lg:text-lg text-[#B6F8DD]/90 max-w-xl leading-relaxed">
+                Our in-house team in Mumbai develops modern web and mobile applications, scalable cloud backends, and organic search monopolies with obsessive attention to detail.
+              </p>
+
+              {/* Modern Tech Stack Focus Pillars */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-white/10">
+                <div>
+                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
+                    Web & Mobile Apps
+                  </span>
+                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
+                    Next.js, React & iOS / Android
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
+                    Backend & Cloud
+                  </span>
+                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
+                    Modern APIs, Node & DBs
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
+                    Growth & Strategy
+                  </span>
+                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
+                    Technical SEO & UX Design
+                  </span>
+                </div>
+              </div>
+
+              {/* High-Converting Action Triggers */}
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <a
+                  href="#team-directory"
+                  className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-2.5 text-sm sm:text-base group font-sans"
+                >
+                  <span>Explore All Specialists</span>
+                  <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+                </a>
+
+                <Link
+                  href="/career"
+                  className="border border-white/25 text-white hover:bg-white/10 px-6 py-3.5 rounded-xl font-bold transition-all text-sm sm:text-base inline-flex items-center gap-2 font-sans"
+                >
+                  <span>Join Our Team</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
 
-            <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
-              Meet Our <span className="text-[#FFAE00]">Team</span>
-            </h1>
-
-            <p className="font-sans text-sm sm:text-lg text-[#B6F8DD]/90 max-w-2xl leading-relaxed">
-              The multidisciplinary engineers, performance marketers, creative designers, and business architects powering results across every client engagement.
-            </p>
+            {/* Right Column: Equal 50% Space with Sized-Up Lottie Art Shifted to Right to Eliminate Overlap */}
+            <div className="flex items-center justify-center lg:justify-end overflow-visible relative z-10">
+              <div className="w-full max-w-xl lg:max-w-none aspect-[16/9] flex items-center justify-center transform scale-110 sm:scale-115 lg:scale-120 xl:scale-125 origin-center lg:translate-x-12 xl:translate-x-16 transition-transform duration-300">
+                <DotLottieReact
+                  src="/assets/lottie/for-team-page.json"
+                  loop
+                  autoplay
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Subtle Bottom Border */}
-        <div className="absolute bottom-0 inset-x-0 h-px bg-white/10" />
+        {/* Delicate Border Separator */}
+        <div className="absolute bottom-0 inset-x-0 h-px bg-white/10 pointer-events-none" />
       </section>
 
       {/* ── 02. TEAM DIRECTORY WITH INTERACTIVE FILTER ── */}
-      <section className="py-10 sm:py-16">
+      <section id="team-directory" className="py-10 sm:py-16 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Filter Tabs */}
           <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-8 sm:mb-10 no-scrollbar">

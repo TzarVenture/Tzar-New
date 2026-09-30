@@ -13,6 +13,8 @@
 .scroll-stack-scroller.use-window-scroll {
   overflow: visible;
   height: auto;
+  -webkit-transform: none;
+  transform: none;
 }
 
 .scroll-stack-inner {
@@ -43,7 +45,6 @@
 
 .scroll-stack-card {
   transform-origin: top center;
-  will-change: transform;
   backface-visibility: hidden;
   box-shadow:
     0 8px 32px -4px rgba(14, 32, 21, 0.12),
@@ -54,16 +55,38 @@
   padding: clamp(1rem, 2.5vw, 1.75rem) clamp(0.875rem, 2vw, 1.5rem) clamp(0.875rem, 2vw, 1.25rem);
   border-radius: clamp(20px, 3vw, 30px);
   box-sizing: border-box;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
   position: relative;
   overflow: hidden;
-  /* Nearly full-viewport on mobile */
-  height: clamp(540px, calc(100dvh - 90px), 800px);
 }
 
+/* ── Mobile (< 768px): Native GPU Compositor Sticky (120Hz locked, Zero Vibration) ── */
+@media (max-width: 767px) {
+  .scroll-stack-card {
+    position: sticky;
+    top: 72px;
+    height: clamp(500px, calc(100svh - 85px), 660px);
+    margin-bottom: 240px;
+    will-change: auto;
+    -webkit-transform: none !important;
+    transform: none !important;
+  }
+
+  .scroll-stack-card:last-of-type {
+    margin-bottom: 24px;
+  }
+
+  .scroll-stack-end {
+    display: none;
+  }
+}
+
+/* ── Desktop (≥ 768px): Relative layout driven smoothly by Lenis & 3D transforms ── */
 @media (min-width: 768px) {
   .scroll-stack-card {
+    position: relative;
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
     height: clamp(520px, 78vh, 720px);
   }
 }
@@ -83,7 +106,6 @@
   margin-bottom: 0.75rem;
   flex-shrink: 0;
 }
-
 
 .scroll-stack-end {
   width: 100%;
@@ -110,7 +132,7 @@
   display: flex;
   align-items: flex-end;
   padding: clamp(1.25rem, 3vw, 2rem);
-  z-index: 10;
+  z-index: 20;
   opacity: 0;
   transition: opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: opacity;
@@ -128,10 +150,12 @@
   );
 }
 
-/* Reveal on hover — smooth opacity fade only */
-.scroll-stack-card:hover .stack-card-hover-overlay {
-  opacity: 1;
-  pointer-events: auto;
+/* Reveal on hover — smooth opacity fade only for mouse/trackpad pointer devices (Desktop) */
+@media (hover: hover) and (pointer: fine) {
+  .scroll-stack-card:hover .stack-card-hover-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 .stack-card-hover-content {

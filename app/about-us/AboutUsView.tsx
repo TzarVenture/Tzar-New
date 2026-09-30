@@ -3,7 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { DotLottieReact, setWasmUrl } from "@lottiefiles/dotlottie-react";
+
+// Configure local WASM URL immediately to prevent remote CDN network waterfall delays
+if (typeof window !== "undefined") {
+  setWasmUrl("/assets/lottie/dotlottie-player.wasm");
+}
 
 // Performance stats
 const STATS = [
@@ -76,22 +82,25 @@ const TEAM_MEMBERS = [
 export default function AboutUsView() {
   return (
     <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
-      {/* ── 01. EDITORIAL PAGE HEADER / HERO BANNER ── */}
-      <section className="relative overflow-hidden bg-[#1D4224] text-white pt-28 pb-12 sm:pt-36 sm:pb-16">
-        {/* Background Image with Rich Tint */}
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity"
-          style={{
-            backgroundImage: "url('/assets/images/backgrounds/page-header-bgAu.jpg')",
-          }}
-        />
+      {/* ── 01. EDITORIAL PAGE HEADER / HERO BANNER (90% VIEWPORT HEIGHT) ── */}
+      <section className="relative overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30 text-white min-h-[90vh] flex flex-col justify-between pt-28 pb-14 sm:pt-36 sm:pb-20">
+        {/* Ambient Dark Spruce & Gold Glows with Subtle Dot-Matrix Grid (Same as website-development-services page) */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1D4224]/25 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, #FFFFFF 1px, transparent 0)',
+              backgroundSize: '32px 32px',
+            }}
+          />
+        </div>
 
-        {/* Ambient Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1D4224]/90 via-[#1D4224]/95 to-[#0E2015]" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Foreground Content Grid (relative z-10, completely above all background overlays) */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full">
           {/* Breadcrumb Strip */}
-          <nav className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wider mb-4 text-[#FFAE00]">
+          <nav className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wider mb-6 text-[#FFAE00]">
             <Link href="/" className="hover:underline opacity-80 hover:opacity-100">
               HOME
             </Link>
@@ -99,24 +108,93 @@ export default function AboutUsView() {
             <span className="text-white font-bold">ABOUT US</span>
           </nav>
 
-          <div className="max-w-3xl space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFAE00]/15 border border-[#FFAE00]/30 text-[#FFAE00] text-xs font-mono font-bold uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>AGENCY DNA & MISSION</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Equal 50% Space with Simplified Copywriting & Modern Tech Stack */}
+            <div className="space-y-6 relative z-20">
+              {/* Clean Typographic Eyebrow (No pill badge, No sparkles) */}
+              <div className="flex items-center gap-3 text-xs sm:text-sm font-mono tracking-[0.25em] text-[#FFAE00] uppercase font-bold">
+                <span className="w-8 h-px bg-[#FFAE00]" />
+                <span>Agency DNA & Strategic Vision</span>
+              </div>
+
+              {/* Bold Editorial Headline */}
+              <div className="space-y-2">
+                <h1 className="font-montserrat font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
+                  About <span className="text-[#FFAE00]">Tzar Venture</span>
+                </h1>
+                <p className="font-montserrat font-bold text-lg sm:text-2xl text-white/95 tracking-tight leading-snug">
+                  Digital growth agency and modern application engineering.
+                </p>
+              </div>
+
+              {/* Simplified, Impactful Copywriting */}
+              <p className="font-sans text-sm sm:text-base lg:text-lg text-[#B6F8DD]/90 max-w-xl leading-relaxed">
+                We engineer modern web and mobile applications, high-performance e-commerce platforms, and technical SEO strategies that scale businesses across India and globally.
+              </p>
+
+              {/* Modern Tech Stack Focus Pillars */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-white/10">
+                <div>
+                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
+                    Web & Mobile Apps
+                  </span>
+                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
+                    Next.js, React & Mobile Apps
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
+                    Modern Tech Stack
+                  </span>
+                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
+                    Node, Cloud & Headless APIs
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
+                    Growth Systems
+                  </span>
+                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
+                    Technical SEO & High ROAS
+                  </span>
+                </div>
+              </div>
+
+              {/* High-Converting Action Triggers */}
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Link
+                  href="/services"
+                  className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-2.5 text-sm sm:text-base group font-sans"
+                >
+                  <span>Explore Our Capabilities</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+
+                <a
+                  href="#about-story"
+                  className="border border-white/25 text-white hover:bg-white/10 px-6 py-3.5 rounded-xl font-bold transition-all text-sm sm:text-base inline-flex items-center gap-2 font-sans"
+                >
+                  <span>Our Mission & Story</span>
+                </a>
+              </div>
             </div>
 
-            <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
-              About <span className="text-[#FFAE00]">Tzar Venture</span>
-            </h1>
-
-            <p className="font-sans text-sm sm:text-lg text-[#B6F8DD]/90 max-w-2xl leading-relaxed">
-              India's premier digital growth and enterprise web systems agency. We engineer high-converting digital platforms, technical SEO dominance, and high-impact brand identities.
-            </p>
+            {/* Right Column: Equal 50% Space with Sized-Up Lottie Art */}
+            <div className="flex items-center justify-center lg:justify-end overflow-visible relative z-10">
+              <div className="w-full max-w-xl lg:max-w-none aspect-[882/551] flex items-center justify-center transform scale-105 lg:scale-110 xl:scale-115 origin-center lg:translate-x-4 xl:translate-x-8 transition-transform duration-300">
+                <DotLottieReact
+                  src="/assets/lottie/team-discussion.lottie"
+                  loop
+                  autoplay
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Delicate Border Separator */}
-        <div className="absolute bottom-0 inset-x-0 h-px bg-white/10" />
+        <div className="absolute bottom-0 inset-x-0 h-px bg-white/10 pointer-events-none" />
       </section>
 
       {/* ── 02. CORE METRICS BENCHMARK STRIP ── */}
@@ -144,7 +222,7 @@ export default function AboutUsView() {
       </section>
 
       {/* ── 03. MAIN ABOUT COMPANY SECTION ── */}
-      <section className="py-10 sm:py-14">
+      <section id="about-story" className="py-10 sm:py-14 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Column: Image with smooth border radius */}

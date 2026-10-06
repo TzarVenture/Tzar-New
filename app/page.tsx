@@ -2,6 +2,7 @@ import React from "react";
 import { TechHero } from "@/legacy-src/components/home/tech/TechHero";
 import { ClientMarquee } from "@/legacy-src/components/home/tech/ClientMarquee";
 import ScrollStack, { ScrollStackItem } from "@/legacy-src/components/home/tech/ScrollStack";
+import { WebDevSpotlightCard } from "@/legacy-src/components/home/tech/WebDevSpotlightCard";
 import { TechMarquee } from "@/legacy-src/components/home/tech/TechMarquee";
 import { TechBentoGrid } from "@/legacy-src/components/home/tech/TechBentoGrid";
 import { TechArchitectureMatrix } from "@/legacy-src/components/home/tech/TechArchitectureMatrix";
@@ -66,115 +67,8 @@ export default function Home() {
         </div>
 
         <ScrollStack useWindowScroll={true} stackPosition="50px" itemDistance={480} itemStackDistance={30} baseScale={0.96}>
-          {/* ── CARD 01: WEB APPLICATION DEVELOPMENT ── */}
-          <ScrollStackItem itemClassName="bg-gradient-to-br from-[#EEF4E8] via-[#E4EDDC] to-[#D9E6D0] border border-[#1D4224]/10">
-            {/* Hover Overlay */}
-            <div className="stack-card-hover-overlay">
-              <div className="stack-card-hover-content">
-                <p className="stack-card-hover-tagline">High-performance platforms engineered for commercial scale — from headless commerce to enterprise portals.</p>
-                <ul className="stack-card-hover-features">
-                  <li>Sub-second load times</li>
-                  <li>Custom e-commerce &amp; web apps</li>
-                  <li>100% mobile responsive</li>
-                </ul>
-                <a href="/website-development-services" className="stack-card-hover-cta">
-                  Explore Service
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </a>
-              </div>
-            </div>
-            <div className="flex flex-col h-full justify-between">
-              {/* Card Header */}
-              <div className="pb-2.5 sm:pb-3 border-b border-[#1D4224]/10 shrink-0">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#1D4224]/60 font-medium">
-                    01 • Engineering
-                  </span>
-                  <div className="flex items-center gap-2 md:hidden">
-                    <span className="text-[11px] font-mono text-[#1D4224]/40">
-                      Swipe →
-                    </span>
-                    <a
-                      href="/website-development-services"
-                      className="inline-flex items-center gap-1 text-[11px] font-montserrat font-bold text-[#0E2015] bg-[#1D4224]/10 hover:bg-[#1D4224]/20 active:scale-95 px-2.5 py-0.5 rounded-full transition-all"
-                    >
-                      Explore
-                      <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2.5 mt-1.5">
-                  <div className="w-8 h-8 rounded-lg bg-[#1D4224]/8 flex items-center justify-center shrink-0">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4224" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                  </div>
-                  <h3 className="font-montserrat font-bold text-lg sm:text-2xl lg:text-3xl text-[#0E2015] tracking-tight">
-                    Web Application Development
-                  </h3>
-                </div>
-              </div>
-
-              {/* Showcase Visual Area */}
-              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-1 no-scrollbar md:grid md:grid-cols-3 md:gap-5 md:pb-0 flex-1 min-h-0 w-full overscroll-x-contain mt-2 sm:mt-3">
-                {/* Showcase 1: Multi-Platform Ecosystem */}
-                <div className="shrink-0 w-[88%] md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
-                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
-                    <picture className="contents">
-                      <source media="(max-width: 767px)" srcSet="/mockups/duo-adshalaa-platform.webp" />
-                      <img
-                        src="/mockups/next-website/all-devices-black.webp"
-                        alt="Adshalaa Multi-Platform Architecture"
-                        decoding="async"
-                        className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
-                      />
-                    </picture>
-                  </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-[#0E2015]">Adshalaa Platform</span>
-                    <span className="text-[#4B5563] font-mono text-[11px]">Next.js • Cross-Device</span>
-                  </div>
-                </div>
-
-                {/* Showcase 2: Ambrior Infrastructure */}
-                <div className="shrink-0 w-[88%] md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
-                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
-                    <picture className="contents">
-                      <source media="(max-width: 767px)" srcSet="/mockups/duo-ambrior-ecosystem.webp" />
-                      <img
-                        src="/mockups/Macbook-Air-ambrior.vercel.app.webp"
-                        alt="Ambrior Infrastructure"
-                        decoding="async"
-                        className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
-                      />
-                    </picture>
-                  </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-[#0E2015]">Ambrior Infrastructure</span>
-                    <span className="text-[#4B5563] font-mono text-[11px]">React • Cloud Portal</span>
-                  </div>
-                </div>
-
-                {/* Showcase 3: Leorix Luxury E-Commerce */}
-                <div className="shrink-0 w-[88%] md:w-auto snap-center flex flex-col justify-between h-full min-h-0">
-                  <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2 sm:p-3 overflow-hidden">
-                    <picture className="contents">
-                      <source media="(max-width: 767px)" srcSet="/mockups/duo-leorix-luxury.webp" />
-                      <img
-                        src="/mockups/Macbook-Air-beleorix.com-shopify.webp"
-                        alt="Leorix Luxury E-Commerce"
-                        decoding="async"
-                        className="max-h-full max-w-full w-auto h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
-                      />
-                    </picture>
-                  </div>
-                  <div className="flex items-center justify-between pt-2 px-1 text-xs text-[#0E2015]/70 font-inter border-t border-[#1D4224]/10 shrink-0">
-                    <span className="font-montserrat font-semibold text-[#0E2015]">Leorix E-Commerce</span>
-                    <span className="text-[#4B5563] font-mono text-[11px]">Headless Shopify</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <ScrollStackItem itemClassName="!p-0 bg-white border border-[#1D4224]/15 shadow-2xl overflow-hidden">
+            <WebDevSpotlightCard />
           </ScrollStackItem>
 
           {/* ── CARD 02: MOBILE APPLICATION DEVELOPMENT ── */}

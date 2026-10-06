@@ -87,13 +87,13 @@
     will-change: transform;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
-    height: clamp(520px, 78vh, 720px);
+    height: clamp(480px, 60vh, 520px);
   }
 }
 
 @media (min-width: 1024px) {
   .scroll-stack-card {
-    height: clamp(560px, 80vh, 780px);
+    height: clamp(520px, 64vh, 560px);
   }
 }
 

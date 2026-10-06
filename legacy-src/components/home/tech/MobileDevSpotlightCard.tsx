@@ -5,58 +5,10 @@ import Image from 'next/image';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 
 /* ──────────────────────────────────────────────────────────────────────────
-   AUTHENTIC TECHNOLOGY SVG ICONS (TRUE BRAND COLORS)
+   AUTHENTIC MOBILE PLATFORM SVG ICONS (TRUE BRAND COLORS)
    ────────────────────────────────────────────────────────────────────────── */
 
-const ShopifyIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="none">
-    <path
-      d="M19.345 5.258c-.035-.262-.224-.469-.481-.532-.256-.062-4.14-.997-4.14-.997s-2.738-2.695-3.036-2.99C11.39.444 10.98.502 10.74.654c-.041.026-1.57 1.488-2.628 2.502l-4.17.994c-.382.091-.563.535-.417.896l3.523 15.688 11.536 2.054 3.738-16.14c.038-.168-.002-.345-.107-.478-.105-.133-.265-.212-.43-.212h-.44z"
-      fill="#95BF47"
-    />
-    <path
-      d="M12.983 4.227l-1.306-1.285c-.298-.295-.708-.237-.948-.085-.041.026-1.57 1.488-2.628 2.502l4.882-1.132z"
-      fill="#5E8E3E"
-    />
-    <path
-      d="M14.724 5.372l-3.045.707c0 0-1.022-1.89-1.83-2.008-.431-.063-.82.167-.93.593-.19.742.618 2.055.618 2.055l-2.705.628c-.382.091-.563.535-.417.896l2.368 10.548 7.94-1.842-2-11.579z"
-      fill="#95BF47"
-    />
-    <path
-      d="M12.288 8.78c-.053-.024-.131-.036-.231-.036-.217 0-.46.079-.724.237-.225.132-.525.377-.733.69-.153.23-.23.473-.23.729 0 .394.137.712.411.954.274.242.724.488 1.35.738.835.334 1.392.684 1.671 1.05.279.366.418.847.418 1.443 0 .847-.282 1.543-.846 2.088-.564.545-1.34.818-2.328.818-.846 0-1.63-.2-2.352-.6-.188-.106-.328-.275-.386-.492a.66.66 0 0 1 .135-.589c.14-.176.353-.255.57-.255.105 0 .21.023.315.07.575.317 1.15.476 1.725.476.541 0 .962-.125 1.263-.375.301-.25.452-.58.452-.99 0-.328-.125-.623-.375-.885-.25-.262-.752-.544-1.506-.846-.867-.348-1.449-.719-1.746-1.113-.297-.394-.446-.897-.446-1.51 0-.799.274-1.464.822-1.995.548-.531 1.272-.797 2.172-.797.7 0 1.38.163 2.04.49.201.099.345.281.392.5a.673.673 0 0 1-.149.605.672.672 0 0 1-.504.249z"
-      fill="#FFFFFF"
-    />
-  </svg>
-);
-
-const WordPressIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="#21759B">
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12C24 5.373 18.627 0 12 0zm-1.077 18.423L7.14 8.797c.563-.03 1.096-.089 1.096-.089.475-.059.416-.772-.06-.743 0 0-1.424.119-2.344.119-.119 0-.267 0-.416-.03A10.33 10.33 0 0 1 12 1.688c2.43 0 4.658.832 6.435 2.228-.089.03-.178.059-.267.059-1.008 0-1.72.861-1.72 1.81 0 .743.416 1.396.861 2.167.356.624.772 1.396.772 2.523 0 1.128-.416 2.463-.861 4.156l-3.324 9.943c-.03.059-.06.119-.089.178A10.276 10.276 0 0 1 12 22.312c-.386 0-.772-.03-1.146-.089l.069-.214zm9.35-6.423c0-2.435-.861-4.127-1.602-5.404-.593-1.008-1.157-1.84-1.157-2.82 0-1.097.832-2.108 2.019-2.108.06 0 .119 0 .178.03A10.264 10.264 0 0 1 22.312 12c0 2.998-1.277 5.702-3.324 7.603l1.246-3.71c.624-1.78.793-3.235.793-4.293zM1.688 12c0 1.93.535 3.737 1.455 5.285l4.335-12.556C4.417 5.674 1.688 8.524 1.688 12zm7.662 9.588l-3.77-10.953 3.65 10.656c.03.09.06.208.12.297z" />
-  </svg>
-);
-
-const NextJsIcon = () => (
-  <svg viewBox="0 0 180 180" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="none">
-    <circle cx="90" cy="90" r="90" fill="#000000" />
-    <path
-      d="M149.508 157.438L69.1478 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.137 149.508 157.438Z"
-      fill="url(#webdev_card_next_g1)"
-    />
-    <rect x="115" y="54" width="12" height="72" fill="url(#webdev_card_next_g2)" />
-    <defs>
-      <linearGradient id="webdev_card_next_g1" x1="109" y1="116.5" x2="144.5" y2="160.5" gradientUnits="userSpaceOnUse">
-        <stop stopColor="white" />
-        <stop offset="1" stopColor="white" stopOpacity="0" />
-      </linearGradient>
-      <linearGradient id="webdev_card_next_g2" x1="121" y1="54" x2="120.799" y2="106.875" gradientUnits="userSpaceOnUse">
-        <stop stopColor="white" />
-        <stop offset="1" stopColor="white" stopOpacity="0" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
-const ReactIcon = () => (
+const ReactNativeIcon = () => (
   <svg viewBox="-11.5 -10.23174 23 20.46348" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0">
     <circle cx="0" cy="0" r="2.05" fill="#61DAFB" />
     <g stroke="#61DAFB" strokeWidth="1" fill="none">
@@ -67,11 +19,32 @@ const ReactIcon = () => (
   </svg>
 );
 
+const FlutterIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="none">
+    <path d="M14.314 0L2.3 12.014l3.714 3.714L21.743 0h-7.429z" fill="#02569B" />
+    <path d="M14.286 11.429l-6.857 6.857 3.714 3.714 6.857-6.857-3.714-3.714z" fill="#0175C2" />
+    <path d="M17.971 15.114L14.286 18.8l3.714 3.714 3.714-3.714-3.743-3.686z" fill="#29B6F6" />
+    <path d="M11.143 18.286l3.143 3.143h7.429l-6.857-6.857-3.715 3.714z" fill="#01579B" />
+  </svg>
+);
+
+const SwiftAppleIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="#000000">
+    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.38c.62-.75 1.04-1.8 1.01-2.85-.9.04-1.98.6-2.63 1.35-.57.66-1.07 1.72-1.01 2.76.99.08 2.01-.51 2.63-1.26z" />
+  </svg>
+);
+
+const AndroidIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="#3DDC84">
+    <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0004 0-.5517.4482-1.0003.9993-1.0003.5517 0 .9998.4486.9998 1.0003 0 .5518-.4481 1.0004-.9998 1.0004m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0004 0-.5517.4482-1.0003.9993-1.0003.5518 0 .9999.4486.9999 1.0003 0 .5518-.4481 1.0004-.9999 1.0004m11.4045-6.02l1.996-3.4566a.4158.4158 0 00-.1519-.5674.417.417 0 00-.568.1517l-2.0254 3.5074c-1.4284-.652-3.0242-1.0189-4.7322-1.0189-1.708 0-3.3038.3669-4.7322 1.0189L5.666 5.4491a.4175.4175 0 00-.568-.1517.416.416 0 00-.1519.5674l1.996 3.4566C3.0617 11.2392 1 14.8878 1 19h22c0-4.1122-2.0617-7.7608-5.1185-9.6786" />
+  </svg>
+);
+
 /* ──────────────────────────────────────────────────────────────────────────
-   TECHNOLOGY SHOWCASE DATA
+   MOBILE APPLICATION SHOWCASE DATA
    ────────────────────────────────────────────────────────────────────────── */
 
-interface TechItem {
+interface MobileTechItem {
   id: string;
   name: string;
   category: string;
@@ -81,49 +54,49 @@ interface TechItem {
   caseStudyLink: string;
 }
 
-const TECHNOLOGIES: TechItem[] = [
+const MOBILE_TECHNOLOGIES: MobileTechItem[] = [
   {
-    id: 'shopify',
-    name: 'Shopify Development',
-    category: 'Headless Shopify Plus & Liquid Storefronts',
-    icon: ShopifyIcon,
-    brandColor: '#95BF47',
-    mockupImage: '/mockups/web-showcase-phone-3d.png',
-    caseStudyLink: '#lead-form'
-  },
-  {
-    id: 'wordpress',
-    name: 'Enterprise WordPress',
-    category: 'Bespoke Themes & Headless Content Systems',
-    icon: WordPressIcon,
-    brandColor: '#21759B',
-    mockupImage: '/mockups/wordpress-showcase-phone-3d.png',
-    caseStudyLink: '#lead-form'
-  },
-  {
-    id: 'nextjs',
-    name: 'Scalable Next.js 15',
-    category: 'Full-Stack App Router & Global Edge SSR',
-    icon: NextJsIcon,
-    brandColor: '#000000',
-    mockupImage: '/mockups/adshalaa-nextjs-phone-3d.png',
-    caseStudyLink: '#lead-form'
-  },
-  {
-    id: 'react',
-    name: 'Modern React Web Apps',
-    category: 'High-Concurrency Client Dashboards & Portals',
-    icon: ReactIcon,
+    id: 'react-native',
+    name: 'React Native Apps',
+    category: 'Cross-Platform iOS & Android Systems',
+    icon: ReactNativeIcon,
     brandColor: '#61DAFB',
-    mockupImage: '/mockups/web-showcase-phone-3d.png',
-    caseStudyLink: '#lead-form'
-  }
+    mockupImage: '/mockups/app-leorix-native.webp',
+    caseStudyLink: '#lead-form',
+  },
+  {
+    id: 'flutter',
+    name: 'Flutter Architecture',
+    category: 'High-Performance Multi-Platform Native UI',
+    icon: FlutterIcon,
+    brandColor: '#02569B',
+    mockupImage: '/mockups/app-adshalaa-native.webp',
+    caseStudyLink: '#lead-form',
+  },
+  {
+    id: 'android-kotlin',
+    name: 'Native Android & Kotlin',
+    category: 'Modern Jetpack Compose & Edge Device Ecosystems',
+    icon: AndroidIcon,
+    brandColor: '#3DDC84',
+    mockupImage: '/mockups/app-kaammilega-native.webp',
+    caseStudyLink: '#lead-form',
+  },
+  {
+    id: 'ios-swift',
+    name: 'Native iOS & Swift',
+    category: 'Apple Silicon Optimized 120Hz Fluid Experiences',
+    icon: SwiftAppleIcon,
+    brandColor: '#000000',
+    mockupImage: '/mockups/app-ambrior-native.webp',
+    caseStudyLink: '#lead-form',
+  },
 ];
 
-// 2-second interval requested by user
+// 2-second continuous auto-cycle interval matching Card 01
 const AUTO_SCROLL_INTERVAL_MS = 2000;
 
-export const WebDevSpotlightCard: React.FC = () => {
+export const MobileDevSpotlightCard: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const [prevIdx, setPrevIdx] = useState<number | null>(null);
 
@@ -138,18 +111,17 @@ export const WebDevSpotlightCard: React.FC = () => {
     const timer = setInterval(() => {
       setActiveIdx((current) => {
         setPrevIdx(current);
-        return (current + 1) % TECHNOLOGIES.length;
+        return (current + 1) % MOBILE_TECHNOLOGIES.length;
       });
     }, AUTO_SCROLL_INTERVAL_MS);
 
     return () => clearInterval(timer);
   }, []);
 
-  const current = TECHNOLOGIES[activeIdx];
+  const current = MOBILE_TECHNOLOGIES[activeIdx];
 
   return (
     <div className="flex flex-col md:grid md:grid-cols-2 h-full w-full">
-
       {/* ══════════════════════════════════════════════════════════════════════
           LEFT HALF: 50% WIDTH PURE WHITE EDITORIAL CANVAS (#FFFFFF)
           ══════════════════════════════════════════════════════════════════════ */}
@@ -157,17 +129,17 @@ export const WebDevSpotlightCard: React.FC = () => {
         <div>
           {/* Primary Headlines */}
           <h3 className="font-montserrat font-extrabold text-[22px] sm:text-2xl lg:text-[28px] text-[#0E2015] tracking-tight leading-snug">
-            Web Application Development
+            Mobile Application Development
           </h3>
           <p className="text-xs sm:text-sm text-[#5C6860] font-inter mt-1.5 leading-relaxed">
-            High-performance web platforms, headless commerce, and digital infrastructure engineered for commercial scale.
+            Native iOS &amp; Android platforms, cross-platform frameworks, and edge-synced mobile ecosystems engineered for 120Hz commercial scale.
           </p>
 
           {/* ══════════════════════════════════════════════════════════════════════
-              2×2 CAPABILITY GRID (CLOCKWISE SEQUENCE: SHOPIFY -> WP -> NEXT -> REACT)
+              2×2 CAPABILITY GRID (CLOCKWISE SEQUENCE: REACT NATIVE -> FLUTTER -> ANDROID -> IOS)
               ══════════════════════════════════════════════════════════════════════ */}
           <div className="grid grid-cols-2 gap-2 sm:gap-3.5 mt-3 sm:mt-6">
-            {TECHNOLOGIES.map((tech, idx) => {
+            {MOBILE_TECHNOLOGIES.map((tech, idx) => {
               const isActive = activeIdx === idx;
               const IconComponent = tech.icon;
               // Clockwise layout: [0: Top-Left, 1: Top-Right, 3: Bottom-Left, 2: Bottom-Right]
@@ -225,7 +197,7 @@ export const WebDevSpotlightCard: React.FC = () => {
         <div className="pt-3 sm:pt-5 border-t border-[#1D4224]/10 mt-3 sm:mt-5 flex items-center justify-between gap-2.5 sm:gap-3">
           {/* Smooth Cross-Fade Footer Text (Old Fading Up, New Coming Up) */}
           <div className="min-w-0 relative h-8 sm:h-9 flex-1 overflow-hidden">
-            {TECHNOLOGIES.map((tech, idx) => {
+            {MOBILE_TECHNOLOGIES.map((tech, idx) => {
               const isSelected = activeIdx === idx;
               const isPrevText = prevIdx === idx;
 
@@ -268,13 +240,21 @@ export const WebDevSpotlightCard: React.FC = () => {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          RIGHT HALF: 50% WIDTH DEEP FOREST GREEN (#13301B) CANVAS
+          RIGHT HALF: 50% WIDTH DEEP TECH MIDNIGHT TEAL CANVAS (#071B20 – #0B252C)
           FADING UP (EXIT) & COMING UP (ENTER) 3D PHONE MOCKUP STACK
           ══════════════════════════════════════════════════════════════════════ */}
-      <div className="bg-[#13301B] relative flex-1 flex items-center justify-center p-0 sm:p-3 lg:p-4 overflow-hidden min-h-[340px] sm:min-h-[380px] md:min-h-0 md:h-full">
+      <div className="relative flex-1 flex items-center justify-center p-0 sm:p-3 lg:p-4 overflow-hidden min-h-[340px] sm:min-h-[380px] md:min-h-0 md:h-full bg-gradient-to-br from-[#0B252C] via-[#071B20] to-[#041014]">
+        {/* Ambient Subtle Tech Cyan/Teal Radial Glow */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-50"
+          style={{
+            background: 'radial-gradient(circle at 50% 50%, rgba(97, 218, 251, 0.12) 0%, rgba(2, 86, 155, 0.06) 40%, transparent 75%)',
+          }}
+        />
+
         {/* Layered Stack: Old phone glides up & fades out, new phone rises up from below */}
-        <div className="relative w-full h-full flex items-center justify-center select-none">
-          {TECHNOLOGIES.map((tech, idx) => {
+        <div className="relative w-full h-full flex items-center justify-center select-none z-10">
+          {MOBILE_TECHNOLOGIES.map((tech, idx) => {
             const isActive = activeIdx === idx;
             const isPrev = prevIdx === idx;
 
@@ -298,8 +278,8 @@ export const WebDevSpotlightCard: React.FC = () => {
                 <Image
                   src={tech.mockupImage}
                   alt={tech.name}
-                  width={750}
-                  height={1100}
+                  width={768}
+                  height={1376}
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="h-[84%] sm:h-auto max-h-[460px] sm:max-h-[440px] md:max-h-[460px] lg:max-h-[485px] w-auto max-w-[96%] sm:max-w-[94%] object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.8)]"
@@ -313,4 +293,4 @@ export const WebDevSpotlightCard: React.FC = () => {
   );
 };
 
-export default WebDevSpotlightCard;
+export default MobileDevSpotlightCard;

@@ -287,8 +287,8 @@ export const TechHero: React.FC = () => {
       <HeroShaderBackground />
 
       {/* Background Soft Glow Mesh Accents */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#2FE594]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#1D4224]/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#1B4D25]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* ── MAIN STAGE CONTAINER ─────────────────────────────────────── */}
       <div className="w-full max-w-360 xl:max-w-[1600px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 hero-stage-container">

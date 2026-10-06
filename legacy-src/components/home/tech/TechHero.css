@@ -12,8 +12,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #0c2413;
-  background: radial-gradient(ellipse 85% 70% at 75% 30%, #2a6932 0%, #174221 40%, #0c2413 75%, #051209 100%), #0c2413;
+  background-color: #061309;
+  background: radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%), #061309;
   color: #FFFFFF;
   overflow-x: hidden;
   border-bottom: 1px solid rgba(29, 66, 36, 0.2);

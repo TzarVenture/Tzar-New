@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 /* ──────────────────────────────────────────────────────────────────────────
    AUTHENTIC TECHNOLOGY SVG ICONS (TRUE BRAND COLORS)
    ────────────────────────────────────────────────────────────────────────── */
 
 const ShopifyIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="none">
+  <svg viewBox="0 0 24 24" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 shrink-0" fill="none">
     <path
       d="M19.345 5.258c-.035-.262-.224-.469-.481-.532-.256-.062-4.14-.997-4.14-.997s-2.738-2.695-3.036-2.99C11.39.444 10.98.502 10.74.654c-.041.026-1.57 1.488-2.628 2.502l-4.17.994c-.382.091-.563.535-.417.896l3.523 15.688 11.536 2.054 3.738-16.14c.038-.168-.002-.345-.107-.478-.105-.133-.265-.212-.43-.212h-.44z"
       fill="#95BF47"
@@ -30,13 +30,13 @@ const ShopifyIcon = () => (
 );
 
 const WordPressIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="#21759B">
+  <svg viewBox="0 0 24 24" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 shrink-0" fill="#21759B">
     <path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12C24 5.373 18.627 0 12 0zm-1.077 18.423L7.14 8.797c.563-.03 1.096-.089 1.096-.089.475-.059.416-.772-.06-.743 0 0-1.424.119-2.344.119-.119 0-.267 0-.416-.03A10.33 10.33 0 0 1 12 1.688c2.43 0 4.658.832 6.435 2.228-.089.03-.178.059-.267.059-1.008 0-1.72.861-1.72 1.81 0 .743.416 1.396.861 2.167.356.624.772 1.396.772 2.523 0 1.128-.416 2.463-.861 4.156l-3.324 9.943c-.03.059-.06.119-.089.178A10.276 10.276 0 0 1 12 22.312c-.386 0-.772-.03-1.146-.089l.069-.214zm9.35-6.423c0-2.435-.861-4.127-1.602-5.404-.593-1.008-1.157-1.84-1.157-2.82 0-1.097.832-2.108 2.019-2.108.06 0 .119 0 .178.03A10.264 10.264 0 0 1 22.312 12c0 2.998-1.277 5.702-3.324 7.603l1.246-3.71c.624-1.78.793-3.235.793-4.293zM1.688 12c0 1.93.535 3.737 1.455 5.285l4.335-12.556C4.417 5.674 1.688 8.524 1.688 12zm7.662 9.588l-3.77-10.953 3.65 10.656c.03.09.06.208.12.297z" />
   </svg>
 );
 
 const NextJsIcon = () => (
-  <svg viewBox="0 0 180 180" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="none">
+  <svg viewBox="0 0 180 180" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 shrink-0" fill="none">
     <circle cx="90" cy="90" r="90" fill="#000000" />
     <path
       d="M149.508 157.438L69.1478 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.137 149.508 157.438Z"
@@ -46,6 +46,7 @@ const NextJsIcon = () => (
     <defs>
       <linearGradient id="webdev_card_next_g1" x1="109" y1="116.5" x2="144.5" y2="160.5" gradientUnits="userSpaceOnUse">
         <stop stopColor="white" />
+        <stop offset="1" stopColor="white" />
         <stop offset="1" stopColor="white" stopOpacity="0" />
       </linearGradient>
       <linearGradient id="webdev_card_next_g2" x1="121" y1="54" x2="120.799" y2="106.875" gradientUnits="userSpaceOnUse">
@@ -57,7 +58,7 @@ const NextJsIcon = () => (
 );
 
 const ReactIcon = () => (
-  <svg viewBox="-11.5 -10.23174 23 20.46348" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0">
+  <svg viewBox="-11.5 -10.23174 23 20.46348" className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 shrink-0">
     <circle cx="0" cy="0" r="2.05" fill="#61DAFB" />
     <g stroke="#61DAFB" strokeWidth="1" fill="none">
       <ellipse rx="11" ry="4.2" />
@@ -74,6 +75,10 @@ const ReactIcon = () => (
 interface TechItem {
   id: string;
   name: string;
+  shortName: string;
+  titleLine1: string;
+  titleLine2: string;
+  tagline: string;
   category: string;
   icon: React.FC;
   brandColor: string;
@@ -85,37 +90,53 @@ const TECHNOLOGIES: TechItem[] = [
   {
     id: 'shopify',
     name: 'Shopify Development',
+    shortName: 'Shopify',
+    titleLine1: 'Shopify',
+    titleLine2: 'Development',
+    tagline: 'Scalable Shopify Stores',
     category: 'Headless Shopify Plus & Liquid Storefronts',
     icon: ShopifyIcon,
     brandColor: '#95BF47',
-    mockupImage: '/mockups/web-showcase-phone-3d.png',
+    mockupImage: '/mockups/web-showcase-shopify.jpg',
     caseStudyLink: '#lead-form'
   },
   {
     id: 'wordpress',
     name: 'Enterprise WordPress',
+    shortName: 'WordPress',
+    titleLine1: 'Enterprise',
+    titleLine2: 'WordPress',
+    tagline: 'Enterprise WordPress CMS',
     category: 'Bespoke Themes & Headless Content Systems',
     icon: WordPressIcon,
     brandColor: '#21759B',
-    mockupImage: '/mockups/wordpress-showcase-phone-3d.png',
+    mockupImage: '/mockups/web-showcase-wordpress.jpg',
     caseStudyLink: '#lead-form'
   },
   {
     id: 'nextjs',
     name: 'Scalable Next.js 15',
+    shortName: 'Next.js',
+    titleLine1: 'Scalable',
+    titleLine2: 'Next.js 15',
+    tagline: 'Scalable Next.js Solutions',
     category: 'Full-Stack App Router & Global Edge SSR',
     icon: NextJsIcon,
     brandColor: '#000000',
-    mockupImage: '/mockups/adshalaa-nextjs-phone-3d.png',
+    mockupImage: '/mockups/web-showcase-nextjs.jpg',
     caseStudyLink: '#lead-form'
   },
   {
     id: 'react',
     name: 'Modern React Web Apps',
+    shortName: 'React',
+    titleLine1: 'Modern React',
+    titleLine2: 'Web Apps',
+    tagline: 'Interactive React Apps',
     category: 'High-Concurrency Client Dashboards & Portals',
     icon: ReactIcon,
     brandColor: '#61DAFB',
-    mockupImage: '/mockups/web-showcase-phone-3d.png',
+    mockupImage: '/mockups/web-showcase-react.jpg',
     caseStudyLink: '#lead-form'
   }
 ];
@@ -145,6 +166,14 @@ export const WebDevSpotlightCard: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const handleEnquireScroll = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const target = document.getElementById('contact-form') || document.getElementById('lead-form');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const current = TECHNOLOGIES[activeIdx];
 
   return (
@@ -154,19 +183,21 @@ export const WebDevSpotlightCard: React.FC = () => {
           LEFT HALF: 50% WIDTH PURE WHITE EDITORIAL CANVAS (#FFFFFF)
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="bg-white text-[#0E2015] p-4 sm:p-6 lg:p-9 flex flex-col justify-between shrink-0 md:shrink md:h-full border-b md:border-b-0 md:border-r border-[#1D4224]/10">
-        <div>
+        <div className="flex flex-col md:flex-1 md:min-h-0">
           {/* Primary Headlines */}
-          <h3 className="font-montserrat font-extrabold text-[22px] sm:text-2xl lg:text-[28px] text-[#0E2015] tracking-tight leading-snug">
-            Web Application Development
-          </h3>
-          <p className="text-xs sm:text-sm text-[#5C6860] font-inter mt-1.5 leading-relaxed">
-            High-performance web platforms, headless commerce, and digital infrastructure engineered for commercial scale.
-          </p>
+          <div className="shrink-0">
+            <h3 className="font-montserrat font-extrabold text-[26px] sm:text-2xl lg:text-[28px] text-[#0E2015] tracking-tight leading-tight">
+              Web Application Development
+            </h3>
+            <p className="hidden md:block text-xs sm:text-sm text-[#5C6860] font-inter mt-1.5 leading-relaxed">
+              High-performance web platforms, headless commerce, and digital infrastructure engineered for commercial scale.
+            </p>
+          </div>
 
           {/* ══════════════════════════════════════════════════════════════════════
               2×2 CAPABILITY GRID (CLOCKWISE SEQUENCE: SHOPIFY -> WP -> NEXT -> REACT)
               ══════════════════════════════════════════════════════════════════════ */}
-          <div className="grid grid-cols-2 gap-2 sm:gap-3.5 mt-3 sm:mt-6">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3.5 mt-3 sm:mt-6 md:mt-4 md:mb-2 md:flex-1 md:grid-rows-2 md:min-h-0">
             {TECHNOLOGIES.map((tech, idx) => {
               const isActive = activeIdx === idx;
               const IconComponent = tech.icon;
@@ -178,31 +209,46 @@ export const WebDevSpotlightCard: React.FC = () => {
                   key={tech.id}
                   type="button"
                   onClick={() => handleSelect(idx)}
-                  className={`flex items-center justify-between gap-2 p-1.5 md:py-3.5 md:px-4 rounded-xl border-0 md:border md:border-[#1D4224]/8 text-left transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer relative ${gridOrderClass} ${
+                  className={`flex items-center justify-between gap-2.5 p-1.5 md:h-full md:py-4 md:px-4 lg:md:px-5 rounded-xl md:rounded-2xl border-0 md:border md:border-[#1D4224]/8 text-left transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer relative ${gridOrderClass} ${
                     isActive
                       ? 'bg-transparent md:bg-white shadow-none md:shadow-xs'
                       : 'bg-transparent md:bg-[#F9F7F5] md:hover:bg-[#F3EFE9]'
                   }`}
                 >
-                  <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                  <div className="flex items-center gap-2 sm:gap-2.5 md:gap-3.5 lg:gap-4 min-w-0">
                     {/* Icon badge - raw icon on mobile, framed on desktop */}
                     <div
-                      className="w-5 h-5 sm:w-6 sm:h-6 md:w-9 md:h-9 rounded-lg bg-transparent md:bg-white border-0 md:border flex items-center justify-center shrink-0 shadow-none md:shadow-xs transition-transform duration-500 ease-out"
+                      className="w-7 h-7 sm:w-8 sm:h-8 md:w-14 md:h-14 rounded-lg md:rounded-2xl bg-transparent md:bg-white border-0 md:border flex items-center justify-center shrink-0 shadow-none md:shadow-xs transition-transform duration-500 ease-out"
                       style={{ borderColor: `${tech.brandColor}30` }}
                     >
                       <IconComponent />
                     </div>
 
-                    {/* Title - highlighted on mobile when active */}
-                    <span
-                      className={`font-montserrat text-xs sm:text-[13px] leading-snug truncate transition-all duration-500 ${
-                        isActive
-                          ? 'text-[#1D4224] font-extrabold md:text-[#0E2015] md:font-bold'
-                          : 'text-[#8C9890] font-medium md:text-[#4A574E] md:font-bold'
-                      }`}
-                    >
-                      {tech.name}
-                    </span>
+                    {/* Title - mobile single line, desktop 2 bold lines */}
+                    <div className="min-w-0">
+                      {/* Mobile single-line title */}
+                      <span
+                        className={`md:hidden font-montserrat text-[15px] sm:text-base leading-snug truncate transition-all duration-500 ${
+                          isActive
+                            ? 'text-[#1D4224] font-extrabold'
+                            : 'text-[#6C7870] font-bold'
+                        }`}
+                      >
+                        {tech.shortName || tech.name}
+                      </span>
+
+                      {/* Desktop 2-line title */}
+                      <div
+                        className={`hidden md:flex flex-col leading-[1.18] font-montserrat font-extrabold text-[16px] lg:text-[18px] tracking-tight transition-colors duration-500 ${
+                          isActive
+                            ? 'text-[#0E2015]'
+                            : 'text-[#2D3C30]'
+                        }`}
+                      >
+                        <span className="block truncate">{tech.titleLine1}</span>
+                        <span className="block truncate">{tech.titleLine2}</span>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Directional Arrow Reveal (→) - hidden on mobile, shown on desktop */}
@@ -221,10 +267,10 @@ export const WebDevSpotlightCard: React.FC = () => {
           </div>
         </div>
 
-        {/* Active Tech Footer Snippet + Primary CTA Button */}
-        <div className="pt-3 sm:pt-5 border-t border-[#1D4224]/10 mt-3 sm:mt-5 flex items-center justify-between gap-2.5 sm:gap-3">
+        {/* Active Tech Footer Snippet */}
+        <div className="flex items-center justify-between gap-3 sm:gap-4 pt-3 sm:pt-5 border-t border-[#1D4224]/10 mt-3 sm:mt-5 shrink-0">
           {/* Smooth Cross-Fade Footer Text (Old Fading Up, New Coming Up) */}
-          <div className="min-w-0 relative h-8 sm:h-9 flex-1 overflow-hidden">
+          <div className="min-w-0 flex-1 relative h-10 sm:h-11 overflow-hidden">
             {TECHNOLOGIES.map((tech, idx) => {
               const isSelected = activeIdx === idx;
               const isPrevText = prevIdx === idx;
@@ -246,10 +292,11 @@ export const WebDevSpotlightCard: React.FC = () => {
                   key={`footer-text-${tech.id}`}
                   className={`absolute inset-0 flex flex-col justify-center transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${textMotionClass}`}
                 >
-                  <div className="font-montserrat font-bold text-xs sm:text-sm text-[#0E2015] truncate">
-                    {tech.name}
+                  <div className="font-montserrat font-bold text-[14px] sm:text-sm text-[#0E2015] truncate">
+                    <span className="md:hidden">{tech.tagline}</span>
+                    <span className="hidden md:inline">{tech.name}</span>
                   </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-[#1D4224] font-medium truncate">
+                  <div className="hidden md:block text-[10px] sm:text-[11px] font-mono text-[#1D4224] font-medium truncate">
                     {tech.category}
                   </div>
                 </div>
@@ -257,21 +304,23 @@ export const WebDevSpotlightCard: React.FC = () => {
             })}
           </div>
 
-          <a
-            href={current.caseStudyLink}
-            className="inline-flex items-center justify-center gap-1 sm:gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#1D4224] hover:bg-[#FFAE00] text-white hover:text-[#0E2015] text-[11px] sm:text-xs font-semibold font-montserrat transition-all duration-300 shrink-0 shadow-sm group"
+          {/* Enquire Now Button (pinned to right-most edge) */}
+          <button
+            type="button"
+            onClick={handleEnquireScroll}
+            className="group shrink-0 inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 bg-[#1D4224] hover:bg-[#14301A] text-white rounded-full font-montserrat font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-xs hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
           >
-            <span>Explore Platform</span>
-            <ArrowUpRight className="w-3 sm:w-3.5 h-3 sm:h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+            <span>Enquire Now</span>
+            <ArrowRight className="w-3 sm:w-3.5 h-3 sm:h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </button>
         </div>
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          RIGHT HALF: 50% WIDTH DEEP FOREST GREEN (#13301B) CANVAS
-          FADING UP (EXIT) & COMING UP (ENTER) 3D PHONE MOCKUP STACK
+          RIGHT HALF: 50% WIDTH STUDIO BLACK (#000000) CANVAS
+          FULL-HEIGHT SHOWCASE STACK (NO CROPPING / ZERO CUTTING)
           ══════════════════════════════════════════════════════════════════════ */}
-      <div className="bg-[#13301B] relative flex-1 flex items-center justify-center p-0 sm:p-3 lg:p-4 overflow-hidden min-h-[340px] sm:min-h-[380px] md:min-h-0 md:h-full">
+      <div className="bg-[#000000] relative flex-1 flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden h-[340px] sm:h-[400px] md:h-full min-h-[300px]">
         {/* Layered Stack: Old phone glides up & fades out, new phone rises up from below */}
         <div className="relative w-full h-full flex items-center justify-center select-none">
           {TECHNOLOGIES.map((tech, idx) => {
@@ -280,14 +329,14 @@ export const WebDevSpotlightCard: React.FC = () => {
 
             let motionClass = '';
             if (isActive) {
-              // Active: glides up into center from below, scaled up on mobile to boldly fill the canvas
-              motionClass = 'opacity-100 translate-y-0 scale-[1.32] sm:scale-100 z-10 pointer-events-auto';
+              // Active: glides up into center from below, exactly 100% scale so nothing is cut off
+              motionClass = 'opacity-100 translate-y-0 scale-100 z-10 pointer-events-auto';
             } else if (isPrev) {
               // Outgoing: fades up towards the top
-              motionClass = 'opacity-0 -translate-y-12 scale-[1.25] sm:scale-[0.96] z-0 pointer-events-none';
+              motionClass = 'opacity-0 -translate-y-8 scale-[0.98] z-0 pointer-events-none';
             } else {
               // Standby: positioned below waiting to rise
-              motionClass = 'opacity-0 translate-y-12 scale-[1.25] sm:scale-[0.96] z-0 pointer-events-none';
+              motionClass = 'opacity-0 translate-y-8 scale-[0.98] z-0 pointer-events-none';
             }
 
             return (
@@ -298,11 +347,11 @@ export const WebDevSpotlightCard: React.FC = () => {
                 <Image
                   src={tech.mockupImage}
                   alt={tech.name}
-                  width={750}
-                  height={1100}
+                  width={1024}
+                  height={840}
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="h-[84%] sm:h-auto max-h-[460px] sm:max-h-[440px] md:max-h-[460px] lg:max-h-[485px] w-auto max-w-[96%] sm:max-w-[94%] object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.8)]"
+                  className="w-full h-full max-w-full max-h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
                 />
               </div>
             );

@@ -14,6 +14,7 @@ import { TechProofShowcase } from "@/legacy-src/components/home/tech/TechProofSh
 import { TechContactSection } from "@/legacy-src/components/home/tech/TechContactSection";
 import AccordionGallery from "@/legacy-src/components/home/tech/AccordionGallery";
 import { SectorCircuitExpertise } from "@/legacy-src/components/home/tech/SectorCircuitExpertise";
+import { ShowcaseMockupSection } from "@/legacy-src/components/home/tech/ShowcaseMockupSection";
 import SeoArticle from "@/legacy-src/components/home/tech/SeoArticle";
 import TechInsights from "@/legacy-src/components/home/tech/TechInsights";
 import { TrafficGrowthSection } from "@/legacy-src/components/home/tech/TrafficGrowthSection";
@@ -94,6 +95,9 @@ export default function Home() {
 
         {/* OUR SECTOR EXPERTISE — Circuit Network & Lighting Animation */}
         <SectorCircuitExpertise />
+
+        {/* 01.68 • MOBILE UI/UX SHOWCASE MOCKUPS (IPHONE 17 3D FLAT) */}
+        <ShowcaseMockupSection />
 
         {/* 01.7 • CLIENT BRANDS INFINITE MARQUEE (Building Success Stories with...) */}
         <ClientMarquee />

@@ -247,3 +247,20 @@ body {
   backface-visibility: hidden;
 }
 
+/* Top Announcement Bar Marquee */
+@keyframes topbar-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-topbar-marquee {
+  animation: topbar-marquee 32s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+

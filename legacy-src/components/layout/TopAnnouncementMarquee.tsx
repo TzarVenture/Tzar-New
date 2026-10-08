@@ -1,0 +1,72 @@
+"use client";
+
+import React from "react";
+
+interface TopAnnouncementMarqueeProps {
+  isSolid: boolean;
+}
+
+const ANNOUNCEMENTS = [
+  "25,000+ Corporate Gifts Delivered Pan India — Now Order Directly from Our Website",
+  "Trusted by 1500+ Businesses Across India",
+  "Fast Delivery • Premium Quality • Best Pricing",
+  "Serving now in Hyderabad and Mumbai",
+  "Serving now in Dubai",
+];
+
+export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({ isSolid }) => {
+  return (
+    <div
+      className={`w-full overflow-hidden transition-colors duration-300 select-none z-50 flex items-center h-[32px] sm:h-[36px] ${
+        isSolid
+          ? "bg-[#003108] border-b border-[#1D4224]/30 text-white/95"
+          : "bg-[#003108]/60 backdrop-blur-md border-b border-white/10 text-white/90"
+      }`}
+    >
+      <div className="relative w-full overflow-hidden flex items-center group">
+        {/* Soft edge fade masks on extreme borders */}
+        <div
+          className={`absolute left-0 top-0 bottom-0 w-8 sm:w-16 z-10 pointer-events-none transition-colors duration-300 bg-gradient-to-r ${
+            isSolid ? "from-[#003108] to-transparent" : "from-[#003108]/60 to-transparent"
+          }`}
+        />
+        <div
+          className={`absolute right-0 top-0 bottom-0 w-8 sm:w-16 z-10 pointer-events-none transition-colors duration-300 bg-gradient-to-l ${
+            isSolid ? "from-[#003108] to-transparent" : "from-[#003108]/60 to-transparent"
+          }`}
+        />
+
+        {/* Marquee Track: Two identical sets for gapless 0% -> -50% loop */}
+        <div className="flex w-max animate-topbar-marquee group-hover:[animation-play-state:paused] whitespace-nowrap">
+          {/* Part 1 */}
+          <div className="flex items-center">
+            {ANNOUNCEMENTS.map((text, idx) => (
+              <div
+                key={`p1-${idx}`}
+                className="flex items-center px-6 sm:px-10 text-[11px] sm:text-[13px] font-medium tracking-wide"
+              >
+                <span>{text}</span>
+                <span className="ml-6 sm:ml-10 text-[#FFAE00] text-xs">◆</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Part 2 (Duplicate for continuous loop) */}
+          <div className="flex items-center">
+            {ANNOUNCEMENTS.map((text, idx) => (
+              <div
+                key={`p2-${idx}`}
+                className="flex items-center px-6 sm:px-10 text-[11px] sm:text-[13px] font-medium tracking-wide"
+              >
+                <span>{text}</span>
+                <span className="ml-6 sm:ml-10 text-[#FFAE00] text-xs">◆</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TopAnnouncementMarquee;

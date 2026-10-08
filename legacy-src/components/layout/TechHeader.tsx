@@ -77,15 +77,21 @@ export const TechHeader: React.FC = () => {
       const shouldBeSolid = currentScroll > 40 || !isClientHome;
       setIsSolid(shouldBeSolid);
 
-      // Visibility direction check
-      if (currentScroll > 200) {
-        if (currentScroll > lastScroll + 5) {
-          setIsVisible(false);
-        } else if (currentScroll < lastScroll - 5) {
+      // On mobile screens (< 768px), keep the header reliably visible so sticky cards remain anchored without jumping
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      if (isMobile) {
+        setIsVisible(true);
+      } else {
+        // Desktop visibility direction check with stable 15px threshold to eliminate micro-scroll jitter
+        if (currentScroll > 240) {
+          if (currentScroll > lastScroll + 15) {
+            setIsVisible(false);
+          } else if (currentScroll < lastScroll - 15) {
+            setIsVisible(true);
+          }
+        } else {
           setIsVisible(true);
         }
-      } else {
-        setIsVisible(true);
       }
 
       lastScroll = currentScroll;

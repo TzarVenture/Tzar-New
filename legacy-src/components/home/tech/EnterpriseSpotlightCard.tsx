@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
@@ -71,7 +71,7 @@ const ENTERPRISE_SOLUTIONS: EnterpriseItem[] = [
     category: 'Lead Scoring, Sales Pipelines & SLA Automation',
     icon: CrmPipelineIcon,
     brandColor: '#D4AF37',
-    mockupImage: '/mockups/duo-tzar-crm.webp',
+    mockupImage: '/mockups/enterprise-showcase-crm.png',
     caseStudyLink: '/website-development-services#lead-form',
   },
   {
@@ -84,33 +84,33 @@ const ENTERPRISE_SOLUTIONS: EnterpriseItem[] = [
     category: 'Resource Planning, Compliance & Multi-Entity Auditing',
     icon: ErpGridIcon,
     brandColor: '#3B82F6',
-    mockupImage: '/mockups/duo-ay-astute-crm.webp',
+    mockupImage: '/mockups/enterprise-showcase-erp.png',
     caseStudyLink: '/website-development-services#lead-form',
   },
   {
-    id: 'internal-portals',
-    name: 'Internal Tools & Portals',
-    shortName: 'Internal Portals',
-    titleLine1: 'Internal Tools',
-    titleLine2: '& Portals',
-    tagline: 'Internal Workflow Portals',
-    category: 'Workforce Orchestration & Role-Based Workspaces',
-    icon: PortalNetworkIcon,
-    brandColor: '#10B981',
-    mockupImage: '/mockups/duo-kaammilega-portal.webp',
-    caseStudyLink: '/website-development-services#lead-form',
-  },
-  {
-    id: 'b2b-saas',
-    name: 'B2B SaaS Ecosystems',
-    shortName: 'B2B SaaS',
-    titleLine1: 'B2B SaaS',
-    titleLine2: 'Ecosystems',
-    tagline: 'Multi-Tenant SaaS Platforms',
-    category: 'Multi-Tenant Cloud, Subscription Billing & Telemetry',
+    id: 'b2b-marketplace',
+    name: 'B2B Marketplace Systems',
+    shortName: 'B2B Platforms',
+    titleLine1: 'B2B',
+    titleLine2: 'Marketplaces',
+    tagline: 'BizMart B2B Systems',
+    category: 'Vendor Portals, Multi-Tier Pricing & Order Workflows',
     icon: SaasCloudIcon,
     brandColor: '#8B5CF6',
-    mockupImage: '/mockups/duo-adshalaa-platform.webp',
+    mockupImage: '/mockups/enterprise-showcase-b2b.png',
+    caseStudyLink: '/website-development-services#lead-form',
+  },
+  {
+    id: 'internal-tools',
+    name: 'Internal Tools & SaaS',
+    shortName: 'Internal Tools',
+    titleLine1: 'Internal Tools',
+    titleLine2: '& SaaS',
+    tagline: 'ClicksTracker SaaS Systems',
+    category: 'Telemetry, Role-Based Workspaces & Process Workflows',
+    icon: PortalNetworkIcon,
+    brandColor: '#10B981',
+    mockupImage: '/mockups/enterprise-showcase-internal-tools.png',
     caseStudyLink: '/website-development-services#lead-form',
   },
 ];
@@ -121,6 +121,8 @@ const AUTO_SCROLL_INTERVAL_MS = 2000;
 export const EnterpriseSpotlightCard: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const [prevIdx, setPrevIdx] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
   const handleSelect = (idx: number) => {
     if (idx === activeIdx) return;
@@ -128,8 +130,25 @@ export const EnterpriseSpotlightCard: React.FC = () => {
     setActiveIdx(idx);
   };
 
-  // Auto-scroll / cycling continuously every 2 seconds
+  // Only run auto-cycling when card is actively visible in viewport (prevents scroll hitching)
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setIsInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
     const timer = setInterval(() => {
       setActiveIdx((current) => {
         setPrevIdx(current);
@@ -138,7 +157,7 @@ export const EnterpriseSpotlightCard: React.FC = () => {
     }, AUTO_SCROLL_INTERVAL_MS);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isInView]);
 
   const handleEnquireScroll = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -151,11 +170,11 @@ export const EnterpriseSpotlightCard: React.FC = () => {
   const current = ENTERPRISE_SOLUTIONS[activeIdx];
 
   return (
-    <div className="flex flex-col md:grid md:grid-cols-2 h-full w-full">
+    <div ref={containerRef} className="flex flex-col md:grid md:grid-cols-2 h-full w-full">
       {/* ══════════════════════════════════════════════════════════════════════
           LEFT HALF: 50% WIDTH PURE WHITE EDITORIAL CANVAS (#FFFFFF)
           ══════════════════════════════════════════════════════════════════════ */}
-      <div className="bg-white text-[#0E2015] p-4 sm:p-6 lg:p-9 flex flex-col justify-between shrink-0 md:shrink md:h-full border-b md:border-b-0 md:border-r border-[#B8860B]/12">
+      <div className="bg-white text-[#0E2015] p-3.5 sm:p-6 lg:p-9 flex flex-col justify-between shrink-0 md:shrink md:h-full border-b md:border-b-0 md:border-r border-[#B8860B]/12">
         <div className="flex flex-col md:flex-1 md:min-h-0">
           {/* Primary Headlines */}
           <div className="shrink-0">
@@ -293,7 +312,7 @@ export const EnterpriseSpotlightCard: React.FC = () => {
           RIGHT HALF: 50% WIDTH DEEP OBSIDIAN BRONZE CANVAS (#1C150A – #080602)
           FADING UP (EXIT) & COMING UP (ENTER) 3D ENTERPRISE DUO MOCKUP STACK
           ══════════════════════════════════════════════════════════════════════ */}
-      <div className="relative flex-1 flex items-center justify-center p-0 sm:p-3 lg:p-4 overflow-hidden h-[310px] sm:h-[350px] md:h-full min-h-[300px] bg-gradient-to-br from-[#1C150A] via-[#120E06] to-[#080602]">
+      <div className="relative flex-1 flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden h-[250px] xs:h-[275px] sm:h-[340px] md:h-full min-h-[220px] md:min-h-[300px] bg-gradient-to-br from-[#1C150A] via-[#120E06] to-[#080602]">
         {/* Ambient Subtle Warm Gold Radial Glow */}
         <div
           className="absolute inset-0 pointer-events-none opacity-60"
@@ -310,14 +329,14 @@ export const EnterpriseSpotlightCard: React.FC = () => {
 
             let motionClass = '';
             if (isActive) {
-              // Active: glides up into center from below, scaled up on mobile to boldly fill the canvas
-              motionClass = 'opacity-100 translate-y-0 scale-[1.18] sm:scale-100 z-10 pointer-events-auto';
+              // Active: glides up into center from below, exactly 100% scale so nothing is cut off
+              motionClass = 'opacity-100 translate-y-0 scale-100 z-10 pointer-events-auto';
             } else if (isPrev) {
               // Outgoing: fades up towards the top
-              motionClass = 'opacity-0 -translate-y-12 scale-[1.12] sm:scale-[0.96] z-0 pointer-events-none';
+              motionClass = 'opacity-0 -translate-y-8 scale-[0.98] z-0 pointer-events-none';
             } else {
               // Standby: positioned below waiting to rise
-              motionClass = 'opacity-0 translate-y-12 scale-[1.12] sm:scale-[0.96] z-0 pointer-events-none';
+              motionClass = 'opacity-0 translate-y-8 scale-[0.98] z-0 pointer-events-none';
             }
 
             return (
@@ -328,11 +347,11 @@ export const EnterpriseSpotlightCard: React.FC = () => {
                 <Image
                   src={item.mockupImage}
                   alt={item.name}
-                  width={1080}
-                  height={1350}
+                  width={1385}
+                  height={1136}
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="h-[250px] sm:h-[290px] md:h-[84%] max-h-[460px] sm:max-h-[440px] md:max-h-[460px] lg:max-h-[485px] w-auto max-w-[96%] sm:max-w-[94%] object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.85)]"
+                  className="w-full h-full max-w-full max-h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)]"
                 />
               </div>
             );

@@ -64,6 +64,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const cardsRef = useRef<HTMLElement[]>([]);
   const lastTransformsRef = useRef<Map<number, { translateY: number; scale: number; rotation: number }>>(new Map());
   const isUpdatingRef = useRef<boolean>(false);
+  const lastWindowWidthRef = useRef<number>(typeof window !== 'undefined' ? window.innerWidth : 1200);
 
   const cachedMetricsRef = useRef<CachedLayoutMetrics>({
     cards: [],
@@ -114,8 +115,8 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       : (scroller ? scroller.clientHeight : 800);
 
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    // On mobile, pin cleanly at 70px below the fixed navbar with a compact 8px deck offset
-    const finalStackPos = isMobile ? '70px' : (typeof stackPosition === 'number' ? `${stackPosition}px` : stackPosition);
+    // On mobile, pin cleanly at 84px below the fixed navbar for comfortable top breathing room
+    const finalStackPos = isMobile ? '84px' : (typeof stackPosition === 'number' ? `${stackPosition}px` : stackPosition);
     const finalScalePos = isMobile ? '20px' : (typeof scaleEndPosition === 'number' ? `${scaleEndPosition}px` : scaleEndPosition);
     const finalItemStackDist = isMobile ? 8 : (typeof itemStackDistance === 'number' ? itemStackDistance : 22);
 
@@ -280,25 +281,8 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const scroller = scrollerRef.current;
     if (!useWindowScroll && !scroller) return;
 
-    // Detect touch-enabled devices on desktop/tablet
-    const isTouch = 'ontouchstart' in window || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
-
-    // On touch devices, preserve native momentum scrolling
-    if (isTouch) {
-      let ticking = false;
-      const handleNativeScroll = () => {
-        if (!ticking) {
-          ticking = true;
-          requestAnimationFrame(() => {
-            updateCardTransforms(window.scrollY);
-            ticking = false;
-          });
-        }
-      };
-      window.addEventListener('scroll', handleNativeScroll, { passive: true });
-      touchScrollCleanupRef.current = () => window.removeEventListener('scroll', handleNativeScroll);
-      return null;
-    }
+    // Desktop / tablet devices (≥ 768px): run Lenis with touchMultiplier: 0 so touch is never hijacked
+    // while mouse wheel and precision trackpad scrolling remain buttery smooth.
 
     // High-performance, natural snappy deceleration for desktop mice & trackpads
     const lenis = new Lenis({
@@ -348,27 +332,24 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     if (isMobile) {
       // Mobile (< 768px): Zero JS transforms, pure native CSS position: sticky
       cards.forEach((card, i) => {
-        card.style.zIndex = `${10 + i}`;
+        card.style.zIndex = `${20 + i}`;
         card.style.willChange = 'auto';
         card.style.transform = 'none';
         card.style.setProperty('-webkit-transform', 'none');
-        if (i < cards.length - 1) {
-          card.style.marginBottom = '240px';
-        } else {
-          card.style.marginBottom = '24px';
-        }
+        card.style.marginBottom = '48px';
       });
 
       const endElement = useWindowScroll
         ? (document.querySelector('.scroll-stack-end') as HTMLElement)
         : (scroller?.querySelector('.scroll-stack-end') as HTMLElement);
       if (endElement) {
-        endElement.style.height = '0px';
+        endElement.style.height = '48px';
+        endElement.style.display = 'block';
       }
     } else {
       // Desktop (≥ 768px): Full Lenis & 3D transform metrics (100% UNTOUCHED)
       cards.forEach((card, i) => {
-        card.style.zIndex = `${10 + i}`;
+        card.style.zIndex = `${20 + i}`;
         if (i < cards.length - 1) {
           card.style.marginBottom = `${itemDistance}px`;
         } else {
@@ -398,28 +379,32 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     const handleResize = () => {
       if (resizeTimer) cancelAnimationFrame(resizeTimer);
       resizeTimer = requestAnimationFrame(() => {
-        const isMobileNow = typeof window !== 'undefined' && window.innerWidth < 768;
+        const currentWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
+        // Ignore mobile browser vertical address bar collapse/expansion to prevent layout thrashing
+        if (Math.abs(currentWidth - lastWindowWidthRef.current) < 16) {
+          return;
+        }
+        lastWindowWidthRef.current = currentWidth;
+
+        const isMobileNow = currentWidth < 768;
         if (isMobileNow) {
           cards.forEach((card, i) => {
-            card.style.zIndex = `${10 + i}`;
+            card.style.zIndex = `${20 + i}`;
             card.style.willChange = 'auto';
             card.style.transform = 'none';
             card.style.setProperty('-webkit-transform', 'none');
-            if (i < cards.length - 1) {
-              card.style.marginBottom = '240px';
-            } else {
-              card.style.marginBottom = '24px';
-            }
+            card.style.marginBottom = '48px';
           });
           const endEl = useWindowScroll
             ? (document.querySelector('.scroll-stack-end') as HTMLElement)
             : (scroller?.querySelector('.scroll-stack-end') as HTMLElement);
           if (endEl) {
-            endEl.style.height = '0px';
+            endEl.style.height = '48px';
+            endEl.style.display = 'block';
           }
         } else {
           cards.forEach((card, i) => {
-            card.style.zIndex = `${10 + i}`;
+            card.style.zIndex = `${20 + i}`;
             card.style.willChange = 'transform';
             card.style.transformOrigin = 'top center';
             card.style.backfaceVisibility = 'hidden';

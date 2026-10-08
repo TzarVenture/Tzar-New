@@ -100,7 +100,7 @@ const STAT_ITEMS: StatItem[] = [
 
 export const TechInsights: React.FC = () => {
   return (
-    <section className="tech-insights-section relative z-20">
+    <section className="tech-insights-section relative z-10">
       {/* Background Tech Mesh lines */}
       <div className="tech-insights-grid-overlay" />
 

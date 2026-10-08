@@ -59,24 +59,32 @@
   overflow: hidden;
 }
 
-/* ── Mobile (< 768px): Native GPU Compositor Sticky (120Hz locked, Zero Vibration) ── */
+/* ── Mobile (< 768px): Native GPU Compositor Sticky (Smooth, Pinned, Zero Vibration) ── */
 @media (max-width: 767px) {
+  .scroll-stack-inner {
+    min-height: auto;
+    padding-bottom: 0;
+  }
+
   .scroll-stack-card {
     position: sticky;
-    top: 72px;
-    height: clamp(500px, calc(100svh - 85px), 660px);
-    margin-bottom: 240px;
+    top: 84px;
+    height: clamp(520px, calc(100dvh - 108px), 720px);
+    margin-bottom: 48px;
+    touch-action: pan-y;
     will-change: auto;
     -webkit-transform: none !important;
     transform: none !important;
   }
 
+  /* Last card maintains full pinned viewing duration before cleanly transitioning */
   .scroll-stack-card:last-of-type {
-    margin-bottom: 24px;
+    margin-bottom: 48px;
   }
 
   .scroll-stack-end {
-    display: none;
+    display: block;
+    height: 48px;
   }
 }
 

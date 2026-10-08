@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
@@ -119,6 +119,8 @@ const AUTO_SCROLL_INTERVAL_MS = 2000;
 export const MarketingSpotlightCard: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const [prevIdx, setPrevIdx] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
   const handleSelect = (idx: number) => {
     if (idx === activeIdx) return;
@@ -126,8 +128,25 @@ export const MarketingSpotlightCard: React.FC = () => {
     setActiveIdx(idx);
   };
 
-  // Auto-scroll / cycling continuously every 2 seconds
+  // Only run auto-cycling when card is actively visible in viewport (prevents scroll hitching)
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setIsInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
     const timer = setInterval(() => {
       setActiveIdx((current) => {
         setPrevIdx(current);
@@ -136,7 +155,7 @@ export const MarketingSpotlightCard: React.FC = () => {
     }, AUTO_SCROLL_INTERVAL_MS);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isInView]);
 
   const handleEnquireScroll = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -149,11 +168,11 @@ export const MarketingSpotlightCard: React.FC = () => {
   const current = MARKETING_SERVICES[activeIdx];
 
   return (
-    <div className="flex flex-col md:grid md:grid-cols-2 h-full w-full">
+    <div ref={containerRef} className="flex flex-col md:grid md:grid-cols-2 h-full w-full">
       {/* ══════════════════════════════════════════════════════════════════════
           LEFT HALF: 50% WIDTH PURE WHITE EDITORIAL CANVAS (#FFFFFF)
           ══════════════════════════════════════════════════════════════════════ */}
-      <div className="bg-white text-[#0E2015] p-4 sm:p-6 lg:p-9 flex flex-col justify-between shrink-0 md:shrink md:h-full border-b md:border-b-0 md:border-r border-[#1D4224]/10">
+      <div className="bg-white text-[#0E2015] p-3.5 sm:p-6 lg:p-9 flex flex-col justify-between shrink-0 md:shrink md:h-full border-b md:border-b-0 md:border-r border-[#1D4224]/10">
         <div className="flex flex-col md:flex-1 md:min-h-0">
           {/* Primary Headlines */}
           <div className="shrink-0">
@@ -291,7 +310,7 @@ export const MarketingSpotlightCard: React.FC = () => {
           RIGHT HALF: 50% WIDTH DEEP CYBER EMERALD CANVAS (#062013 – #020B06)
           FADING UP (EXIT) & COMING UP (ENTER) DASHBOARD SHOWCASE STACK
           ══════════════════════════════════════════════════════════════════════ */}
-      <div className="relative flex-1 flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden h-[310px] sm:h-[350px] md:h-full min-h-[300px] bg-gradient-to-br from-[#062013] via-[#04160D] to-[#020B06]">
+      <div className="relative flex-1 flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden h-[250px] xs:h-[275px] sm:h-[340px] md:h-full min-h-[220px] md:min-h-[300px] bg-gradient-to-br from-[#062013] via-[#04160D] to-[#020B06]">
         {/* Ambient Subtle Cyber Emerald Radial Glow */}
         <div
           className="absolute inset-0 pointer-events-none opacity-60"

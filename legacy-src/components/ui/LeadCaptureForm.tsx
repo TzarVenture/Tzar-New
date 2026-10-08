@@ -51,6 +51,8 @@ export interface LeadCaptureFormProps {
   defaultService?: string;
   /** Optional custom class name for the wrapper */
   className?: string;
+  /** When true, removes outer ambient glows and glassmorphic borders */
+  noBorder?: boolean;
   /** Callback fired upon successful submission */
   onSuccess?: () => void;
 }
@@ -65,6 +67,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   serviceOptions = SERVICE_OPTIONS,
   defaultService,
   className = '',
+  noBorder = false,
   onSuccess,
 }) => {
   const [formData, setFormData] = useState({
@@ -215,23 +218,34 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   };
 
   return (
-    <div className={`relative group w-full ${className}`}>
-      {/* ── AMBIENT MULTI-LAYER MESH AURA (DESKTOP ONLY, HIDDEN ON MOBILE) ── */}
-      <div className="hidden sm:block absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#1D4224]/60 via-[#FFAE00]/25 to-[#B6F8DD]/25 blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <div className={`relative ${noBorder ? '' : 'group'} w-full ${className}`}>
+      {/* ── AMBIENT MULTI-LAYER MESH AURA (DESKTOP ONLY, HIDDEN ON MOBILE / WHEN noBorder) ── */}
+      {!noBorder && (
+        <div className="hidden sm:block absolute -inset-1 rounded-3xl bg-linear-to-tr from-[#1D4224]/60 via-[#FFAE00]/25 to-[#B6F8DD]/25 blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      )}
 
-      {/* ── GRADIENT BORDER FRAME (SHADOW REMOVED ON MOBILE) ── */}
-      <div className="relative p-[1.5px] rounded-2xl bg-gradient-to-b from-[#FFAE00]/50 via-white/10 to-[#B6F8DD]/40 shadow-none sm:shadow-2xl overflow-hidden">
-        
+      {/* ── CONTAINER FRAME (SOLID CLEAN BODY WHEN noBorder, GRADIENT BORDER FRAME WHEN DEFAULT) ── */}
+      <div
+        className={
+          noBorder
+            ? 'relative rounded-2xl overflow-hidden'
+            : 'relative p-[1.5px] rounded-2xl bg-linear-to-b from-[#FFAE00]/50 via-white/10 to-[#B6F8DD]/40 shadow-none sm:shadow-2xl overflow-hidden'
+        }
+      >
         {/* ── MAIN CARD BODY ── */}
         <div
-          className="relative rounded-[15px] p-4 sm:p-5 sm:py-5 overflow-hidden backdrop-blur-xl transition-all duration-300"
+          className={`relative rounded-[15px] p-4 sm:p-5 sm:py-5 overflow-hidden transition-all duration-300 ${
+            noBorder ? 'backdrop-blur-none' : 'backdrop-blur-xl'
+          }`}
           style={{
             backgroundColor: bgColor,
             color: textColor,
           }}
         >
-          {/* Top Sheen Line */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#FFAE00]/40 to-transparent pointer-events-none" />
+          {/* Top Sheen Line (Omitted when noBorder) */}
+          {!noBorder && (
+            <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#FFAE00]/40 to-transparent pointer-events-none" />
+          )}
 
           {/* ── HEADER TITLE (Clean, No Badges or Sub-description) ── */}
           <div className="relative z-10 mb-3 sm:mb-4">
@@ -297,7 +311,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
               {/* 1. Full Name Field (With Embedded Gold User Icon, No '*') */}
               <div className="relative flex items-center group">
-                <div className="absolute left-3.5 text-[#FFAE00]/80 pointer-events-none transition-all duration-200 group-focus-within:text-[#FFAE00] group-focus-within:scale-110">
+                <div className="absolute left-3.5 text-[#FFAE00] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100 group-focus-within:scale-110">
                   <User className="w-4 h-4" />
                 </div>
                 <input
@@ -307,13 +321,13 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Full Name"
-                  className="w-full pl-10 pr-3.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
+                  className="form-input-lead w-full pl-10 pr-3.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium border focus:ring-2 focus:ring-[#FFAE00]/25 focus:outline-none shadow-sm transition-all duration-200"
                 />
               </div>
 
               {/* 2. Phone Number Field (With Embedded Mint Phone Icon, No WhatsApp text) */}
               <div className="relative flex items-center group">
-                <div className="absolute left-3.5 text-[#B6F8DD]/80 pointer-events-none transition-all duration-200 group-focus-within:text-[#B6F8DD] group-focus-within:scale-110">
+                <div className="absolute left-3.5 text-[#B6F8DD] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100 group-focus-within:scale-110">
                   <Phone className="w-4 h-4" />
                 </div>
                 <input
@@ -322,13 +336,13 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Phone Number"
-                  className="w-full pl-10 pr-3.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
+                  className="form-input-lead w-full pl-10 pr-3.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium border focus:ring-2 focus:ring-[#FFAE00]/25 focus:outline-none shadow-sm transition-all duration-200"
                 />
               </div>
 
               {/* 3. Email Address Field (With Embedded Gold Mail Icon, No '*') */}
               <div className="relative flex items-center group">
-                <div className="absolute left-3.5 text-[#FFAE00]/80 pointer-events-none transition-all duration-200 group-focus-within:text-[#FFAE00] group-focus-within:scale-110">
+                <div className="absolute left-3.5 text-[#FFAE00] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100 group-focus-within:scale-110">
                   <Mail className="w-4 h-4" />
                 </div>
                 <input
@@ -338,20 +352,20 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email Address"
-                  className="w-full pl-10 pr-3.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
+                  className="form-input-lead w-full pl-10 pr-3.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium border focus:ring-2 focus:ring-[#FFAE00]/25 focus:outline-none shadow-sm transition-all duration-200"
                 />
               </div>
 
               {/* 4. Services Dropdown (Stylized with Briefcase Icon) */}
               <div className="relative flex items-center group">
-                <div className="absolute left-3.5 text-[#B6F8DD]/80 pointer-events-none transition-all duration-200 group-focus-within:text-[#B6F8DD] group-focus-within:scale-110">
+                <div className="absolute left-3.5 text-[#B6F8DD] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100 group-focus-within:scale-110">
                   <Briefcase className="w-4 h-4" />
                 </div>
                 <select
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full appearance-none pl-10 pr-10 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white focus:outline-none shadow-sm cursor-pointer transition-all duration-200"
+                  className="form-input-lead w-full appearance-none pl-10 pr-10 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium border focus:ring-2 focus:ring-[#FFAE00]/25 focus:outline-none shadow-sm cursor-pointer transition-all duration-200"
                 >
                   <option value="" disabled className="bg-[#0E2015] text-white/50">
                     Select a Service
@@ -372,7 +386,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
               {/* 5. PIN Code Field (With India Post API Auto-Lookup) */}
               <div className="space-y-1">
                 <div className="relative flex items-center group">
-                  <div className="absolute left-3.5 text-[#FFAE00]/80 pointer-events-none transition-all duration-200 group-focus-within:text-[#FFAE00] group-focus-within:scale-110">
+                  <div className="absolute left-3.5 text-[#FFAE00] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100 group-focus-within:scale-110">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <input
@@ -384,7 +398,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                     value={formData.pincode}
                     onChange={handlePincodeChange}
                     placeholder="6-Digit PIN Code (e.g. 110001)"
-                    className="w-full pl-10 pr-28 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200 font-mono"
+                    className="form-input-lead w-full pl-10 pr-28 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium border focus:ring-2 focus:ring-[#FFAE00]/25 focus:outline-none shadow-sm transition-all duration-200 font-mono"
                   />
                   <div className="absolute right-3 flex items-center gap-1.5 pointer-events-none">
                     {fetchingPincode && (
@@ -415,7 +429,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
               {/* 6. City & State (Side by Side Auto-Populated from PIN code) */}
               <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
                 <div className="relative flex items-center group">
-                  <div className="absolute left-3 text-[#FFAE00]/80 pointer-events-none transition-all duration-200 group-focus-within:text-[#FFAE00]">
+                  <div className="absolute left-3 text-[#FFAE00] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100">
                     <MapPin className="w-3.5 h-3.5" />
                   </div>
                   <input
@@ -424,12 +438,12 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                     value={formData.city}
                     onChange={handleChange}
                     placeholder="City"
-                    className="w-full pl-8 sm:pl-9 pr-2.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
+                    className="form-input-lead w-full pl-8 sm:pl-9 pr-2.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium border focus:ring-2 focus:ring-[#FFAE00]/25 focus:outline-none shadow-sm transition-all duration-200"
                   />
                 </div>
 
                 <div className="relative flex items-center group">
-                  <div className="absolute left-3 text-[#B6F8DD]/80 pointer-events-none transition-all duration-200 group-focus-within:text-[#B6F8DD]">
+                  <div className="absolute left-3 text-[#B6F8DD] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100">
                     <Globe className="w-3.5 h-3.5" />
                   </div>
                   <input
@@ -438,7 +452,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                     value={formData.state}
                     onChange={handleChange}
                     placeholder="State"
-                    className="w-full pl-8 sm:pl-9 pr-2.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium bg-white/[0.07] hover:bg-white/[0.1] focus:bg-[#07130A] border border-white/15 hover:border-white/30 focus:border-[#FFAE00] focus:ring-2 focus:ring-[#FFAE00]/25 text-white placeholder:text-white/40 focus:outline-none shadow-sm transition-all duration-200"
+                    className="form-input-lead w-full pl-8 sm:pl-9 pr-2.5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-xl font-medium border focus:ring-2 focus:ring-[#FFAE00]/25 focus:outline-none shadow-sm transition-all duration-200"
                   />
                 </div>
               </div>
@@ -488,7 +502,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   }
                 >
                   {/* Micro-shimmer shine effect on hover */}
-                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none" />
+                  <span className="absolute inset-0 w-full h-full bg-linear-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none" />
 
                   {loading ? (
                     <>

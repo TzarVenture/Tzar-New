@@ -15,7 +15,7 @@
   background-color: #061309;
   background: radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%), #061309;
   color: #FFFFFF;
-  overflow-x: hidden;
+  overflow: hidden;
   border-bottom: 1px solid rgba(29, 66, 36, 0.2);
   user-select: none;
   box-sizing: border-box;
@@ -30,12 +30,13 @@
   }
 }
 
-/* Guard against content clipping on ultra-short mobile landscape viewports */
-@media (max-height: 580px) {
+/* Guard against content clipping on ultra-short viewports */
+@media (max-height: 700px) {
   .tech-hero-section {
     height: auto;
     min-height: 100vh;
     min-height: 100dvh;
+    overflow: visible;
   }
 }
 
@@ -48,8 +49,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: clamp(4.5rem, 8vh, 5.75rem);
-  padding-bottom: clamp(1rem, 2.5vh, 2rem);
+  padding-top: clamp(4.75rem, 8.5vh, 6.25rem);
+  padding-bottom: clamp(0.75rem, 2vh, 1.5rem);
   box-sizing: border-box;
 }
 

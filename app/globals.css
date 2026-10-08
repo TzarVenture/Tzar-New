@@ -8,6 +8,23 @@
   --font-manrope: 'Manrope', sans-serif;
 }
 
+@utility form-input-lead {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  &:focus {
+    background-color: #07130A;
+    border-color: #FFAE00;
+  }
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
 /* ══════════════════════════════════════════════════════════════════════════
    TZAR VENTURE — Global Design System Tokens
    ══════════════════════════════════════════════════════════════════════════ */

@@ -128,7 +128,7 @@ export const TechHeader: React.FC = () => {
 
   return (
     <header
-      className="fixed left-0 right-0 top-0 z-50 font-inter transition-transform duration-300 ease-in-out"
+      className="fixed left-0 right-0 top-0 z-50 font-inter transition-transform duration-300 ease-in-out w-full max-w-full overflow-x-clip"
       style={{
         transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, -100%, 0)'
       }}

@@ -22,7 +22,7 @@ const MOCKUP_SLIDES: MockupSlide[] = [
   { id: 9, img: "/assets/images/MobileShowcase/Home/Showcase-09.png", title: "Order Tracking Screen", tag: "Customer Portal" },
   { id: 10, img: "/assets/images/MobileShowcase/Home/Showcase-10.png", title: "Customer Profile Page", tag: "User Account" },
   { id: 11, img: "/assets/images/MobileShowcase/Home/Showcase-11.png", title: "Filter & Search Grid", tag: "Instant Search" },
-  { id: 12, img: "/assets/images/MobileShowcase/Home/Showcase-12mob.png", title: "Mobile Checkout Flow", tag: "Secure Pay" },
+  // { id: 12, img: "/assets/images/MobileShowcase/Home/Showcase-12mob.png", title: "Mobile Checkout Flow", tag: "Secure Pay" },
   { id: 13, img: "/assets/images/MobileShowcase/Home/Showcase-13.png", title: "Brand Story Showcase", tag: "Brand Narrative" },
   { id: 14, img: "/assets/images/MobileShowcase/Home/Showcase-14.png", title: "Promotion Grid Screen", tag: "Campaign Hub" },
   { id: 15, img: "/assets/images/MobileShowcase/Home/Showcase-15.png", title: "Interactive Review Carousel", tag: "Social Proof" },
@@ -253,11 +253,10 @@ export const ShowcaseMockupSection: React.FC = () => {
               >
                 {/* Screenshot Card Container */}
                 <div
-                  className={`relative w-full h-full rounded-[34px] sm:rounded-[40px] lg:rounded-[44px] overflow-hidden transition-all duration-500 ${
-                    isCenter
+                  className={`relative w-full h-full rounded-[34px] sm:rounded-[40px] lg:rounded-[44px] overflow-hidden transition-all duration-500 ${isCenter
                       ? "scale-100 opacity-100 z-10"
                       : "scale-[0.88] opacity-45 hover:opacity-85 hover:scale-[0.92] shadow-xl border border-[#0E2015]/15"
-                  }`}
+                    }`}
                 >
                   {/* Underlay Screen image */}
                   <div

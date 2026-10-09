@@ -43,7 +43,7 @@ const CATEGORIES: DesignCategory[] = [
       { title: "Signage Design", image: "/assets/images/resources/logobranding/Signeg-01-01-01.png" },
       { title: "Letterhead Design", image: "/assets/images/resources/logobranding/Letter-01-01-2.png" },
       { title: "Label Design", image: "/assets/images/resources/logobranding/label-01-01-2.png" },
-      { title: "Business Card Design", image: "/assets/images/resources/logobranding/Business-card-01-01-01.png" },
+      { title: "Business Card Design", image: "/optimized/assets/images/resources/logobranding/Business-card-01-01-01.webp" },
       { title: "Car Wrap Design", image: "/assets/images/resources/logobranding/CAR-01-01-01.png" },
       { title: "Logo Design", image: "/assets/images/resources/logobranding/CARD-01-01-2.png" },
       { title: "Trade Show Booth Design", image: "/assets/images/resources/logobranding/trade-Show-01-01-2.png" },
@@ -67,7 +67,7 @@ const CATEGORIES: DesignCategory[] = [
       { title: "Banner Ad Design", image: "/assets/images/resources/WebDesign/7-01-01.png" },
       { title: "Email Marketing Design", image: "/assets/images/resources/WebDesign/5-01-01.png" },
       { title: "WooCommerce Design", image: "/assets/images/resources/WebDesign/WOO-01-01.png" },
-      { title: "Landing Page Design", image: "/assets/images/resources/WebDesign/3-01-01.png" },
+      { title: "Landing Page Design", image: "/optimized/assets/images/resources/WebDesign/3-01-01.webp" },
     ],
   },
   {
@@ -117,7 +117,7 @@ const CATEGORIES: DesignCategory[] = [
       "Today is the time of advertising in all way possible. One such way is promotional gear for the team. Get custom apparel, mugs or cups from our professional designers.",
     icon: Package,
     items: [
-      { title: "T-shirt Design", image: "/assets/images/resources/productmerchDesign/2-01-3.png" },
+      { title: "T-shirt Design", image: "/optimized/assets/images/resources/productmerchDesign/2-01-3.webp" },
       { title: "Packaging Design", image: "/assets/images/resources/productmerchDesign/3-01-3.png" },
       { title: "Bag and Tote Design", image: "/assets/images/resources/productmerchDesign/4-01-3.png" },
       { title: "Cup and Mug Design", image: "/assets/images/resources/productmerchDesign/5-01-3.png" },
@@ -132,10 +132,10 @@ const CATEGORIES: DesignCategory[] = [
       "The designers at Tzar Venture definitely are the artist you are looking for. Starting from art design to character design you’ll find what you need with these design services.",
     icon: Brush,
     items: [
-      { title: "Illustration Design", image: "/assets/images/resources/art&illustration/3-01-4.png" },
+      { title: "Illustration Design", image: "/optimized/assets/images/resources/art&illustration/3-01-4.webp" },
       { title: "Character Design", image: "/assets/images/resources/art&illustration/6-01-4.png" },
       { title: "Card Design", image: "/assets/images/resources/art&illustration/8-01-3.png" },
-      { title: "Art Design", image: "/assets/images/resources/art&illustration/10-01-1.png" },
+      { title: "Art Design", image: "/optimized/assets/images/resources/art&illustration/10-01-1.webp" },
       { title: "CD Cover Design", image: "/assets/images/resources/art&illustration/7-01-3.png" },
       { title: "Tattoo Design", image: "/assets/images/resources/art&illustration/Untitled-1-01-3.png" },
       { title: "Invitation Design", image: "/assets/images/resources/art&illustration/2-01-4.png" },
@@ -165,7 +165,7 @@ export const GraphicDesigningPage: React.FC = () => {
         <div
           className="absolute inset-0 z-0 bg-cover bg-top pointer-events-none lg:hidden"
           style={{
-            backgroundImage: "url('/assets/images/graphic-hero-bg-mobile.png')",
+            backgroundImage: "url('/optimized/assets/images/graphic-hero-bg-mobile.webp')",
           }}
         />
 
@@ -173,7 +173,7 @@ export const GraphicDesigningPage: React.FC = () => {
         <div
           className="absolute inset-0 z-0 bg-cover bg-left lg:bg-center pointer-events-none hidden lg:block"
           style={{
-            backgroundImage: "url('/assets/images/graphic-hero-bg.png')",
+            backgroundImage: "url('/optimized/assets/images/graphic-hero-bg.webp')",
           }}
         />
 

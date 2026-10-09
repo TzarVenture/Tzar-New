@@ -125,7 +125,7 @@ export const CrmHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ im
           <div className="lg:col-span-6 flex items-center justify-center relative z-10 px-2 sm:px-3">
             <div className="hero-device-container w-full max-w-100 lg:max-w-110 xl:max-w-120">
               <img
-                src="/assets/images/hero-crm-showcase.png"
+                src="/optimized/assets/images/hero-crm-showcase.webp"
                 alt="Custom Enterprise CRM Dashboard & Operations System"
                 className="hero-device-img w-full h-auto object-contain select-none pointer-events-none"
                 width={862}

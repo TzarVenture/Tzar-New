@@ -146,7 +146,7 @@ export const TechHeader: React.FC = () => {
           {/* Logo & Node Indicator */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
             <img
-              src="/assets/images/tzar-logo-main.png"
+              src="/optimized/assets/images/tzar-logo-main.webp"
               alt="Tzar Venture Logo"
               width={1506}
               height={248}
@@ -230,7 +230,7 @@ export const TechHeader: React.FC = () => {
               accentColor="#FFAE00"
               menuButtonColor="#FFFFFF"
               openMenuButtonColor="#FFFFFF"
-              logoUrl="/assets/images/tzar-logo-main.png"
+              logoUrl="/optimized/assets/images/tzar-logo-main.webp"
             />
           </div>
         </div>

@@ -17,7 +17,7 @@ export const TechFooter: React.FC = () => {
           <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="inline-block group">
               <img
-                src="/assets/images/tzar-logo-main.png"
+                src="/optimized/assets/images/tzar-logo-main.webp"
                 alt="TZAR VENTURE"
                 loading="lazy"
                 decoding="async"

@@ -117,7 +117,7 @@ export const AppDevHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
               {/* Phone 1: Left (iPhone Mockup) */}
               <div className="appdev-phone-left w-32.5 sm:w-38.75 md:w-41.25 lg:w-43.75 xl:w-47.5">
                 <img
-                  src="/assets/images/app-dev-mobile-1.png"
+                  src="/optimized/assets/images/app-dev-mobile-1.webp"
                   alt="High-Performance Native Mobile Application"
                   className="w-full h-auto object-contain select-none pointer-events-none"
                   width={260}
@@ -130,7 +130,7 @@ export const AppDevHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
               {/* Phone 2: Right (Android Mockup) */}
               <div className="appdev-phone-right w-32.5 sm:w-38.75 md:w-41.25 lg:w-43.75 xl:w-47.5">
                 <img
-                  src="/assets/images/app-dev-mobile-2.png"
+                  src="/optimized/assets/images/app-dev-mobile-2.webp"
                   alt="Cross-Platform Android and iOS Engineering"
                   className="w-full h-auto object-contain select-none pointer-events-none"
                   width={236}

@@ -119,7 +119,7 @@ export const WebAppHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
                 {/* Device 1: MacBook Air (Desktop Web Application) */}
                 <div className="webapp-macbook-wrapper">
                   <img
-                    src="/assets/images/web-app-macbook.png"
+                    src="/optimized/assets/images/web-app-macbook.webp"
                     alt="High Performance Responsive Web Application on MacBook"
                     className="webapp-macbook-img select-none pointer-events-none"
                     width={856}
@@ -132,7 +132,7 @@ export const WebAppHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
                 {/* Device 2: Android Phone (Mobile Web App Experience) */}
                 <div className="webapp-android-wrapper">
                   <img
-                    src="/assets/images/web-app-mobile-2.png"
+                    src="/optimized/assets/images/web-app-mobile-2.webp"
                     alt="Cross-Platform Mobile Web Application on Android"
                     className="webapp-android-img select-none pointer-events-none"
                     width={276}

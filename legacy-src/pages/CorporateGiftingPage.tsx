@@ -14,9 +14,9 @@ interface ProductItem {
 }
 
 const employeeGiftingProducts: ProductItem[] = [
-  { id: 1, name: "Sharp and Steely Gift Hamper", img: "/assets/images/backgrounds/employee.webp" },
-  { id: 2, name: "Savvy and Sustainable Gift Hamper", img: "/assets/images/backgrounds/employee1.webp" },
-  { id: 3, name: "The Eco-Employee Gift Hamper", img: "/assets/images/backgrounds/employee2.webp" },
+  { id: 1, name: "Sharp and Steely Gift Hamper", img: "/optimized/assets/images/backgrounds/employee.webp" },
+  { id: 2, name: "Savvy and Sustainable Gift Hamper", img: "/optimized/assets/images/backgrounds/employee1.webp" },
+  { id: 3, name: "The Eco-Employee Gift Hamper", img: "/optimized/assets/images/backgrounds/employee2.webp" },
 ];
 
 const clientGiftingProducts: ProductItem[] = [
@@ -166,7 +166,7 @@ export const CorporateGiftingPage: React.FC = () => {
         {/* Enhanced High-Resolution Luxury Banner Background */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
           <img
-            src="/assets/images/backgrounds/corporate-banner.jpg"
+            src="/optimized/assets/images/backgrounds/corporate-banner.webp"
             alt="Bespoke Corporate Gifting"
             className="w-full h-full object-cover object-center opacity-70"
           />

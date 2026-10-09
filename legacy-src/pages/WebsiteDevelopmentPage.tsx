@@ -25,12 +25,8 @@ import {
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { LazyLoopVideo } from '@/legacy-src/components/ui/LazyLoopVideo';
 import { COMPANY } from '@/data/company';
-import { DotLottieReact, setWasmUrl } from '@lottiefiles/dotlottie-react';
+import { LazyDotLottie } from '@/legacy-src/components/ui/LazyDotLottie';
 
-// Configure local WASM URL immediately to prevent remote CDN network waterfall delays
-if (typeof window !== 'undefined') {
-  setWasmUrl('/assets/lottie/dotlottie-player.wasm');
-}
 
 /* ──────────────────────────────────────────────────────────────────────────
    01. AUTHENTIC DATA (JARGON-FREE, FROM LIVE & OLD TZAR CODEBASE)
@@ -445,7 +441,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
 
               {/* Lottie Web Development Art – spacing above and overflow visible */}
               <div className="w-full max-w-[460px] sm:max-w-[540px] lg:max-w-[600px] pt-5 sm:pt-7 flex items-center justify-center overflow-visible">
-                <DotLottieReact
+                <LazyDotLottie
                   src="/assets/lottie/web-dev.json"
                   loop
                   autoplay
@@ -533,6 +529,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                         src={pkg.iconImg}
                         alt={pkg.name}
                         className="w-full h-full object-contain"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <span
@@ -823,6 +821,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                     src={ind.icon}
                     alt={ind.name}
                     className="w-12 h-12 sm:w-14 sm:h-14 object-contain group-hover:scale-110 transition-transform"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div>
@@ -1053,6 +1053,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                         src={tech.img}
                         alt={tech.name}
                         className="w-10 h-10 sm:w-12 sm:h-12 object-contain group-hover/item:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <span className="font-montserrat font-bold text-base sm:text-lg text-[#0E2015] whitespace-nowrap">
@@ -1074,6 +1076,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                         src={tech.img}
                         alt={tech.name}
                         className="w-10 h-10 sm:w-12 sm:h-12 object-contain group-hover/item:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <span className="font-montserrat font-bold text-base sm:text-lg text-[#0E2015] whitespace-nowrap">

@@ -4,12 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowDown } from "lucide-react";
-import { DotLottieReact, setWasmUrl } from "@lottiefiles/dotlottie-react";
+import { LazyDotLottie } from "@/legacy-src/components/ui/LazyDotLottie";
 
-// Configure local WASM URL immediately to prevent remote CDN network waterfall delays
-if (typeof window !== "undefined") {
-  setWasmUrl("/assets/lottie/dotlottie-player.wasm");
-}
 
 interface TeamMember {
   id: number;
@@ -241,7 +237,7 @@ export default function OurTeamView() {
             {/* Right Column: Equal 50% Space with Sized-Up Lottie Art Shifted to Right to Eliminate Overlap */}
             <div className="flex items-center justify-center lg:justify-end overflow-visible relative z-10">
               <div className="w-full max-w-xl lg:max-w-none aspect-[16/9] flex items-center justify-center transform scale-110 sm:scale-115 lg:scale-120 xl:scale-125 origin-center lg:translate-x-12 xl:translate-x-16 transition-transform duration-300">
-                <DotLottieReact
+                <LazyDotLottie
                   src="/assets/lottie/for-team-page.json"
                   loop
                   autoplay

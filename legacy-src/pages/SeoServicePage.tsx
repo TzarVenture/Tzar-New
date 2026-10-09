@@ -21,7 +21,22 @@ import {
   Users
 } from 'lucide-react';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
-import SeoTrafficGrowthChart from '@/legacy-src/components/seo/SeoTrafficGrowthChart';
+import dynamic from 'next/dynamic';
+
+// Recharts (~120 kB) is loaded as a separate chunk after the page renders.
+// The placeholder is identical to the one the chart itself shows before mount,
+// so nothing changes visually.
+const SeoTrafficGrowthChart = dynamic(
+  () => import('@/legacy-src/components/seo/SeoTrafficGrowthChart'),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-[240px] sm:h-[280px] md:h-[400px] lg:h-[480px] flex items-center justify-center">
+        <div className="w-7 h-7 rounded-full border-2 border-[#22C55E] border-t-transparent animate-spin" />
+      </div>
+    ),
+  }
+);
 
 /* ── 01. 8-STEP SEO JOURNEY DATA ────────────────────────────────────────── */
 interface SeoStep {

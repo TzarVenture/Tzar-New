@@ -400,6 +400,8 @@ export const PortfolioPage: React.FC = () => {
                             const target = e.currentTarget as HTMLImageElement;
                             target.style.display = "none";
                           }}
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
 
@@ -413,6 +415,8 @@ export const PortfolioPage: React.FC = () => {
                             const target = e.currentTarget as HTMLImageElement;
                             target.style.display = "none";
                           }}
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
 
@@ -505,6 +509,8 @@ export const PortfolioPage: React.FC = () => {
                         const target = e.currentTarget as HTMLImageElement;
                         target.style.display = "none";
                       }}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div className="text-center pt-2">

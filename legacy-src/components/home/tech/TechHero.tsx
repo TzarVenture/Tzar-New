@@ -14,6 +14,7 @@ import { AppDevHeroSlide } from "./slides/AppDevHeroSlide";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CalendarCheck } from "@phosphor-icons/react";
 import "./TechHero.css";
+import { useIsOnScreen } from "./useIsOnScreen";
 
 // ── SLIDE REGISTRY ────────────────────────────────────────────────────────
 const HERO_SLIDES = [
@@ -213,15 +214,19 @@ export const TechHero: React.FC = () => {
   };
 
   // ── AUTO-SLIDE TIMER (RESETS ON USER INTERACTION OR SLIDE CHANGE) ─────
+  // Paused while the hero is scrolled out of view or the tab is hidden.
+  const heroRef = React.useRef<HTMLElement>(null);
+  const heroOnScreen = useIsOnScreen(heroRef);
+
   useEffect(() => {
-    if (isDragging) return;
+    if (isDragging || !heroOnScreen) return;
 
     const timer = setInterval(() => {
       handleNext();
     }, SLIDE_DURATION_MS);
 
     return () => clearInterval(timer);
-  }, [isDragging, timerKey]);
+  }, [isDragging, timerKey, heroOnScreen]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     if (isTransitioningRef.current) return;
@@ -272,7 +277,7 @@ export const TechHero: React.FC = () => {
   };
 
   return (
-    <section className="tech-hero-section relative w-full">
+    <section ref={heroRef} className="tech-hero-section relative w-full">
       {/* ── CURRENT HERO BACKGROUND (COMMENTED OUT AS REQUESTED) ────────── */}
       {/*
       <div

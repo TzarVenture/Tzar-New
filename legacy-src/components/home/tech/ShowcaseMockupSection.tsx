@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useIsOnScreen } from "./useIsOnScreen";
 
 interface MockupSlide {
   id: number;
@@ -115,13 +116,17 @@ export const ShowcaseMockupSection: React.FC = () => {
   };
 
   // Continuous auto-advance every 3.5s, paused when user interacts
+  // and while the section is off-screen or the tab is hidden.
+  const sectionRef = useRef<HTMLElement>(null);
+  const sectionOnScreen = useIsOnScreen(sectionRef);
+
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || !sectionOnScreen) return;
     const interval = setInterval(() => {
       nextSlide();
     }, 3500);
     return () => clearInterval(interval);
-  }, [isPaused, nextSlide]);
+  }, [isPaused, nextSlide, sectionOnScreen]);
 
   // Touch and Mouse drag / swipe handlers
   const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
@@ -155,7 +160,7 @@ export const ShowcaseMockupSection: React.FC = () => {
   const trackTranslateX = (containerW / 2) - (currentIndex * (cardWidth + cardGap)) - (cardWidth / 2);
 
   return (
-    <section className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-[#EFE8E0] relative overflow-hidden border-b border-[#0E2015]/10 select-none">
+    <section ref={sectionRef} className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-[#EFE8E0] relative overflow-hidden border-b border-[#0E2015]/10 select-none">
       {/* Background Soft Ambient Light */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />

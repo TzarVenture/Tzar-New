@@ -381,6 +381,8 @@ export const TzarStudioPage: React.FC = () => {
                     // Graceful fallback display
                     e.currentTarget.style.display = 'none';
                   }}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}
@@ -405,6 +407,8 @@ export const TzarStudioPage: React.FC = () => {
                   src="/optimized/assets/images/resources/foodbanner.webp"
                   alt="Restaurant Food Shoot Banner"
                   className="w-full h-auto object-cover group-hover:scale-102 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 {/* Left Food Banner Graphic */}
               </div>

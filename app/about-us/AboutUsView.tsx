@@ -4,12 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { DotLottieReact, setWasmUrl } from "@lottiefiles/dotlottie-react";
+import { LazyDotLottie } from "@/legacy-src/components/ui/LazyDotLottie";
 
-// Configure local WASM URL immediately to prevent remote CDN network waterfall delays
-if (typeof window !== "undefined") {
-  setWasmUrl("/assets/lottie/dotlottie-player.wasm");
-}
 
 // Performance stats
 const STATS = [
@@ -182,7 +178,7 @@ export default function AboutUsView() {
             {/* Right Column: Equal 50% Space with Sized-Up Lottie Art */}
             <div className="flex items-center justify-center lg:justify-end overflow-visible relative z-10">
               <div className="w-full max-w-xl lg:max-w-none aspect-[882/551] flex items-center justify-center transform scale-105 lg:scale-110 xl:scale-115 origin-center lg:translate-x-4 xl:translate-x-8 transition-transform duration-300">
-                <DotLottieReact
+                <LazyDotLottie
                   src="/assets/lottie/team-discussion.lottie"
                   loop
                   autoplay
@@ -234,7 +230,7 @@ export default function AboutUsView() {
                     alt="About Tzar Venture"
                     fill
                     className="object-cover rounded-2xl"
-                    priority
+                    sizes="(max-width: 768px) 100vw, 448px"
                   />
                 </div>
               </div>

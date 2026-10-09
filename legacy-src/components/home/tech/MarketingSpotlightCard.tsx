@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useStagedMockups } from './useStagedMockups';
 import { ArrowRight } from 'lucide-react';
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -166,6 +167,7 @@ export const MarketingSpotlightCard: React.FC = () => {
   };
 
   const current = MARKETING_SERVICES[activeIdx];
+  const shouldRenderMockup = useStagedMockups(activeIdx, MARKETING_SERVICES.length, isInView, containerRef);
 
   return (
     <div ref={containerRef} className="flex flex-col md:grid md:grid-cols-2 h-full w-full">
@@ -342,15 +344,16 @@ export const MarketingSpotlightCard: React.FC = () => {
                 key={`mockup-layer-${item.id}`}
                 className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${motionClass}`}
               >
-                <Image
-                  src={item.mockupImage}
-                  alt={item.name}
-                  width={1000}
-                  height={750}
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="h-[230px] sm:h-[270px] md:h-[380px] max-h-[400px] w-auto max-w-[92%] object-contain rounded-xl shadow-[0_25px_50px_rgba(0,0,0,0.85)] border border-white/10 hover:scale-105 transition-transform duration-500"
-                />
+                {shouldRenderMockup(idx) && (
+                  <Image
+                    src={item.mockupImage}
+                    alt={item.name}
+                    width={1000}
+                    height={750}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="h-[230px] sm:h-[270px] md:h-[380px] max-h-[400px] w-auto max-w-[92%] object-contain rounded-xl shadow-[0_25px_50px_rgba(0,0,0,0.85)] border border-white/10 hover:scale-105 transition-transform duration-500"
+                  />
+                )}
               </div>
             );
           })}

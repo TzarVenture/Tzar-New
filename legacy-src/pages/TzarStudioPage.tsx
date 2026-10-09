@@ -28,34 +28,34 @@ import { COMPANY } from '@/data/company';
 
 // Mobile Showcase Frames (from /assets/images/MobileShowcase/)
 const SHOWCASE_ITEMS = [
-  { id: 's4', title: 'High-Fashion Editorial', img: '/assets/images/MobileShowcase/show4.jpg', tag: 'Editorial Shoot' },
-  { id: 's1', title: 'Studio Portrait Frame #1', img: '/assets/images/MobileShowcase/show1.jpg', tag: 'Studio Portrait' },
-  { id: 's2', title: 'Studio Portrait Frame #2', img: '/assets/images/MobileShowcase/show2.jpg', tag: 'Fashion Shoot' },
+  { id: 's4', title: 'High-Fashion Editorial', img: '/optimized/assets/images/MobileShowcase/show4.webp', tag: 'Editorial Shoot' },
+  { id: 's1', title: 'Studio Portrait Frame #1', img: '/optimized/assets/images/MobileShowcase/show1.webp', tag: 'Studio Portrait' },
+  { id: 's2', title: 'Studio Portrait Frame #2', img: '/optimized/assets/images/MobileShowcase/show2.webp', tag: 'Fashion Shoot' },
   { id: 's3', title: 'Commercial Lifestyle Frame', img: '/assets/images/MobileShowcase/show3.jpg', tag: 'Commercial Frame' },
-  { id: 's1-1', title: 'Cinematic Frame #1', img: '/assets/images/MobileShowcase/show1-1.jpg', tag: 'Cinematic Reel' },
+  { id: 's1-1', title: 'Cinematic Frame #1', img: '/optimized/assets/images/MobileShowcase/show1-1.webp', tag: 'Cinematic Reel' },
   { id: 's1-2', title: 'Cinematic Frame #2', img: '/assets/images/MobileShowcase/show1-2.jpg', tag: 'Fashion Editorial' },
   { id: 's1-3', title: 'Cinematic Frame #3', img: '/assets/images/MobileShowcase/show1-3.jpg', tag: 'Model Shoot' },
 ];
 
 // Restaurant Food Photography Showcase (from /assets/images/MobileShowcase/)
 const FOOD_ITEMS = [
-  { id: 'f15', title: 'Artisanal Plated Entrée', img: '/assets/images/MobileShowcase/food15.jpg', tag: 'Fine Dining' },
-  { id: 'f11', title: 'Gourmet Culinary Special', img: '/assets/images/MobileShowcase/food11.jpg', tag: 'Chef Special' },
+  { id: 'f15', title: 'Artisanal Plated Entrée', img: '/optimized/assets/images/MobileShowcase/food15.webp', tag: 'Fine Dining' },
+  { id: 'f11', title: 'Gourmet Culinary Special', img: '/optimized/assets/images/MobileShowcase/food11.webp', tag: 'Chef Special' },
   { id: 'f2', title: 'Signature Appetiser Styling', img: '/assets/images/MobileShowcase/food2.jpg', tag: 'Appetiser' },
-  { id: 'f13', title: 'Cloud Kitchen Hero Dish', img: '/assets/images/MobileShowcase/food13.jpg', tag: 'Zomato / Swiggy' },
-  { id: 'f1', title: 'Authentic Indian Curry & Bread', img: '/assets/images/MobileShowcase/food1.jpg', tag: 'Traditional' },
-  { id: 'f12', title: 'Craft Beverage & Cocktail', img: '/assets/images/MobileShowcase/food12.jpg', tag: 'Beverage Bar' },
+  { id: 'f13', title: 'Cloud Kitchen Hero Dish', img: '/optimized/assets/images/MobileShowcase/food13.webp', tag: 'Zomato / Swiggy' },
+  { id: 'f1', title: 'Authentic Indian Curry & Bread', img: '/optimized/assets/images/MobileShowcase/food1.webp', tag: 'Traditional' },
+  { id: 'f12', title: 'Craft Beverage & Cocktail', img: '/optimized/assets/images/MobileShowcase/food12.webp', tag: 'Beverage Bar' },
   { id: 'f3', title: 'Crispy Gourmet Snack Platter', img: '/assets/images/MobileShowcase/food3.jpg', tag: 'Snacks & Sides' },
-  { id: 'f14', title: 'Dessert & Pastry Feature', img: '/assets/images/MobileShowcase/food14.jpg', tag: 'Bakery & Dessert' },
+  { id: 'f14', title: 'Dessert & Pastry Feature', img: '/optimized/assets/images/MobileShowcase/food14.webp', tag: 'Bakery & Dessert' },
 ];
 
 // Studio Client Brand Logos (from /assets/images/Brandslogo/)
 const CLIENT_LOGOS = [
-  { id: 1, name: 'Brand Client 1', img: '/assets/images/Brandslogo/client1.jpg' },
-  { id: 2, name: 'Brand Client 2', img: '/assets/images/Brandslogo/client2.jpg' },
-  { id: 3, name: 'Brand Client 3', img: '/assets/images/Brandslogo/client3.jpg' },
-  { id: 4, name: 'Brand Client 4', img: '/assets/images/Brandslogo/client4.jpg' },
-  { id: 5, name: 'Brand Client 5', img: '/assets/images/Brandslogo/client5.jpg' },
+  { id: 1, name: 'Brand Client 1', img: '/optimized/assets/images/Brandslogo/client1.webp' },
+  { id: 2, name: 'Brand Client 2', img: '/optimized/assets/images/Brandslogo/client2.webp' },
+  { id: 3, name: 'Brand Client 3', img: '/optimized/assets/images/Brandslogo/client3.webp' },
+  { id: 4, name: 'Brand Client 4', img: '/optimized/assets/images/Brandslogo/client4.webp' },
+  { id: 5, name: 'Brand Client 5', img: '/optimized/assets/images/Brandslogo/client5.webp' },
   { id: 6, name: 'Brand Client 6', img: '/assets/images/Brandslogo/client6.jpg' },
   { id: 7, name: 'Brand Client 7', img: '/assets/images/Brandslogo/client7.jpg' },
   { id: 8, name: 'Brand Client 8', img: '/assets/images/Brandslogo/client8.jpg' },
@@ -197,7 +197,7 @@ export const TzarStudioPage: React.FC = () => {
                 <div className="absolute inset-0 rounded-full bg-[#FFAE00]/10 blur-xl scale-95 group-hover:scale-105 transition-transform duration-700" />
                 <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-68 md:h-68 lg:w-80 lg:h-80 flex items-center justify-center">
                   <img
-                    src="/camlense.png"
+                    src="/optimized/camlense.webp"
                     alt="Tzar Studio Camera Lens"
                     width={350}
                     height={350}
@@ -381,6 +381,8 @@ export const TzarStudioPage: React.FC = () => {
                     // Graceful fallback display
                     e.currentTarget.style.display = 'none';
                   }}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}
@@ -402,9 +404,11 @@ export const TzarStudioPage: React.FC = () => {
             <div className="lg:col-span-6 relative">
               <div className="relative rounded-3xl overflow-hidden bg-[#0E2015] border-2 border-[#1D4224]/30 shadow-2xl group">
                 <img
-                  src="/assets/images/resources/foodbanner.png"
+                  src="/optimized/assets/images/resources/foodbanner.webp"
                   alt="Restaurant Food Shoot Banner"
                   className="w-full h-auto object-cover group-hover:scale-102 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 {/* Left Food Banner Graphic */}
               </div>

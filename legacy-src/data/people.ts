@@ -191,14 +191,14 @@ export interface PortfolioItem {
 
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   // Web Design
-  { id: 1, title: 'Crownleaf', category: 'Web Design', tab: 'web', tag: 'WordPress & SEO', link: 'https://crownleaf.co/', image: '/assets/images/projects/Website 4.png', services: ['WordPress Website Development', 'SEO Optimization', 'SMM'], color: '#1D4224' },
-  { id: 2, title: 'Apollo India', category: 'Web Design', tab: 'web', tag: 'Shopify E-Commerce', link: 'https://apolloindia.com', image: '/assets/images/projects/r1.jpg', services: ['Shopify Development', 'Social Media', 'SEO Optimization'], color: '#D4AF37' },
-  { id: 3, title: 'Mahaarajaa', category: 'Web Design', tab: 'web', tag: 'Shopify Storefront', link: 'https://mahaarajaa.life/', image: '/assets/images/projects/r2.jpg', services: ['Shopify Development', 'Social Media', 'SMM'], color: '#1D4224' },
-  { id: 4, title: 'Blue7Vets', category: 'Web Design', tab: 'web', tag: 'WordPress Portal', link: 'https://blue7vets.com', image: '/assets/images/projects/r3.jpg', services: ['WordPress Website Development', 'SEO Optimization'], color: '#D4AF37' },
-  { id: 5, title: 'Cabelo Chave', category: 'Web Design', tab: 'web', tag: 'Shopify UI/UX', link: 'https://cabelochave.com/', image: '/assets/images/projects/r4.jpg', services: ['Shopify Development', 'UI/UX Strategy'], color: '#1D4224' },
-  { id: 6, title: 'Gurukul Vatika', category: 'Web Design', tab: 'web', tag: 'Educational Web App', link: 'https://gurukulvatika.com/', image: '/assets/images/projects/r21.png', services: ['WordPress Website Development', 'UI/UX Strategy'], color: '#D4AF37' },
-  { id: 7, title: 'KP Mumbai', category: 'Web Design', tab: 'web', tag: 'Shopify E-Com', link: 'https://kpmumbai.com/', image: '/assets/images/projects/Website 5.png', services: ['Shopify Development', 'SEO Optimization'], color: '#1D4224' },
-  { id: 8, title: 'Orcollective UK', category: 'Web Design', tab: 'web', tag: 'International Shopify', link: 'https://orcollective.co.uk/', image: '/assets/images/projects/r7.jpg', services: ['Shopify Development', 'UI/UX Strategy'], color: '#D4AF37' },
+  { id: 1, title: 'Crownleaf', category: 'Web Design', tab: 'web', tag: 'WordPress & SEO', link: 'https://crownleaf.co/', image: '/optimized/assets/images/projects/Website 4.webp', services: ['WordPress Website Development', 'SEO Optimization', 'SMM'], color: '#1D4224' },
+  { id: 2, title: 'Apollo India', category: 'Web Design', tab: 'web', tag: 'Shopify E-Commerce', link: 'https://apolloindia.com', image: '/optimized/assets/images/projects/r1.webp', services: ['Shopify Development', 'Social Media', 'SEO Optimization'], color: '#D4AF37' },
+  { id: 3, title: 'Mahaarajaa', category: 'Web Design', tab: 'web', tag: 'Shopify Storefront', link: 'https://mahaarajaa.life/', image: '/optimized/assets/images/projects/r2.webp', services: ['Shopify Development', 'Social Media', 'SMM'], color: '#1D4224' },
+  { id: 4, title: 'Blue7Vets', category: 'Web Design', tab: 'web', tag: 'WordPress Portal', link: 'https://blue7vets.com', image: '/optimized/assets/images/projects/r3.webp', services: ['WordPress Website Development', 'SEO Optimization'], color: '#D4AF37' },
+  { id: 5, title: 'Cabelo Chave', category: 'Web Design', tab: 'web', tag: 'Shopify UI/UX', link: 'https://cabelochave.com/', image: '/optimized/assets/images/projects/r4.webp', services: ['Shopify Development', 'UI/UX Strategy'], color: '#1D4224' },
+  { id: 6, title: 'Gurukul Vatika', category: 'Web Design', tab: 'web', tag: 'Educational Web App', link: 'https://gurukulvatika.com/', image: '/optimized/assets/images/projects/r21.webp', services: ['WordPress Website Development', 'UI/UX Strategy'], color: '#D4AF37' },
+  { id: 7, title: 'KP Mumbai', category: 'Web Design', tab: 'web', tag: 'Shopify E-Com', link: 'https://kpmumbai.com/', image: '/optimized/assets/images/projects/Website 5.webp', services: ['Shopify Development', 'SEO Optimization'], color: '#1D4224' },
+  { id: 8, title: 'Orcollective UK', category: 'Web Design', tab: 'web', tag: 'International Shopify', link: 'https://orcollective.co.uk/', image: '/optimized/assets/images/projects/r7.webp', services: ['Shopify Development', 'UI/UX Strategy'], color: '#D4AF37' },
 
   // Creative Banners
   { id: 9, title: 'Brand Identity Banner System', category: 'Creative Banners', tab: 'banners', tag: 'Social & Web Banners', image: 'https://ik.imagekit.io/ihxz8q7gr/1.jpg?updatedAt=1682423152315', color: '#1D4224' },

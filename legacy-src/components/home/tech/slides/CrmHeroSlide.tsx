@@ -26,7 +26,7 @@ const TECH_ICONS = [
 const GRAPE_ROW_1 = TECH_ICONS.slice(0, 5);
 const GRAPE_ROW_2 = TECH_ICONS.slice(5, 9);
 
-export const CrmHeroSlide: React.FC = () => {
+export const CrmHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ imageLoading = 'eager' }) => {
   return (
     <div className="crm-slide-container">
       {/* ── 1. COMPACT 3-WORD HEADLINE ───────────────────────────────── */}
@@ -47,6 +47,8 @@ export const CrmHeroSlide: React.FC = () => {
               src={tech.src}
               alt={tech.name}
               className="w-full h-full object-contain"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         ))}
@@ -66,6 +68,8 @@ export const CrmHeroSlide: React.FC = () => {
                 src={tech.src}
                 alt={tech.name}
                 className="w-full h-full object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           ))}
@@ -82,6 +86,8 @@ export const CrmHeroSlide: React.FC = () => {
                 src={tech.src}
                 alt={tech.name}
                 className="w-full h-full object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           ))}
@@ -119,9 +125,14 @@ export const CrmHeroSlide: React.FC = () => {
           <div className="lg:col-span-6 flex items-center justify-center relative z-10 px-2 sm:px-3">
             <div className="hero-device-container w-full max-w-100 lg:max-w-110 xl:max-w-120">
               <img
-                src="/assets/images/hero-crm-showcase.png"
+                src="/optimized/assets/images/hero-crm-showcase.webp"
                 alt="Custom Enterprise CRM Dashboard & Operations System"
                 className="hero-device-img w-full h-auto object-contain select-none pointer-events-none"
+                width={862}
+                height={515}
+                loading={imageLoading}
+                fetchPriority={imageLoading === "eager" ? "high" : undefined}
+                decoding="async"
               />
             </div>
           </div>

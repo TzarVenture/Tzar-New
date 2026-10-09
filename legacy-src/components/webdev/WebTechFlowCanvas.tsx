@@ -145,7 +145,7 @@ const WordPressIcon = () => (
 
 const ShopifyIcon = () => (
   <img
-    src="/assets/images/icons/shopify2.png"
+    src="/optimized/assets/images/icons/shopify2.webp"
     alt="Shopify"
     className="w-4 h-4 sm:w-4.5 sm:h-4.5 object-contain shrink-0"
   />

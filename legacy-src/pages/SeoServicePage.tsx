@@ -21,7 +21,22 @@ import {
   Users
 } from 'lucide-react';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
-import SeoTrafficGrowthChart from '@/legacy-src/components/seo/SeoTrafficGrowthChart';
+import dynamic from 'next/dynamic';
+
+// Recharts (~120 kB) is loaded as a separate chunk after the page renders.
+// The placeholder is identical to the one the chart itself shows before mount,
+// so nothing changes visually.
+const SeoTrafficGrowthChart = dynamic(
+  () => import('@/legacy-src/components/seo/SeoTrafficGrowthChart'),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-[240px] sm:h-[280px] md:h-[400px] lg:h-[480px] flex items-center justify-center">
+        <div className="w-7 h-7 rounded-full border-2 border-[#22C55E] border-t-transparent animate-spin" />
+      </div>
+    ),
+  }
+);
 
 /* ── 01. 8-STEP SEO JOURNEY DATA ────────────────────────────────────────── */
 interface SeoStep {
@@ -36,49 +51,49 @@ const SEO_STEPS: SeoStep[] = [
     stepNumber: "Step 01",
     title: "Website Audit",
     description: "Unlock your competitive edge and enhance your online presence with our thorough website audit services.",
-    iconSrc: "/assets/images/icons/sale-report.png",
+    iconSrc: "/optimized/assets/images/icons/sale-report.webp",
   },
   {
     stepNumber: "Step 02",
     title: "Competitor Analysis",
     description: "Discover insights into your competitors' online strategies and identify high-value search market opportunities.",
-    iconSrc: "/assets/images/icons/analytics.png",
+    iconSrc: "/optimized/assets/images/icons/analytics.webp",
   },
   {
     stepNumber: "Step 03",
     title: "Keyword Research",
     description: "Our skilled team performs thorough analysis to find the most relevant and high-performing commercial intent keywords.",
-    iconSrc: "/assets/images/icons/keyword-analysis.png",
+    iconSrc: "/optimized/assets/images/icons/keyword-analysis.webp",
   },
   {
     stepNumber: "Step 04",
     title: "Competitor Benchmarking",
     description: "Boost your business to new levels with our custom competitor benchmarking and search share-of-voice solutions.",
-    iconSrc: "/assets/images/icons/competitors.png",
+    iconSrc: "/optimized/assets/images/icons/competitors.webp",
   },
   {
     stepNumber: "Step 05",
     title: "On-Page Optimisation",
     description: "Boost your site's visibility and attract targeted traffic with our on-page optimization services, ensuring efficient Google crawling.",
-    iconSrc: "/assets/images/icons/seo-1.png",
+    iconSrc: "/optimized/assets/images/icons/seo-1.webp",
   },
   {
     stepNumber: "Step 06",
     title: "Link Building",
     description: "Our skilled team uses proven methods to gain high-quality, high-DA backlinks from top niche-relevant authoritative websites.",
-    iconSrc: "/assets/images/icons/link-building.png",
+    iconSrc: "/optimized/assets/images/icons/link-building.webp",
   },
   {
     stepNumber: "Step 07",
     title: "Content Writing",
     description: "Top-notch search-intent content crafted and published online to establish topical authority and earn natural backlinks.",
-    iconSrc: "/assets/images/icons/content-writing.png",
+    iconSrc: "/optimized/assets/images/icons/content-writing.webp",
   },
   {
     stepNumber: "Step 08",
     title: "Performance Reports",
     description: "Get actionable insights into your digital performance and monitor key metrics with our detailed bi-weekly performance reports.",
-    iconSrc: "/assets/images/icons/statistics.png",
+    iconSrc: "/optimized/assets/images/icons/statistics.webp",
   },
 ];
 
@@ -316,19 +331,19 @@ const ECOM_SEO_PLANS: SeoPlan[] = [
 /* ── 04. CLIENT LOGOS (From Authentic Testimonials Data) ────────────────── */
 const CLIENT_LOGOS = [
   { name: 'Spardha', image: '/assets/images/testimonial/spardha.jpg' },
-  { name: 'New Life Steel', image: '/assets/images/testimonial/newlifesteel.jpg' },
+  { name: 'New Life Steel', image: '/optimized/assets/images/testimonial/newlifesteel.webp' },
   { name: 'CHRMP', image: '/assets/images/testimonial/chrmp.jpg' },
   { name: 'Urban', image: '/assets/images/testimonial/urban.jpg' },
-  { name: 'Helms', image: '/assets/images/testimonial/helms.jpg' },
+  { name: 'Helms', image: '/optimized/assets/images/testimonial/helms.webp' },
   { name: 'Femm', image: '/assets/images/testimonial/femm.jpg' },
-  { name: 'Client 10', image: '/assets/images/testimonial/testimonial-one-img-10.jpg' },
-  { name: 'Client 11', image: '/assets/images/testimonial/testimonial-one-img-11.jpg' },
-  { name: 'Client 13', image: '/assets/images/testimonial/testimonial-one-img-13.jpg' },
-  { name: 'Client 14', image: '/assets/images/testimonial/testimonial-one-img-14.jpg' },
-  { name: 'Client 15', image: '/assets/images/testimonial/testimonial-one-img-15.jpg' },
-  { name: 'Client 16', image: '/assets/images/testimonial/testimonial-one-img-16.jpg' },
-  { name: 'Client 17', image: '/assets/images/testimonial/testimonial-one-img-17.jpg' },
-  { name: 'Client 19', image: '/assets/images/testimonial/testimonial-one-img-19.jpg' },
+  { name: 'Client 10', image: '/optimized/assets/images/testimonial/testimonial-one-img-10.webp' },
+  { name: 'Client 11', image: '/optimized/assets/images/testimonial/testimonial-one-img-11.webp' },
+  { name: 'Client 13', image: '/optimized/assets/images/testimonial/testimonial-one-img-13.webp' },
+  { name: 'Client 14', image: '/optimized/assets/images/testimonial/testimonial-one-img-14.webp' },
+  { name: 'Client 15', image: '/optimized/assets/images/testimonial/testimonial-one-img-15.webp' },
+  { name: 'Client 16', image: '/optimized/assets/images/testimonial/testimonial-one-img-16.webp' },
+  { name: 'Client 17', image: '/optimized/assets/images/testimonial/testimonial-one-img-17.webp' },
+  { name: 'Client 19', image: '/optimized/assets/images/testimonial/testimonial-one-img-19.webp' },
 ];
 
 export const SeoServicePage: React.FC = () => {

@@ -14,16 +14,16 @@ import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 
 /* ── 01. AUTHENTIC MOCKUP DATA (from logodesignmu.js) ─────────────────────── */
 const MOCKUP_ITEMS = [
-  { id: 9, title: "Celebrix Brand Identity", image: "/assets/images/Mockup/celebrix.jpg" },
+  { id: 9, title: "Celebrix Brand Identity", image: "/optimized/assets/images/Mockup/celebrix.webp" },
   { id: 10, title: "IACF Corporate Insignia", image: "/assets/images/Mockup/iacf.jpg" },
-  { id: 1, title: "Luxury Minimalist Identity", image: "/assets/images/Mockup/1-1.png" },
-  { id: 2, title: "Embossed Paper Stationery", image: "/assets/images/Mockup/2-3.png" },
-  { id: 3, title: "Retail Packaging Identity", image: "/assets/images/Mockup/3-1.png" },
-  { id: 4, title: "Modern Tech Brandmark", image: "/assets/images/Mockup/4-1.png" },
-  { id: 5, title: "Gold Foil Monogram", image: "/assets/images/Mockup/5-2.png" },
-  { id: 6, title: "Architectural 3D Signage", image: "/assets/images/Mockup/6-2.png" },
-  { id: 7, title: "Corporate Brand Collateral", image: "/assets/images/Mockup/7-1.png" },
-  { id: 8, title: "Creative Agency Seal", image: "/assets/images/Mockup/8.png" },
+  { id: 1, title: "Luxury Minimalist Identity", image: "/optimized/assets/images/Mockup/1-1.webp" },
+  { id: 2, title: "Embossed Paper Stationery", image: "/optimized/assets/images/Mockup/2-3.webp" },
+  { id: 3, title: "Retail Packaging Identity", image: "/optimized/assets/images/Mockup/3-1.webp" },
+  { id: 4, title: "Modern Tech Brandmark", image: "/optimized/assets/images/Mockup/4-1.webp" },
+  { id: 5, title: "Gold Foil Monogram", image: "/optimized/assets/images/Mockup/5-2.webp" },
+  { id: 6, title: "Architectural 3D Signage", image: "/optimized/assets/images/Mockup/6-2.webp" },
+  { id: 7, title: "Corporate Brand Collateral", image: "/optimized/assets/images/Mockup/7-1.webp" },
+  { id: 8, title: "Creative Agency Seal", image: "/optimized/assets/images/Mockup/8.webp" },
 ];
 
 /* ── 02. WHY CHOOSE US CARDS (from whychooseUSlogo.js) ──────────────────── */
@@ -68,7 +68,7 @@ export const LogoDesignPage: React.FC = () => {
         {/* Subtle Ambient Background */}
         <div
           className="absolute inset-0 z-0 opacity-15 pointer-events-none bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/images/backgrounds/page-header-bgLogo-Design.jpg')" }}
+          style={{ backgroundImage: "url('/optimized/assets/images/backgrounds/page-header-bgLogo-Design.webp')" }}
         />
         <div className="absolute inset-0 z-0 bg-linear-to-b from-[#EFE8E0]/70 via-[#EFE8E0]/90 to-[#EFE8E0] pointer-events-none" />
 
@@ -214,7 +214,7 @@ export const LogoDesignPage: React.FC = () => {
             <div className="lg:col-span-5">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#1D4224]/15 bg-[#0E2015] aspect-4/3 flex items-center justify-center group">
                 <img
-                  src="/assets/images/resources/luxury_brand_identity_mockup.jpg"
+                  src="/optimized/assets/images/resources/luxury_brand_identity_mockup.webp"
                   alt="Luxury Brand Identity & Logo Showcase"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />

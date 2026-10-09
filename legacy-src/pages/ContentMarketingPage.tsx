@@ -74,7 +74,7 @@ export const ContentMarketingPage: React.FC = () => {
         {/* Subtle Ambient Background */}
         <div
           className="absolute inset-0 z-0 opacity-15 pointer-events-none bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/images/backgrounds/page-header-bgContent-Marketing.jpg')" }}
+          style={{ backgroundImage: "url('/optimized/assets/images/backgrounds/page-header-bgContent-Marketing.webp')" }}
         />
         <div className="absolute inset-0 z-0 bg-linear-to-b from-[#EFE8E0]/70 via-[#EFE8E0]/90 to-[#EFE8E0] pointer-events-none" />
 
@@ -220,7 +220,7 @@ export const ContentMarketingPage: React.FC = () => {
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative group rounded-3xl overflow-hidden border border-[#1D4224]/15 shadow-xl bg-[#FAF9F5] p-6 max-w-md w-full flex items-center justify-center">
                 <img
-                  src="/assets/images/resources/contentmarketing.png"
+                  src="/optimized/assets/images/resources/contentmarketing.webp"
                   alt="Content Marketing Services"
                   className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                 />

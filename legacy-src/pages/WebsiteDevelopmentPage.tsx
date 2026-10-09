@@ -23,13 +23,10 @@ import {
   Pause,
 } from 'lucide-react';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
+import { LazyLoopVideo } from '@/legacy-src/components/ui/LazyLoopVideo';
 import { COMPANY } from '@/data/company';
-import { DotLottieReact, setWasmUrl } from '@lottiefiles/dotlottie-react';
+import { LazyDotLottie } from '@/legacy-src/components/ui/LazyDotLottie';
 
-// Configure local WASM URL immediately to prevent remote CDN network waterfall delays
-if (typeof window !== 'undefined') {
-  setWasmUrl('/assets/lottie/dotlottie-player.wasm');
-}
 
 /* ──────────────────────────────────────────────────────────────────────────
    01. AUTHENTIC DATA (JARGON-FREE, FROM LIVE & OLD TZAR CODEBASE)
@@ -55,7 +52,7 @@ const PRICING_PACKAGES: PricingPackage[] = [
     badge: 'B2B / B2C / D2C',
     timeline: '2 - 3 weeks',
     price: '₹29,999',
-    iconImg: '/assets/images/icons/wordpress.png',
+    iconImg: '/optimized/assets/images/icons/wordpress.webp',
     primaryFeatures: [
       'Up to 15 page custom responsive website',
       'Payment gateway setup (Razorpay & 1-click UPI)',
@@ -80,7 +77,7 @@ const PRICING_PACKAGES: PricingPackage[] = [
     isPopular: true,
     timeline: '3 - 4 weeks',
     price: '₹49,999',
-    iconImg: '/assets/images/icons/shopify2.png',
+    iconImg: '/optimized/assets/images/icons/shopify2.webp',
     primaryFeatures: [
       'Full Shopify store setup & custom theme styling',
       'Catalog upload for up to 100 products',
@@ -129,28 +126,36 @@ const SHOPIFY_STORES = [
   {
     title: 'AllThingsPriti',
     href: 'https://allthingspriti.com/',
-    gif: '/assets/images/icons/atpshopweb.gif',
+    // Was a atpshopweb.gif (21–38 MB); now an equivalent looping MP4 + first-frame poster.
+    video: '/optimized/assets/images/icons/atpshopweb.mp4',
+    poster: '/optimized/assets/images/icons/atpshopweb-poster.webp',
     category: 'Fashion & Apparel',
     tag: 'D2C Brand Store',
   },
   {
     title: 'Apollo India',
     href: 'https://www.apolloindia.co/',
-    gif: '/assets/images/icons/aplloweb.gif',
+    // Was a aplloweb.gif (21–38 MB); now an equivalent looping MP4 + first-frame poster.
+    video: '/optimized/assets/images/icons/aplloweb.mp4',
+    poster: '/optimized/assets/images/icons/aplloweb-poster.webp',
     category: 'Corporate & Equipment',
     tag: 'Enterprise Catalog',
   },
   {
     title: 'Cabelo Chave',
     href: 'https://cabelochave.com/',
-    gif: '/assets/images/icons/cabiloweb.gif',
+    // Was a cabiloweb.gif (21–38 MB); now an equivalent looping MP4 + first-frame poster.
+    video: '/optimized/assets/images/icons/cabiloweb.mp4',
+    poster: '/optimized/assets/images/icons/cabiloweb-poster.webp',
     category: 'Beauty & Hair Care',
     tag: 'D2C Cosmetics',
   },
   {
     title: 'Mahaarajaa',
     href: 'https://mahaarajaa.life/',
-    gif: '/assets/images/icons/mahaarajaweb.gif',
+    // Was a mahaarajaweb.gif (21–38 MB); now an equivalent looping MP4 + first-frame poster.
+    video: '/optimized/assets/images/icons/mahaarajaweb.mp4',
+    poster: '/optimized/assets/images/icons/mahaarajaweb-poster.webp',
     category: 'Luxury Lifestyle',
     tag: 'Luxury Boutique',
   },
@@ -211,23 +216,23 @@ const INDUSTRIES = [
 
 // 5. Mobile Mockup Showcase Slides (from WebDesignMock.js)
 const MOCKUP_SLIDES = [
-  { id: 1, img: '/assets/images/MobileShowcase/Home/Showcase-01.png', title: 'Brand Flagship Store' },
-  { id: 2, img: '/assets/images/MobileShowcase/Home/Showcase-02.png', title: 'Product Catalog View' },
+  { id: 1, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-01.webp', title: 'Brand Flagship Store' },
+  { id: 2, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-02.webp', title: 'Product Catalog View' },
   { id: 3, img: '/assets/images/MobileShowcase/Home/Showcase-03.png', title: 'Interactive Product Detail' },
-  { id: 4, img: '/assets/images/MobileShowcase/Home/Showcase-04.png', title: 'Seamless Mobile Checkout' },
-  { id: 5, img: '/assets/images/MobileShowcase/Home/Showcase-05.png', title: 'Modern Clean Feed' },
-  { id: 6, img: '/assets/images/MobileShowcase/Home/Showcase-06.png', title: 'Dynamic Brand Header' },
-  { id: 7, img: '/assets/images/MobileShowcase/Home/Showcase-07.png', title: 'Category Navigation' },
-  { id: 8, img: '/assets/images/MobileShowcase/Home/Showcase-08.png', title: 'Mobile Cart Experience' },
-  { id: 9, img: '/assets/images/MobileShowcase/Home/Showcase-09.png', title: 'Order Tracking Screen' },
-  { id: 10, img: '/assets/images/MobileShowcase/Home/Showcase-10.png', title: 'Customer Profile Page' },
-  { id: 11, img: '/assets/images/MobileShowcase/Home/Showcase-11.png', title: 'Filter & Search Grid' },
-  { id: 13, img: '/assets/images/MobileShowcase/Home/Showcase-13.png', title: 'Brand Story Showcase' },
-  { id: 14, img: '/assets/images/MobileShowcase/Home/Showcase-14.png', title: 'Promotion Grid Screen' },
-  { id: 15, img: '/assets/images/MobileShowcase/Home/Showcase-15.png', title: 'Customer Reviews Carousel' },
-  { id: 16, img: '/assets/images/MobileShowcase/Home/Showcase-16.png', title: 'Retention & Email Signup' },
-  { id: 17, img: '/assets/images/MobileShowcase/Home/Showcase-17.png', title: 'Mobile Footer & FAQs' },
-  { id: 18, img: '/assets/images/MobileShowcase/Home/Showcase-18.png', title: 'Fast-Loading Experience' },
+  { id: 4, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-04.webp', title: 'Seamless Mobile Checkout' },
+  { id: 5, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-05.webp', title: 'Modern Clean Feed' },
+  { id: 6, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-06.webp', title: 'Dynamic Brand Header' },
+  { id: 7, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-07.webp', title: 'Category Navigation' },
+  { id: 8, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-08.webp', title: 'Mobile Cart Experience' },
+  { id: 9, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-09.webp', title: 'Order Tracking Screen' },
+  { id: 10, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-10.webp', title: 'Customer Profile Page' },
+  { id: 11, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-11.webp', title: 'Filter & Search Grid' },
+  { id: 13, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-13.webp', title: 'Brand Story Showcase' },
+  { id: 14, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-14.webp', title: 'Promotion Grid Screen' },
+  { id: 15, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-15.webp', title: 'Customer Reviews Carousel' },
+  { id: 16, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-16.webp', title: 'Retention & Email Signup' },
+  { id: 17, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-17.webp', title: 'Mobile Footer & FAQs' },
+  { id: 18, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-18.webp', title: 'Fast-Loading Experience' },
 ];
 
 // 6. Measurable Business Benefits (from BenefitsWD.js)
@@ -436,7 +441,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
 
               {/* Lottie Web Development Art – spacing above and overflow visible */}
               <div className="w-full max-w-115 sm:max-w-135 lg:max-w-150 pt-5 sm:pt-7 flex items-center justify-center overflow-visible">
-                <DotLottieReact
+                <LazyDotLottie
                   src="/assets/lottie/web-dev.json"
                   loop
                   autoplay
@@ -524,6 +529,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                         src={pkg.iconImg}
                         alt={pkg.name}
                         className="w-full h-full object-contain"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <span
@@ -670,11 +677,11 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                 className="group flex flex-col rounded-3xl overflow-hidden bg-[#F2F7F3] border border-[#0E2015]/10 shadow-sm hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300"
               >
                 <div className="relative aspect-4/3 overflow-hidden bg-[#0E2015]">
-                  <img
-                    src={store.gif}
-                    alt={store.title}
+                  <LazyLoopVideo
+                    src={store.video}
+                    poster={store.poster}
+                    label={store.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="px-4 py-2 rounded-full bg-[#1D4224] text-white font-montserrat font-bold text-xs flex items-center gap-1.5 shadow-lg">
@@ -814,6 +821,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                     src={ind.icon}
                     alt={ind.name}
                     className="w-12 h-12 sm:w-14 sm:h-14 object-contain group-hover:scale-110 transition-transform"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div>
@@ -1044,6 +1053,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                         src={tech.img}
                         alt={tech.name}
                         className="w-10 h-10 sm:w-12 sm:h-12 object-contain group-hover/item:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <span className="font-montserrat font-bold text-base sm:text-lg text-[#0E2015] whitespace-nowrap">
@@ -1065,6 +1076,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                         src={tech.img}
                         alt={tech.name}
                         className="w-10 h-10 sm:w-12 sm:h-12 object-contain group-hover/item:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <span className="font-montserrat font-bold text-base sm:text-lg text-[#0E2015] whitespace-nowrap">

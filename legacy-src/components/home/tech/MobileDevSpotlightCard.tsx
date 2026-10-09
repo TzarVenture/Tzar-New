@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useStagedMockups } from './useStagedMockups';
 import { ArrowRight } from 'lucide-react';
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -166,6 +167,7 @@ export const MobileDevSpotlightCard: React.FC = () => {
   };
 
   const current = MOBILE_TECHNOLOGIES[activeIdx];
+  const shouldRenderMockup = useStagedMockups(activeIdx, MOBILE_TECHNOLOGIES.length, isInView, containerRef);
 
   return (
     <div ref={containerRef} className="flex flex-col md:grid md:grid-cols-2 h-full w-full">
@@ -342,15 +344,16 @@ export const MobileDevSpotlightCard: React.FC = () => {
                 key={`mockup-layer-${tech.id}`}
                 className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${motionClass}`}
               >
-                <Image
-                  src={tech.mockupImage}
-                  alt={tech.name}
-                  width={1385}
-                  height={1136}
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="w-full h-full max-w-full max-h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
-                />
+                {shouldRenderMockup(idx) && (
+                  <Image
+                    src={tech.mockupImage}
+                    alt={tech.name}
+                    width={1385}
+                    height={1136}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="w-full h-full max-w-full max-h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+                  />
+                )}
               </div>
             );
           })}

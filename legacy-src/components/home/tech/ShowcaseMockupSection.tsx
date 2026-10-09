@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useIsOnScreen } from "./useIsOnScreen";
 
 interface MockupSlide {
   id: number;
@@ -11,24 +12,24 @@ interface MockupSlide {
 }
 
 const MOCKUP_SLIDES: MockupSlide[] = [
-  { id: 1, img: "/assets/images/MobileShowcase/Home/Showcase-01.png", title: "Brand Flagship Store", tag: "E-Commerce" },
-  { id: 2, img: "/assets/images/MobileShowcase/Home/Showcase-02.png", title: "Product Catalog View", tag: "Mobile UI" },
+  { id: 1, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-01.webp", title: "Brand Flagship Store", tag: "E-Commerce" },
+  { id: 2, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-02.webp", title: "Product Catalog View", tag: "Mobile UI" },
   { id: 3, img: "/assets/images/MobileShowcase/Home/Showcase-03.png", title: "Interactive Product Detail", tag: "Shopify Store" },
-  { id: 4, img: "/assets/images/MobileShowcase/Home/Showcase-04.png", title: "Seamless Mobile Checkout", tag: "Conversion Flow" },
-  { id: 5, img: "/assets/images/MobileShowcase/Home/Showcase-05.png", title: "Modern UI/UX Feed", tag: "Mobile App" },
-  { id: 6, img: "/assets/images/MobileShowcase/Home/Showcase-06.png", title: "Dynamic Brand Header", tag: "Web Design" },
-  { id: 7, img: "/assets/images/MobileShowcase/Home/Showcase-07.png", title: "Category Navigation", tag: "UX Architecture" },
-  { id: 8, img: "/assets/images/MobileShowcase/Home/Showcase-08.png", title: "Mobile Cart Experience", tag: "Checkout Funnel" },
-  { id: 9, img: "/assets/images/MobileShowcase/Home/Showcase-09.png", title: "Order Tracking Screen", tag: "Customer Portal" },
-  { id: 10, img: "/assets/images/MobileShowcase/Home/Showcase-10.png", title: "Customer Profile Page", tag: "User Account" },
-  { id: 11, img: "/assets/images/MobileShowcase/Home/Showcase-11.png", title: "Filter & Search Grid", tag: "Instant Search" },
+  { id: 4, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-04.webp", title: "Seamless Mobile Checkout", tag: "Conversion Flow" },
+  { id: 5, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-05.webp", title: "Modern UI/UX Feed", tag: "Mobile App" },
+  { id: 6, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-06.webp", title: "Dynamic Brand Header", tag: "Web Design" },
+  { id: 7, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-07.webp", title: "Category Navigation", tag: "UX Architecture" },
+  { id: 8, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-08.webp", title: "Mobile Cart Experience", tag: "Checkout Funnel" },
+  { id: 9, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-09.webp", title: "Order Tracking Screen", tag: "Customer Portal" },
+  { id: 10, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-10.webp", title: "Customer Profile Page", tag: "User Account" },
+  { id: 11, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-11.webp", title: "Filter & Search Grid", tag: "Instant Search" },
   // { id: 12, img: "/assets/images/MobileShowcase/Home/Showcase-12mob.png", title: "Mobile Checkout Flow", tag: "Secure Pay" },
-  { id: 13, img: "/assets/images/MobileShowcase/Home/Showcase-13.png", title: "Brand Story Showcase", tag: "Brand Narrative" },
-  { id: 14, img: "/assets/images/MobileShowcase/Home/Showcase-14.png", title: "Promotion Grid Screen", tag: "Campaign Hub" },
-  { id: 15, img: "/assets/images/MobileShowcase/Home/Showcase-15.png", title: "Interactive Review Carousel", tag: "Social Proof" },
-  { id: 16, img: "/assets/images/MobileShowcase/Home/Showcase-16.png", title: "Newsletter & Retention", tag: "Lead Capture" },
-  { id: 17, img: "/assets/images/MobileShowcase/Home/Showcase-17.png", title: "Mobile Footer & FAQs", tag: "Support UI" },
-  { id: 18, img: "/assets/images/MobileShowcase/Home/Showcase-18.png", title: "E-Commerce Speed Metric", tag: "Core Web Vitals" },
+  { id: 13, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-13.webp", title: "Brand Story Showcase", tag: "Brand Narrative" },
+  { id: 14, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-14.webp", title: "Promotion Grid Screen", tag: "Campaign Hub" },
+  { id: 15, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-15.webp", title: "Interactive Review Carousel", tag: "Social Proof" },
+  { id: 16, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-16.webp", title: "Newsletter & Retention", tag: "Lead Capture" },
+  { id: 17, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-17.webp", title: "Mobile Footer & FAQs", tag: "Support UI" },
+  { id: 18, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-18.webp", title: "E-Commerce Speed Metric", tag: "Core Web Vitals" },
   { id: 19, img: "/assets/images/MobileShowcase/Home/CabeoChavess.png", title: "Cabelo Chave Luxury Hair", tag: "Live Client Store" },
   { id: 20, img: "/assets/images/MobileShowcase/Home/MahaaRajass.png", title: "Mahaarajaa Royal Apparel", tag: "Live Client Store" },
   { id: 21, img: "/assets/images/MobileShowcase/Home/epitomess.png", title: "Epitome Global Brand", tag: "Live Client Store" },
@@ -44,7 +45,11 @@ export const ShowcaseMockupSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(BASE_COUNT);
   const [enableTransition, setEnableTransition] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(1200);
+  // Rendered client-only on the home page (see DeferredHomeSections), so the
+  // real width is available on first render; 1200 remains the fallback.
+  const [windowWidth, setWindowWidth] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
 
   const containerRef = useRef<HTMLDivElement>(null);
   const dragStartX = useRef<number | null>(null);
@@ -111,13 +116,17 @@ export const ShowcaseMockupSection: React.FC = () => {
   };
 
   // Continuous auto-advance every 3.5s, paused when user interacts
+  // and while the section is off-screen or the tab is hidden.
+  const sectionRef = useRef<HTMLElement>(null);
+  const sectionOnScreen = useIsOnScreen(sectionRef);
+
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || !sectionOnScreen) return;
     const interval = setInterval(() => {
       nextSlide();
     }, 3500);
     return () => clearInterval(interval);
-  }, [isPaused, nextSlide]);
+  }, [isPaused, nextSlide, sectionOnScreen]);
 
   // Touch and Mouse drag / swipe handlers
   const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
@@ -151,7 +160,7 @@ export const ShowcaseMockupSection: React.FC = () => {
   const trackTranslateX = (containerW / 2) - (currentIndex * (cardWidth + cardGap)) - (cardWidth / 2);
 
   return (
-    <section className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-transparent relative overflow-hidden border-b border-white/10 select-none">
+    <section ref={sectionRef} className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-transparent relative overflow-hidden border-b border-white/10 select-none">
       {/* Background Soft Ambient Light */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-125 h-125 bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-125 h-125 bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />
@@ -197,7 +206,8 @@ export const ShowcaseMockupSection: React.FC = () => {
             src="/mockups/iphone17-frame.png"
             alt="iPhone 17 Frame"
             className="w-full h-full object-contain pointer-events-none select-none"
-            loading="eager"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

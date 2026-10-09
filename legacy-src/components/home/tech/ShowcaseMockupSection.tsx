@@ -261,13 +261,8 @@ export const ShowcaseMockupSection: React.FC = () => {
                 {/* Screenshot Card Container */}
                 <div
                   className={`relative w-full h-full rounded-[34px] sm:rounded-[40px] lg:rounded-[44px] overflow-hidden transition-all duration-500 ${isCenter
-<<<<<<< HEAD
                       ? "scale-100 opacity-100 z-10"
                       : "scale-[0.88] opacity-55 hover:opacity-90 hover:scale-[0.92] shadow-2xl border border-white/10"
-=======
-                    ? "scale-100 opacity-100 z-10"
-                    : "scale-[0.88] opacity-45 hover:opacity-85 hover:scale-[0.92] shadow-xl border border-[#0E2015]/15"
->>>>>>> origin/main
                     }`}
                 >
                   {/* Underlay Screen image */}

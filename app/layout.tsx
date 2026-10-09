@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Manrope, Montserrat } from "next/font/google";
 import "./globals.css";
 import "aos/dist/aos.css";
 import { TechHeader } from "@/legacy-src/components/layout/TechHeader";
@@ -12,6 +12,13 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.tzar.co"),
   title: { default: "Tzar Venture | Digital Systems & Growth Agency", template: "%s | Tzar Venture" },
@@ -21,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={manrope.variable}>
+    <html lang="en" className={`${manrope.variable} ${montserrat.variable}`}>
       <body className="bg-[#EFE8E0] text-[#0E2015] min-h-screen flex flex-col justify-between font-sans">
         <TechHeader />
         <div className="flex-1 w-full">{children}</div>

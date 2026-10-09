@@ -22,7 +22,7 @@ export const ClientMarquee: React.FC = () => {
   const baseLogos = BRAND_LOGOS;
 
   return (
-    <section className="bg-transparent py-12 sm:py-14 overflow-hidden select-none border-t border-b border-white/10">
+    <section className="bg-transparent py-12 sm:py-14 overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
         <h3 className="font-montserrat text-sm sm:text-base font-bold tracking-wider text-[#EFE8E0]/70 uppercase">
           Building Success Stories with{" "}

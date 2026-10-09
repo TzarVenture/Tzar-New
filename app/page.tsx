@@ -19,6 +19,7 @@ import SeoArticle from "@/legacy-src/components/home/tech/SeoArticle";
 import TechInsights from "@/legacy-src/components/home/tech/TechInsights";
 import { TrafficGrowthSection } from "@/legacy-src/components/home/tech/TrafficGrowthSection";
 import PersistentBackdrop from "@/legacy-src/components/home/tech/PersistentBackdrop";
+import { TechText } from "@/legacy-src/components/home/tech/TechText";
 
 const PHOTOSHOOT_ITEMS = [
   {
@@ -62,9 +63,12 @@ export default function Home() {
       {/* 01 • NEXT.JS CONNECTED CENTRAL NODE HERO */}
       <TechHero />
 
+      {/* 01.5 • KINETIC VIDEO-MASKED TYPOGRAPHY SHOWCASE */}
+      <TechText />
+
       {/* 01.6 • DYNAMIC SCROLLING CASE STUDY STACK (SHIPROCKET INSPIRED) */}
-      <section className="bg-transparent pt-10 sm:pt-14 pb-4 relative z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14 text-center">
+      <section className="bg-transparent pt-0 pb-4 relative z-20 border-none outline-none">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12 text-center">
           <span className="font-mono text-sm uppercase tracking-widest text-[#FFAE00] font-black block mb-2">
             OUR CORE DISCIPLINES
           </span>

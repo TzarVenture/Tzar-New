@@ -151,7 +151,7 @@ export const ShowcaseMockupSection: React.FC = () => {
   const trackTranslateX = (containerW / 2) - (currentIndex * (cardWidth + cardGap)) - (cardWidth / 2);
 
   return (
-    <section className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-transparent relative overflow-hidden border-b border-white/10 select-none">
+    <section className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-transparent relative overflow-hidden select-none">
       {/* Background Soft Ambient Light */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-125 h-125 bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-125 h-125 bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />

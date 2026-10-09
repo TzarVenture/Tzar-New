@@ -1,82 +1,107 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
+import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 
+// The three.js chunk is only requested once this component decides to render it.
+const HeroShaderCanvas = dynamic(() => import("./HeroShaderCanvas"), { ssr: false });
+
+type NavigatorWithHints = Navigator & {
+  connection?: { saveData?: boolean; effectiveType?: string };
+  deviceMemory?: number;
+};
+
+/** Returns false when the animated WebGL background should be skipped. */
+function shouldRenderShader(): boolean {
+  if (typeof window === "undefined") return false;
+
+  // Respect the user's motion preference.
+  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return false;
+
+  const nav = navigator as NavigatorWithHints;
+
+  // Respect data-saver mode and very slow connections (Chromium-only hints).
+  if (nav.connection?.saveData) return false;
+  if (nav.connection?.effectiveType && /2g$/.test(nav.connection.effectiveType)) return false;
+
+  // Skip on clearly low-powered devices.
+  if (typeof nav.deviceMemory === "number" && nav.deviceMemory <= 2) return false;
+  if (typeof nav.hardwareConcurrency === "number" && nav.hardwareConcurrency <= 2) return false;
+
+  // Skip when WebGL is unavailable.
+  try {
+    const canvas = document.createElement("canvas");
+    const gl = (canvas.getContext("webgl2") || canvas.getContext("webgl")) as WebGLRenderingContext | null;
+    if (!gl) return false;
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+  } catch {
+    return false;
+  }
+  return true;
+}
+
+/** If WebGL fails at runtime, render nothing so the static CSS gradient shows. */
+class ShaderErrorBoundary extends React.Component<{ children: React.ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  componentDidCatch(error: unknown) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("[HeroShaderBackground] WebGL background disabled:", error);
+    }
+  }
+  render() {
+    return this.state.failed ? null : this.props.children;
+  }
+}
+
+/**
+ * Animated hero background. The hero's static radial gradient (TechHero.css)
+ * renders immediately; the WebGL layer is added only after the page has
+ * loaded and the browser is idle, and is skipped entirely for reduced motion,
+ * data saver, low-end devices, or missing WebGL.
+ */
 export default function HeroShaderBackground() {
-  const [isReady, setIsReady] = useState(false);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    // Fade in gracefully once client mounts and WebGL context is established
-    const timer = setTimeout(() => setIsReady(true), 120);
-    return () => clearTimeout(timer);
+    if (!shouldRenderShader()) return;
+
+    let cancelled = false;
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+
+    const enable = () => {
+      if (!cancelled) setEnabled(true);
+    };
+    const scheduleWhenIdle = () => {
+      if (typeof window.requestIdleCallback === "function") {
+        idleId = window.requestIdleCallback(enable, { timeout: 2000 });
+      } else {
+        timeoutId = window.setTimeout(enable, 300);
+      }
+    };
+
+    if (document.readyState === "complete") {
+      scheduleWhenIdle();
+    } else {
+      window.addEventListener("load", scheduleWhenIdle, { once: true });
+    }
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener("load", scheduleWhenIdle);
+      if (idleId !== undefined) window.cancelIdleCallback?.(idleId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    };
   }, []);
 
-  const shaderProps = {
-    animate: "on" as const,
-    axesHelper: "off",
-    bgColor1: "#061309",
-    bgColor2: "#061309",
-    brightness: 0.45,
-    cAzimuthAngle: 180,
-    cDistance: 3.9,
-    cPolarAngle: 115,
-    cameraZoom: 1,
-    color1: "#1B4D25",
-    color2: "#143D1D",
-    color3: "#07170B",
-    destination: "onCanvas",
-    embedMode: "off",
-    envPreset: "city" as const,
-    fov: 45,
-    gizmoHelper: "hide",
-    grain: "off" as const,
-    lightType: "3d" as const,
-    pixelDensity: 1,
-    positionX: -0.5,
-    positionY: 0.1,
-    positionZ: 0,
-    range: "disabled" as const,
-    rangeEnd: 40,
-    rangeStart: 0,
-    reflection: 0.1,
-    rotationX: 0,
-    rotationY: 0,
-    rotationZ: 235,
-    shader: "defaults",
-    type: "waterPlane" as const,
-    uAmplitude: 0,
-    uDensity: 1.1,
-    uFrequency: 5.5,
-    uSpeed: 0.12,
-    uStrength: 2.4,
-    uTime: 0.2,
-    wireframe: false,
-  };
+  if (!enabled) return null;
 
   return (
-    <div
-      className={`absolute inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-1000 ease-out ${
-        isReady ? "opacity-100" : "opacity-0"
-      }`}
-    >
-      <ShaderGradientCanvas
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          pointerEvents: "none",
-        }}
-        lazyLoad={false}
-        powerPreference="high-performance"
-        pixelDensity={1}
-        fov={45}
-        pointerEvents="none"
-      >
-        <ShaderGradient {...(shaderProps as any)} />
-      </ShaderGradientCanvas>
-    </div>
+    <ShaderErrorBoundary>
+      <HeroShaderCanvas />
+    </ShaderErrorBoundary>
   );
 }

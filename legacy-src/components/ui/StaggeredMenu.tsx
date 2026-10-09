@@ -483,6 +483,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 alt="TZAR VENTURE"
                 className="h-7 w-auto object-contain"
                 draggable={false}
+                loading="lazy"
+                decoding="async"
               />
             </Link>
             <button

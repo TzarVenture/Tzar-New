@@ -44,7 +44,11 @@ export const ShowcaseMockupSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(BASE_COUNT);
   const [enableTransition, setEnableTransition] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(1200);
+  // Rendered client-only on the home page (see DeferredHomeSections), so the
+  // real width is available on first render; 1200 remains the fallback.
+  const [windowWidth, setWindowWidth] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
 
   const containerRef = useRef<HTMLDivElement>(null);
   const dragStartX = useRef<number | null>(null);
@@ -219,7 +223,8 @@ export const ShowcaseMockupSection: React.FC = () => {
             src="/mockups/iphone17-frame.png"
             alt="iPhone 17 Frame"
             className="w-full h-full object-contain pointer-events-none select-none"
-            loading="eager"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

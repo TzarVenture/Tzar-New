@@ -83,6 +83,32 @@ export const TechHero: React.FC = () => {
 
   const activeRealSlide = getRealSlideIndex(currentIndex);
 
+  // ── STAGED SLIDE IMAGE LOADING ─────────────────────────────────────────
+  // Only the first visible slide's device images load eagerly. The upcoming
+  // slide is warmed once the page has finished loading, so hidden slides
+  // (including the loop clones) no longer compete with the first screen.
+  const [pageLoaded, setPageLoaded] = useState(false);
+  const [warmSlides, setWarmSlides] = useState<number[]>([0]);
+
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      setPageLoaded(true);
+      return;
+    }
+    const onLoad = () => setPageLoaded(true);
+    window.addEventListener("load", onLoad, { once: true });
+    return () => window.removeEventListener("load", onLoad);
+  }, []);
+
+  useEffect(() => {
+    const wanted = pageLoaded
+      ? [activeRealSlide, (activeRealSlide + 1) % HERO_SLIDES.length]
+      : [activeRealSlide];
+    setWarmSlides((prev) =>
+      wanted.every((i) => prev.includes(i)) ? prev : Array.from(new Set([...prev, ...wanted]))
+    );
+  }, [pageLoaded, activeRealSlide]);
+
   // When transition completes at clone boundaries, instantly teleport without animation
   const handleCompleteTransition = () => {
     if (transitionTimeoutRef.current) {
@@ -324,7 +350,9 @@ export const TechHero: React.FC = () => {
                   className="hero-carousel-slide"
                   aria-hidden={isClone ? "true" : undefined}
                 >
-                  <SlideComponent />
+                  <SlideComponent
+                    imageLoading={warmSlides.includes(getRealSlideIndex(idx)) ? "eager" : "lazy"}
+                  />
                 </div>
               );
             })}

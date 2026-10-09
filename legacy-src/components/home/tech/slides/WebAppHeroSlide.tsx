@@ -35,7 +35,7 @@ const MOBILE_STACK_2 = [
   { name: "Docker", src: "/tech-icons/docker.svg" },
 ];
 
-export const WebAppHeroSlide: React.FC = () => {
+export const WebAppHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ imageLoading = 'eager' }) => {
   return (
     <div className="webapp-slide-container">
       {/* ── 1. COMPACT 3-WORD HEADLINE ───────────────────────────────── */}
@@ -52,7 +52,7 @@ export const WebAppHeroSlide: React.FC = () => {
               title={tech.name}
               className="w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-white/90 flex items-center justify-center p-1.5 shadow-md"
             >
-              <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" />
+              <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" loading="lazy" decoding="async" />
             </div>
           ))}
         </div>
@@ -63,7 +63,7 @@ export const WebAppHeroSlide: React.FC = () => {
               title={tech.name}
               className="w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-white/90 flex items-center justify-center p-1.5 shadow-md"
             >
-              <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" />
+              <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" loading="lazy" decoding="async" />
             </div>
           ))}
         </div>
@@ -109,7 +109,7 @@ export const WebAppHeroSlide: React.FC = () => {
                     title={tech.name}
                     className={`orbit-stack-badge ${tech.posClass}`}
                   >
-                    <img src={tech.src} alt={tech.name} />
+                    <img src={tech.src} alt={tech.name} loading="lazy" decoding="async" />
                   </div>
                 ))}
               </div>
@@ -122,6 +122,10 @@ export const WebAppHeroSlide: React.FC = () => {
                     src="/assets/images/web-app-macbook.png"
                     alt="High Performance Responsive Web Application on MacBook"
                     className="webapp-macbook-img select-none pointer-events-none"
+                    width={856}
+                    height={515}
+                    loading={imageLoading}
+                    decoding="async"
                   />
                 </div>
 
@@ -131,6 +135,10 @@ export const WebAppHeroSlide: React.FC = () => {
                     src="/assets/images/web-app-mobile-2.png"
                     alt="Cross-Platform Mobile Web Application on Android"
                     className="webapp-android-img select-none pointer-events-none"
+                    width={276}
+                    height={528}
+                    loading={imageLoading}
+                    decoding="async"
                   />
                 </div>
               </div>

@@ -148,6 +148,9 @@ export const TechHeader: React.FC = () => {
             <img
               src="/assets/images/tzar-logo-main.png"
               alt="Tzar Venture Logo"
+              width={1506}
+              height={248}
+              decoding="async"
               className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
             />
           </Link>

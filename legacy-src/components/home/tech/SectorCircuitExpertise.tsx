@@ -137,10 +137,10 @@ export const SectorCircuitExpertise: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <span className="font-mono text-sm uppercase tracking-widest text-[#1D4224] font-black block mb-2">
+          <span className="font-mono text-sm uppercase tracking-widest text-[#FFAE00] font-black block mb-2">
             OUR SECTOR EXPERTISE
           </span>
-          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight leading-tight">
+          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
             Domains we have worked for
           </h2>
         </div>
@@ -175,7 +175,7 @@ export const SectorCircuitExpertise: React.FC = () => {
           </div>
 
           {/* 2. CENTRAL CIRCUIT CONDUIT (Smooth Flowing SVG Light Lines) */}
-          <div className="relative w-full h-[100px] my-0 pointer-events-none">
+          <div className="relative w-full h-25 my-0 pointer-events-none">
             <svg
               className="w-full h-full overflow-visible"
               viewBox="0 0 1200 100"
@@ -291,7 +291,7 @@ export const SectorCircuitExpertise: React.FC = () => {
               const RightIcon = rightDomain.icon;
 
               return (
-                <div key={`mobile-row-${rowIdx}`} className="relative flex items-center justify-between mb-7 sm:mb-9 last:mb-0">
+                <div key={`mobile-row-${rowIdx}`} className={`relative flex items-center justify-between ${rowIdx < 5 ? "mb-7 sm:mb-9" : ""}`}>
                   
                   {/* ── LEFT CARD (Icon + Title only) ── */}
                   <div className="w-[43%] sm:w-[44%] relative">
@@ -306,7 +306,7 @@ export const SectorCircuitExpertise: React.FC = () => {
                   {/* ── CENTRAL JUNCTION & CONNECTOR BRANCHES (NO DOTS) ── */}
                   <div className="w-[14%] sm:w-[12%] flex items-center justify-center relative h-full">
                     {/* Base Gray Horizontal Branch Wire (Across both cards) */}
-                    <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#CBD5E1]" />
+                    <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-[#CBD5E1]" />
 
                     {/* Smooth Flowing Branch to Left Card (expands outward from center to left) */}
                     <div

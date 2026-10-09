@@ -64,7 +64,7 @@ export const LogoDesignPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           01. HERO BANNER WITH EMBEDDED FORM & BACKGROUND ART
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative pt-24 pb-8 sm:pt-28 sm:pb-12 overflow-hidden border-b border-[#1D4224]/10">
+      <section className="relative pt-28 pb-8 sm:pt-34 sm:pb-12 overflow-hidden border-b border-[#1D4224]/10">
         {/* Subtle Ambient Background */}
         <div
           className="absolute inset-0 z-0 opacity-15 pointer-events-none bg-cover bg-center"

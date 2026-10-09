@@ -151,15 +151,15 @@ export const ShowcaseMockupSection: React.FC = () => {
   const trackTranslateX = (containerW / 2) - (currentIndex * (cardWidth + cardGap)) - (cardWidth / 2);
 
   return (
-    <section className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-[#EFE8E0] relative overflow-hidden border-b border-[#0E2015]/10 select-none">
+    <section className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-transparent relative overflow-hidden border-b border-white/10 select-none">
       {/* Background Soft Ambient Light */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-125 h-125 bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-125 h-125 bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* ── SECTION HEADER ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
         <div className="flex items-center justify-center text-center">
-          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight  leading-tight">
+          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
             Showcase Mockup
           </h2>
         </div>
@@ -181,9 +181,9 @@ export const ShowcaseMockupSection: React.FC = () => {
         onMouseMove={handleTouchMove}
         onMouseUp={handleTouchEnd}
       >
-        {/* Soft edge fade masks on left and right borders */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#EFE8E0] via-[#EFE8E0]/70 to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#EFE8E0] via-[#EFE8E0]/70 to-transparent z-20 pointer-events-none" />
+        {/* Soft edge fade masks on left and right borders matching dark background */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-linear-to-r from-[#061309] via-[#061309]/60 to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-linear-to-l from-[#061309] via-[#061309]/60 to-transparent z-20 pointer-events-none" />
 
         {/* ── SINGLE PHOTOREALISTIC IPHONE 17 MOCKUP FRAME (Anchored in the exact center) ── */}
         <div
@@ -251,7 +251,7 @@ export const ShowcaseMockupSection: React.FC = () => {
                   setEnableTransition(true);
                   setCurrentIndex(idx);
                 }}
-                className="flex-shrink-0 relative cursor-pointer select-none transition-all duration-500"
+                className="shrink-0 relative cursor-pointer select-none transition-all duration-500"
                 style={{
                   width: cardWidth,
                   height: cardHeight,
@@ -261,8 +261,8 @@ export const ShowcaseMockupSection: React.FC = () => {
                 {/* Screenshot Card Container */}
                 <div
                   className={`relative w-full h-full rounded-[34px] sm:rounded-[40px] lg:rounded-[44px] overflow-hidden transition-all duration-500 ${isCenter
-                    ? "scale-100 opacity-100 z-10"
-                    : "scale-[0.88] opacity-45 hover:opacity-85 hover:scale-[0.92] shadow-xl border border-[#0E2015]/15"
+                      ? "scale-100 opacity-100 z-10"
+                      : "scale-[0.88] opacity-55 hover:opacity-90 hover:scale-[0.92] shadow-2xl border border-white/10"
                     }`}
                 >
                   {/* Underlay Screen image */}
@@ -284,7 +284,7 @@ export const ShowcaseMockupSection: React.FC = () => {
                       draggable={false}
                     />
                     {/* Glass glare highlight */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
+                    <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
                   </div>
                 </div>
               </div>

@@ -292,7 +292,7 @@ export const PortfolioPage: React.FC = () => {
     <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
 
       {/* ── 01. LUXURY PAGE HERO HEADER (100% VH / DVH HEIGHT ON ALL DEVICES) ── */}
-      <section className="relative w-full min-h-screen min-h-[100dvh] h-screen h-[100dvh] flex flex-col justify-center pt-20 pb-8 sm:pt-20 sm:pb-8 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/20">
+      <section className="relative w-full min-h-dvh h-dvh flex flex-col justify-center pt-28 pb-8 sm:pt-32 sm:pb-8 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/20">
         {/* Background Image Stage */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
           <img
@@ -306,8 +306,8 @@ export const PortfolioPage: React.FC = () => {
             }}
           />
           {/* Ambient Spruce & Gold Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0E2015] via-[#0E2015]/80 to-[#0E2015]/65" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0E2015] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#0E2015] via-[#0E2015]/80 to-[#0E2015]/65" />
+          <div className="absolute inset-0 bg-linear-to-t from-[#0E2015] via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 my-auto w-full text-center space-y-4">
@@ -377,7 +377,7 @@ export const PortfolioPage: React.FC = () => {
                     className="block rounded-2xl overflow-hidden border border-[#1D4224]/10 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 group cursor-pointer text-inherit no-underline"
                     style={{ backgroundColor: bgColor }}
                   >
-                    <div className="p-6 h-full flex flex-col justify-between min-h-[420px]">
+                    <div className="p-6 h-full flex flex-col justify-between min-h-105">
                       {/* Top Service Tags */}
                       <div className="flex flex-wrap gap-1.5 mb-4 h-14 overflow-hidden content-start">
                         {item.services.map((srv, i) => (
@@ -395,7 +395,7 @@ export const PortfolioPage: React.FC = () => {
                         <img
                           src={item.logo}
                           alt={`${item.title} Logo`}
-                          className="max-h-12 max-w-[140px] object-contain drop-shadow-xs"
+                          className="max-h-12 max-w-35 object-contain drop-shadow-xs"
                           onError={(e) => {
                             const target = e.currentTarget as HTMLImageElement;
                             target.style.display = "none";
@@ -526,7 +526,7 @@ export const PortfolioPage: React.FC = () => {
               {NIGHT_CLUB_VIDEOS.map((video) => (
                 <div
                   key={video.id}
-                  className="bg-black rounded-2xl overflow-hidden border border-white/10 shadow-md aspect-16/9"
+                  className="bg-black rounded-2xl overflow-hidden border border-white/10 shadow-md aspect-video"
                 >
                   <iframe
                     src={video.url}

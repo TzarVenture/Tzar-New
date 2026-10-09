@@ -7,17 +7,17 @@ const SeoArticle: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="bg-[#EFE8E0] py-16 sm:py-20 relative z-20">
+    <section className="bg-transparent py-16 sm:py-20 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white/40 backdrop-blur-md border border-[#1D4224]/10 rounded-3xl p-6 sm:p-10 shadow-sm transition-all duration-500">
+        <div className="bg-[#0E2015]/75 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl transition-all duration-500">
           
           {/* Main Title */}
-          <h2 className="font-montserrat font-black text-2xl sm:text-3xl text-[#0E2015] tracking-tight leading-tight mb-6">
+          <h2 className="font-montserrat font-black text-2xl sm:text-3xl text-white tracking-tight leading-tight mb-6">
             Why Digital Marketing Agency is an Effective Way to Market Your Business
           </h2>
 
           {/* First Paragraph (Always Visible) with inline See More button */}
-          <p className="font-inter text-sm sm:text-base text-[#5C6860] leading-relaxed mb-6">
+          <p className="font-inter text-sm sm:text-base text-white/80 leading-relaxed mb-6">
             Many people are confused about what digital marketing is. 
             In simple words we can say Digital Marketing is a way of promoting 
             your website by using digital media such as email, web banners, video, audio, text, and social media. 
@@ -28,7 +28,7 @@ const SeoArticle: React.FC = () => {
             {!isExpanded && (
               <button 
                 onClick={() => setIsExpanded(true)}
-                className="inline-flex items-center gap-1 text-[#1D4224] hover:text-[#FFAE00] font-mono text-xs sm:text-sm font-bold uppercase tracking-wider ml-2 transition-colors duration-300 outline-none cursor-pointer"
+                className="inline-flex items-center gap-1 text-[#FFAE00] hover:text-white font-mono text-xs sm:text-sm font-bold uppercase tracking-wider ml-2 transition-colors duration-300 outline-none cursor-pointer"
               >
                 See More <ChevronDown className="w-4 h-4" />
               </button>
@@ -37,12 +37,12 @@ const SeoArticle: React.FC = () => {
 
           {/* Collapsible Content Block (Revealed from Search Engine Optimization onwards) */}
           {isExpanded && (
-            <div className="transition-all duration-500 ease-in-out animate-in fade-in duration-300">
+            <div className="transition-all duration-500 ease-in-out animate-in fade-in">
               {/* Search Engine Optimization */}
-              <h3 className="font-montserrat font-extrabold text-xl sm:text-2xl text-[#1D4224] tracking-tight mb-3">
+              <h3 className="font-montserrat font-extrabold text-xl sm:text-2xl text-[#FFAE00] tracking-tight mb-3">
                 Search Engine Optimization
               </h3>
-              <p className="font-inter text-sm sm:text-base text-[#5C6860] leading-relaxed mb-4">
+              <p className="font-inter text-sm sm:text-base text-white/80 leading-relaxed mb-4">
                 Search engine optimization allows website owners and bloggers to 
                 optimize their websites for specific keywords or keyword phrases. Content marketing involves 
                 developing quality content in key niches that readers in your target market would be interested in. 
@@ -51,16 +51,16 @@ const SeoArticle: React.FC = () => {
                 but are they really the best alternative to one another?
               </p>
 
-              <p className="font-inter text-sm sm:text-base text-[#5C6860] leading-relaxed mb-6">
+              <p className="font-inter text-sm sm:text-base text-white/80 leading-relaxed mb-6">
                 There is no clear cut answer here, but there are a few things you can do to make sure you are doing 
                 everything you can to promote your website the best way you can...
               </p>
 
               {/* Website Design */}
-              <h3 className="font-montserrat font-extrabold text-xl sm:text-2xl text-[#1D4224] tracking-tight mb-3">
+              <h3 className="font-montserrat font-extrabold text-xl sm:text-2xl text-[#FFAE00] tracking-tight mb-3">
                 Website Design
               </h3>
-              <p className="font-inter text-sm sm:text-base text-[#5C6860] leading-relaxed mb-6">
+              <p className="font-inter text-sm sm:text-base text-white/80 leading-relaxed mb-6">
                 Developing a website is relatively easy as compared to 
                 development of digital platforms. TZAR VENTURE as 
                 a website development agency offer website design services at 
@@ -70,10 +70,10 @@ const SeoArticle: React.FC = () => {
               </p>
 
               {/* Content Marketing */}
-              <h3 className="font-montserrat font-extrabold text-xl sm:text-2xl text-[#1D4224] tracking-tight mb-3">
+              <h3 className="font-montserrat font-extrabold text-xl sm:text-2xl text-[#FFAE00] tracking-tight mb-3">
                 Content Marketing
               </h3>
-              <p className="font-inter text-sm sm:text-base text-[#5C6860] leading-relaxed mb-6">
+              <p className="font-inter text-sm sm:text-base text-white/80 leading-relaxed mb-6">
                 Content marketing is an essential part of 
                 Digital Marketing strategy. Content marketing is 
                 simply publishing high quality information through various social media outlets such as 
@@ -85,10 +85,10 @@ const SeoArticle: React.FC = () => {
               </p>
 
               {/* Social Media Management Agency */}
-              <h3 className="font-montserrat font-extrabold text-xl sm:text-2xl text-[#1D4224] tracking-tight mb-3">
+              <h3 className="font-montserrat font-extrabold text-xl sm:text-2xl text-[#FFAE00] tracking-tight mb-3">
                 Social Media Management Agency
               </h3>
-              <p className="font-inter text-sm sm:text-base text-[#5C6860] leading-relaxed mb-6">
+              <p className="font-inter text-sm sm:text-base text-white/80 leading-relaxed mb-6">
                 When it comes to content marketing and 
                 digital marketing strategy implementation, a 
                 social media management agency is the best option for you. 
@@ -98,7 +98,7 @@ const SeoArticle: React.FC = () => {
                 you can be sure that you will reach the top of the search engine results within shortest period of time.
               </p>
 
-              <p className="font-inter text-sm sm:text-base text-[#5C6860] leading-relaxed mb-6">
+              <p className="font-inter text-sm sm:text-base text-white/80 leading-relaxed mb-6">
                 SMM agencies are also adept at creating a 
                 target audience for your website. With an effective 
                 social media marketing services, you can attract the 
@@ -110,7 +110,7 @@ const SeoArticle: React.FC = () => {
               </p>
 
               {/* Conclusion / Hiring Block */}
-              <p className="font-inter text-sm sm:text-base text-[#5C6860] leading-relaxed mb-6">
+              <p className="font-inter text-sm sm:text-base text-white/80 leading-relaxed mb-6">
                 Hiring TZAR VENTURE as your 
                 Digital marketing Agency has many advantages. 
                 We have good proven track record with adequate experience of creating niche brand. 
@@ -123,7 +123,7 @@ const SeoArticle: React.FC = () => {
               {/* Collapse Trigger */}
               <button 
                 onClick={() => setIsExpanded(false)}
-                className="inline-flex items-center gap-1 text-[#1D4224] hover:text-[#FFAE00] font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors duration-300 outline-none mt-2 cursor-pointer"
+                className="inline-flex items-center gap-1 text-[#FFAE00] hover:text-white font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors duration-300 outline-none mt-2 cursor-pointer"
               >
                 See Less <ChevronUp className="w-4 h-4" />
               </button>

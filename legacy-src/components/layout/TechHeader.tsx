@@ -61,6 +61,33 @@ export const TechHeader: React.FC = () => {
   const [isSolid, setIsSolid] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const pathname = usePathname();
+  const closeTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const handleDropdownEnter = (name: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveDropdown(name);
+  };
+
+  const handleDropdownLeave = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 180);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
   // Safe home detection for SSR, hydration, and hash anchors
   const isHome = !pathname || pathname === '/' || pathname === '' || pathname.startsWith('/#');
 
@@ -113,6 +140,10 @@ export const TechHeader: React.FC = () => {
   }, [pathname, isHome]);
 
   useEffect(() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
     setActiveDropdown(null);
   }, [pathname]);
 
@@ -128,7 +159,7 @@ export const TechHeader: React.FC = () => {
 
   return (
     <header
-      className="fixed left-0 right-0 top-0 z-50 font-inter transition-transform duration-300 ease-in-out w-full max-w-full overflow-x-clip"
+      className="fixed left-0 right-0 top-0 z-50 font-inter transition-transform duration-300 ease-in-out w-full max-w-full"
       style={{
         transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, -100%, 0)'
       }}
@@ -137,7 +168,7 @@ export const TechHeader: React.FC = () => {
       <TopAnnouncementMarquee isSolid={isSolid} />
 
       {/* Main Framer Navbar */}
-      <nav className={`transition-all duration-300 py-3.5 ${isSolid
+      <nav className={`transition-all duration-300 py-2.5 sm:py-3 ${isSolid
           ? 'bg-[#0E2015]/95 backdrop-blur-md border-b border-white/10 shadow-lg'
           : 'bg-transparent border-b border-transparent'
         }`}>
@@ -148,7 +179,7 @@ export const TechHeader: React.FC = () => {
             <img
               src="/assets/images/tzar-logo-main.png"
               alt="Tzar Venture Logo"
-              className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
             />
           </Link>
 
@@ -160,8 +191,8 @@ export const TechHeader: React.FC = () => {
                 <div
                   key={item.name}
                   className="relative"
-                  onMouseEnter={() => item.children && setActiveDropdown(item.name)}
-                  onMouseLeave={() => item.children && setActiveDropdown(null)}
+                  onMouseEnter={() => item.children && handleDropdownEnter(item.name)}
+                  onMouseLeave={() => item.children && handleDropdownLeave()}
                 >
                   <Link
                     href={item.href}
@@ -177,9 +208,13 @@ export const TechHeader: React.FC = () => {
                     )}
                   </Link>
 
-                  {/* Dropdown Menu */}
+                  {/* Dropdown Menu with Hover Bridge */}
                   {item.children && activeDropdown === item.name && (
-                    <div className="absolute top-full left-0 min-w-60 pt-2 z-50">
+                    <div 
+                      className="absolute top-full left-0 min-w-60 pt-2 z-50 before:content-[''] before:absolute before:-top-3 before:-left-6 before:-right-6 before:h-5 before:pointer-events-auto"
+                      onMouseEnter={() => handleDropdownEnter(item.name)}
+                      onMouseLeave={handleDropdownLeave}
+                    >
                       <div className="bg-[#0E2015]/95 text-white border border-white/15 rounded-2xl p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
                         {item.children.map((sub) => {
                           const isSubActive = pathname === sub.href;

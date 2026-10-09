@@ -9,12 +9,6 @@ import { WebDevSpotlightCard } from "@/legacy-src/components/home/tech/WebDevSpo
 import { MobileDevSpotlightCard } from "@/legacy-src/components/home/tech/MobileDevSpotlightCard";
 import { EnterpriseSpotlightCard } from "@/legacy-src/components/home/tech/EnterpriseSpotlightCard";
 import { MarketingSpotlightCard } from "@/legacy-src/components/home/tech/MarketingSpotlightCard";
-import { TechMarquee } from "@/legacy-src/components/home/tech/TechMarquee";
-import { TechBentoGrid } from "@/legacy-src/components/home/tech/TechBentoGrid";
-import { TechArchitectureMatrix } from "@/legacy-src/components/home/tech/TechArchitectureMatrix";
-import { TechServicesGrid } from "@/legacy-src/components/home/tech/TechServicesGrid";
-import { TechProofShowcase } from "@/legacy-src/components/home/tech/TechProofShowcase";
-import { TechContactSection } from "@/legacy-src/components/home/tech/TechContactSection";
 import AccordionGallery from "@/legacy-src/components/home/tech/AccordionGallery";
 import { SectorCircuitExpertise } from "@/legacy-src/components/home/tech/SectorCircuitExpertise";
 import SeoArticle from "@/legacy-src/components/home/tech/SeoArticle";

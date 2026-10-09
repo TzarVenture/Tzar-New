@@ -14,6 +14,7 @@ import { SectorCircuitExpertise } from "@/legacy-src/components/home/tech/Sector
 import SeoArticle from "@/legacy-src/components/home/tech/SeoArticle";
 import TechInsights from "@/legacy-src/components/home/tech/TechInsights";
 import { TrafficGrowthSection } from "@/legacy-src/components/home/tech/TrafficGrowthSection";
+import PersistentBackdrop from "@/legacy-src/components/home/tech/PersistentBackdrop";
 
 const PHOTOSHOOT_ITEMS = [
   {
@@ -50,18 +51,20 @@ const PHOTOSHOOT_ITEMS = [
 
 export default function Home() {
   return (
-    <main className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
+    <main className="relative min-h-screen text-white overflow-x-clip bg-transparent">
+      {/* ── FIXED LUXURY WEBGL & GRADIENT BACKDROP FOR SMOOTH PARALLAX ── */}
+      <PersistentBackdrop />
+
       {/* 01 • NEXT.JS CONNECTED CENTRAL NODE HERO */}
       <TechHero />
 
-
       {/* 01.6 • DYNAMIC SCROLLING CASE STUDY STACK (SHIPROCKET INSPIRED) */}
-      <section className="bg-[#EFE8E0] pt-10 sm:pt-14 pb-4 relative z-20">
+      <section className="bg-transparent pt-10 sm:pt-14 pb-4 relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14 text-center">
-          <span className="font-mono text-sm uppercase tracking-widest text-[#1D4224] font-black block mb-2">
+          <span className="font-mono text-sm uppercase tracking-widest text-[#FFAE00] font-black block mb-2">
             OUR CORE DISCIPLINES
           </span>
-          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight leading-tight">
+          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
             Services we specialize in
           </h2>
         </div>
@@ -101,10 +104,10 @@ export default function Home() {
         {/* Brand Showcase Accordion Gallery */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 mb-16 relative z-20">
           <div className="text-center mb-10">
-            <span className="font-mono text-sm uppercase tracking-widest text-[#1D4224] font-black">
+            <span className="font-mono text-sm uppercase tracking-widest text-[#FFAE00] font-black">
               BRAND CAMPAIGNS & PRODUCT PHOTOSHOOTS
             </span>
-            <h2 className="font-montserrat font-black text-3xl sm:text-4xl text-[#0E2015] tracking-tight mt-2 leading-tight">
+            <h2 className="font-montserrat font-black text-3xl sm:text-4xl text-white tracking-tight mt-2 leading-tight">
               Visual Systems Engineered for High-End Organic Brands
             </h2>
           </div>
@@ -124,7 +127,7 @@ export default function Home() {
       </section>
 
       {/* Traffic Growth Lead Generation Section */}
-      <div id="lead-form" className="scroll-mt-10">
+      <div id="lead-form" className="scroll-mt-10 relative z-20">
         <TrafficGrowthSection />
       </div>
 

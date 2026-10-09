@@ -132,7 +132,7 @@ const TypewriterHeadline: React.FC = () => {
   }, [currentText, isDeleting, phraseIndex]);
 
   return (
-    <div className="min-h-[48px] sm:min-h-[56px] flex items-center justify-center">
+    <div className="min-h-12 sm:min-h-14 flex items-center justify-center">
       <h3 className="font-montserrat font-bold text-sm sm:text-base md:text-lg lg:text-xl text-[#FFAE00] tracking-wider uppercase text-center">
         {currentText}
         <span className="inline-block w-1.5 h-4 sm:h-5 bg-[#FFAE00] ml-1.5 animate-pulse align-middle" />
@@ -171,7 +171,7 @@ export const TzarStudioPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           01. STUDIO HERO BANNER (100% VH / DVH IMMERSIVE LUXURY STAGE)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-center pt-24 pb-12 sm:pt-28 sm:pb-16 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30">
+      <section className="relative w-full min-h-dvh flex flex-col justify-center pt-28 pb-12 sm:pt-34 sm:pb-16 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30">
         
         {/* Ambient Dark Spruce & Gold Glows */}
         <div className="absolute inset-0 pointer-events-none z-0">
@@ -221,7 +221,7 @@ export const TzarStudioPage: React.FC = () => {
               </h1>
 
               {/* Dynamic Typewriter Headline */}
-              <div className="w-full max-w-sm py-2 px-3 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-sm">
+              <div className="w-full max-w-sm py-2 px-3 rounded-xl bg-white/4 border border-white/10 backdrop-blur-sm">
                 <TypewriterHeadline />
               </div>
 
@@ -305,9 +305,9 @@ export const TzarStudioPage: React.FC = () => {
               <div
                 key={item.id}
                 onClick={() => setLightboxImage({ src: item.img, title: item.title, tag: item.tag })}
-                className="flex-none w-[240px] sm:w-[280px] md:w-[310px] snap-center group cursor-pointer"
+                className="flex-none w-60 sm:w-70 md:w-77.5 snap-center group cursor-pointer"
               >
-                <div className="relative aspect-[9/16] rounded-2xl overflow-hidden bg-[#0E2015] border border-[#0E2015]/10 shadow-lg group-hover:shadow-2xl group-hover:border-[#FFAE00]/60 transition-all duration-300">
+                <div className="relative aspect-9/16 rounded-2xl overflow-hidden bg-[#0E2015] border border-[#0E2015]/10 shadow-lg group-hover:shadow-2xl group-hover:border-[#FFAE00]/60 transition-all duration-300">
                   <img
                     src={item.img}
                     alt={item.title}
@@ -316,7 +316,7 @@ export const TzarStudioPage: React.FC = () => {
                   />
                   
                   {/* Gradient Overlay & Details */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E2015] via-[#0E2015]/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#0E2015] via-[#0E2015]/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
 
                   {/* Top Badge */}
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex justify-between items-center pointer-events-none">
@@ -371,12 +371,12 @@ export const TzarStudioPage: React.FC = () => {
             {CLIENT_LOGOS.map((client) => (
               <div
                 key={client.id}
-                className="group p-4 rounded-xl bg-[#FAF9F5] hover:bg-[#EFE8E0] border border-[#0E2015]/10 hover:border-[#1D4224]/30 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center min-h-[90px]"
+                className="group p-4 rounded-xl bg-[#FAF9F5] hover:bg-[#EFE8E0] border border-[#0E2015]/10 hover:border-[#1D4224]/30 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center min-h-22.5"
               >
                 <img
                   src={client.img}
                   alt={client.name}
-                  className="max-h-12 w-auto max-w-[120px] object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
+                  className="max-h-12 w-auto max-w-30 object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
                   onError={(e) => {
                     // Graceful fallback display
                     e.currentTarget.style.display = 'none';
@@ -500,9 +500,9 @@ export const TzarStudioPage: React.FC = () => {
                 <div
                   key={item.id}
                   onClick={() => setLightboxImage({ src: item.img, title: item.title, tag: item.tag })}
-                  className="flex-none w-[230px] sm:w-[270px] md:w-[290px] snap-center group cursor-pointer"
+                  className="flex-none w-57.5 sm:w-67.5 md:w-72.5 snap-center group cursor-pointer"
                 >
-                  <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#0E2015] border border-[#0E2015]/10 shadow-md group-hover:shadow-xl group-hover:border-[#FFAE00]/60 transition-all duration-300">
+                  <div className="relative aspect-4/5 rounded-2xl overflow-hidden bg-[#0E2015] border border-[#0E2015]/10 shadow-md group-hover:shadow-xl group-hover:border-[#FFAE00]/60 transition-all duration-300">
                     <img
                       src={item.img}
                       alt={item.title}
@@ -511,7 +511,7 @@ export const TzarStudioPage: React.FC = () => {
                     />
                     
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0E2015] via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#0E2015] via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
                     {/* Tag Badge */}
                     <div className="absolute top-3 left-3">
@@ -589,7 +589,7 @@ export const TzarStudioPage: React.FC = () => {
               {STUDIO_FACILITIES.map((facility, index) => (
                 <div
                   key={index}
-                  className="p-5 sm:p-6 rounded-2xl bg-white/[0.05] hover:bg-white/[0.08] border border-white/10 hover:border-[#FFAE00]/40 transition-all duration-300 flex flex-col justify-between"
+                  className="p-5 sm:p-6 rounded-2xl bg-white/5 hover:bg-white/8 border border-white/10 hover:border-[#FFAE00]/40 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div className="w-10 h-10 rounded-xl bg-[#1D4224] flex items-center justify-center text-[#FFAE00] mb-4">
                     <CheckCircle2 className="w-5 h-5" />

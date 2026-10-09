@@ -35,7 +35,7 @@ const MOBILE_STACK_2 = [
   { name: "TypeScript", src: "/tech-icons/typescript.svg" },
 ];
 
-export const AppDevHeroSlide: React.FC = () => {
+export const AppDevHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ imageLoading = 'eager' }) => {
   return (
     <div className="appdev-slide-container">
       {/* ── 1. COMPACT 3-WORD HEADLINE ───────────────────────────────── */}
@@ -52,7 +52,7 @@ export const AppDevHeroSlide: React.FC = () => {
               title={tech.name}
               className="w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-white/90 flex items-center justify-center p-1.5 shadow-md"
             >
-              <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" />
+              <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" loading="lazy" decoding="async" />
             </div>
           ))}
         </div>
@@ -63,7 +63,7 @@ export const AppDevHeroSlide: React.FC = () => {
               title={tech.name}
               className="w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-white/90 flex items-center justify-center p-1.5 shadow-md"
             >
-              <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" />
+              <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" loading="lazy" decoding="async" />
             </div>
           ))}
         </div>
@@ -107,7 +107,7 @@ export const AppDevHeroSlide: React.FC = () => {
                   title={tech.name}
                   className={`appdev-stack-badge ${tech.posClass}`}
                 >
-                  <img src={tech.src} alt={tech.name} />
+                  <img src={tech.src} alt={tech.name} loading="lazy" decoding="async" />
                 </div>
               ))}
             </div>
@@ -117,18 +117,26 @@ export const AppDevHeroSlide: React.FC = () => {
               {/* Phone 1: Left (iPhone Mockup) */}
               <div className="appdev-phone-left w-32.5 sm:w-38.75 md:w-41.25 lg:w-43.75 xl:w-47.5">
                 <img
-                  src="/assets/images/app-dev-mobile-1.png"
+                  src="/optimized/assets/images/app-dev-mobile-1.webp"
                   alt="High-Performance Native Mobile Application"
                   className="w-full h-auto object-contain select-none pointer-events-none"
+                  width={260}
+                  height={492}
+                  loading={imageLoading}
+                  decoding="async"
                 />
               </div>
 
               {/* Phone 2: Right (Android Mockup) */}
               <div className="appdev-phone-right w-32.5 sm:w-38.75 md:w-41.25 lg:w-43.75 xl:w-47.5">
                 <img
-                  src="/assets/images/app-dev-mobile-2.png"
+                  src="/optimized/assets/images/app-dev-mobile-2.webp"
                   alt="Cross-Platform Android and iOS Engineering"
                   className="w-full h-auto object-contain select-none pointer-events-none"
+                  width={236}
+                  height={465}
+                  loading={imageLoading}
+                  decoding="async"
                 />
               </div>
             </div>

@@ -3,11 +3,11 @@
 import React from "react";
 
 const BRAND_LOGOS = [
-  { name: "Client 1", src: "/assets/images/Brandslogo/client1.jpg" },
-  { name: "Client 2", src: "/assets/images/Brandslogo/client2.jpg" },
-  { name: "Client 3", src: "/assets/images/Brandslogo/client3.jpg" },
-  { name: "Client 4", src: "/assets/images/Brandslogo/client4.jpg" },
-  { name: "Client 5", src: "/assets/images/Brandslogo/client5.jpg" },
+  { name: "Client 1", src: "/optimized/assets/images/Brandslogo/client1.webp" },
+  { name: "Client 2", src: "/optimized/assets/images/Brandslogo/client2.webp" },
+  { name: "Client 3", src: "/optimized/assets/images/Brandslogo/client3.webp" },
+  { name: "Client 4", src: "/optimized/assets/images/Brandslogo/client4.webp" },
+  { name: "Client 5", src: "/optimized/assets/images/Brandslogo/client5.webp" },
   { name: "Client 6", src: "/assets/images/Brandslogo/client6.jpg" },
   { name: "Client 7", src: "/assets/images/Brandslogo/client7.jpg" },
   { name: "Client 8", src: "/assets/images/Brandslogo/client8.jpg" },

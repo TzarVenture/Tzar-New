@@ -3,13 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { DotLottieReact, setWasmUrl } from "@lottiefiles/dotlottie-react";
+import { ArrowRight, ArrowUpRight, Phone } from "lucide-react";
+import { COMPANY } from "@/data/company";
 
-// Configure local WASM URL immediately to prevent remote CDN network waterfall delays
-if (typeof window !== "undefined") {
-  setWasmUrl("/assets/lottie/dotlottie-player.wasm");
-}
 
 // Performance stats
 const STATS = [
@@ -81,24 +77,34 @@ const TEAM_MEMBERS = [
 
 export default function AboutUsView() {
   return (
-    <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
-      {/* ── 01. EDITORIAL PAGE HEADER / HERO BANNER (90% VIEWPORT HEIGHT) ── */}
-      <section className="relative overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30 text-white min-h-[90vh] flex flex-col justify-between pt-28 pb-14 sm:pt-36 sm:pb-20">
-        {/* Ambient Dark Spruce & Gold Glows with Subtle Dot-Matrix Grid (Same as website-development-services page) */}
+    <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-hidden">
+      {/* ──────────────────────────────────────────────────────────────────
+          01. EDITORIAL PAGE HEADER / HERO BANNER
+          Flush bottom (pb-0) with smooth wave transition into Section 02.
+      ────────────────────────────────────────────────────────────────── */}
+      <section
+        className="relative w-full min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309] text-white flex flex-col justify-between overflow-hidden"
+        style={{
+          backgroundColor: '#061309',
+          backgroundImage: 'radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)',
+        }}
+      >
+        {/* Check Box Grid Texture into Hero Background (Zero Yellow Glow, Exclusively Home Page Hero Green) */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1D4224]/25 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
           <div
-            className="absolute inset-0 opacity-[0.04]"
+            className="absolute inset-0 opacity-[0.08]"
             style={{
-              backgroundImage: 'radial-gradient(circle at 1px 1px, #FFFFFF 1px, transparent 0)',
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 1px, transparent 1px)
+              `,
               backgroundSize: '32px 32px',
             }}
           />
         </div>
 
         {/* Foreground Content Grid (relative z-10, completely above all background overlays) */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full pb-6 sm:pb-8 lg:pb-10">
           {/* Breadcrumb Strip */}
           <nav className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wider mb-6 text-[#FFAE00]">
             <Link href="/" className="hover:underline opacity-80 hover:opacity-100">
@@ -111,25 +117,17 @@ export default function AboutUsView() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Column: Equal 50% Space with Simplified Copywriting & Modern Tech Stack */}
             <div className="space-y-6 relative z-20">
-              {/* Clean Typographic Eyebrow (No pill badge, No sparkles) */}
-              <div className="flex items-center gap-3 text-xs sm:text-sm font-mono tracking-[0.25em] text-[#FFAE00] uppercase font-bold">
-                <span className="w-8 h-px bg-[#FFAE00]" />
-                <span>Agency DNA & Strategic Vision</span>
-              </div>
 
               {/* Bold Editorial Headline */}
               <div className="space-y-2">
                 <h1 className="font-montserrat font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
-                  About <span className="text-[#FFAE00]">Tzar Venture</span>
+                  About <span className="text-[#FFAE00]">Tzar Digital</span>
                 </h1>
-                <p className="font-montserrat font-bold text-lg sm:text-2xl text-white/95 tracking-tight leading-snug">
-                  Digital growth agency and modern application engineering.
-                </p>
               </div>
 
               {/* Simplified, Impactful Copywriting */}
               <p className="font-sans text-sm sm:text-base lg:text-lg text-[#B6F8DD]/90 max-w-xl leading-relaxed">
-                We engineer modern web and mobile applications, high-performance e-commerce platforms, and technical SEO strategies that scale businesses across India and globally.
+                We create modern web and mobile applications, powerful e-commerce platforms, and SEO strategies that help businesses grow.
               </p>
 
               {/* Modern Tech Stack Focus Pillars */}
@@ -166,7 +164,7 @@ export default function AboutUsView() {
                   href="/services"
                   className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-2.5 text-sm sm:text-base group font-sans"
                 >
-                  <span>Explore Our Capabilities</span>
+                  <span>Enquire Now</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Link>
 
@@ -182,10 +180,8 @@ export default function AboutUsView() {
             {/* Right Column: Equal 50% Space with Sized-Up Lottie Art */}
             <div className="flex items-center justify-center lg:justify-end overflow-visible relative z-10">
               <div className="w-full max-w-xl lg:max-w-none aspect-[882/551] flex items-center justify-center transform scale-105 lg:scale-110 xl:scale-115 origin-center lg:translate-x-4 xl:translate-x-8 transition-transform duration-300">
-                <DotLottieReact
-                  src="/assets/lottie/team-discussion.lottie"
-                  loop
-                  autoplay
+                <img
+                  src="/assets/lottie/teammates_about.png"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -193,8 +189,21 @@ export default function AboutUsView() {
           </div>
         </div>
 
-        {/* Delicate Border Separator */}
-        <div className="absolute bottom-0 inset-x-0 h-px bg-white/10 pointer-events-none" />
+        {/* ── Smooth Organic Wave Transition: Dark Spruce to Subtle Tint ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#EFE8E0"
+            />
+          </svg>
+        </div>
       </section>
 
       {/* ── 02. CORE METRICS BENCHMARK STRIP ── */}
@@ -203,9 +212,8 @@ export default function AboutUsView() {
           {STATS.map((stat, idx) => (
             <div
               key={stat.label}
-              className={`flex flex-col items-center sm:items-start text-center sm:text-left ${
-                idx !== 0 ? "lg:border-l lg:border-[#1D4224]/10 lg:pl-6" : ""
-              }`}
+              className={`flex flex-col items-center sm:items-start text-center sm:text-left ${idx !== 0 ? "lg:border-l lg:border-[#1D4224]/10 lg:pl-6" : ""
+                }`}
             >
               <span className="font-montserrat font-black text-2xl sm:text-4xl text-[#1D4224] tracking-tight">
                 {stat.value}
@@ -231,10 +239,10 @@ export default function AboutUsView() {
                 <div className="relative w-full h-full rounded-2xl overflow-hidden">
                   <Image
                     src="/assets/images/resources/about-page-img-2.png"
-                    alt="About Tzar Venture"
+                    alt="About Tzar Digital"
                     fill
                     className="object-cover rounded-2xl"
-                    priority
+                    sizes="(max-width: 768px) 100vw, 448px"
                   />
                 </div>
               </div>
@@ -288,8 +296,8 @@ export default function AboutUsView() {
       </section>
 
       {/* ── 04. MEET THE TEAM SECTION ── */}
-      <section id="team" className="py-10 sm:py-16 bg-[#FDFBF7] border-t border-[#1D4224]/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="team" className="pt-10 sm:pt-16 pb-0 bg-[#FDFBF7] border-t border-[#1D4224]/10 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-10">
             <div>
               <span className="font-mono text-xs uppercase tracking-widest text-[#1D4224] font-black">
@@ -357,6 +365,60 @@ export default function AboutUsView() {
               <span>View our complete team directory</span>
               <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
             </Link>
+          </div>
+        </div>
+
+        {/* ── Smooth Organic Wave Transition: Crisp White to Dark Spruce ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#0E2015"
+            />
+          </svg>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────────────
+          05. CLOSING BANNER (CTAS) / FOOTER SECTION
+      ────────────────────────────────────────────────────────────────── */}
+      <section className="py-14 sm:py-20 lg:py-28 bg-[#0E2015] text-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+          <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-5xl text-white tracking-tight leading-tight">
+            Ready to scale your business with Tzar?
+          </h2>
+
+          <p className="font-inter text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+            Partner with our multidisciplinary team of senior engineers, visual creators, and performance marketers to build digital platforms that dominate your market.
+          </p>
+
+          <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
+            >
+              <span>Get Free Consultation</span>
+              <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
+            </Link>
+
+            <a
+              href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
+            >
+              <Phone className="w-4 h-4 text-[#FFAE00]" />
+              <span>Call: {COMPANY.phone}</span>
+            </a>
           </div>
         </div>
       </section>

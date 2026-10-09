@@ -1,20 +1,16 @@
 import React from "react";
 import { TechHero } from "@/legacy-src/components/home/tech/TechHero";
-import { ClientMarquee } from "@/legacy-src/components/home/tech/ClientMarquee";
+import {
+  DeferredClientMarquee,
+  DeferredShowcaseMockupSection,
+} from "@/legacy-src/components/home/tech/DeferredHomeSections";
 import ScrollStack, { ScrollStackItem } from "@/legacy-src/components/home/tech/ScrollStack";
 import { WebDevSpotlightCard } from "@/legacy-src/components/home/tech/WebDevSpotlightCard";
 import { MobileDevSpotlightCard } from "@/legacy-src/components/home/tech/MobileDevSpotlightCard";
 import { EnterpriseSpotlightCard } from "@/legacy-src/components/home/tech/EnterpriseSpotlightCard";
 import { MarketingSpotlightCard } from "@/legacy-src/components/home/tech/MarketingSpotlightCard";
-import { TechMarquee } from "@/legacy-src/components/home/tech/TechMarquee";
-import { TechBentoGrid } from "@/legacy-src/components/home/tech/TechBentoGrid";
-import { TechArchitectureMatrix } from "@/legacy-src/components/home/tech/TechArchitectureMatrix";
-import { TechServicesGrid } from "@/legacy-src/components/home/tech/TechServicesGrid";
-import { TechProofShowcase } from "@/legacy-src/components/home/tech/TechProofShowcase";
-import { TechContactSection } from "@/legacy-src/components/home/tech/TechContactSection";
 import AccordionGallery from "@/legacy-src/components/home/tech/AccordionGallery";
 import { SectorCircuitExpertise } from "@/legacy-src/components/home/tech/SectorCircuitExpertise";
-import { ShowcaseMockupSection } from "@/legacy-src/components/home/tech/ShowcaseMockupSection";
 import SeoArticle from "@/legacy-src/components/home/tech/SeoArticle";
 import TechInsights from "@/legacy-src/components/home/tech/TechInsights";
 import { TrafficGrowthSection } from "@/legacy-src/components/home/tech/TrafficGrowthSection";
@@ -104,10 +100,10 @@ export default function Home() {
         <SectorCircuitExpertise />
 
         {/* 01.68 • MOBILE UI/UX SHOWCASE MOCKUPS (IPHONE 17 3D FLAT) */}
-        <ShowcaseMockupSection />
+        <DeferredShowcaseMockupSection />
 
         {/* 01.7 • CLIENT BRANDS INFINITE MARQUEE (Building Success Stories with...) */}
-        <ClientMarquee />
+        <DeferredClientMarquee />
 
         {/* Brand Showcase Accordion Gallery */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 mb-16 relative z-20">

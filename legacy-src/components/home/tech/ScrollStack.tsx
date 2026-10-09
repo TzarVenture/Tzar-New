@@ -231,18 +231,20 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         translateY = pinEnd - cardTop + stackPositionPx + finalItemStackDist * i;
       }
 
+      // No coarse rounding or skip thresholds: a pinned card's translateY must
+      // cancel the scroll exactly every frame, otherwise it lags and then jumps.
       const newTransform = {
-        translateY: Math.round(translateY * 10) / 10,
-        scale: Math.round(scale * 1000) / 1000,
-        rotation: Math.round(rotation * 100) / 100
+        translateY,
+        scale: Math.round(scale * 10000) / 10000,
+        rotation
       };
 
       const lastTransform = lastTransformsRef.current.get(i);
       const hasChanged =
         !lastTransform ||
-        Math.abs(lastTransform.translateY - newTransform.translateY) > 0.15 ||
-        Math.abs(lastTransform.scale - newTransform.scale) > 0.001 ||
-        Math.abs(lastTransform.rotation - newTransform.rotation) > 0.1;
+        lastTransform.translateY !== newTransform.translateY ||
+        lastTransform.scale !== newTransform.scale ||
+        lastTransform.rotation !== newTransform.rotation;
 
       if (hasChanged) {
         card.style.transform = `translate3d(0, ${newTransform.translateY}px, 0) scale(${newTransform.scale})`;
@@ -299,8 +301,12 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       infinite: false
     });
 
-    lenis.on('scroll', (e: any) => {
-      updateCardTransforms(e.scroll);
+    // Position cards from the scroll offset the browser actually applied, not
+    // Lenis's fractional animated value. The two differ by sub-pixel amounts
+    // every frame, which made "pinned" cards wobble (visible as shaking while
+    // a new card slides over the stack).
+    lenis.on('scroll', () => {
+      updateCardTransforms(lenis.actualScroll);
     });
 
     const raf = (time: number) => {

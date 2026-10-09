@@ -7,33 +7,28 @@ interface TopAnnouncementMarqueeProps {
 }
 
 const ANNOUNCEMENTS = [
-  "25,000+ Corporate Gifts Delivered Pan India — Now Order Directly from Our Website",
   "Trusted by 1500+ Businesses Across India",
   "Fast Delivery • Premium Quality • Best Pricing",
-  "Serving now in Hyderabad and Mumbai",
-  "Serving now in Dubai",
+  "Serving now in Mumbai and Dubai",
 ];
 
 export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({ isSolid }) => {
   return (
     <div
-      className={`w-full max-w-full min-w-0 overflow-hidden transition-colors duration-300 select-none z-50 flex items-center h-[32px] sm:h-[36px] ${
-        isSolid
-          ? "bg-[#003108] border-b border-[#1D4224]/30 text-white/95"
-          : "bg-[#003108]/60 backdrop-blur-md border-b border-white/10 text-white/90"
-      }`}
+      className={`w-full max-w-full min-w-0 overflow-hidden transition-colors duration-300 select-none z-50 flex items-center h-[32px] sm:h-[36px] ${isSolid
+        ? "bg-[#003108] border-b border-[#1D4224]/30 text-white/95"
+        : "bg-[#003108]/60 backdrop-blur-md border-b border-white/10 text-white/90"
+        }`}
     >
       <div className="relative w-full max-w-full min-w-0 overflow-hidden flex items-center group">
         {/* Soft edge fade masks on extreme borders */}
         <div
-          className={`absolute left-0 top-0 bottom-0 w-6 sm:w-16 z-10 pointer-events-none transition-colors duration-300 bg-gradient-to-r ${
-            isSolid ? "from-[#003108] to-transparent" : "from-[#003108]/60 to-transparent"
-          }`}
+          className={`absolute left-0 top-0 bottom-0 w-6 sm:w-16 z-10 pointer-events-none transition-colors duration-300 bg-gradient-to-r ${isSolid ? "from-[#003108] to-transparent" : "from-[#003108]/60 to-transparent"
+            }`}
         />
         <div
-          className={`absolute right-0 top-0 bottom-0 w-6 sm:w-16 z-10 pointer-events-none transition-colors duration-300 bg-gradient-to-l ${
-            isSolid ? "from-[#003108] to-transparent" : "from-[#003108]/60 to-transparent"
-          }`}
+          className={`absolute right-0 top-0 bottom-0 w-6 sm:w-16 z-10 pointer-events-none transition-colors duration-300 bg-gradient-to-l ${isSolid ? "from-[#003108] to-transparent" : "from-[#003108]/60 to-transparent"
+            }`}
         />
 
         {/* Marquee Track: Two identical sets for gapless 0% -> -50% loop */}

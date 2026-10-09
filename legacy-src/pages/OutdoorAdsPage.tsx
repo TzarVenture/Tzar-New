@@ -7,15 +7,15 @@ const OUTDOOR_SERVICES = [
   { id: '1', title: 'HOARDING ADVERTISEMENT', img: '/assets/images/resources/Ads-service/a1.png' },
   { id: '2', title: 'BUS PANEL BRANDING', img: '/assets/images/resources/Ads-service/a2.png' },
   { id: '3', title: 'BUS SHELTER', img: '/assets/images/resources/Ads-service/a3.png' },
-  { id: '4', title: 'RADIO ADVERTISING', img: '/assets/images/resources/Ads-service/a4.png' },
-  { id: '5', title: 'CINEMA ADVERTISING', img: '/assets/images/resources/Ads-service/a5.png' },
-  { id: '6', title: 'RICKSHAW ADVERTISING', img: '/assets/images/resources/Ads-service/a6.png' },
-  { id: '7', title: 'CAB BRANDING', img: '/assets/images/resources/Ads-service/a7.png' },
+  { id: '4', title: 'RADIO ADVERTISING', img: '/optimized/assets/images/resources/Ads-service/a4.webp' },
+  { id: '5', title: 'CINEMA ADVERTISING', img: '/optimized/assets/images/resources/Ads-service/a5.webp' },
+  { id: '6', title: 'RICKSHAW ADVERTISING', img: '/optimized/assets/images/resources/Ads-service/a6.webp' },
+  { id: '7', title: 'CAB BRANDING', img: '/optimized/assets/images/resources/Ads-service/a7.webp' },
   { id: '8', title: 'POLE KIOSK BRANDING', img: '/assets/images/resources/Ads-service/a8.png' },
-  { id: '9', title: 'RAILWAY STATION BRANDING', img: '/assets/images/resources/Ads-service/a9.png' },
-  { id: '10', title: 'TRAIN BRANDING - EXT & INT', img: '/assets/images/resources/Ads-service/a10.png' },
-  { id: '11', title: 'MALL ADVERTISING', img: '/assets/images/resources/Ads-service/a11.png' },
-  { id: '12', title: 'AIRPORT & INFLIGHT BRANDING', img: '/assets/images/resources/Ads-service/a12.png' },
+  { id: '9', title: 'RAILWAY STATION BRANDING', img: '/optimized/assets/images/resources/Ads-service/a9.webp' },
+  { id: '10', title: 'TRAIN BRANDING - EXT & INT', img: '/optimized/assets/images/resources/Ads-service/a10.webp' },
+  { id: '11', title: 'MALL ADVERTISING', img: '/optimized/assets/images/resources/Ads-service/a11.webp' },
+  { id: '12', title: 'AIRPORT & INFLIGHT BRANDING', img: '/optimized/assets/images/resources/Ads-service/a12.webp' },
 ];
 
 const OUTDOOR_FORM_SERVICES = [
@@ -67,11 +67,10 @@ export const OutdoorAdsPage: React.FC = () => {
             playsInline
             preload="auto"
             className="w-full h-full object-cover opacity-60"
-            src="/marketing-bg.mp4"
-          >
-            <source src="/marketing-bg.mp4" type="video/mp4" />
-            <source src="/assets/videos/marketing-bg.mp4" type="video/mp4" />
-          </video>
+            // Re-encoded copy: same 768x432 @ 12.5fps, silent audio track removed (2.8 MB -> 0.46 MB).
+            src="/optimized/marketing-bg.mp4"
+            poster="/optimized/marketing-bg-poster.webp"
+          />
           {/* Subtle gradient overlay to keep text and form highly readable while video motion stays vivid */}
           <div className="absolute inset-0 bg-linear-to-r from-[#0E2015]/90 via-[#0E2015]/65 to-[#0E2015]/60" />
         </div>
@@ -128,6 +127,8 @@ export const OutdoorAdsPage: React.FC = () => {
                     src={service.img}
                     alt={service.title}
                     className="max-h-full max-w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <h3 className="font-montserrat font-bold text-xs sm:text-sm text-[#0E2015] leading-snug tracking-tight">
@@ -150,9 +151,11 @@ export const OutdoorAdsPage: React.FC = () => {
 
           <div className="max-w-3xl lg:max-w-4xl mx-auto">
             <img
-              src="/assets/images/resources/flow4.png"
+              src="/optimized/assets/images/resources/flow4.webp"
               alt="How it works flowchart"
               className="w-full h-auto object-contain mx-auto"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -184,6 +187,8 @@ export const OutdoorAdsPage: React.FC = () => {
                     src="/assets/images/iconicbrands/p1.png"
                     alt="State Bank of India"
                     className="max-h-8 sm:max-h-10 max-w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-[#1D4224]/10 shadow-xs flex items-center justify-center h-14 sm:h-16">
@@ -191,6 +196,8 @@ export const OutdoorAdsPage: React.FC = () => {
                     src="/assets/images/iconicbrands/p2.png"
                     alt="Raymond"
                     className="max-h-8 sm:max-h-10 max-w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-[#1D4224]/10 shadow-xs flex items-center justify-center h-14 sm:h-16">
@@ -198,6 +205,8 @@ export const OutdoorAdsPage: React.FC = () => {
                     src="/assets/images/iconicbrands/p3.png"
                     alt="Hero"
                     className="max-h-8 sm:max-h-10 max-w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -217,6 +226,8 @@ export const OutdoorAdsPage: React.FC = () => {
                         onError={(e) => {
                           (e.currentTarget as HTMLImageElement).style.display = 'none';
                         }}
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   ))}

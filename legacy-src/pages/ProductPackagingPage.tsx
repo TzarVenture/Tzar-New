@@ -52,7 +52,7 @@ export const ProductPackagingPage: React.FC = () => {
         {/* Subtle Ambient Background from PageHeaderPPD */}
         <div
           className="absolute inset-0 z-0 opacity-15 pointer-events-none bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/images/backgrounds/page-header-bgProduct-design-&-Packaging.jpg')" }}
+          style={{ backgroundImage: "url('/optimized/assets/images/backgrounds/page-header-bgProduct-design-&-Packaging.webp')" }}
         />
         <div className="absolute inset-0 z-0 bg-linear-to-b from-[#EFE8E0]/70 via-[#EFE8E0]/90 to-[#EFE8E0] pointer-events-none" />
 

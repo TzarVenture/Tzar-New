@@ -138,7 +138,7 @@ export const SocialMediaMarketingPage: React.FC = () => {
         {/* Subtle Ambient Background */}
         <div
           className="absolute inset-0 z-0 opacity-15 pointer-events-none bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/images/backgrounds/page-header-bgSocial-Media-marketing.jpg')" }}
+          style={{ backgroundImage: "url('/optimized/assets/images/backgrounds/page-header-bgSocial-Media-marketing.webp')" }}
         />
         <div className="absolute inset-0 z-0 bg-linear-to-b from-[#EFE8E0]/70 via-[#EFE8E0]/90 to-[#EFE8E0] pointer-events-none" />
 
@@ -291,7 +291,7 @@ export const SocialMediaMarketingPage: React.FC = () => {
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative group rounded-3xl overflow-hidden border border-[#1D4224]/15 shadow-xl bg-white max-w-md w-full">
                 <img
-                  src="/assets/images/backgrounds/page-header-bgSocial-Media-marketing.jpg"
+                  src="/optimized/assets/images/backgrounds/page-header-bgSocial-Media-marketing.webp"
                   alt="Social Media Marketing Campaign"
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                   onError={(e) => {

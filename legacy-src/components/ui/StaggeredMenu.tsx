@@ -47,7 +47,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   displaySocials = true,
   displayItemNumbering = false,
   className = '',
-  logoUrl = '/assets/images/tzar-logo-main.png',
+  logoUrl = '/optimized/assets/images/tzar-logo-main.webp',
   menuButtonColor = '#0E2015',
   openMenuButtonColor = '#FFFFFF',
   accentColor = '#FFAE00',
@@ -483,6 +483,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 alt="TZAR VENTURE"
                 className="h-7 w-auto object-contain"
                 draggable={false}
+                loading="lazy"
+                decoding="async"
               />
             </Link>
             <button

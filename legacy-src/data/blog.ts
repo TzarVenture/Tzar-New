@@ -25,7 +25,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'SEO Strategists',
     date: 'Aug 26, 2026',
     readTime: '8 min',
-    image: '/assets/images/tzar-logo-main.png',
+    image: '/optimized/assets/images/tzar-logo-main.webp',
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Tzar Tech Team',
     date: 'Jul 20, 2026',
     readTime: '7 min',
-    image: '/assets/images/tzar-logo-main.png',
+    image: '/optimized/assets/images/tzar-logo-main.webp',
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'SEO Strategists',
     date: 'Jul 15, 2026',
     readTime: '6 min',
-    image: '/assets/images/tzar-logo-main.png',
+    image: '/optimized/assets/images/tzar-logo-main.webp',
   },
   {
     id: 4,
@@ -61,7 +61,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Tzar Studio',
     date: 'Jul 10, 2026',
     readTime: '5 min',
-    image: '/assets/images/tzar-logo-main.png',
+    image: '/optimized/assets/images/tzar-logo-main.webp',
   },
   {
     id: 5,
@@ -73,7 +73,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'SMM Team',
     date: 'Jun 28, 2026',
     readTime: '5 min',
-    image: '/assets/images/tzar-logo-main.png',
+    image: '/optimized/assets/images/tzar-logo-main.webp',
   },
   {
     id: 6,
@@ -85,7 +85,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Tzar Tech Team',
     date: 'Jun 15, 2026',
     readTime: '6 min',
-    image: '/assets/images/tzar-logo-main.png',
+    image: '/optimized/assets/images/tzar-logo-main.webp',
   },
 ];
 

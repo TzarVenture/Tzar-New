@@ -29,7 +29,7 @@ export default function OurClientView() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity"
           style={{
-            backgroundImage: "url('/assets/images/backgrounds/page-header-bgOurClients.jpg')",
+            backgroundImage: "url('/optimized/assets/images/backgrounds/page-header-bgOurClients.webp')",
           }}
         />
 

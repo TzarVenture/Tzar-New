@@ -350,7 +350,7 @@ export const SeoServicePage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           01. HERO BANNER: RECHARTS LINE CHART (LEFT) + FORM (RIGHT)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative pt-20 pb-8 sm:pt-24 sm:pb-12 lg:pt-32 lg:pb-24 overflow-hidden border-b border-[#1D4224]/30 bg-[#09160E] flex items-center justify-center">
+      <section className="relative pt-28 pb-8 sm:pt-32 sm:pb-12 lg:pt-36 lg:pb-24 overflow-hidden border-b border-[#1D4224]/30 bg-[#09160E] flex items-center justify-center">
         {/* Ambient background glow accents matching dark luxury theme */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#1D4224]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl pointer-events-none" />

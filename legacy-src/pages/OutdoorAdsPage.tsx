@@ -57,7 +57,7 @@ export const OutdoorAdsPage: React.FC = () => {
     <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
 
       {/* ── 01. ABOVE THE FOLD (ATF) HERO SECTION WITH BACKGROUND MARKETING VIDEO ── */}
-      <section className="relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-center pt-20 sm:pt-20 pb-6 sm:pb-6 overflow-hidden border-b border-[#1D4224]/10 bg-[#0E2015]">
+      <section className="relative w-full min-h-dvh flex flex-col justify-center pt-28 sm:pt-32 pb-6 sm:pb-6 overflow-hidden border-b border-[#1D4224]/10 bg-[#0E2015]">
         {/* Background Marketing Video - Visible across PC & Mobile */}
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <video
@@ -73,7 +73,7 @@ export const OutdoorAdsPage: React.FC = () => {
             <source src="/assets/videos/marketing-bg.mp4" type="video/mp4" />
           </video>
           {/* Subtle gradient overlay to keep text and form highly readable while video motion stays vivid */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0E2015]/90 via-[#0E2015]/65 to-[#0E2015]/60" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#0E2015]/90 via-[#0E2015]/65 to-[#0E2015]/60" />
         </div>
 
         <div className="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10 my-auto">
@@ -208,7 +208,7 @@ export const OutdoorAdsPage: React.FC = () => {
                   {BRAND_LOGOS.concat(BRAND_LOGOS).map((brand, idx) => (
                     <div
                       key={idx}
-                      className="bg-white rounded-lg px-2.5 py-1 border border-neutral-200/70 flex items-center justify-center min-w-[90px] sm:min-w-[100px] h-10 sm:h-11 shrink-0"
+                      className="bg-white rounded-lg px-2.5 py-1 border border-neutral-200/70 flex items-center justify-center min-w-22.5 sm:min-w-25 h-10 sm:h-11 shrink-0"
                     >
                       <img
                         src={brand.img}

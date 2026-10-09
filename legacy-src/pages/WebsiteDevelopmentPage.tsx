@@ -396,7 +396,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
           Flush bottom (pb-0) with smooth wave transition into Section 02.
       ────────────────────────────────────────────────────────────────── */}
       <section 
-        className="relative w-full min-h-[90vh] pt-20 sm:pt-24 lg:pt-28 pb-0 bg-[#061309]"
+        className="relative w-full min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309]"
         style={{
           backgroundColor: '#061309',
           backgroundImage: 'radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)',
@@ -426,7 +426,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                 <h1 className="font-montserrat font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
                   <span>{displayedText}</span>
                   {showCursor && (
-                    <span className={`inline-block w-[3px] h-[1em] bg-[#FFAE00] ml-1 align-middle ${cursorVisible ? 'opacity-100' : 'opacity-0'}`} />
+                    <span className={`inline-block w-0.75 h-[1em] bg-[#FFAE00] ml-1 align-middle ${cursorVisible ? 'opacity-100' : 'opacity-0'}`} />
                   )}
                 </h1>
                 <p className="mt-3 font-montserrat font-semibold text-sm sm:text-base lg:text-lg text-[#FFAE00] tracking-widest uppercase">
@@ -435,7 +435,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
               </div>
 
               {/* Lottie Web Development Art – spacing above and overflow visible */}
-              <div className="w-full max-w-[460px] sm:max-w-[540px] lg:max-w-[600px] pt-5 sm:pt-7 flex items-center justify-center overflow-visible">
+              <div className="w-full max-w-115 sm:max-w-135 lg:max-w-150 pt-5 sm:pt-7 flex items-center justify-center overflow-visible">
                 <DotLottieReact
                   src="/assets/lottie/web-dev.json"
                   loop

@@ -151,39 +151,17 @@ export const ShowcaseMockupSection: React.FC = () => {
   const trackTranslateX = (containerW / 2) - (currentIndex * (cardWidth + cardGap)) - (cardWidth / 2);
 
   return (
-    <section className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-[#EFE8E0] relative overflow-hidden border-b border-[#0E2015]/10 select-none">
+    <section className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-transparent relative overflow-hidden border-b border-white/10 select-none">
       {/* Background Soft Ambient Light */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-125 h-125 bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-125 h-125 bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* ── SECTION HEADER ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight uppercase leading-tight">
-              Showcase Mockup
-            </h2>
-          </div>
-
-          {/* Navigation Controls: Hidden on mobile (< md), visible on desktop */}
-          <div className="hidden md:flex items-center gap-3">
-            <button
-              type="button"
-              onClick={prevSlide}
-              aria-label="Previous mockup"
-              className="w-11 h-11 rounded-full flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer border bg-[#0E2015] hover:bg-[#1D4224] text-[#FFAE00] border-[#FFAE00]/30 hover:scale-105"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              type="button"
-              onClick={nextSlide}
-              aria-label="Next mockup"
-              className="w-11 h-11 rounded-full flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer border bg-[#0E2015] hover:bg-[#1D4224] text-[#FFAE00] border-[#FFAE00]/30 hover:scale-105"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+        <div className="flex items-center justify-center text-center">
+          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
+            Showcase Mockup
+          </h2>
         </div>
       </div>
 
@@ -203,9 +181,9 @@ export const ShowcaseMockupSection: React.FC = () => {
         onMouseMove={handleTouchMove}
         onMouseUp={handleTouchEnd}
       >
-        {/* Soft edge fade masks on left and right borders */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#EFE8E0] via-[#EFE8E0]/70 to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#EFE8E0] via-[#EFE8E0]/70 to-transparent z-20 pointer-events-none" />
+        {/* Soft edge fade masks on left and right borders matching dark background */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-linear-to-r from-[#061309] via-[#061309]/60 to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-linear-to-l from-[#061309] via-[#061309]/60 to-transparent z-20 pointer-events-none" />
 
         {/* ── SINGLE PHOTOREALISTIC IPHONE 17 MOCKUP FRAME (Anchored in the exact center) ── */}
         <div
@@ -222,6 +200,35 @@ export const ShowcaseMockupSection: React.FC = () => {
             loading="eager"
           />
         </div>
+
+        {/* ── NAVIGATION CONTROLS: PLACED AT BOTH ENDS OF THE IMAGES ── */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            prevSlide();
+          }}
+          onMouseDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+          aria-label="Previous mockup"
+          className="group absolute left-3 sm:left-6 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-40 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-[#FFAE00] hover:bg-[#FFB71A] border border-[#003108]/20 shadow-[0_6px_20px_rgba(0,0,0,0.18)] hover:shadow-[0_8px_24px_rgba(255,174,0,0.4)] flex items-center justify-center transition-all duration-200 active:scale-90 hover:scale-110 cursor-pointer"
+        >
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5] text-[#003108]/60 group-hover:text-[#003108] transition-all duration-200 group-hover:-translate-x-0.5" />
+        </button>
+
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            nextSlide();
+          }}
+          onMouseDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+          aria-label="Next mockup"
+          className="group absolute right-3 sm:right-6 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-40 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-[#FFAE00] hover:bg-[#FFB71A] border border-[#003108]/20 shadow-[0_6px_20px_rgba(0,0,0,0.18)] hover:shadow-[0_8px_24px_rgba(255,174,0,0.4)] flex items-center justify-center transition-all duration-200 active:scale-90 hover:scale-110 cursor-pointer"
+        >
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5] text-[#003108]/60 group-hover:text-[#003108] transition-all duration-200 group-hover:translate-x-0.5" />
+        </button>
 
         {/* ── INFINITE SLIDING TRACK ── */}
         <div
@@ -244,7 +251,7 @@ export const ShowcaseMockupSection: React.FC = () => {
                   setEnableTransition(true);
                   setCurrentIndex(idx);
                 }}
-                className="flex-shrink-0 relative cursor-pointer select-none transition-all duration-500"
+                className="shrink-0 relative cursor-pointer select-none transition-all duration-500"
                 style={{
                   width: cardWidth,
                   height: cardHeight,
@@ -255,7 +262,7 @@ export const ShowcaseMockupSection: React.FC = () => {
                 <div
                   className={`relative w-full h-full rounded-[34px] sm:rounded-[40px] lg:rounded-[44px] overflow-hidden transition-all duration-500 ${isCenter
                       ? "scale-100 opacity-100 z-10"
-                      : "scale-[0.88] opacity-45 hover:opacity-85 hover:scale-[0.92] shadow-xl border border-[#0E2015]/15"
+                      : "scale-[0.88] opacity-55 hover:opacity-90 hover:scale-[0.92] shadow-2xl border border-white/10"
                     }`}
                 >
                   {/* Underlay Screen image */}
@@ -277,7 +284,7 @@ export const ShowcaseMockupSection: React.FC = () => {
                       draggable={false}
                     />
                     {/* Glass glare highlight */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
+                    <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
                   </div>
                 </div>
               </div>

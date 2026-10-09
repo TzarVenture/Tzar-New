@@ -158,32 +158,10 @@ export const ShowcaseMockupSection: React.FC = () => {
 
       {/* ── SECTION HEADER ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight uppercase leading-tight">
-              Showcase Mockup
-            </h2>
-          </div>
-
-          {/* Navigation Controls: Hidden on mobile (< md), visible on desktop */}
-          <div className="hidden md:flex items-center gap-3">
-            <button
-              type="button"
-              onClick={prevSlide}
-              aria-label="Previous mockup"
-              className="w-11 h-11 rounded-full flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer border bg-[#0E2015] hover:bg-[#1D4224] text-[#FFAE00] border-[#FFAE00]/30 hover:scale-105"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              type="button"
-              onClick={nextSlide}
-              aria-label="Next mockup"
-              className="w-11 h-11 rounded-full flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer border bg-[#0E2015] hover:bg-[#1D4224] text-[#FFAE00] border-[#FFAE00]/30 hover:scale-105"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+        <div className="flex items-center justify-center text-center">
+          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight  leading-tight">
+            Showcase Mockup
+          </h2>
         </div>
       </div>
 
@@ -223,6 +201,35 @@ export const ShowcaseMockupSection: React.FC = () => {
           />
         </div>
 
+        {/* ── NAVIGATION CONTROLS: PLACED AT BOTH ENDS OF THE IMAGES ── */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            prevSlide();
+          }}
+          onMouseDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+          aria-label="Previous mockup"
+          className="group absolute left-3 sm:left-6 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-40 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-[#FFAE00] hover:bg-[#FFB71A] border border-[#003108]/20 shadow-[0_6px_20px_rgba(0,0,0,0.18)] hover:shadow-[0_8px_24px_rgba(255,174,0,0.4)] flex items-center justify-center transition-all duration-200 active:scale-90 hover:scale-110 cursor-pointer"
+        >
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5] text-[#003108]/60 group-hover:text-[#003108] transition-all duration-200 group-hover:-translate-x-0.5" />
+        </button>
+
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            nextSlide();
+          }}
+          onMouseDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+          aria-label="Next mockup"
+          className="group absolute right-3 sm:right-6 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-40 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-[#FFAE00] hover:bg-[#FFB71A] border border-[#003108]/20 shadow-[0_6px_20px_rgba(0,0,0,0.18)] hover:shadow-[0_8px_24px_rgba(255,174,0,0.4)] flex items-center justify-center transition-all duration-200 active:scale-90 hover:scale-110 cursor-pointer"
+        >
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5] text-[#003108]/60 group-hover:text-[#003108] transition-all duration-200 group-hover:translate-x-0.5" />
+        </button>
+
         {/* ── INFINITE SLIDING TRACK ── */}
         <div
           className="relative flex items-center will-change-transform"
@@ -254,8 +261,8 @@ export const ShowcaseMockupSection: React.FC = () => {
                 {/* Screenshot Card Container */}
                 <div
                   className={`relative w-full h-full rounded-[34px] sm:rounded-[40px] lg:rounded-[44px] overflow-hidden transition-all duration-500 ${isCenter
-                      ? "scale-100 opacity-100 z-10"
-                      : "scale-[0.88] opacity-45 hover:opacity-85 hover:scale-[0.92] shadow-xl border border-[#0E2015]/15"
+                    ? "scale-100 opacity-100 z-10"
+                    : "scale-[0.88] opacity-45 hover:opacity-85 hover:scale-[0.92] shadow-xl border border-[#0E2015]/15"
                     }`}
                 >
                   {/* Underlay Screen image */}

@@ -106,21 +106,18 @@ export const ContactPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const webhookUrl =
-      process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK ||
-      (typeof window !== 'undefined'
-        ? (window as unknown as { __ENV?: { VITE_GOOGLE_SHEETS_WEBHOOK?: string } })
-            .__ENV?.VITE_GOOGLE_SHEETS_WEBHOOK
-        : '');
     try {
-      if (webhookUrl) {
-        await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
+      const res = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (data && data.success) {
+        setSubmitted(true);
+      } else {
+        setSubmitted(true);
       }
-      setSubmitted(true);
     } catch {
       setSubmitted(true);
     } finally {

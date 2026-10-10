@@ -1,0 +1,403 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   DECK CARDS SCROLL SECTION — 3D Playing Card Fanning, Flipping & Floating
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.deck-scroll-container {
+  position: relative;
+  width: 100%;
+  height: 170vh; /* Smooth, engaging scroll track */
+  background: transparent;
+  user-select: none;
+
+  /* Desktop sizing increased a little */
+  --card-w: clamp(240px, 21vw, 315px);
+  --card-gap: clamp(14px, 1.6vw, 26px);
+}
+
+.deck-sticky-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(28px, 4.5vh, 52px); /* Strong flex gap ensuring guaranteed clearance */
+  padding: clamp(1rem, 2.5vh, 2rem) 1.25rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* ── SECTION HEADER (GENEROUS GAP TO CARDS TO PREVENT OVERLAPPING) ───── */
+.deck-header-wrapper {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 850px;
+  margin: 0;
+  margin-bottom: clamp(12px, 2vh, 24px);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   DESKTOP VIEW (>= 768px): HORIZONTAL SPREAD + Y-AXIS CASCADE FLIP
+   ══════════════════════════════════════════════════════════════════════ */
+.deck-desktop-arena {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  max-width: 1420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1800px;
+  perspective-origin: center center;
+  margin-top: clamp(8px, 1.8vh, 20px);
+}
+
+.deck-cards-row {
+  position: relative;
+  width: 100%;
+  height: clamp(370px, 58vh, 480px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.deck-card-outer {
+  position: absolute;
+  /* Exact aspect ratio matching TZAR-CARD.png (1052 / 1495) */
+  width: var(--card-w);
+  aspect-ratio: 1052 / 1495;
+  height: auto;
+  transform-style: preserve-3d;
+  will-change: transform;
+  
+  --card-col-offset: calc((var(--card-w) + var(--card-gap)) * var(--spread-factor));
+  transform: translate3d(
+    calc(var(--init-x) * (1 - var(--spread-progress)) + var(--card-col-offset) * var(--spread-progress)),
+    calc(var(--init-y) * (1 - var(--spread-progress))),
+    var(--lift-z)
+  ) rotateZ(var(--rot-z));
+}
+
+/* Slow, Smooth Buoyant Floating Levitation */
+.deck-card-floating {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: cardFloatLevitate 5.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes cardFloatLevitate {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-9px) rotate(0.4deg);
+  }
+  70% {
+    transform: translateY(-3px) rotate(-0.3deg);
+  }
+}
+
+.deck-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--rot-y));
+  will-change: transform;
+  border-radius: clamp(14px, 1.6vw, 22px);
+}
+
+.deck-card-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: clamp(14px, 1.6vw, 22px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Card Back: Exact TZAR-CARD.png with zero extra padding */
+.deck-card-back {
+  transform: rotateY(0deg);
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.55)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* ── FRONT FACE (SERVICES LIST & DIAGONAL TITLE) ─────────────────────── */
+.deck-card-front {
+  transform: rotateY(180deg);
+  background: #FFFFFF;
+  color: #0E2015;
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.48), 0 4px 10px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.2rem, 2.6vh, 1.8rem) clamp(1.1rem, 1.6vw, 1.6rem);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.25s ease;
+}
+
+.deck-card-link-interactive:hover {
+  border-color: rgba(14, 32, 21, 0.25);
+  /* Zero shadow added on hover */
+}
+
+/* Top Diagonal Row */
+.deck-front-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.deck-front-title {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(1.05rem, 1.3vw, 1.35rem);
+  font-weight: 800;
+  color: #0A0A0A;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.deck-front-suit {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(2rem, 2.7vw, 2.85rem);
+  font-weight: 900;
+  line-height: 0.82;
+  color: #0A0A0A;
+}
+
+/* Middle Disciplines List: fills vertical space evenly with NO bullet points */
+.deck-front-list {
+  list-style: none;
+  padding: 0;
+  margin: clamp(0.7rem, 1.6vh, 1.3rem) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 1;
+  width: 100%;
+}
+
+.deck-front-list-item {
+  display: flex;
+  align-items: center;
+  padding-bottom: clamp(5px, 0.8vh, 8px);
+  border-bottom: 1.5px dotted rgba(17, 24, 39, 0.2);
+}
+
+.deck-front-list-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.deck-front-text {
+  font-family: var(--font-manrope), var(--font-inter), sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.85rem, 1.02vw, 1.05rem);
+  color: #1F2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+/* Bottom Diagonal Row (Inverted) */
+.deck-front-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.deck-front-suit-inverted {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(2rem, 2.7vw, 2.85rem);
+  font-weight: 900;
+  line-height: 0.82;
+  color: #0A0A0A;
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+.deck-front-title-inverted {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(1.05rem, 1.3vw, 1.35rem);
+  font-weight: 800;
+  color: #0A0A0A;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   MOBILE VIEW (< 768px): 4 CARDS IN VERTICAL SCROLLING ORDER
+   NO CHIPS, PURE NATURAL SCROLL WITH 3D VERTICAL FLIP AS YOU SCROLL
+   ══════════════════════════════════════════════════════════════════════ */
+.deck-mobile-list {
+  display: none; /* Hidden on desktop */
+}
+
+@media (max-width: 767px) {
+  .deck-scroll-container {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .deck-sticky-stage {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 3rem 1.25rem 4rem !important;
+    gap: clamp(24px, 4vh, 36px) !important;
+    justify-content: flex-start !important;
+    overflow: visible !important;
+  }
+
+  .deck-desktop-arena {
+    display: none !important;
+  }
+
+  .deck-mobile-list {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(2.5rem, 6vh, 4rem);
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    z-index: 20;
+  }
+
+  .deck-mobile-card-item {
+    position: relative;
+    /* Full size card on mobile for crisp, high-end readability */
+    width: clamp(270px, 86vw, 330px);
+    aspect-ratio: 1052 / 1495;
+    perspective: 1600px;
+    perspective-origin: center center;
+    transform-style: preserve-3d;
+  }
+
+  .deck-card-floating-mobile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: cardFloatLevitate 5.8s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  /* Vertical 3D Flip (rotateX) as user scrolls past each card */
+  .deck-card-mobile-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rot-x, 0deg)) translateZ(var(--lift-z, 0px));
+    will-change: transform;
+    border-radius: clamp(16px, 4vw, 22px);
+  }
+
+  .deck-card-mobile-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: clamp(16px, 4vw, 22px);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .deck-card-mobile-back {
+    transform: rotateX(0deg);
+    background: transparent !important;
+    border: none !important;
+    filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.6));
+  }
+
+  .deck-card-mobile-front {
+    transform: rotateX(180deg);
+    background: #FFFFFF;
+    color: #0E2015;
+    border: 1.5px solid #FFFFFF;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(1.2rem, 3.5vh, 1.6rem) clamp(1.1rem, 3.5vw, 1.4rem);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .deck-front-text {
+    font-size: clamp(0.82rem, 2.7vw, 0.98rem);
+    font-weight: 600;
+    color: #1F2937;
+  }
+
+  .deck-front-title,
+  .deck-front-title-inverted {
+    font-size: clamp(1.05rem, 3.4vw, 1.35rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #0A0A0A;
+  }
+
+  .deck-front-suit,
+  .deck-front-suit-inverted {
+    font-size: clamp(2rem, 6.2vw, 2.7rem);
+    font-weight: 900;
+    line-height: 0.82;
+    color: #0A0A0A;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .deck-scroll-container {
+    --card-w: clamp(170px, 21vw, 215px);
+    --card-gap: clamp(10px, 1.2vw, 16px);
+  }
+
+  .deck-front-text {
+    font-size: 0.72rem;
+  }
+
+  .deck-front-title,
+  .deck-front-title-inverted {
+    font-size: 0.88rem;
+  }
+
+  .deck-front-suit,
+  .deck-front-suit-inverted {
+    font-size: 1.5rem;
+  }
+}

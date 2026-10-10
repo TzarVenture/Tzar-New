@@ -19,7 +19,9 @@ import {
   Compass,
   Tv,
   Globe2,
+  Phone,
 } from 'lucide-react';
+import { COMPANY } from '@/data/company';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 
 /* ── 01. SOCIAL MEDIA MARKETING GOALS (Authentic Data from smmcard.js) ────── */
@@ -129,81 +131,71 @@ export const SocialMediaMarketingPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
+    <div className="bg-[#EAF1EB] text-[#0E2015] min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-hidden">
 
       {/* ──────────────────────────────────────────────────────────────────
           01. HERO BANNER WITH EMBEDDED FORM & BACKGROUND ART
+          Flush bottom with organic wave transition into Section 02.
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative pt-28 pb-8 sm:pt-34 sm:pb-12 overflow-hidden border-b border-[#1D4224]/10">
-        {/* Subtle Ambient Background */}
-        <div
-          className="absolute inset-0 z-0 opacity-15 pointer-events-none bg-cover bg-center"
-          style={{ backgroundImage: "url('/optimized/assets/images/backgrounds/page-header-bgSocial-Media-marketing.webp')" }}
-        />
-        <div className="absolute inset-0 z-0 bg-linear-to-b from-[#EFE8E0]/70 via-[#EFE8E0]/90 to-[#EFE8E0] pointer-events-none" />
+      <section
+        className="relative w-full min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309] text-white overflow-hidden flex flex-col justify-between"
+        style={{
+          backgroundColor: '#061309',
+          backgroundImage: 'radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)',
+        }}
+      >
+        {/* Check Box Grid Texture */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 1px, transparent 1px)
+              `,
+              backgroundSize: '32px 32px',
+            }}
+          />
+        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-6 sm:pb-8 lg:pb-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
-            {/* Left Column: SMM Pitch */}
-            <div className="lg:col-span-7 space-y-5">
-              
-              {/* Breadcrumb & Guarantee Badge */}
-              <div className="flex flex-col gap-2.5">
-                <nav className="flex items-center gap-2 text-xs font-mono text-[#5C6860]">
-                  <Link href="/" className="hover:text-[#1D4224] transition-colors">
+            {/* ── Left Column: Hero Heading + Lottie Social Media Art ── */}
+            <div className="lg:col-span-7 flex flex-col justify-center items-center lg:items-start w-full">
+              {/* Hero Heading and Breadcrumb */}
+              <div className="w-full text-center lg:text-left mb-6 sm:mb-8">
+                <nav className="flex items-center justify-center lg:justify-start gap-2 text-xs font-mono text-white/60 mb-3">
+                  <Link href="/" className="hover:text-[#FFAE00] transition-colors">
                     Home
                   </Link>
                   <span>/</span>
-                  <Link href="/services" className="hover:text-[#1D4224] transition-colors">
+                  <Link href="/services" className="hover:text-[#FFAE00] transition-colors">
                     Services
                   </Link>
                   <span>/</span>
-                  <span className="text-[#1D4224] font-bold">Social Media Marketing</span>
+                  <span className="text-[#FFAE00] font-bold">Social Media Marketing</span>
                 </nav>
 
-                <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-[#1D4224]/10 border border-[#1D4224]/20 w-fit">
-                  <span className="font-montserrat font-black text-xs uppercase tracking-wider text-[#1D4224]">
-                    Upscale Your Brand &amp; Sales
-                  </span>
-                </div>
+                <h1 className="font-montserrat font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
+                  Social Media Marketing &amp;{' '}
+                  <span className="text-[#FFA200]">Brand Amplification.</span>
+                </h1>
               </div>
 
-              {/* Main Headline */}
-              <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-5xl text-[#0E2015] tracking-tight leading-[1.15]">
-                Social Media Marketing &amp;{' '}
-                <span className="bg-[#FFAE00] text-[#0E2015] px-2 py-0.5 rounded-md inline-block mt-1">
-                  Brand Amplification.
-                </span>
-              </h1>
-
-              {/* Supporting Hook from Authentic Data */}
-              <p className="font-inter text-base sm:text-lg text-[#5C6860] max-w-xl leading-relaxed">
-                Welcome to our social media marketing services! At TZAR, we understand the power of social media in building brand awareness, engaging with your audience, and driving conversions.
-              </p>
-
-              {/* Action Buttons (2-3 words rule) */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-2">
-                <button
-                  onClick={scrollToContactForm}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#1D4224] text-white font-montserrat font-bold text-sm hover:bg-[#FFAE00] hover:text-[#0E2015] transition-all duration-200 shadow-lg shadow-[#1D4224]/10 cursor-pointer"
-                >
-                  <span>Enquire Now</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <a
-                  href="#smm-goals"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-[#1D4224]/20 bg-white/70 hover:bg-white text-[#1D4224] font-montserrat font-bold text-sm transition-all duration-200"
-                >
-                  <span>Explore Goals</span>
-                  <ChevronRight className="w-4 h-4" />
-                </a>
+              {/* Social Media Graphic Art – matching LogoDesignPage layout */}
+              <div className="w-full max-w-115 sm:max-w-135 lg:max-w-150 pt-2 sm:pt-4 flex items-center justify-center overflow-visible">
+                <img
+                  src="/assets/images/social_media_marketing.png"
+                  alt="Social Media Marketing and Brand Amplification"
+                  className="w-full h-auto object-contain drop-shadow-2xl"
+                />
               </div>
             </div>
 
             {/* Right Column: Lead Capture Form Component */}
-            <div id="Contactform" className="lg:col-span-5 flex justify-center items-center w-full">
-              <div className="w-full max-w-md rounded-3xl bg-[#0E2015] p-2 border border-[#1D4224]/50 shadow-2xl shadow-black/20">
+            <div id="Contactform" className="lg:col-span-5 flex justify-center items-center w-full mt-4 lg:mt-0">
+              <div className="w-full max-w-md">
                 <LeadCaptureForm
                   title="Claim Your Free SMM Strategy"
                   titleColor="#FFAE00"
@@ -220,11 +212,28 @@ export const SocialMediaMarketingPage: React.FC = () => {
                     'Logo & Brand Identity',
                     'Product Design & 3D Packaging',
                   ]}
+                  noBorder={true}
                 />
               </div>
             </div>
 
           </div>
+        </div>
+
+        {/* ── Smooth Organic Wave Transition: Dark Spruce to Section 02 (#FAF9F5) ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#FAF9F5"
+            />
+          </svg>
         </div>
       </section>
 
@@ -233,9 +242,9 @@ export const SocialMediaMarketingPage: React.FC = () => {
       ────────────────────────────────────────────────────────────────── */}
       <section className="py-10 sm:py-14 bg-[#FAF9F5] border-b border-[#1D4224]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
+
             {/* Left Column: Authentic ServiceDetails Copy */}
             <div className="lg:col-span-7 space-y-4">
               <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#1D4224]">
@@ -249,7 +258,7 @@ export const SocialMediaMarketingPage: React.FC = () => {
               <p className="font-inter text-base sm:text-lg text-[#0E2015] leading-relaxed font-medium pt-2">
                 At TZAR, we build customized social media roadmaps that align seamlessly with your commercial business goals and target demographics.
               </p>
-              
+
               <p className="font-inter text-sm sm:text-base text-[#5C6860] leading-relaxed">
                 Our team of social media experts has the experience and expertise to develop high-impact campaigns across Instagram, LinkedIn, Facebook, and YouTube. From viral reel scripting to authority LinkedIn carousels, we make your brand voice heard.
               </p>
@@ -321,7 +330,7 @@ export const SocialMediaMarketingPage: React.FC = () => {
       ────────────────────────────────────────────────────────────────── */}
       <section id="smm-goals" className="py-10 sm:py-14 bg-[#EFE8E0] border-b border-[#1D4224]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <h2 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-[#0E2015] tracking-tight">
               Social Media Marketing Goals
@@ -376,7 +385,7 @@ export const SocialMediaMarketingPage: React.FC = () => {
       ────────────────────────────────────────────────────────────────── */}
       <section className="py-10 sm:py-14 bg-[#FAF9F5] border-b border-[#1D4224]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#1D4224]">
               Tangible Value &amp; ROI
@@ -430,9 +439,9 @@ export const SocialMediaMarketingPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           05. EDITORIAL STRATEGY PILLARS (6 Sections from SmmService.js)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-10 sm:py-14 bg-[#EFE8E0] border-b border-[#1D4224]/10 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+      <section className="pt-10 sm:pt-14 pb-0 bg-[#EFE8E0] relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14">
+
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#1D4224]">
               Strategic Playbook
@@ -481,6 +490,61 @@ export const SocialMediaMarketingPage: React.FC = () => {
             </button>
           </div>
 
+        </div>
+
+        {/* ── Smooth Organic Wave Transition: Muted Beige to Dark Spruce ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#0E2015"
+            />
+          </svg>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────────────
+          CLOSING BANNER (CTAS)
+      ────────────────────────────────────────────────────────────────── */}
+      <section className="py-14 sm:py-20 lg:py-28 bg-[#0E2015] text-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+          <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-5xl text-white tracking-tight leading-tight">
+            Ready to Amplify Your Brand on Social Media?
+          </h2>
+
+          <p className="font-inter text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+            Reach engaged audiences, build an active community, and convert social impressions into qualified leads. Let our social media team manage your growth strategy.
+          </p>
+
+          <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={scrollToContactForm}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
+            >
+              <span>Get Free SMM Strategy Proposal</span>
+              <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
+            </button>
+
+            <a
+              href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
+            >
+              <Phone className="w-4 h-4 text-[#FFAE00]" />
+              <span>Call: {COMPANY.phone}</span>
+            </a>
+          </div>
         </div>
       </section>
 

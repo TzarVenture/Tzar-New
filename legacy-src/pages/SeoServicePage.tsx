@@ -18,8 +18,10 @@ import {
   ChevronRight,
   Layers,
   FileText,
-  Users
+  Users,
+  Phone
 } from 'lucide-react';
+import { COMPANY } from '@/data/company';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import dynamic from 'next/dynamic';
 
@@ -357,20 +359,34 @@ export const SeoServicePage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
+    <div className="bg-[#EAF1EB] text-[#0E2015] min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-hidden">
 
-      {/* ──────────────────────────────────────────────────────────────────
-          01. HERO BANNER: 100VW PROGRESSIVE GROWTH GRAPH WITH FORM ON RIGHT
-      ────────────────────────────────────────────────────────────────── */}
       {/* ──────────────────────────────────────────────────────────────────
           01. HERO BANNER: RECHARTS LINE CHART (LEFT) + FORM (RIGHT)
+          Flush bottom with organic wave transition into Section 02.
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative pt-28 pb-8 sm:pt-32 sm:pb-12 lg:pt-36 lg:pb-24 overflow-hidden border-b border-[#1D4224]/30 bg-[#09160E] flex items-center justify-center">
-        {/* Ambient background glow accents matching dark luxury theme */}
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#1D4224]/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl pointer-events-none" />
+      <section 
+        className="relative w-full min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309] text-white overflow-hidden flex flex-col justify-between"
+        style={{
+          backgroundColor: '#061309',
+          backgroundImage: 'radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)',
+        }}
+      >
+        {/* Check Box Grid Texture */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 1px, transparent 1px)
+              `,
+              backgroundSize: '32px 32px',
+            }}
+          />
+        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-6 sm:pb-8 lg:pb-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-10 items-center">
 
             {/* Left Side: Line Chart from Recharts (top on mobile) */}
@@ -380,7 +396,7 @@ export const SeoServicePage: React.FC = () => {
 
             {/* Right Side: Contact Form (bottom on mobile) */}
             <div id="Contactform" className="lg:col-span-5 xl:col-span-5 w-full flex justify-center items-center mt-2 lg:mt-0">
-              <div className="w-full max-w-md rounded-3xl bg-[#0E2015]/95 backdrop-blur-md p-2.5 sm:p-3 border border-[#1D4224]/70 shadow-2xl shadow-black/80">
+              <div className="w-full max-w-md">
                 <LeadCaptureForm
                   title="Claim Your Free SEO Audit"
                   titleColor="#FFAE00"
@@ -396,11 +412,28 @@ export const SeoServicePage: React.FC = () => {
                     'Social Media (SMO | SMM)',
                     'Product Design & 3D Packaging',
                   ]}
+                  noBorder={true}
                 />
               </div>
             </div>
 
           </div>
+        </div>
+
+        {/* ── Smooth Organic Wave Transition: Dark Spruce to Section 02 (#FAF9F5) ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#FAF9F5"
+            />
+          </svg>
         </div>
       </section>
 
@@ -643,8 +676,8 @@ export const SeoServicePage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           05. ICONIC BRANDS PROOF GRID: "WE MAKE ICONIC BRANDS"
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-10 sm:py-12 bg-white border-b border-[#1D4224]/10 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-10 sm:pt-14 pb-0 bg-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14">
           
           <div className="text-center space-y-1.5 mb-6 sm:mb-8">
             <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#1D4224]">
@@ -689,6 +722,61 @@ export const SeoServicePage: React.FC = () => {
             </Link>
           </div>
 
+        </div>
+
+        {/* ── Smooth Organic Wave Transition: Crisp White to Dark Spruce ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#0E2015"
+            />
+          </svg>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────────────
+          CLOSING BANNER (CTAS)
+      ────────────────────────────────────────────────────────────────── */}
+      <section className="py-14 sm:py-20 lg:py-28 bg-[#0E2015] text-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+          <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-5xl text-white tracking-tight leading-tight">
+            Ready to Dominate Search Engine Rankings?
+          </h2>
+
+          <p className="font-inter text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+            Turn search intent into predictable pipeline and organic revenue. Let our dedicated SEO specialists audit, optimize, and rank your business at the top of Google.
+          </p>
+
+          <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={scrollToContactForm}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
+            >
+              <span>Get Free SEO Audit &amp; Proposal</span>
+              <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
+            </button>
+
+            <a
+              href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
+            >
+              <Phone className="w-4 h-4 text-[#FFAE00]" />
+              <span>Call: {COMPANY.phone}</span>
+            </a>
+          </div>
         </div>
       </section>
 

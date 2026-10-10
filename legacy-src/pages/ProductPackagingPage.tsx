@@ -9,7 +9,9 @@ import {
   Layers,
   Palette,
   Package,
+  Phone,
 } from 'lucide-react';
+import { COMPANY } from '@/data/company';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 
 /* ── 01. AUTHENTIC 3 PACKAGING DESIGN SERVICES (from PackagingDesignServ.js) ── */
@@ -43,81 +45,84 @@ export const ProductPackagingPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
+    <div className="bg-[#EAF1EB] text-[#0E2015] min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-hidden">
 
       {/* ──────────────────────────────────────────────────────────────────
           01. HERO BANNER WITH EMBEDDED FORM & BACKGROUND ART
+          Flush bottom with organic wave transition into Section 02.
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative pt-28 pb-8 sm:pt-34 sm:pb-12 overflow-hidden border-b border-[#1D4224]/10">
-        {/* Subtle Ambient Background from PageHeaderPPD */}
-        <div
-          className="absolute inset-0 z-0 opacity-15 pointer-events-none bg-cover bg-center"
-          style={{ backgroundImage: "url('/optimized/assets/images/backgrounds/page-header-bgProduct-design-&-Packaging.webp')" }}
-        />
-        <div className="absolute inset-0 z-0 bg-linear-to-b from-[#EFE8E0]/70 via-[#EFE8E0]/90 to-[#EFE8E0] pointer-events-none" />
+      <section 
+        className="relative w-full min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309] text-white overflow-hidden flex flex-col justify-between"
+        style={{
+          backgroundColor: '#061309',
+          backgroundImage: 'radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)',
+        }}
+      >
+        {/* Check Box Grid Texture */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 1px, transparent 1px)
+              `,
+              backgroundSize: '32px 32px',
+            }}
+          />
+        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-6 sm:pb-8 lg:pb-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
             {/* Left Column: Headline & Pitch */}
             <div className="lg:col-span-7 space-y-5">
               
-              {/* Breadcrumb & Badge */}
+              {/* Breadcrumb */}
               <div className="flex flex-col gap-2.5">
-                <nav className="flex items-center gap-2 text-xs font-mono text-[#5C6860]">
-                  <Link href="/" className="hover:text-[#1D4224] transition-colors">
+                <nav className="flex items-center gap-2 text-xs font-mono text-white/60">
+                  <Link href="/" className="hover:text-[#FFAE00] transition-colors">
                     Home
                   </Link>
                   <span>/</span>
-                  <Link href="/services" className="hover:text-[#1D4224] transition-colors">
+                  <Link href="/services" className="hover:text-[#FFAE00] transition-colors">
                     Services
                   </Link>
                   <span>/</span>
-                  <span className="text-[#1D4224] font-bold">Product Design Packaging</span>
+                  <span className="text-[#FFAE00] font-bold">Product Design Packaging</span>
                 </nav>
-
-                <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-[#1D4224]/10 border border-[#1D4224]/20 w-fit">
-                  <span className="font-montserrat font-black text-xs uppercase tracking-wider text-[#1D4224]">
-                    Market-Ready Packaging Solutions
-                  </span>
-                </div>
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-5xl text-[#0E2015] tracking-tight leading-[1.15] uppercase">
+              <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-5xl text-white tracking-tight leading-[1.15] uppercase">
                 PRODUCT DESIGN{' '}
-                <span className="bg-[#FFAE00] text-[#0E2015] px-2 py-0.5 rounded-md inline-block mt-1">
+                <span className="text-[#FFAE00]">
                   PACKAGING SERVICE.
                 </span>
               </h1>
 
-              {/* Authentic Supporting Text from HeroSec */}
-              <p className="font-inter text-base sm:text-lg text-[#5C6860] max-w-xl leading-relaxed">
-                First impressions matter — and your product&apos;s packaging is the first thing customers notice. Our Product Design &amp; Packaging Service helps brands stand out with creative, functional, and market-ready packaging that tells your story, attracts buyers, and builds trust. From concept to final design, we deliver solutions tailored to your brand.
-              </p>
-
-              {/* Action Buttons (2-3 words) */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-2">
+              {/* Action Buttons */}
+              {/* <div className="flex flex-wrap items-center gap-3.5 pt-2">
                 <button
                   onClick={scrollToContactForm}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#1D4224] text-white font-montserrat font-bold text-sm hover:bg-[#FFAE00] hover:text-[#0E2015] transition-all duration-200 shadow-lg shadow-[#1D4224]/10 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
                 >
                   <span>Enquire Now</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
                 </button>
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-[#1D4224]/20 bg-white/70 hover:bg-white text-[#1D4224] font-montserrat font-bold text-sm transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 text-white font-montserrat font-bold text-xs transition-all"
                 >
                   <span>Explore Services</span>
                   <ChevronRight className="w-4 h-4" />
                 </a>
-              </div>
+              </div> */}
             </div>
 
             {/* Right Column: Lead Capture Form Component */}
-            <div id="Contactform" className="lg:col-span-5 flex justify-center items-center w-full">
-              <div className="w-full max-w-md rounded-3xl bg-[#0E2015] p-2 border border-[#1D4224]/50 shadow-2xl shadow-black/20">
+            <div id="Contactform" className="lg:col-span-5 flex justify-center items-center w-full mt-4 lg:mt-0">
+              <div className="w-full max-w-md">
                 <LeadCaptureForm
                   title="Claim Your Free Packaging Concept"
                   titleColor="#FFAE00"
@@ -134,11 +139,28 @@ export const ProductPackagingPage: React.FC = () => {
                     'Social Media (SMO | SMM)',
                     'Content Marketing',
                   ]}
+                  noBorder={true}
                 />
               </div>
             </div>
 
           </div>
+        </div>
+
+        {/* ── Smooth Organic Wave Transition: Dark Spruce to Section 02 (#FFFFFF) ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#FFFFFF"
+            />
+          </svg>
         </div>
       </section>
 
@@ -201,8 +223,8 @@ export const ProductPackagingPage: React.FC = () => {
       {/* ──────────────────────────────────────────────────────────────────
           03. PACKAGING DESIGN SERVICES (from PackagingDesignServ.js)
       ────────────────────────────────────────────────────────────────── */}
-      <section id="services" className="py-10 sm:py-14 bg-[#EFE8E0] border-b border-[#1D4224]/10 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="services" className="pt-10 sm:pt-14 pb-0 bg-[#EFE8E0] relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14">
           
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <h2 className="font-montserrat font-black text-2xl sm:text-4xl text-[#1D4224] tracking-tight uppercase">
@@ -248,6 +270,61 @@ export const ProductPackagingPage: React.FC = () => {
             </button>
           </div>
 
+        </div>
+
+        {/* ── Smooth Organic Wave Transition: Muted Sand to Dark Spruce ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#0E2015"
+            />
+          </svg>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────────────
+          CLOSING BANNER (CTAS)
+      ────────────────────────────────────────────────────────────────── */}
+      <section className="py-14 sm:py-20 lg:py-28 bg-[#0E2015] text-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+          <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-5xl text-white tracking-tight leading-tight">
+            Ready to Launch Market-Ready Packaging?
+          </h2>
+
+          <p className="font-inter text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+            Elevate shelf appeal, captivate retail buyers, and enhance brand loyalty with custom 3D packaging designs engineered for production and compliance.
+          </p>
+
+          <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={scrollToContactForm}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
+            >
+              <span>Get Free Packaging Consultation</span>
+              <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
+            </button>
+
+            <a
+              href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
+            >
+              <Phone className="w-4 h-4 text-[#FFAE00]" />
+              <span>Call: {COMPANY.phone}</span>
+            </a>
+          </div>
         </div>
       </section>
 

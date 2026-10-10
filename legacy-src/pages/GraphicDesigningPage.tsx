@@ -12,7 +12,9 @@ import {
   Package,
   Brush,
   CheckCircle2,
+  Phone,
 } from 'lucide-react';
+import { COMPANY } from '@/data/company';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 
 /* ── 01. AUTHENTIC DATA FROM LIVE SITE (tzar graphic-designing) ─────────── */
@@ -155,44 +157,75 @@ export const GraphicDesigningPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
+    <div className="bg-[#EAF1EB] text-[#0E2015] min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-hidden">
 
       {/* ──────────────────────────────────────────────────────────────────
           01. HERO BANNER: WIDESCREEN BACKGROUND ART + CONTACT FORM ON RIGHT
+          Flush bottom with organic wave transition into Section 02.
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative w-full min-h-[720px] lg:min-h-[820px] flex items-center justify-end overflow-hidden bg-[#050D07] border-b border-[#1D4224]/30 pt-[95vw] sm:pt-[520px] lg:pt-0 pb-12 lg:pb-0">
-        {/* Mobile Portrait Background Image (< lg) */}
-        <div
-          className="absolute inset-0 z-0 bg-cover bg-top pointer-events-none lg:hidden"
-          style={{
-            backgroundImage: "url('/optimized/assets/images/graphic-hero-bg-mobile.webp')",
-          }}
-        />
+      <section 
+        className="relative w-full min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309] text-white overflow-hidden flex flex-col justify-between"
+        style={{
+          backgroundColor: '#061309',
+          backgroundImage: 'radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)',
+        }}
+      >
+        {/* Check Box Grid Texture */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 1px, transparent 1px)
+              `,
+              backgroundSize: '32px 32px',
+            }}
+          />
+        </div>
 
-        {/* Desktop Widescreen Background Image (>= lg) */}
-        <div
-          className="absolute inset-0 z-0 bg-cover bg-left lg:bg-center pointer-events-none hidden lg:block"
-          style={{
-            backgroundImage: "url('/optimized/assets/images/graphic-hero-bg.webp')",
-          }}
-        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-6 sm:pb-8 lg:pb-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
-        {/* Ambient edge shadow on desktop to blend seamlessly */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-transparent to-[#050D07]/50 pointer-events-none hidden lg:block" />
+            {/* ── Left Column: Hero Heading + Graphic Designing Art ── */}
+            <div className="lg:col-span-7 flex flex-col justify-center items-center lg:items-start w-full">
+              {/* Hero Heading and Breadcrumb */}
+              <div className="w-full text-center lg:text-left mb-6 sm:mb-8">
+                <nav className="flex items-center justify-center lg:justify-start gap-2 text-xs font-mono text-white/60 mb-3">
+                  <Link href="/" className="hover:text-[#FFAE00] transition-colors">
+                    Home
+                  </Link>
+                  <span>/</span>
+                  <Link href="/services" className="hover:text-[#FFAE00] transition-colors">
+                    Services
+                  </Link>
+                  <span>/</span>
+                  <span className="text-[#FFAE00] font-bold">Graphic Designing</span>
+                </nav>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-8 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <h1 className="font-montserrat font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
+                  High-Impact Graphic &amp;{' '}
+                  <span className="text-[#FFA200]">Brand Design.</span>
+                </h1>
+              </div>
 
-            {/* Left Column: Transparent spacer allowing background artwork to be fully visible */}
-            <div className="lg:col-span-7 hidden lg:block" />
+              {/* Graphic Designing Art – matching LogoDesignPage layout */}
+              <div className="w-full max-w-115 sm:max-w-135 lg:max-w-150 pt-2 sm:pt-4 flex items-center justify-center overflow-visible">
+                <img
+                  src="/assets/images/graphic_designing.png"
+                  alt="High-Impact Graphic and Brand Design"
+                  className="w-full h-auto object-contain drop-shadow-2xl"
+                />
+              </div>
+            </div>
 
             {/* Right Column: Lead Contact Form */}
-            <div id="Contactform" className="lg:col-span-5 flex justify-center lg:justify-end items-center w-full">
-              <div className="w-full max-w-md rounded-3xl bg-[#07130A]/90 backdrop-blur-md p-2.5 sm:p-3 border border-[#1D4224]/70 shadow-2xl shadow-black/90">
+            <div id="Contactform" className="lg:col-span-5 flex justify-center items-center w-full mt-4 lg:mt-0">
+              <div className="w-full max-w-md">
                 <LeadCaptureForm
                   title="Claim Your Free Design Consultation"
                   titleColor="#FFAE00"
-                  bgColor="#07130A"
+                  bgColor="#0E2015"
                   textColor="#FFFFFF"
                   buttonBgColor="#1D4224"
                   buttonTextColor="#FFFFFF"
@@ -205,11 +238,28 @@ export const GraphicDesigningPage: React.FC = () => {
                     'Social Media (SMO | SMM)',
                     'Search Engine Optimization (SEO)',
                   ]}
+                  noBorder={true}
                 />
               </div>
             </div>
 
           </div>
+        </div>
+
+        {/* ── Smooth Organic Wave Transition: Dark Spruce to Section 02 (#FAF9F5) ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#FAF9F5"
+            />
+          </svg>
         </div>
       </section>
 
@@ -304,15 +354,16 @@ export const GraphicDesigningPage: React.FC = () => {
       <div className="space-y-0">
         {CATEGORIES.map((category, catIndex) => {
           const isEven = catIndex % 2 === 0;
+          const isLast = catIndex === CATEGORIES.length - 1;
           return (
             <section
               key={category.id}
               id={category.id}
-              className={`py-10 sm:py-14 ${
-                isEven ? 'bg-[#FAF9F5]' : 'bg-[#EFE8E0]'
-              } border-b border-[#1D4224]/10 relative`}
+              className={`pt-10 sm:pt-14 ${
+                isLast ? 'pb-0' : 'pb-10 sm:pb-14 border-b border-[#1D4224]/10'
+              } ${isEven ? 'bg-[#FAF9F5]' : 'bg-[#EFE8E0]'} relative`}
             >
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isLast ? 'pb-10 sm:pb-14' : ''}`}>
                 
                 {/* Section Header (No badge) */}
                 <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
@@ -368,10 +419,67 @@ export const GraphicDesigningPage: React.FC = () => {
                 </div>
 
               </div>
+
+              {/* ── Smooth Organic Wave Transition on the Last Category into Footer CTA ── */}
+              {isLast && (
+                <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+                  <svg
+                    viewBox="0 0 1440 100"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+                      fill="#0E2015"
+                    />
+                  </svg>
+                </div>
+              )}
             </section>
           );
         })}
       </div>
+
+      {/* ──────────────────────────────────────────────────────────────────
+          CLOSING BANNER (CTAS)
+      ────────────────────────────────────────────────────────────────── */}
+      <section className="py-14 sm:py-20 lg:py-28 bg-[#0E2015] text-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+          <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-5xl text-white tracking-tight leading-tight">
+            Ready to Bring Your Brand Vision to Life?
+          </h2>
+
+          <p className="font-inter text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+            Elevate your business with bespoke graphic design, corporate branding, and promotional collateral engineered to convert. Let our creative team design your assets.
+          </p>
+
+          <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={scrollToContactForm}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
+            >
+              <span>Get Free Design Consultation</span>
+              <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
+            </button>
+
+            <a
+              href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
+            >
+              <Phone className="w-4 h-4 text-[#FFAE00]" />
+              <span>Call: {COMPANY.phone}</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
     </div>
   );

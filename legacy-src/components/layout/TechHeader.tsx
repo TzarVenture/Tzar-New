@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ArrowUpRight, Phone, Mail, ChevronDown } from 'lucide-react';
+import { Phone, ChevronDown } from 'lucide-react';
 import { COMPANY } from '../../data/company';
 import { StaggeredMenu } from '../ui/StaggeredMenu';
 import { TopAnnouncementMarquee } from './TopAnnouncementMarquee';
@@ -45,7 +45,8 @@ const STAGGERED_ITEMS = [
     link: item.href,
     children: item.children,
   })),
-  { label: 'Enquire Now', link: '/#contact-form' },
+  { label: 'Hire Us', link: '/hire-us' },
+  { label: 'Payment', link: '/payment' },
   { label: 'Contact', link: '/contact' },
 ];
 
@@ -147,16 +148,6 @@ export const TechHeader: React.FC = () => {
     setActiveDropdown(null);
   }, [pathname]);
 
-  const handleProposalClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (isHome) {
-      e.preventDefault();
-      const target = document.getElementById('contact-form') || document.getElementById('lead-form');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  };
-
   return (
     <header
       className="fixed left-0 right-0 top-0 z-50 font-inter transition-transform duration-300 ease-in-out w-full max-w-full"
@@ -172,22 +163,22 @@ export const TechHeader: React.FC = () => {
           ? 'bg-[#0E2015]/95 backdrop-blur-md border-b border-white/10 shadow-lg'
           : 'bg-transparent border-b border-transparent'
         }`}>
-        <div className="w-full max-w-[clamp(1200px,94vw,1700px)] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-[clamp(1rem,2vw,2.5rem)]">
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 flex items-center justify-between gap-2.5 xl:gap-4 2xl:gap-8">
 
-          {/* Logo & Node Indicator */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 shrink-0 group">
             <img
               src="/optimized/assets/images/tzar-logo-main.webp"
               alt="Tzar Venture Logo"
               width={1506}
               height={248}
               decoding="async"
-              className="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-9 sm:h-10 xl:h-10 w-auto max-w-[205px] sm:max-w-[230px] xl:max-w-[230px] object-contain transition-transform group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Nav Items */}
-          <div className="hidden lg:flex items-center gap-[clamp(0.25rem,0.55vw,1rem)]">
+          <div className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 2xl:gap-2.5">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href || (Boolean(item.children) && item.children!.some(sub => pathname === sub.href));
               return (
@@ -199,7 +190,7 @@ export const TechHeader: React.FC = () => {
                 >
                   <Link
                     href={item.href}
-                    className={`px-[clamp(0.65rem,0.8vw,1.1rem)] py-2 text-[clamp(13.5px,0.88vw,15.5px)] font-semibold tracking-[-0.01em] flex items-center gap-1.5 rounded-full transition-all duration-200 whitespace-nowrap drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)] ${isActive
+                    className={`px-2.5 xl:px-3 py-1.5 text-[13px] xl:text-[13.5px] 2xl:text-[14.5px] font-semibold tracking-[-0.01em] flex items-center gap-1 rounded-full transition-all duration-200 whitespace-nowrap drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)] ${isActive
                         ? 'text-[#FFAE00] bg-white/8'
                         : 'text-white/90 hover:text-[#FFAE00] hover:bg-white/8'
                       }`}
@@ -242,23 +233,76 @@ export const TechHeader: React.FC = () => {
             })}
           </div>
 
-          {/* Right Action Framer Pills */}
-          <div className="hidden sm:flex items-center shrink-0">
+          {/* Right Action Group (Desktop) */}
+          <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 2xl:gap-3.5 shrink-0">
+            {/* Hire Us Pill */}
             <Link
-              href={isHome ? "#contact-form" : "/#contact-form"}
-              onClick={handleProposalClick}
-              className="framer-btn-primary border border-white/20 px-[clamp(1rem,1.25vw,1.45rem)] py-[clamp(0.55rem,0.65vw,0.75rem)] text-[clamp(13.5px,0.85vw,15px)] font-bold flex items-center gap-2 whitespace-nowrap shrink-0 cursor-pointer shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200"
+              href="/hire-us"
+              className={`px-3 xl:px-3.5 py-1.5 text-[12.5px] xl:text-[13px] font-bold font-montserrat rounded-full border transition-all duration-200 whitespace-nowrap ${
+                pathname === '/hire-us'
+                  ? 'bg-[#FFAE00] text-[#0E2015] border-[#FFAE00]'
+                  : 'border-[#FFAE00]/40 text-white hover:bg-[#FFAE00] hover:text-[#0E2015] hover:border-[#FFAE00]'
+              }`}
             >
-              <span>Enquire Now</span>
-              <ArrowUpRight className="w-4 h-4 shrink-0 stroke-[2.2]" />
+              Hire Us
             </Link>
+
+            {/* Payment Pill */}
+            <Link
+              href="/payment"
+              className={`px-3.5 xl:px-4 py-1.5 text-[12.5px] xl:text-[13px] font-black font-montserrat rounded-full transition-all duration-200 shadow-sm whitespace-nowrap ${
+                pathname === '/payment' || pathname === '/payment-gateway'
+                  ? 'bg-white text-[#1D4224]'
+                  : 'bg-[#FFAE00] text-[#0E2015] hover:bg-white hover:text-[#1D4224]'
+              }`}
+            >
+              Payment
+            </Link>
+
+            {/* Contact Phone Block */}
+            <div className="flex items-center gap-2 pl-2 xl:pl-3 border-l border-white/15 shrink-0">
+              <a
+                href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`}
+                className="w-8 h-8 rounded-full bg-[#FFAE00]/10 border border-[#FFAE00]/30 flex items-center justify-center shrink-0 text-[#FFAE00] hover:bg-[#FFAE00] hover:text-[#0E2015] transition-all"
+                title={`Call ${COMPANY.phone}`}
+                aria-label="Call Primary Line"
+              >
+                <Phone className="w-3.5 h-3.5" />
+              </a>
+              <div className="flex flex-col leading-tight font-sans shrink-0">
+                <a
+                  href={`tel:${COMPANY.phone.replace(/[^0-9+]/g, '')}`}
+                  className="text-[12px] font-bold text-white hover:text-[#FFAE00] tracking-tight transition-colors whitespace-nowrap"
+                  title="Call Primary Line"
+                >
+                  {COMPANY.phone}
+                </a>
+                <a
+                  href={`tel:${COMPANY.phone2.replace(/[^0-9+]/g, '')}`}
+                  className="text-[12px] font-bold text-white hover:text-[#FFAE00] tracking-tight transition-colors whitespace-nowrap"
+                  title="Call Alternate Line"
+                >
+                  {COMPANY.phone2}
+                </a>
+              </div>
+            </div>
           </div>
 
-          {/* Mobile Staggered Menu */}
-          <div className="lg:hidden flex items-center shrink-0">
+          {/* Mobile Right Action Area (< 1024px) */}
+          <div className="lg:hidden flex items-center gap-2 shrink-0">
+            {/* Quick Payment Button on sm-md */}
+            <Link
+              href="/payment"
+              className="hidden sm:inline-flex px-3 py-1 text-xs font-black font-montserrat rounded-full bg-[#FFAE00] text-[#0E2015] hover:bg-white hover:text-[#1D4224] transition-all whitespace-nowrap"
+            >
+              Payment
+            </Link>
+
+            {/* Staggered Drawer Menu */}
             <StaggeredMenu
               items={STAGGERED_ITEMS}
               socialItems={STAGGERED_SOCIALS}
+              contactInfo={{ phone1: COMPANY.phone, phone2: COMPANY.phone2 }}
               displaySocials={true}
               displayItemNumbering={false}
               colors={['#FFAE00', '#1D4224', '#0E2015']}

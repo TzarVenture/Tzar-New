@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useCallback, useLayoutEffect, useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Phone } from 'lucide-react';
 import { gsap } from 'gsap';
 import './StaggeredMenu.css';
 
@@ -21,11 +23,18 @@ export interface SocialItem {
   link: string;
 }
 
+export interface StaggeredContactInfo {
+  phone1?: string;
+  phone2?: string;
+  email?: string;
+}
+
 export interface StaggeredMenuProps {
   position?: 'left' | 'right';
   colors?: string[];
   items?: MenuItem[];
   socialItems?: SocialItem[];
+  contactInfo?: StaggeredContactInfo;
   displaySocials?: boolean;
   displayItemNumbering?: boolean;
   className?: string;
@@ -44,6 +53,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   colors = ['#FFAE00', '#1D4224', '#0E2015'],
   items = [],
   socialItems = [],
+  contactInfo,
   displaySocials = true,
   displayItemNumbering = false,
   className = '',
@@ -481,7 +491,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               <img
                 src={logoUrl}
                 alt="TZAR VENTURE"
-                className="h-7 w-auto object-contain"
+                className="h-8 sm:h-9 w-auto max-w-[205px] object-contain"
                 draggable={false}
                 loading="lazy"
                 decoding="async"
@@ -567,6 +577,38 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 </li>
               )}
             </ul>
+
+            {contactInfo && (contactInfo.phone1 || contactInfo.phone2) && (
+              <div className="sm-contact-section mt-8 pt-6 border-t border-white/10" aria-label="Call Us">
+                <h3 className="text-[13px] sm:text-[14px] font-montserrat font-extrabold uppercase tracking-wider text-[#FFAE00] mb-3">
+                  Call Anytime
+                </h3>
+                <div className="flex flex-col gap-2 font-sans">
+                  {contactInfo.phone1 && (
+                    <a
+                      href={`tel:${contactInfo.phone1.replace(/[^0-9+]/g, '')}`}
+                      className="bg-white/[0.04] hover:bg-[#FFAE00]/10 border border-white/10 hover:border-[#FFAE00]/40 rounded-xl px-3.5 py-2.5 flex items-center gap-3 text-white hover:text-[#FFAE00] transition-all duration-200 active:scale-[0.98]"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-[#FFAE00]/15 flex items-center justify-center text-[#FFAE00] shrink-0">
+                        <Phone className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="text-[14px] sm:text-[14.5px] font-bold font-mono tracking-tight">{contactInfo.phone1}</span>
+                    </a>
+                  )}
+                  {contactInfo.phone2 && (
+                    <a
+                      href={`tel:${contactInfo.phone2.replace(/[^0-9+]/g, '')}`}
+                      className="bg-white/[0.04] hover:bg-[#FFAE00]/10 border border-white/10 hover:border-[#FFAE00]/40 rounded-xl px-3.5 py-2.5 flex items-center gap-3 text-white hover:text-[#FFAE00] transition-all duration-200 active:scale-[0.98]"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-[#FFAE00]/15 flex items-center justify-center text-[#FFAE00] shrink-0">
+                        <Phone className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="text-[14px] sm:text-[14.5px] font-bold font-mono tracking-tight">{contactInfo.phone2}</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
 
             {displaySocials && socialItems && socialItems.length > 0 && (
               <div className="sm-socials" aria-label="Social links">

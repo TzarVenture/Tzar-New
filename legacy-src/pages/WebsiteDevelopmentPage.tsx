@@ -25,7 +25,6 @@ import {
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { LazyLoopVideo } from '@/legacy-src/components/ui/LazyLoopVideo';
 import { COMPANY } from '@/data/company';
-import { LazyDotLottie } from '@/legacy-src/components/ui/LazyDotLottie';
 
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -400,7 +399,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
           01. HERO BANNER WITH CODE VIEWER & STANDARDIZED FORM
           Flush bottom (pb-0) with smooth wave transition into Section 02.
       ────────────────────────────────────────────────────────────────── */}
-      <section 
+      <section
         className="relative w-full min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309]"
         style={{
           backgroundColor: '#061309',
@@ -422,12 +421,24 @@ export const WebsiteDevelopmentPage: React.FC = () => {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-6 sm:pb-8 lg:pb-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-            
-            {/* ── Left Column: Hero Heading + Lottie Web Development Art ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+
+            {/* ── Left Column: Hero Heading + Web Development Art ── */}
             <div className="lg:col-span-7 flex flex-col justify-center items-center lg:items-start w-full">
-              {/* Hero Heading with Typewriter Animation */}
+              {/* Hero Heading with Typewriter Animation and Breadcrumb */}
               <div className="w-full text-center lg:text-left mb-6 sm:mb-8">
+                <nav className="flex items-center justify-center lg:justify-start gap-2 text-xs font-mono text-white/60 mb-3">
+                  <Link href="/" className="hover:text-[#FFAE00] transition-colors">
+                    Home
+                  </Link>
+                  <span>/</span>
+                  <Link href="/services" className="hover:text-[#FFAE00] transition-colors">
+                    Services
+                  </Link>
+                  <span>/</span>
+                  <span className="text-[#FFAE00] font-bold">Website Development</span>
+                </nav>
+
                 <h1 className="font-montserrat font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
                   <span>{displayedText}</span>
                   {showCursor && (
@@ -435,17 +446,16 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                   )}
                 </h1>
                 <p className="mt-3 font-montserrat font-semibold text-sm sm:text-base lg:text-lg text-[#FFAE00] tracking-widest uppercase">
-                  Shopify &nbsp;|&nbsp; Wordpress &nbsp;|&nbsp; React Next.Js
+                  React Next.Js &nbsp;|&nbsp; Node Js &nbsp;|&nbsp; AI/ML &nbsp;|&nbsp; Wordpress &nbsp;|&nbsp; Shopify
                 </p>
               </div>
 
-              {/* Lottie Web Development Art – spacing above and overflow visible */}
-              <div className="w-full max-w-115 sm:max-w-135 lg:max-w-150 pt-5 sm:pt-7 flex items-center justify-center overflow-visible">
-                <LazyDotLottie
-                  src="/assets/lottie/web-dev.json"
-                  loop
-                  autoplay
-                  className="w-full h-auto overflow-visible"
+              {/* Web Development Graphic Art – matching LogoDesignPage layout */}
+              <div className="w-full max-w-115 sm:max-w-135 lg:max-w-150 pt-2 sm:pt-4 flex items-center justify-center overflow-visible">
+                <img
+                  src="/assets/images/webdev.png"
+                  alt="Custom Website Development & Engineering"
+                  className="w-full h-auto object-contain drop-shadow-2xl"
                 />
               </div>
             </div>
@@ -493,7 +503,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       ────────────────────────────────────────────────────────────────── */}
       <section id="packages-pricing" className="py-14 sm:py-18 lg:py-24 bg-[#EAF1EB] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center space-y-3 mb-12 sm:mb-16">
             <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
               Website packages &amp; pricing
@@ -510,11 +520,10 @@ export const WebsiteDevelopmentPage: React.FC = () => {
               return (
                 <div
                   key={pkg.id}
-                  className={`relative flex flex-col rounded-3xl p-6 sm:p-7 transition-all duration-300 ${
-                    pkg.isPopular
-                      ? 'bg-[#0E2015] text-white shadow-2xl border-2 border-[#FFAE00] lg:-translate-y-2'
-                      : 'bg-white text-[#0E2015] shadow-lg border border-[#0E2015]/10 hover:shadow-xl hover:border-[#1D4224]/30'
-                  }`}
+                  className={`relative flex flex-col rounded-3xl p-6 sm:p-7 transition-all duration-300 ${pkg.isPopular
+                    ? 'bg-[#0E2015] text-white shadow-2xl border-2 border-[#FFAE00] lg:-translate-y-2'
+                    : 'bg-white text-[#0E2015] shadow-lg border border-[#0E2015]/10 hover:shadow-xl hover:border-[#1D4224]/30'
+                    }`}
                 >
                   {pkg.isPopular && (
                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#FFAE00] text-[#0E2015] font-montserrat font-bold text-xs shadow-md whitespace-nowrap">
@@ -534,11 +543,10 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                       />
                     </div>
                     <span
-                      className={`text-xs font-montserrat font-semibold px-3 py-1 rounded-full ${
-                        pkg.isPopular
-                          ? 'bg-white/10 text-[#FFAE00] border border-[#FFAE00]/30'
-                          : 'bg-[#1D4224]/10 text-[#1D4224]'
-                      }`}
+                      className={`text-xs font-montserrat font-semibold px-3 py-1 rounded-full ${pkg.isPopular
+                        ? 'bg-white/10 text-[#FFAE00] border border-[#FFAE00]/30'
+                        : 'bg-[#1D4224]/10 text-[#1D4224]'
+                        }`}
                     >
                       {pkg.badge}
                     </span>
@@ -569,9 +577,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
 
                   {/* Key Highlights (Always Visible) */}
                   <div className="py-4">
-                    <p className={`text-xs font-montserrat font-bold uppercase tracking-wider mb-3.5 ${
-                      pkg.isPopular ? 'text-[#FFAE00]' : 'text-[#1D4224]'
-                    }`}>
+                    <p className={`text-xs font-montserrat font-bold uppercase tracking-wider mb-3.5 ${pkg.isPopular ? 'text-[#FFAE00]' : 'text-[#1D4224]'
+                      }`}>
                       Core Deliverables:
                     </p>
                     <ul className="space-y-2.5 text-sm font-inter">
@@ -588,9 +595,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                     {/* Expandable Additional Deliverables */}
                     {isExpanded && (
                       <div className="pt-3 mt-3 border-t border-current/10 animate-fadeIn">
-                        <p className={`text-xs font-montserrat font-semibold mb-2.5 ${
-                          pkg.isPopular ? 'text-white/80' : 'text-[#142C1D]/80'
-                        }`}>
+                        <p className={`text-xs font-montserrat font-semibold mb-2.5 ${pkg.isPopular ? 'text-white/80' : 'text-[#142C1D]/80'
+                          }`}>
                           Also Included:
                         </p>
                         <ul className="space-y-2 text-xs sm:text-sm font-inter">
@@ -610,11 +616,10 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => togglePackageExpand(pkg.id)}
-                      className={`mt-4 inline-flex items-center gap-1.5 text-xs font-montserrat font-bold py-1.5 px-3 rounded-lg transition-all cursor-pointer ${
-                        pkg.isPopular
-                          ? 'bg-white/10 text-[#FFAE00] hover:bg-white/20'
-                          : 'bg-[#1D4224]/10 text-[#1D4224] hover:bg-[#1D4224]/20'
-                      }`}
+                      className={`mt-4 inline-flex items-center gap-1.5 text-xs font-montserrat font-bold py-1.5 px-3 rounded-lg transition-all cursor-pointer ${pkg.isPopular
+                        ? 'bg-white/10 text-[#FFAE00] hover:bg-white/20'
+                        : 'bg-[#1D4224]/10 text-[#1D4224] hover:bg-[#1D4224]/20'
+                        }`}
                     >
                       <span>{isExpanded ? 'Hide detailed checklist' : `+ View all ${pkg.primaryFeatures.length + pkg.additionalFeatures.length} inclusions`}</span>
                       <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
@@ -626,22 +631,20 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => scrollToSection('Contactform')}
-                      className={`w-full py-3.5 px-6 rounded-full font-montserrat font-bold text-xs transition-all shadow-md cursor-pointer ${
-                        pkg.isPopular
-                          ? 'bg-[#1D4224] text-white hover:bg-[#25552f] border border-[#FFAE00]/40 hover:shadow-xl'
-                          : 'bg-[#0E2015] text-white hover:bg-[#1D4224]'
-                      }`}
+                      className={`w-full py-3.5 px-6 rounded-full font-montserrat font-bold text-xs transition-all shadow-md cursor-pointer ${pkg.isPopular
+                        ? 'bg-[#1D4224] text-white hover:bg-[#25552f] border border-[#FFAE00]/40 hover:shadow-xl'
+                        : 'bg-[#0E2015] text-white hover:bg-[#1D4224]'
+                        }`}
                     >
                       Select Plan &amp; Consult
                     </button>
 
                     <a
                       href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
-                      className={`w-full py-2.5 px-6 rounded-full font-montserrat font-medium text-xs text-center transition-all border ${
-                        pkg.isPopular
-                          ? 'border-white/20 text-white/90 hover:bg-white/10'
-                          : 'border-[#0E2015]/20 text-[#0E2015] hover:bg-[#F2F7F3]'
-                      }`}
+                      className={`w-full py-2.5 px-6 rounded-full font-montserrat font-medium text-xs text-center transition-all border ${pkg.isPopular
+                        ? 'border-white/20 text-white/90 hover:bg-white/10'
+                        : 'border-[#0E2015]/20 text-[#0E2015] hover:bg-[#F2F7F3]'
+                        }`}
                     >
                       Call: {COMPANY.phone}
                     </a>
@@ -660,7 +663,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       ────────────────────────────────────────────────────────────────── */}
       <section className="py-14 sm:py-18 lg:py-24 bg-white relative border-t border-[#0E2015]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center space-y-3 mb-12 sm:mb-16">
             <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
               Built in Shopify
@@ -971,7 +974,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       ────────────────────────────────────────────────────────────────── */}
       <section className="py-14 sm:py-18 lg:py-24 bg-white relative border-t border-[#0E2015]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center space-y-3 mb-12 sm:mb-16">
             <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
               Benefits for your business
@@ -991,11 +994,11 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                   <div className="w-14 h-14 rounded-2xl bg-[#0E2015] flex items-center justify-center shadow-md mb-5">
                     {b.icon}
                   </div>
-                  
+
                   <span className="font-montserrat font-black text-3xl sm:text-4xl text-[#FFAE00] tracking-tight block mb-1">
                     {b.stat}
                   </span>
-                  
+
                   <span className="font-montserrat font-bold text-xs text-[#1D4224] uppercase tracking-wider block mb-3">
                     {b.statLabel}
                   </span>
@@ -1111,7 +1114,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       ────────────────────────────────────────────────────────────────── */}
       <section className="pt-14 sm:pt-18 lg:pt-24 pb-0 bg-white relative border-t border-[#0E2015]/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 sm:pb-18 lg:pb-24">
-          
+
           <div className="text-center space-y-3 mb-12 sm:mb-16">
             <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
               Frequently asked questions
@@ -1127,11 +1130,10 @@ export const WebsiteDevelopmentPage: React.FC = () => {
               return (
                 <div
                   key={faq.id}
-                  className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
-                    isOpen
-                      ? 'bg-[#F2F7F3] border-[#1D4224]/40 shadow-sm'
-                      : 'bg-white border-[#0E2015]/10 hover:border-[#1D4224]/20'
-                  }`}
+                  className={`rounded-2xl border transition-all duration-200 overflow-hidden ${isOpen
+                    ? 'bg-[#F2F7F3] border-[#1D4224]/40 shadow-sm'
+                    : 'bg-white border-[#0E2015]/10 hover:border-[#1D4224]/20'
+                    }`}
                 >
                   <button
                     type="button"
@@ -1142,9 +1144,8 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                       {faq.question}
                     </span>
                     <span
-                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180 bg-[#1D4224] text-white' : 'bg-[#EAF1EB] text-[#0E2015]'
-                      }`}
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[#1D4224] text-white' : 'bg-[#EAF1EB] text-[#0E2015]'
+                        }`}
                     >
                       <ChevronDown className="w-4 h-4" />
                     </span>

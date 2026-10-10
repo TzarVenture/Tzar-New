@@ -394,13 +394,19 @@ export const TechHero: React.FC = () => {
                   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
-              className="group relative overflow-hidden inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#1D4224] hover:bg-[#15321B] text-white font-montserrat font-black text-sm sm:text-base uppercase tracking-widest shadow-lg hover:shadow-2xl hover:shadow-[#1D4224]/35 border border-white/20 hover:scale-105 active:scale-95 transition-all duration-300 transform whitespace-nowrap cursor-pointer"
+              className="hero-cta-btn group"
             >
-              {/* Micro-shimmer shine effect on hover */}
-              <span className="absolute inset-0 w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none" />
+              {/* Animated Moving Emerald Green Border Beam */}
+              <span className="hero-cta-border-beam" aria-hidden="true" />
 
-              <CalendarCheck size={22} weight="duotone" className="text-[#FFAE00] relative z-10 shrink-0" />
-              <span className="relative z-10">ENQUIRE NOW</span>
+              {/* Inner Pill Surface */}
+              <span className="hero-cta-surface">
+                {/* Continuous micro-shimmer light beam */}
+                <span className="hero-cta-shimmer" aria-hidden="true" />
+
+                <CalendarCheck size={22} weight="duotone" className="hero-cta-icon" />
+                <span className="hero-cta-text">ENQUIRE NOW</span>
+              </span>
             </a>
           </div>
 

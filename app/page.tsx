@@ -16,6 +16,7 @@ import TechInsights from "@/legacy-src/components/home/tech/TechInsights";
 import { TrafficGrowthSection } from "@/legacy-src/components/home/tech/TrafficGrowthSection";
 import PersistentBackdrop from "@/legacy-src/components/home/tech/PersistentBackdrop";
 import { TechText } from "@/legacy-src/components/home/tech/TechText";
+import { DeckCardsScrollSection } from "@/legacy-src/components/home/tech/DeckCardsScrollSection";
 
 const PHOTOSHOOT_ITEMS = [
   {
@@ -104,6 +105,9 @@ export default function Home() {
 
         {/* 01.7 • CLIENT BRANDS INFINITE MARQUEE (Building Success Stories with...) */}
         <DeferredClientMarquee />
+
+        {/* 01.75 • 3D INTERACTIVE SCROLLING PLAYING CARD DECK (AREA OF EXPERTISE) */}
+        <DeckCardsScrollSection />
 
         {/* Brand Showcase Accordion Gallery */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 mb-16 relative z-20">

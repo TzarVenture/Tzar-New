@@ -382,45 +382,51 @@ export default function ServicesView() {
         </div>
       </section>
 
-      {/* ── 05. CALL TO ACTION STRIP ── */}
-      <section className="py-10 sm:py-16 bg-[#1D4224] text-white relative overflow-hidden">
-        {/* Background Texture Pattern */}
-        <div
-          className="absolute inset-0 opacity-10 bg-repeat pointer-events-none"
-          style={{
-            backgroundImage: "url('/assets/images/resources/counter-one-pattern.png')",
-          }}
-        />
+      {/* ── 05. CALL TO ACTION ATTENTION CARD ── */}
+      <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 relative z-10 bg-[#FDFBF7]">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative rounded-3xl sm:rounded-4xl bg-[#0E2015] border border-[#1D4224]/60 shadow-2xl overflow-hidden px-6 py-10 sm:px-12 sm:py-14 lg:px-16 lg:py-16">
+            {/* Ambient luxury glow */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-            <div className="space-y-1.5 max-w-xl">
-              <span className="font-mono text-xs font-black uppercase tracking-widest text-[#FFAE00]">
-                ACCELERATE YOUR GROWTH
-              </span>
-              <h2 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
-                Ready to Build Something Exceptional?
-              </h2>
-              <p className="text-xs sm:text-sm text-white/80">
-                Schedule a consultation to discover how our engineering, search, and creative teams can scale your business.
-              </p>
-            </div>
+            {/* Background Texture Pattern */}
+            <div
+              className="absolute inset-0 opacity-10 bg-repeat pointer-events-none"
+              style={{
+                backgroundImage: "url('/assets/images/resources/counter-one-pattern.png')",
+              }}
+            />
 
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/contact"
-                className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-montserrat font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all duration-200 shadow-lg inline-flex items-center gap-2 group"
-              >
-                <span>Request Custom Proposal</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+              <div className="space-y-1.5 max-w-xl">
+                <span className="font-mono text-xs font-black uppercase tracking-widest text-[#FFAE00]">
+                  ACCELERATE YOUR GROWTH
+                </span>
+                <h2 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
+                  Ready to Build Something Exceptional?
+                </h2>
+                <p className="text-xs sm:text-sm text-white/80">
+                  Schedule a consultation to discover how our engineering, search, and creative teams can scale your business.
+                </p>
+              </div>
 
-              <Link
-                href="/portfolio"
-                className="border border-white/20 text-white hover:bg-white/10 font-montserrat font-bold text-xs sm:text-sm px-5 py-3.5 rounded-xl transition-all duration-200"
-              >
-                View Portfolio
-              </Link>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/contact"
+                  className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-montserrat font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all duration-200 shadow-lg inline-flex items-center gap-2 group"
+                >
+                  <span>Request Custom Proposal</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+
+                <Link
+                  href="/portfolio"
+                  className="border border-white/20 text-white hover:bg-white/10 font-montserrat font-bold text-xs sm:text-sm px-5 py-3.5 rounded-xl transition-all duration-200"
+                >
+                  View Portfolio
+                </Link>
+              </div>
             </div>
           </div>
         </div>

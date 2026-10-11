@@ -2,76 +2,83 @@
 
 import React from "react";
 
-const BRAND_LOGOS = [
-  { name: "Client 1", src: "/optimized/assets/images/Brandslogo/client1.webp" },
-  { name: "Client 2", src: "/optimized/assets/images/Brandslogo/client2.webp" },
-  { name: "Client 3", src: "/optimized/assets/images/Brandslogo/client3.webp" },
-  { name: "Client 4", src: "/optimized/assets/images/Brandslogo/client4.webp" },
-  { name: "Client 5", src: "/optimized/assets/images/Brandslogo/client5.webp" },
-  { name: "Client 6", src: "/assets/images/Brandslogo/client6.jpg" },
-  { name: "Client 7", src: "/assets/images/Brandslogo/client7.jpg" },
-  { name: "Client 8", src: "/assets/images/Brandslogo/client8.jpg" },
-  { name: "Client 9", src: "/assets/images/Brandslogo/client9.jpg" },
-  { name: "Softdots", src: "/assets/images/client/softdots.png" },
-  { name: "Titepo", src: "/assets/images/client/titepo.png" },
-  { name: "Crownleaf", src: "/assets/images/client/crownleaf.png" }
+// Curated Enterprise Brand Partners (Row 1)
+const ROW_1_LOGOS = [
+  { name: "Apollo", src: "/assets/images/brands-clean/client2.webp" },
+  { name: "Softdots", src: "/assets/images/brands-clean/softdots.webp" },
+  { name: "Enterprise Partner", src: "/assets/images/brands-clean/partner-4.webp" },
+  { name: "Crownleaf", src: "/assets/images/brands-clean/crownleaf.webp" },
+  { name: "Urban Ladder", src: "/assets/images/brands-clean/client8.webp" },
+  { name: "Global Brand", src: "/assets/images/brands-clean/partner-6.webp" },
+  { name: "Titepo", src: "/assets/images/brands-clean/titepo.webp" },
+  { name: "Retail Leader", src: "/assets/images/brands-clean/partner-7.webp" },
+  { name: "Elixee", src: "/assets/images/brands-clean/client3.webp" },
+  { name: "Tech Ventures", src: "/assets/images/brands-clean/partner-9.webp" },
+  { name: "Mariaa Rajaa", src: "/assets/images/brands-clean/client4.webp" },
+  { name: "Commerce Brand", src: "/assets/images/brands-clean/partner-11.webp" },
+];
+
+// Curated Enterprise Brand Partners (Row 2)
+const ROW_2_LOGOS = [
+  { name: "Innovate Group", src: "/assets/images/brands-clean/partner-5.webp" },
+  { name: "Happy Notes", src: "/assets/images/brands-clean/client7.webp" },
+  { name: "Digital Solutions", src: "/assets/images/brands-clean/partner-8.webp" },
+  { name: "Camelia Spa", src: "/assets/images/brands-clean/client1.webp" },
+  { name: "SaaS Enterprise", src: "/assets/images/brands-clean/partner-13.webp" },
+  { name: "Printshop", src: "/assets/images/brands-clean/client9.webp" },
+  { name: "Venture Studio", src: "/assets/images/brands-clean/partner-14.webp" },
+  { name: "The Octavian", src: "/assets/images/brands-clean/client5.webp" },
+  { name: "Consumer Brands", src: "/assets/images/brands-clean/partner-10.webp" },
+  { name: "Direct Commerce", src: "/assets/images/brands-clean/partner-1.webp" },
+  { name: "Growth Corp", src: "/assets/images/brands-clean/partner-12.webp" },
+  { name: "Crownleaf Brand", src: "/assets/images/brands-clean/crownleaf.webp" },
 ];
 
 export const ClientMarquee: React.FC = () => {
-  // We only need one base set of logos to duplicate for the seamless loop
-  const baseLogos = BRAND_LOGOS;
-
   return (
-    <section className="bg-transparent py-12 sm:py-14 overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
-        <h3 className="font-montserrat text-sm sm:text-base font-bold tracking-wider text-[#EFE8E0]/70 uppercase">
+    <section className="bg-transparent py-10 sm:py-14 overflow-hidden select-none relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-7 sm:mb-9 text-center">
+        <h3 className="font-montserrat text-xs sm:text-sm font-bold tracking-wider text-[#EFE8E0]/70 uppercase">
           Building Success Stories with{" "}
           <span className="text-white border-b-2 border-[#FFAE00] pb-0.5">
             50+ Enterprise Brands
           </span>
         </h3>
       </div>
-      
+
       {/* Infinite Kinetic Ticker Strip - Row 1 (Right to Left) */}
       <div className="relative flex overflow-x-hidden w-full py-2 group">
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-linear-to-r from-[#0E2015] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-linear-to-l from-[#0E2015] to-transparent z-10 pointer-events-none" />
-
         <div className="flex w-max animate-marquee-left">
           {/* Track 1 */}
-          <div className="flex items-center gap-6 px-3">
-            {baseLogos.map((logo, idx) => (
+          <div className="flex items-center gap-8 sm:gap-12 px-4">
+            {ROW_1_LOGOS.map((logo, idx) => (
               <div
                 key={`r1-t1-${idx}`}
-                className="inline-flex items-center justify-center px-5 py-2 rounded-xl bg-white min-w-36 h-16 select-none cursor-default"
+                className="flex items-center justify-center min-w-30 sm:min-w-35 h-10 sm:h-12 px-2 select-none cursor-default group/logo"
               >
                 <img
                   src={logo.src}
                   alt={logo.name}
                   loading="lazy"
                   decoding="async"
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto object-contain"
+                  className="h-7 sm:h-8 max-w-32.5 sm:max-w-37.5 w-auto object-contain brightness-0 invert opacity-60 group-hover/logo:opacity-100 transition-all duration-300 transform group-hover/logo:scale-105"
                 />
               </div>
             ))}
           </div>
-          {/* Track 2 (Duplicate) */}
-          <div className="flex items-center gap-6 px-3">
-            {baseLogos.map((logo, idx) => (
+          {/* Track 2 (Duplicate for Seamless Loop) */}
+          <div className="flex items-center gap-8 sm:gap-12 px-4">
+            {ROW_1_LOGOS.map((logo, idx) => (
               <div
                 key={`r1-t2-${idx}`}
-                className="inline-flex items-center justify-center px-5 py-2 rounded-xl bg-white min-w-36 h-16 select-none cursor-default"
+                className="flex items-center justify-center min-w-30 sm:min-w-35 h-10 sm:h-12 px-2 select-none cursor-default group/logo"
               >
                 <img
                   src={logo.src}
                   alt={logo.name}
                   loading="lazy"
                   decoding="async"
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto object-contain"
+                  className="h-7 sm:h-8 max-w-32.5 sm:max-w-37.5 w-auto object-contain brightness-0 invert opacity-60 group-hover/logo:opacity-100 transition-all duration-300 transform group-hover/logo:scale-105"
                 />
               </div>
             ))}
@@ -80,45 +87,38 @@ export const ClientMarquee: React.FC = () => {
       </div>
 
       {/* Infinite Kinetic Ticker Strip - Row 2 (Left to Right) */}
-      <div className="relative flex overflow-x-hidden w-full py-2 mt-4 group">
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-linear-to-r from-[#0E2015] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-linear-to-l from-[#0E2015] to-transparent z-10 pointer-events-none" />
-
+      <div className="relative flex overflow-x-hidden w-full py-2 mt-3 sm:mt-5 group">
         <div className="flex w-max animate-marquee-right">
           {/* Track 1 */}
-          <div className="flex items-center gap-6 px-3">
-            {[...baseLogos].reverse().map((logo, idx) => (
+          <div className="flex items-center gap-8 sm:gap-12 px-4">
+            {ROW_2_LOGOS.map((logo, idx) => (
               <div
                 key={`r2-t1-${idx}`}
-                className="inline-flex items-center justify-center px-5 py-2 rounded-xl bg-white min-w-36 h-16 select-none cursor-default"
+                className="flex items-center justify-center min-w-30 sm:min-w-35 h-10 sm:h-12 px-2 select-none cursor-default group/logo"
               >
                 <img
                   src={logo.src}
                   alt={logo.name}
                   loading="lazy"
                   decoding="async"
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto object-contain"
+                  className="h-7 sm:h-8 max-w-32.5 sm:max-w-37.5 w-auto object-contain brightness-0 invert opacity-60 group-hover/logo:opacity-100 transition-all duration-300 transform group-hover/logo:scale-105"
                 />
               </div>
             ))}
           </div>
-          {/* Track 2 (Duplicate) */}
-          <div className="flex items-center gap-6 px-3">
-            {[...baseLogos].reverse().map((logo, idx) => (
+          {/* Track 2 (Duplicate for Seamless Loop) */}
+          <div className="flex items-center gap-8 sm:gap-12 px-4">
+            {ROW_2_LOGOS.map((logo, idx) => (
               <div
                 key={`r2-t2-${idx}`}
-                className="inline-flex items-center justify-center px-5 py-2 rounded-xl bg-white min-w-36 h-16 select-none cursor-default"
+                className="flex items-center justify-center min-w-30 sm:min-w-35 h-10 sm:h-12 px-2 select-none cursor-default group/logo"
               >
                 <img
                   src={logo.src}
                   alt={logo.name}
                   loading="lazy"
                   decoding="async"
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto object-contain"
+                  className="h-7 sm:h-8 max-w-32.5 sm:max-w-37.5 w-auto object-contain brightness-0 invert opacity-60 group-hover/logo:opacity-100 transition-all duration-300 transform group-hover/logo:scale-105"
                 />
               </div>
             ))}

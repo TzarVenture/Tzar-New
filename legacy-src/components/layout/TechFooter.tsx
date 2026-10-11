@@ -5,12 +5,29 @@ import { COMPANY } from '../../data/company';
 
 export const TechFooter: React.FC = () => {
   return (
-    <footer className="bg-[#0E2015] text-[#EFE8E0] border-t border-white/10 font-inter relative overflow-hidden">
-      {/* Subtle ambient luxury glow */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#1D4224]/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />
+    <footer className="relative font-inter w-full">
+      {/* Top Organic Wave Divider into Footer */}
+      <div className="w-full overflow-hidden leading-none relative z-10 -mt-8 sm:-mt-14 lg:-mt-20 -mb-px pointer-events-none">
+        <svg
+          viewBox="0 0 1440 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-8 sm:h-14 lg:h-20 block pointer-events-none"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+            fill="#0E2015"
+          />
+        </svg>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 relative z-10">
+      <div className="bg-[#0E2015] text-[#EFE8E0] relative overflow-hidden -mt-px">
+        {/* Subtle ambient luxury glow */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#1D4224]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
           
           {/* Brand Info (2 columns) */}
@@ -111,6 +128,7 @@ export const TechFooter: React.FC = () => {
         <span className="font-montserrat font-black uppercase tracking-tighter leading-[0.75] text-center text-[28vw] bg-linear-to-b from-white/[0.14] via-white/4 to-transparent bg-clip-text text-transparent block">
           TZAR
         </span>
+      </div>
       </div>
     </footer>
   );

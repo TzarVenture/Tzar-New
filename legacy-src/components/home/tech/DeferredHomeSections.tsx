@@ -27,8 +27,7 @@ export function DeferredShowcaseMockupSection() {
 
 export function DeferredClientMarquee() {
   return (
-    // Same dark background as the marquee so the reserved space never flashes.
-    <DeferredSection className="min-h-[345.6px] bg-[#0E2015]">
+    <DeferredSection className="min-h-60 bg-transparent">
       <ClientMarquee />
     </DeferredSection>
   );

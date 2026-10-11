@@ -364,59 +364,46 @@ export const LogoDesignPage: React.FC = () => {
           </div>
 
         </div>
-
-        {/* ── Smooth Organic Wave Transition: Soft Neutral to Dark Spruce ── */}
-        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
-              fill="#0E2015"
-            />
-          </svg>
-        </div>
       </section>
 
       {/* ──────────────────────────────────────────────────────────────────
-          CLOSING BANNER (CTAS)
+          CLOSING BANNER (CTA ATTENTION CARD)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-14 sm:py-20 lg:py-28 bg-[#0E2015] text-white relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
-        </div>
+      <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 relative z-10 bg-[#FAF9F5]">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative rounded-3xl sm:rounded-4xl bg-[#0E2015] border border-[#1D4224]/60 shadow-2xl overflow-hidden px-6 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20 text-center">
+            {/* Ambient luxury glow */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-          <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-5xl text-white tracking-tight leading-tight">
-            Ready to Build an Iconic Brand Identity?
-          </h2>
+            <div className="relative z-10 max-w-4xl mx-auto space-y-5">
+              <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-5xl text-white tracking-tight leading-tight">
+                Ready to Build an Iconic Brand Identity?
+              </h2>
 
-          <p className="font-inter text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
-            Stand out with custom insignia, memorable logos, and comprehensive typography guidelines designed by world-class branding specialists.
-          </p>
+              <p className="font-inter text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+                Stand out with custom insignia, memorable logos, and comprehensive typography guidelines designed by world-class branding specialists.
+              </p>
 
-          <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
-            <button
-              type="button"
-              onClick={scrollToContactForm}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
-            >
-              <span>Claim Free Logo Concept</span>
-              <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
-            </button>
+              <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+                <button
+                  type="button"
+                  onClick={scrollToContactForm}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
+                >
+                  <span>Claim Free Logo Concept</span>
+                  <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
+                </button>
 
-            <a
-              href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
-            >
-              <Phone className="w-4 h-4 text-[#FFAE00]" />
-              <span>Call: {COMPANY.phone}</span>
-            </a>
+                <a
+                  href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
+                >
+                  <Phone className="w-4 h-4 text-[#FFAE00]" />
+                  <span>Call: {COMPANY.phone}</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

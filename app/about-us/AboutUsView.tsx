@@ -179,7 +179,7 @@ export default function AboutUsView() {
 
             {/* Right Column: Equal 50% Space with Sized-Up Lottie Art */}
             <div className="flex items-center justify-center lg:justify-end overflow-visible relative z-10">
-              <div className="w-full max-w-xl lg:max-w-none aspect-[882/551] flex items-center justify-center transform scale-105 lg:scale-110 xl:scale-115 origin-center lg:translate-x-4 xl:translate-x-8 transition-transform duration-300">
+              <div className="w-full max-w-xl lg:max-w-none aspect-882/551 flex items-center justify-center transform scale-105 lg:scale-110 xl:scale-115 origin-center lg:translate-x-4 xl:translate-x-8 transition-transform duration-300">
                 <img
                   src="/assets/lottie/teammates_about.png"
                   className="w-full h-full object-contain"
@@ -235,7 +235,7 @@ export default function AboutUsView() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Column: Image with smooth border radius */}
             <div className="lg:col-span-6 flex justify-center">
-              <div className="relative w-full max-w-md aspect-[4/5] sm:h-[420px] rounded-3xl bg-white p-3 sm:p-3.5 border border-[#1D4224]/10 shadow-sm">
+              <div className="relative w-full max-w-md aspect-4/5 sm:h-105 rounded-3xl bg-white p-3 sm:p-3.5 border border-[#1D4224]/10 shadow-sm">
                 <div className="relative w-full h-full rounded-2xl overflow-hidden">
                   <Image
                     src="/assets/images/resources/about-page-img-2.png"
@@ -264,7 +264,7 @@ export default function AboutUsView() {
               </p>
 
               {/* Highlight Blockquote */}
-              <div className="p-5 rounded-2xl bg-white border-l-4 border-[#FFAE00] border border-[#1D4224]/10 shadow-sm">
+              <div className="p-5 rounded-2xl bg-white border border-[#1D4224]/10 border-l-4 border-l-[#FFAE00] shadow-sm">
                 <p className="font-montserrat font-bold text-lg sm:text-xl text-[#1D4224] italic leading-snug">
                   "providing innovative Website solutions for future."
                 </p>
@@ -328,7 +328,7 @@ export default function AboutUsView() {
                 className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300 group"
               >
                 {/* Photo container with natural 4:5 portrait aspect ratio */}
-                <div className="relative w-full aspect-[4/5] bg-[#F5F2EB] overflow-hidden">
+                <div className="relative w-full aspect-4/5 bg-[#F5F2EB] overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -367,58 +367,45 @@ export default function AboutUsView() {
             </Link>
           </div>
         </div>
-
-        {/* ── Smooth Organic Wave Transition: Crisp White to Dark Spruce ── */}
-        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
-              fill="#0E2015"
-            />
-          </svg>
-        </div>
       </section>
 
       {/* ──────────────────────────────────────────────────────────────────
-          05. CLOSING BANNER (CTAS) / FOOTER SECTION
+          05. CLOSING BANNER (CTA ATTENTION CARD)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="py-14 sm:py-20 lg:py-28 bg-[#0E2015] text-white relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
-        </div>
+      <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 relative z-10 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative rounded-3xl sm:rounded-4xl bg-[#0E2015] border border-[#1D4224]/60 shadow-2xl overflow-hidden px-6 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20 text-center">
+            {/* Ambient luxury glow */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-          <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-5xl text-white tracking-tight leading-tight">
-            Ready to scale your business with Tzar?
-          </h2>
+            <div className="relative z-10 max-w-4xl mx-auto space-y-5">
+              <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-5xl text-white tracking-tight leading-tight">
+                Ready to scale your business with Tzar?
+              </h2>
 
-          <p className="font-inter text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
-            Partner with our multidisciplinary team of senior engineers, visual creators, and performance marketers to build digital platforms that dominate your market.
-          </p>
+              <p className="font-inter text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+                Partner with our multidisciplinary team of senior engineers, visual creators, and performance marketers to build digital platforms that dominate your market.
+              </p>
 
-          <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
-            >
-              <span>Get Free Consultation</span>
-              <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
-            </Link>
+              <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+                <Link
+                  href="/contact"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
+                >
+                  <span>Get Free Consultation</span>
+                  <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
+                </Link>
 
-            <a
-              href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
-            >
-              <Phone className="w-4 h-4 text-[#FFAE00]" />
-              <span>Call: {COMPANY.phone}</span>
-            </a>
+                <a
+                  href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
+                >
+                  <Phone className="w-4 h-4 text-[#FFAE00]" />
+                  <span>Call: {COMPANY.phone}</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

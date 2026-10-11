@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   ChevronRight,
@@ -13,6 +14,7 @@ import {
 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
+import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 
 /* ── 01. AUTHENTIC 3 PACKAGING DESIGN SERVICES (from PackagingDesignServ.js) ── */
 const PACKAGING_SERVICES = [
@@ -76,10 +78,10 @@ export const ProductPackagingPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
             {/* Left Column: Headline & Pitch */}
-            <div className="lg:col-span-7 space-y-5">
+            <div className="lg:col-span-7 space-y-4">
               
               {/* Breadcrumb */}
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2">
                 <nav className="flex items-center gap-2 text-xs font-mono text-white/60">
                   <Link href="/" className="hover:text-[#FFAE00] transition-colors">
                     Home
@@ -91,33 +93,30 @@ export const ProductPackagingPage: React.FC = () => {
                   <span>/</span>
                   <span className="text-[#FFAE00] font-bold">Product Design Packaging</span>
                 </nav>
+
+                {/* Main Headline */}
+                <h1 className="font-montserrat font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
+                  <TypewriterHeadline
+                    segments={[
+                      { text: 'Product Design & ' },
+                      { text: '3D Packaging Services', className: 'text-[#FFA200]' },
+                    ]}
+                  />
+                </h1>
               </div>
 
-              {/* Main Headline */}
-              <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-5xl text-white tracking-tight leading-[1.15] uppercase">
-                PRODUCT DESIGN{' '}
-                <span className="text-[#FFAE00]">
-                  PACKAGING SERVICE.
-                </span>
-              </h1>
-
-              {/* Action Buttons */}
-              {/* <div className="flex flex-wrap items-center gap-3.5 pt-2">
-                <button
-                  onClick={scrollToContactForm}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
-                >
-                  <span>Enquire Now</span>
-                  <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
-                </button>
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 text-white font-montserrat font-bold text-xs transition-all"
-                >
-                  <span>Explore Services</span>
-                  <ChevronRight className="w-4 h-4" />
-                </a>
-              </div> */}
+              {/* Product Packaging Graphic Art – matching other service pages layout */}
+              <div className="w-full max-w-115 sm:max-w-135 lg:max-w-150 pt-2 sm:pt-4 flex items-center justify-center overflow-visible">
+                <Image
+                  src="/assets/images/product-packaging.webp"
+                  alt="Product Design and 3D Packaging Services"
+                  width={1536}
+                  height={1024}
+                  priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
+                  className="w-full h-auto object-contain drop-shadow-2xl"
+                />
+              </div>
             </div>
 
             {/* Right Column: Lead Capture Form Component */}
@@ -137,7 +136,6 @@ export const ProductPackagingPage: React.FC = () => {
                     'Websites Design & Development',
                     'Search Engine Optimization (SEO)',
                     'Social Media (SMO | SMM)',
-                    'Content Marketing',
                   ]}
                   noBorder={true}
                 />

@@ -312,7 +312,7 @@ export const MobileDevSpotlightCard: React.FC = () => {
           RIGHT HALF: 50% WIDTH DEEP TECH MIDNIGHT TEAL CANVAS (#071B20 – #0B252C)
           FADING UP (EXIT) & COMING UP (ENTER) 3D PHONE MOCKUP STACK
           ══════════════════════════════════════════════════════════════════════ */}
-      <div className="relative flex-1 flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden h-[250px] xs:h-[275px] sm:h-[340px] md:h-full min-h-[220px] md:min-h-[300px] bg-gradient-to-br from-[#0B252C] via-[#071B20] to-[#041014]">
+      <div className="relative flex-1 flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden h-62.5 xs:h-[275px] sm:h-85 md:h-full min-h-55 md:min-h-75 bg-linear-to-br from-[#0B252C] via-[#071B20] to-[#041014]">
         {/* Ambient Subtle Tech Cyan/Teal Radial Glow */}
         <div
           className="absolute inset-0 pointer-events-none opacity-50"

@@ -28,7 +28,6 @@ const NAV_ITEMS = [
       { name: 'Graphic Designing', href: '/graphic-designing' },
       { name: 'Social Media Marketing', href: '/social-media-marketing-services' },
       { name: 'Logo & Brand Identity', href: '/logo-design-services' },
-      { name: 'Content Marketing', href: '/content-marketing-services' },
       { name: 'Product Packaging', href: '/product-design-packaging-services' },
     ],
   },
@@ -173,7 +172,7 @@ export const TechHeader: React.FC = () => {
               width={1506}
               height={248}
               decoding="async"
-              className="h-9 sm:h-10 xl:h-10 w-auto max-w-[205px] sm:max-w-[230px] xl:max-w-[230px] object-contain transition-transform group-hover:scale-105"
+              className="h-9 sm:h-10 xl:h-10 w-auto max-w-51.25 sm:max-w-57.5 xl:max-w-57.5 object-contain transition-transform group-hover:scale-105"
             />
           </Link>
 

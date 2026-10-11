@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -60,7 +61,7 @@ const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     const data: GrowthPoint = payload[0].payload;
     return (
-      <div className="relative z-50 rounded-xl bg-[#07130A]/95 border border-[#1D4224] p-3 shadow-2xl shadow-black/90 text-white min-w-[200px] backdrop-blur-md">
+      <div className="relative z-50 rounded-xl bg-[#07130A]/95 border border-[#1D4224] p-3 shadow-2xl shadow-black/90 text-white min-w-50 backdrop-blur-md">
         <div className="flex items-center justify-between gap-2 border-b border-[#1D4224]/60 pb-1.5 mb-2">
           <span className="font-montserrat font-bold text-xs text-[#FFAE00]">
             {data.fullMonth} ({data.month})
@@ -144,7 +145,7 @@ export default function SeoTrafficGrowthChart({ className = '' }: SeoTrafficGrow
 
   if (!mounted) {
     return (
-      <div className={`w-full h-[240px] sm:h-[280px] md:h-[400px] lg:h-[480px] flex items-center justify-center ${className}`}>
+      <div className={`w-full h-60 sm:h-70 md:h-100 lg:h-120 flex items-center justify-center ${className}`}>
         <div className="w-7 h-7 rounded-full border-2 border-[#22C55E] border-t-transparent animate-spin" />
       </div>
     );
@@ -157,7 +158,7 @@ export default function SeoTrafficGrowthChart({ className = '' }: SeoTrafficGrow
       {/* Metric Indicator Ribbon Bar */}
       <div className="flex items-center justify-start gap-4 sm:gap-6 mb-2 px-1 text-xs font-mono">
         <div className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-xs bg-gradient-to-t from-[#1D4224] to-[#22C55E] inline-block border border-[#22C55E]/40" />
+          <span className="w-2.5 h-2.5 rounded-xs bg-linear-to-t from-[#1D4224] to-[#22C55E] inline-block border border-[#22C55E]/40" />
           <span className="text-white/70 text-[11px]">Ranked Keywords (Top 10)</span>
         </div>
         <div className="flex items-center gap-1.5">
@@ -169,12 +170,17 @@ export default function SeoTrafficGrowthChart({ className = '' }: SeoTrafficGrow
       {/* 1-3 Words Heading: "Guaranteed Result" placed inside the interior of the graph with low z-index */}
       <div className="absolute top-[22%] sm:top-[26%] left-[16%] sm:left-[20%] z-0 pointer-events-none select-none">
         <h2 className="font-montserrat font-black text-xl sm:text-3xl lg:text-4xl text-white/90 tracking-tight uppercase">
-          Guaranteed <span className="text-[#FFAE00]">Result</span>
+          <TypewriterHeadline
+            segments={[
+              { text: 'Guaranteed ' },
+              { text: 'Result', className: 'text-[#FFAE00]' },
+            ]}
+          />
         </h2>
       </div>
 
       {/* Responsive Composed Chart Container */}
-      <div className="w-full h-[230px] sm:h-[270px] md:h-[390px] lg:h-[460px]">
+      <div className="w-full h-57.5 sm:h-67.5 md:h-97.5 lg:h-115">
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart
             data={chartData}

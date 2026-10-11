@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ExternalLink,
   ArrowUpRight,
@@ -24,6 +25,7 @@ import {
 } from 'lucide-react';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { LazyLoopVideo } from '@/legacy-src/components/ui/LazyLoopVideo';
+import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 import { COMPANY } from '@/data/company';
 
 
@@ -346,34 +348,6 @@ export const WebsiteDevelopmentPage: React.FC = () => {
   const [isMockupMarqueePaused, setIsMockupMarqueePaused] = useState(false);
   const mockupMarqueeRef = useRef<HTMLDivElement>(null);
 
-  // Typewriter animation for hero heading
-  const heroText = 'Powerup your online presence';
-  const [displayedText, setDisplayedText] = useState('');
-  const [showCursor, setShowCursor] = useState(true);
-
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < heroText.length) {
-        setDisplayedText(heroText.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(interval);
-        // Blink cursor a few times then hide
-        setTimeout(() => setShowCursor(false), 2500);
-      }
-    }, 45);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Cursor blink
-  const [cursorVisible, setCursorVisible] = useState(true);
-  useEffect(() => {
-    if (!showCursor) { setCursorVisible(false); return; }
-    const blink = setInterval(() => setCursorVisible(v => !v), 530);
-    return () => clearInterval(blink);
-  }, [showCursor]);
-
   const toggleFaq = (id: number) => {
     setOpenFaqId((prev) => (prev === id ? null : id));
   };
@@ -440,10 +414,12 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                 </nav>
 
                 <h1 className="font-montserrat font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
-                  <span>{displayedText}</span>
-                  {showCursor && (
-                    <span className={`inline-block w-0.75 h-[1em] bg-[#FFAE00] ml-1 align-middle ${cursorVisible ? 'opacity-100' : 'opacity-0'}`} />
-                  )}
+                  <TypewriterHeadline
+                    segments={[
+                      { text: 'Powerup your ' },
+                      { text: 'online presence.', className: 'text-[#FFA200]' },
+                    ]}
+                  />
                 </h1>
                 <p className="mt-3 font-montserrat font-semibold text-sm sm:text-base lg:text-lg text-[#FFAE00] tracking-widest uppercase">
                   React Next.Js &nbsp;|&nbsp; Node Js &nbsp;|&nbsp; AI/ML &nbsp;|&nbsp; Wordpress &nbsp;|&nbsp; Shopify
@@ -452,9 +428,13 @@ export const WebsiteDevelopmentPage: React.FC = () => {
 
               {/* Web Development Graphic Art – matching LogoDesignPage layout */}
               <div className="w-full max-w-115 sm:max-w-135 lg:max-w-150 pt-2 sm:pt-4 flex items-center justify-center overflow-visible">
-                <img
-                  src="/assets/images/webdev.png"
+                <Image
+                  src="/assets/images/webdev.webp"
                   alt="Custom Website Development & Engineering"
+                  width={1536}
+                  height={1024}
+                  priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
                   className="w-full h-auto object-contain drop-shadow-2xl"
                 />
               </div>

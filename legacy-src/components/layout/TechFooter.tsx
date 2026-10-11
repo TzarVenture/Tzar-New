@@ -74,7 +74,6 @@ export const TechFooter: React.FC = () => {
                 <li><Link href="/search-engine-optimization-services" className="hover:text-[#FFAE00] transition-colors">SEO Domination</Link></li>
                 <li><Link href="/graphic-designing" className="hover:text-[#FFAE00] transition-colors">Graphic & Brand Design</Link></li>
                 <li><Link href="/social-media-marketing-services" className="hover:text-[#FFAE00] transition-colors">Social Media Marketing</Link></li>
-                <li><Link href="/content-marketing-services" className="hover:text-[#FFAE00] transition-colors">Content Marketing</Link></li>
                 <li><Link href="/product-design-packaging-services" className="hover:text-[#FFAE00] transition-colors">3D Packaging Studio</Link></li>
               </ul>
             </div>
@@ -109,7 +108,7 @@ export const TechFooter: React.FC = () => {
 
       {/* Giant Faded "TZAR" Brand Display (Inspired by Reference) */}
       <div className="w-full overflow-hidden select-none pointer-events-none flex justify-center items-end -mt-4 sm:-mt-8 -mb-2 sm:-mb-6">
-        <span className="font-montserrat font-black uppercase tracking-tighter leading-[0.75] text-center text-[28vw] bg-gradient-to-b from-white/[0.14] via-white/[0.04] to-transparent bg-clip-text text-transparent block">
+        <span className="font-montserrat font-black uppercase tracking-tighter leading-[0.75] text-center text-[28vw] bg-linear-to-b from-white/[0.14] via-white/4 to-transparent bg-clip-text text-transparent block">
           TZAR
         </span>
       </div>

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   ChevronRight,
@@ -16,6 +17,7 @@ import {
 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
+import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 
 /* ── 01. AUTHENTIC DATA FROM LIVE SITE (tzar graphic-designing) ─────────── */
 
@@ -204,16 +206,24 @@ export const GraphicDesigningPage: React.FC = () => {
                 </nav>
 
                 <h1 className="font-montserrat font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
-                  High-Impact Graphic &amp;{' '}
-                  <span className="text-[#FFA200]">Brand Design.</span>
+                  <TypewriterHeadline
+                    segments={[
+                      { text: 'High-Impact Graphic & ' },
+                      { text: 'Brand Design.', className: 'text-[#FFA200]' },
+                    ]}
+                  />
                 </h1>
               </div>
 
               {/* Graphic Designing Art – matching LogoDesignPage layout */}
               <div className="w-full max-w-115 sm:max-w-135 lg:max-w-150 pt-2 sm:pt-4 flex items-center justify-center overflow-visible">
-                <img
-                  src="/assets/images/graphic_designing.png"
+                <Image
+                  src="/assets/images/graphic_designing.webp"
                   alt="High-Impact Graphic and Brand Design"
+                  width={1536}
+                  height={1024}
+                  priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
                   className="w-full h-auto object-contain drop-shadow-2xl"
                 />
               </div>

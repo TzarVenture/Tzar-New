@@ -59,8 +59,7 @@ export const NAV_ITEMS = [
       { id: 4, name: 'Graphic Designing', href: '/graphic-designing' },
       { id: 5, name: 'Social Media Marketing', href: '/social-media-marketing-services' },
       { id: 6, name: 'Logo Design', href: '/logo-design-services' },
-      { id: 7, name: 'Content Marketing', href: '/content-marketing-services' },
-      { id: 8, name: 'Product Design & Packaging', href: '/product-design-packaging-services' },
+      { id: 7, name: 'Product Design & Packaging', href: '/product-design-packaging-services' },
     ],
   },
   {

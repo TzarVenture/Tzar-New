@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import { TypewriterHeadline } from "@/legacy-src/components/ui/TypewriterHeadline";
 import {
   Sparkles,
   ArrowRight,
@@ -14,7 +15,6 @@ import {
   Target,
   BarChart3,
   Package,
-  FileText,
   Utensils,
   Gift,
   Globe,
@@ -134,17 +134,6 @@ const SERVICES_DATA: ServiceItem[] = [
     metric: "200+ Commercial SKUs",
   },
   {
-    id: "content-marketing",
-    category: "Search & Performance",
-    title: "Content Marketing Services",
-    href: "/content-marketing-services",
-    icon: FileText,
-    description:
-      "Editorial thought leadership, high-ranking SEO blog articles, and conversion copywriting that educate prospects, accelerate buying decisions, and build durable organic search authority.",
-    deliverables: ["In-Depth SEO Articles (2k–4k words)", "Technical Whitepapers & Case Studies", "Email Automation Sequences"],
-    metric: "+120% Inbound Inquiries",
-  },
-  {
     id: "cloud-kitchen",
     category: "Specialized Solutions",
     title: "Cloud Kitchen Marketing",
@@ -223,7 +212,7 @@ export default function ServicesView() {
         />
 
         {/* Ambient Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1D4224]/90 via-[#1D4224]/95 to-[#0E2015]" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#1D4224]/90 via-[#1D4224]/95 to-[#0E2015]" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb Strip */}
@@ -242,8 +231,12 @@ export default function ServicesView() {
             </div>
 
             <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
-              Services Engineered For{" "}
-              <span className="text-[#FFAE00]">Compounding Growth</span>
+              <TypewriterHeadline
+                segments={[
+                  { text: 'Services Engineered For ' },
+                  { text: 'Compounding Growth', className: 'text-[#FFAE00]' },
+                ]}
+              />
             </h1>
 
             <p className="font-sans text-sm sm:text-lg text-[#B6F8DD]/90 max-w-2xl leading-relaxed">
@@ -307,7 +300,7 @@ export default function ServicesView() {
                   <div>
                     {/* Header Row: Icon + Performance Metric */}
                     <div className="flex items-center justify-between gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-[#1D4224]/5 text-[#1D4224] flex items-center justify-center transition-colors duration-300 group-hover:bg-[#1D4224] group-hover:text-[#FFAE00] flex-shrink-0">
+                      <div className="w-12 h-12 rounded-xl bg-[#1D4224]/5 text-[#1D4224] flex items-center justify-center transition-colors duration-300 group-hover:bg-[#1D4224] group-hover:text-[#FFAE00] shrink-0">
                         <IconComponent className="w-6 h-6" />
                       </div>
                       <span className="font-mono text-[11px] font-bold text-[#1D4224] bg-[#FFAE00]/15 px-2.5 py-1 rounded-md">

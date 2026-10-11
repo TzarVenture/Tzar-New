@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
+import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 
 const OUTDOOR_SERVICES = [
   { id: '1', title: 'HOARDING ADVERTISEMENT', img: '/assets/images/resources/Ads-service/a1.png' },
@@ -84,7 +85,12 @@ export const OutdoorAdsPage: React.FC = () => {
                 We Dont Sell Products
               </p>
               <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase leading-[1.1] sm:leading-[1.05]">
-                WE MAKE ICONIC BRANDS
+                <TypewriterHeadline
+                  segments={[
+                    { text: 'WE MAKE ' },
+                    { text: 'ICONIC BRANDS', className: 'text-[#FFAE00]' },
+                  ]}
+                />
               </h1>
             </div>
 

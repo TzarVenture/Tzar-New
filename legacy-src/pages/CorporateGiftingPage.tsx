@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ExternalLink, ArrowUpRight } from 'lucide-react';
+import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 
 /* --------------------------------------------------------------------------
    EXACT PRODUCT DATA FROM LIVE SITE (tzar/src/app/corporate-gifting/page.js)
@@ -162,7 +163,7 @@ export const CorporateGiftingPage: React.FC = () => {
     <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
 
       {/* ── 01. ENHANCED BESPOKE HERO BANNER (100% VH / DVH HEIGHT AS REQUESTED) ── */}
-      <section className="relative w-full min-h-screen min-h-[100dvh] h-screen h-[100dvh] flex flex-col justify-center pt-20 pb-8 sm:pt-20 sm:pb-8 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/20">
+      <section className="relative w-full min-h-dvh h-dvh flex flex-col justify-center pt-20 pb-8 sm:pt-20 sm:pb-8 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/20">
         {/* Enhanced High-Resolution Luxury Banner Background */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
           <img
@@ -171,8 +172,8 @@ export const CorporateGiftingPage: React.FC = () => {
             className="w-full h-full object-cover object-center opacity-70"
           />
           {/* Brand dark spruce & gold ambient gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0E2015] via-[#0E2015]/75 to-[#0E2015]/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0E2015] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#0E2015] via-[#0E2015]/75 to-[#0E2015]/60" />
+          <div className="absolute inset-0 bg-linear-to-t from-[#0E2015] via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 my-auto w-full">
@@ -181,7 +182,12 @@ export const CorporateGiftingPage: React.FC = () => {
               Curated Luxury &amp; Bespoke Merchandise
             </p>
             <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase leading-[1.08]">
-              CORPORATE GIFTING SOLUTIONS
+              <TypewriterHeadline
+                segments={[
+                  { text: 'CORPORATE ' },
+                  { text: 'GIFTING SOLUTIONS', className: 'text-[#FFAE00]' },
+                ]}
+              />
             </h1>
 
             {/* CTA Buttons: Fixed Mobile Positioning */}

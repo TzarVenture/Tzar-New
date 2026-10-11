@@ -735,7 +735,6 @@ export const SeoServicePage: React.FC = () => {
         secondaryText="View Portfolio"
         secondaryHref="/portfolio"
       />
-
     </div>
   );
 };

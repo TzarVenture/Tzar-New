@@ -77,55 +77,78 @@ export const DeckCardsScrollSection: React.FC = () => {
   const mobileCardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Smooth scroll tracker for desktop & mobile
-  const handleScroll = useCallback(() => {
-    const windowH = window.innerHeight;
-
-    // 1. Desktop progress (Sticky stage)
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      const totalDist = rect.height - windowH;
-      if (totalDist > 0) {
-        const currentDist = -rect.top;
-        const rawProgress = currentDist / totalDist;
-        setScrollProgress(Math.max(0, Math.min(1, rawProgress)));
-      }
-    }
-
-    // 2. Mobile vertical scroll flip (One by one in scrolling order)
-    if (typeof window !== "undefined" && window.innerWidth < 768) {
-      mobileCardRefs.current.forEach((el) => {
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        // Starts flipping as card enters viewport (85% from top), completes at 35%
-        const raw = (windowH * 0.85 - rect.top) / (windowH * 0.50);
-        const clamped = Math.max(0, Math.min(1, raw));
-        const eased = clamped < 0.5 ? 2 * clamped * clamped : 1 - Math.pow(-2 * clamped + 2, 2) / 2;
-        const rotX = eased * 180;
-        const liftZ = Math.sin(clamped * Math.PI) * 35;
-        el.style.setProperty("--rot-x", `${rotX}deg`);
-        el.style.setProperty("--lift-z", `${liftZ}px`);
-      });
-    }
-  }, []);
+  // Smooth LERP animation refs for high-frame-rate, continuous card rotation
+  const targetProgressRef = useRef(0);
+  const currentProgressRef = useRef(0);
+  const rafIdRef = useRef<number | null>(null);
 
   useEffect(() => {
-    let rafId: number;
-    const onScrollRaf = () => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(handleScroll);
+    let isMounted = true;
+
+    const tick = () => {
+      if (!isMounted) return;
+      const target = targetProgressRef.current;
+      const current = currentProgressRef.current;
+      const diff = target - current;
+
+      if (Math.abs(diff) > 0.0003) {
+        // High frame-rate dampening for silky smooth card flipping
+        currentProgressRef.current += diff * 0.12;
+        setScrollProgress(currentProgressRef.current);
+        rafIdRef.current = requestAnimationFrame(tick);
+      } else {
+        currentProgressRef.current = target;
+        setScrollProgress(target);
+        rafIdRef.current = null;
+      }
     };
 
-    window.addEventListener("scroll", onScrollRaf, { passive: true });
-    window.addEventListener("resize", onScrollRaf, { passive: true });
+    const handleScroll = () => {
+      const windowH = window.innerHeight;
+
+      // 1. Desktop progress (Sticky stage)
+      if (containerRef.current && window.innerWidth >= 768) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const totalDist = rect.height - windowH;
+        if (totalDist > 0) {
+          const rawProgress = Math.max(0, Math.min(1, -rect.top / totalDist));
+          targetProgressRef.current = rawProgress;
+          if (rafIdRef.current === null) {
+            rafIdRef.current = requestAnimationFrame(tick);
+          }
+        }
+      }
+
+      // 2. Mobile vertical scroll flip (One by one in scrolling order)
+      if (typeof window !== "undefined" && window.innerWidth < 768) {
+        mobileCardRefs.current.forEach((el) => {
+          if (!el) return;
+          const rect = el.getBoundingClientRect();
+          // Starts flipping as card enters viewport (90% from top), completes across a wide 65% window
+          const raw = (windowH * 0.90 - rect.top) / (windowH * 0.65);
+          const clamped = Math.max(0, Math.min(1, raw));
+          const eased = clamped < 0.5 ? 2 * clamped * clamped : 1 - Math.pow(-2 * clamped + 2, 2) / 2;
+          const rotX = eased * 180;
+          const liftZ = Math.sin(clamped * Math.PI) * 35;
+          el.style.setProperty("--rot-x", `${rotX}deg`);
+          el.style.setProperty("--lift-z", `${liftZ}px`);
+        });
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
     handleScroll();
 
     return () => {
-      cancelAnimationFrame(rafId);
-      window.removeEventListener("scroll", onScrollRaf);
-      window.removeEventListener("resize", onScrollRaf);
+      isMounted = false;
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
-  }, [handleScroll]);
+  }, []);
 
   // Interpolation helper
   const easeInOutQuad = (t: number) =>
@@ -141,11 +164,12 @@ export const DeckCardsScrollSection: React.FC = () => {
 
   const spreadRotations = [-6, -2, 2, 6];
 
+  // Generously spaced cascading flip windows giving plenty of scroll frames to each card
   const desktopFlipWindows = [
-    { start: 0.38, end: 0.64 },
-    { start: 0.44, end: 0.70 },
-    { start: 0.50, end: 0.76 },
-    { start: 0.56, end: 0.82 },
+    { start: 0.42, end: 0.62 },
+    { start: 0.50, end: 0.70 },
+    { start: 0.58, end: 0.78 },
+    { start: 0.66, end: 0.86 },
   ];
 
   return (
@@ -178,9 +202,9 @@ export const DeckCardsScrollSection: React.FC = () => {
         <div className="deck-cards-arena deck-desktop-arena">
           <div className="deck-cards-row">
             {CARDS_DATA.map((card, idx) => {
-              // Phase 1: Horizontal Spread (0.04 to 0.36)
-              const spreadStart = 0.04;
-              const spreadEnd = 0.36;
+              // Phase 1: Horizontal Spread (0.05 to 0.35)
+              const spreadStart = 0.05;
+              const spreadEnd = 0.35;
               const spreadRaw = Math.max(
                 0,
                 Math.min(1, (scrollProgress - spreadStart) / (spreadEnd - spreadStart))
@@ -197,7 +221,7 @@ export const DeckCardsScrollSection: React.FC = () => {
               const initialX = deckOffsets[idx].x;
               const initialY = deckOffsets[idx].y;
 
-              // Phase 2: 3D Flip (0.38 to 0.82)
+              // Phase 2: 3D Flip (0.42 to 0.86)
               const { start: fStart, end: fEnd } = desktopFlipWindows[idx];
               const flipRaw = Math.max(0, Math.min(1, (scrollProgress - fStart) / (fEnd - fStart)));
               const flipEased = easeInOutQuad(flipRaw);

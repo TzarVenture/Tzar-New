@@ -14,7 +14,7 @@ interface MockupSlide {
 const MOCKUP_SLIDES: MockupSlide[] = [
   { id: 1, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-01.webp", title: "Brand Flagship Store", tag: "E-Commerce" },
   { id: 2, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-02.webp", title: "Product Catalog View", tag: "Mobile UI" },
-  { id: 3, img: "/assets/images/MobileShowcase/Home/Showcase-03.png", title: "Interactive Product Detail", tag: "Shopify Store" },
+  { id: 3, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-03.webp", title: "Interactive Product Detail", tag: "Shopify Store" },
   { id: 4, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-04.webp", title: "Seamless Mobile Checkout", tag: "Conversion Flow" },
   { id: 5, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-05.webp", title: "Modern UI/UX Feed", tag: "Mobile App" },
   { id: 6, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-06.webp", title: "Dynamic Brand Header", tag: "Web Design" },
@@ -23,17 +23,17 @@ const MOCKUP_SLIDES: MockupSlide[] = [
   { id: 9, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-09.webp", title: "Order Tracking Screen", tag: "Customer Portal" },
   { id: 10, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-10.webp", title: "Customer Profile Page", tag: "User Account" },
   { id: 11, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-11.webp", title: "Filter & Search Grid", tag: "Instant Search" },
-  // { id: 12, img: "/assets/images/MobileShowcase/Home/Showcase-12mob.png", title: "Mobile Checkout Flow", tag: "Secure Pay" },
+  // { id: 12, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-12mob.webp", title: "Mobile Checkout Flow", tag: "Secure Pay" },
   { id: 13, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-13.webp", title: "Brand Story Showcase", tag: "Brand Narrative" },
   { id: 14, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-14.webp", title: "Promotion Grid Screen", tag: "Campaign Hub" },
   { id: 15, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-15.webp", title: "Interactive Review Carousel", tag: "Social Proof" },
   { id: 16, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-16.webp", title: "Newsletter & Retention", tag: "Lead Capture" },
   { id: 17, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-17.webp", title: "Mobile Footer & FAQs", tag: "Support UI" },
   { id: 18, img: "/optimized/assets/images/MobileShowcase/Home/Showcase-18.webp", title: "E-Commerce Speed Metric", tag: "Core Web Vitals" },
-  { id: 19, img: "/assets/images/MobileShowcase/Home/CabeoChavess.png", title: "Cabelo Chave Luxury Hair", tag: "Live Client Store" },
-  { id: 20, img: "/assets/images/MobileShowcase/Home/MahaaRajass.png", title: "Mahaarajaa Royal Apparel", tag: "Live Client Store" },
-  { id: 21, img: "/assets/images/MobileShowcase/Home/epitomess.png", title: "Epitome Global Brand", tag: "Live Client Store" },
-  { id: 22, img: "/assets/images/MobileShowcase/Home/blue7vets.png", title: "Blue7 Vets Healthcare", tag: "Live Client Store" },
+  { id: 19, img: "/optimized/assets/images/MobileShowcase/Home/CabeoChavess.webp", title: "Cabelo Chave Luxury Hair", tag: "Live Client Store" },
+  { id: 20, img: "/optimized/assets/images/MobileShowcase/Home/MahaaRajass.webp", title: "Mahaarajaa Royal Apparel", tag: "Live Client Store" },
+  { id: 21, img: "/optimized/assets/images/MobileShowcase/Home/epitomess.webp", title: "Epitome Global Brand", tag: "Live Client Store" },
+  { id: 22, img: "/optimized/assets/images/MobileShowcase/Home/blue7vets.webp", title: "Blue7 Vets Healthcare", tag: "Live Client Store" },
 ];
 
 const BASE_COUNT = MOCKUP_SLIDES.length;
@@ -203,10 +203,11 @@ export const ShowcaseMockupSection: React.FC = () => {
           }}
         >
           <img
-            src="/mockups/iphone17-frame.png"
+            src="/mockups/iphone17-frame.webp"
             alt="iPhone 17 Frame"
             className="w-full h-full object-contain pointer-events-none select-none"
-            loading="lazy"
+            loading="eager"
+            fetchPriority="high"
             decoding="async"
           />
         </div>
@@ -277,7 +278,7 @@ export const ShowcaseMockupSection: React.FC = () => {
                 >
                   {/* Underlay Screen image */}
                   <div
-                    className="absolute overflow-hidden bg-black"
+                    className="absolute overflow-hidden bg-[#07130a]"
                     style={{
                       top: isCenter ? "1.62%" : "0%",
                       bottom: isCenter ? "1.62%" : "0%",
@@ -286,15 +287,20 @@ export const ShowcaseMockupSection: React.FC = () => {
                       borderRadius: isCenter ? "34px" : "36px",
                     }}
                   >
+                    {/* Dark gradient skeleton placeholder - ensures no empty card is ever shown */}
+                    <div className="absolute inset-0 bg-linear-to-b from-[#122817] via-[#0b1c10] to-[#040e06] pointer-events-none" />
+
                     <img
                       src={slide.img}
                       alt={slide.title}
-                      className="w-full h-full object-cover object-top"
-                      loading="lazy"
+                      className="w-full h-full object-cover object-top relative z-10"
+                      loading={Math.abs(idx - currentIndex) <= 3 ? "eager" : "lazy"}
+                      fetchPriority={idx === currentIndex ? "high" : "auto"}
+                      decoding={Math.abs(idx - currentIndex) <= 2 ? "sync" : "async"}
                       draggable={false}
                     />
                     {/* Glass glare highlight */}
-                    <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
+                    <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-white/10 pointer-events-none z-20" />
                   </div>
                 </div>
               </div>
@@ -306,4 +312,42 @@ export const ShowcaseMockupSection: React.FC = () => {
   );
 };
 
+export const ShowcaseMockupSkeleton: React.FC = () => {
+  return (
+    <section className="pt-12 sm:pt-16 pb-12 sm:pb-16 bg-transparent relative overflow-hidden select-none">
+      {/* Background Soft Ambient Light */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-125 h-125 bg-[#1D4224]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-125 h-125 bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />
+
+      {/* SECTION HEADER */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
+        <div className="flex items-center justify-center text-center">
+          <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
+            Showcase Mockup
+          </h2>
+        </div>
+      </div>
+
+      {/* PREVIEW CAROUSEL SILHOUETTES */}
+      <div className="w-full relative overflow-hidden py-3 flex items-center justify-center gap-4 sm:gap-6 lg:gap-8">
+        <div className="hidden sm:block shrink-0 w-53.75 sm:w-63.75 lg:w-72.5 h-111 sm:h-131.5 lg:h-149.75 rounded-[34px] sm:rounded-[40px] lg:rounded-[44px] bg-[#0c1a10]/50 border border-white/5 scale-[0.88] opacity-40 animate-pulse" />
+        
+        <div className="shrink-0 w-53.75 sm:w-63.75 lg:w-72.5 h-111 sm:h-131.5 lg:h-149.75 rounded-[34px] sm:rounded-[40px] lg:rounded-[44px] bg-[#0d2213]/70 border border-[#B6F8DD]/15 shadow-2xl relative overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 bg-linear-to-b from-[#142618]/60 via-[#07130a]/80 to-[#030a05] animate-pulse" />
+          <img
+            src="/mockups/iphone17-frame.webp"
+            alt="iPhone 17 Frame"
+            className="w-full h-full object-contain pointer-events-none select-none relative z-10"
+            loading="eager"
+            fetchPriority="high"
+          />
+        </div>
+
+        <div className="hidden sm:block shrink-0 w-53.75 sm:w-63.75 lg:w-72.5 h-111 sm:h-131.5 lg:h-149.75 rounded-[34px] sm:rounded-[40px] lg:rounded-[44px] bg-[#0c1a10]/50 border border-white/5 scale-[0.88] opacity-40 animate-pulse" />
+      </div>
+    </section>
+  );
+};
+
 export default ShowcaseMockupSection;
+

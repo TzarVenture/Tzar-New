@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface DeferredSectionProps {
   children: React.ReactNode;
+  /** Optional fallback/skeleton to render before section intersects */
+  fallback?: React.ReactNode;
   /** Classes for the wrapper. Use min-height classes that match the real section height to avoid layout shift. */
   className?: string;
   /** How far ahead of the viewport to start mounting (fetch + render) the section. */
@@ -11,12 +13,12 @@ interface DeferredSectionProps {
 }
 
 /**
- * Renders nothing but a height-reserving wrapper until the wrapper comes
+ * Renders fallback (or null) until the wrapper comes
  * within `rootMargin` of the viewport, then mounts its children once.
- * Server and first client render are identical (empty wrapper), so there is
+ * Server and first client render are identical, so there is
  * no hydration mismatch.
  */
-export function DeferredSection({ children, className = '', rootMargin = '800px 0px' }: DeferredSectionProps) {
+export function DeferredSection({ children, fallback = null, className = '', rootMargin = '800px 0px' }: DeferredSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -42,7 +44,7 @@ export function DeferredSection({ children, className = '', rootMargin = '800px 
 
   return (
     <div ref={ref} className={className}>
-      {visible ? children : null}
+      {visible ? children : fallback}
     </div>
   );
 }

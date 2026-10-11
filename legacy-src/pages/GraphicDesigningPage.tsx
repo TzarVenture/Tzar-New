@@ -444,7 +444,6 @@ export const GraphicDesigningPage: React.FC = () => {
         secondaryText="View Portfolio"
         secondaryHref="/portfolio"
       />
-
     </div>
   );
 };

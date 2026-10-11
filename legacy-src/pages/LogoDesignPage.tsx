@@ -376,7 +376,6 @@ export const LogoDesignPage: React.FC = () => {
         secondaryText="View Portfolio"
         secondaryHref="/portfolio"
       />
-
     </div>
   );
 };

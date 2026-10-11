@@ -513,7 +513,6 @@ export const SocialMediaMarketingPage: React.FC = () => {
         secondaryText="View Portfolio"
         secondaryHref="/portfolio"
       />
-
     </div>
   );
 };

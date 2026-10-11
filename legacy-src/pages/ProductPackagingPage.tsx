@@ -281,7 +281,6 @@ export const ProductPackagingPage: React.FC = () => {
         secondaryText="View Portfolio"
         secondaryHref="/portfolio"
       />
-
     </div>
   );
 };

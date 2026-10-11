@@ -1,7 +1,5 @@
 .tech-insights-section {
-  background: rgba(6, 19, 9, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: transparent;
   padding: clamp(2.25rem, 4vh, 3rem) 0;
   margin-top: 0;
   overflow: hidden;

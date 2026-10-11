@@ -26,8 +26,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${montserrat.variable}`}>
-      <body className="bg-[#EFE8E0] text-[#0E2015] min-h-screen flex flex-col justify-between font-sans">
+    <html lang="en" className={`${manrope.variable} ${montserrat.variable}`} suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className="bg-[#EFE8E0] text-[#0E2015] min-h-screen flex flex-col justify-between font-sans"
+      >
         <AppLayoutWrapper>{children}</AppLayoutWrapper>
       </body>
     </html>

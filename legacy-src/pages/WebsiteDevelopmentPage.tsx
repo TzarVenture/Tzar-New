@@ -219,7 +219,7 @@ const INDUSTRIES = [
 const MOCKUP_SLIDES = [
   { id: 1, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-01.webp', title: 'Brand Flagship Store' },
   { id: 2, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-02.webp', title: 'Product Catalog View' },
-  { id: 3, img: '/assets/images/MobileShowcase/Home/Showcase-03.png', title: 'Interactive Product Detail' },
+  { id: 3, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-03.webp', title: 'Interactive Product Detail' },
   { id: 4, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-04.webp', title: 'Seamless Mobile Checkout' },
   { id: 5, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-05.webp', title: 'Modern Clean Feed' },
   { id: 6, img: '/optimized/assets/images/MobileShowcase/Home/Showcase-06.webp', title: 'Dynamic Brand Header' },

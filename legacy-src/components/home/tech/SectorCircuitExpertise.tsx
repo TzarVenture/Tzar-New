@@ -2,17 +2,17 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import {
-  Car,
-  Coins,
-  MessagesSquare,
+  CarFront,
+  Landmark,
+  BriefcaseBusiness,
   ShoppingBag,
-  BookOpen,
+  GraduationCap,
   Zap,
-  CalendarDays,
-  Utensils,
+  Ticket,
+  UtensilsCrossed,
   Cpu,
   HeartPulse,
-  ConciergeBell,
+  Hotel,
   Factory,
 } from "lucide-react";
 import "./SectorCircuitExpertise.css";
@@ -20,27 +20,27 @@ import "./SectorCircuitExpertise.css";
 interface DomainItem {
   id: string;
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number | string }>;
   colIndex: number; // 0 to 5 for PC
   isUpper: boolean; // true for PC top row, false for bottom
 }
 
-// 12 Domains ordered logically
+// 12 Domains with premium, industry-specific icons
 const DOMAINS: DomainItem[] = [
   // ── UPPER ROW (PC: Cols 0-5) ──
-  { id: "auto", name: "Automobiles", icon: Car, colIndex: 0, isUpper: true },
-  { id: "capital", name: "Capital", icon: Coins, colIndex: 1, isUpper: true },
-  { id: "consulting", name: "Consulting", icon: MessagesSquare, colIndex: 2, isUpper: true },
+  { id: "auto", name: "Automobiles", icon: CarFront, colIndex: 0, isUpper: true },
+  { id: "capital", name: "Capital", icon: Landmark, colIndex: 1, isUpper: true },
+  { id: "consulting", name: "Consulting", icon: BriefcaseBusiness, colIndex: 2, isUpper: true },
   { id: "ecommerce", name: "E-Commerce", icon: ShoppingBag, colIndex: 3, isUpper: true },
-  { id: "education", name: "Education", icon: BookOpen, colIndex: 4, isUpper: true },
+  { id: "education", name: "Education", icon: GraduationCap, colIndex: 4, isUpper: true },
   { id: "energy", name: "Energy", icon: Zap, colIndex: 5, isUpper: true },
 
   // ── LOWER ROW (PC: Cols 0-5) ──
-  { id: "events", name: "Events", icon: CalendarDays, colIndex: 0, isUpper: false },
-  { id: "food", name: "Food & Beverage", icon: Utensils, colIndex: 1, isUpper: false },
+  { id: "events", name: "Events", icon: Ticket, colIndex: 0, isUpper: false },
+  { id: "food", name: "Food & Beverage", icon: UtensilsCrossed, colIndex: 1, isUpper: false },
   { id: "hardware", name: "Hardware", icon: Cpu, colIndex: 2, isUpper: false },
   { id: "healthcare", name: "Healthcare", icon: HeartPulse, colIndex: 3, isUpper: false },
-  { id: "hospitality", name: "Hospitality", icon: ConciergeBell, colIndex: 4, isUpper: false },
+  { id: "hospitality", name: "Hospitality", icon: Hotel, colIndex: 4, isUpper: false },
   { id: "industries", name: "Industries", icon: Factory, colIndex: 5, isUpper: false },
 ];
 
@@ -50,9 +50,8 @@ export const SectorCircuitExpertise: React.FC = () => {
   const mobileContainerRef = useRef<HTMLDivElement>(null);
 
   // ── OPTIMIZED MOBILE SCROLL TRACKER ─────────────────────────────────
-  // Only listens when component is actually in viewport, throttled with RAF
+  // Throttled RAF listener only when visible in viewport
   useEffect(() => {
-    // Only needed on mobile (< 1024px)
     if (typeof window === "undefined" || window.innerWidth >= 1024) return;
 
     let ticking = false;
@@ -69,15 +68,15 @@ export const SectorCircuitExpertise: React.FC = () => {
       const rect = el.getBoundingClientRect();
       const windowHeight = window.innerHeight || 800;
 
-      const startY = windowHeight * 0.8;
-      const endY = windowHeight * 0.2;
+      const startY = windowHeight * 0.85;
+      const endY = windowHeight * 0.15;
       const totalDistance = rect.height + (startY - endY);
       const currentProgress = (startY - rect.top) / totalDistance;
 
       const clamped = Math.max(0, Math.min(1, currentProgress));
-      const rounded = Math.round(clamped * 50) / 50; // Step in 0.02 increments to avoid micro-renders
+      const rounded = Math.round(clamped * 40) / 40; // Step increments to avoid redundant renders
 
-      if (Math.abs(rounded - lastProgress) >= 0.02) {
+      if (Math.abs(rounded - lastProgress) >= 0.025) {
         lastProgress = rounded;
         setMobileScrollProgress(rounded);
       }
@@ -130,8 +129,8 @@ export const SectorCircuitExpertise: React.FC = () => {
   return (
     <section className="sector-circuit-wrapper pt-12 pb-4 sm:pt-14 sm:pb-6 relative z-20 select-none">
       {/* Background Soft Glow Accents */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#0E2015]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#0E2015]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -147,12 +146,11 @@ export const SectorCircuitExpertise: React.FC = () => {
 
         {/* ══════════════════════════════════════════════════════════════════
             DESKTOP CIRCUIT MATRIX (>= 1024px)
-            6 Upper Domains + Smooth Flowing Light Lines (#0E2015) + 6 Lower Domains
-            NO DOTS - Pure Clean Lines & Flowing Tech Light
+            Clean Floating Domain Nodes + Big Hero Icons + Light Emerald Tech Conduit
             ══════════════════════════════════════════════════════════════════ */}
         <div className="hidden lg:block relative py-4">
           
-          {/* 1. UPPER ROW: 6 Domain Cards (Icon + Title only) */}
+          {/* 1. UPPER ROW: 6 Floating Domain Nodes with Large Hero Icons */}
           <div className="grid grid-cols-6 gap-4 xl:gap-5 mb-0 relative z-10">
             {upperDomains.map((domain) => {
               const Icon = domain.icon;
@@ -161,12 +159,12 @@ export const SectorCircuitExpertise: React.FC = () => {
               return (
                 <div
                   key={domain.id}
-                  className={`circuit-card ${isHovered ? "is-active" : ""}`}
+                  className={`circuit-card group ${isHovered ? "is-active" : ""}`}
                   onMouseEnter={() => setHoveredDomain(domain.id)}
                   onMouseLeave={() => setHoveredDomain(null)}
                 >
                   <div className="circuit-card-icon-box">
-                    <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                    <Icon className="w-12 h-12 lg:w-14 lg:h-14 transition-transform duration-300 group-hover:scale-105" strokeWidth={1.5} />
                   </div>
                   <h3 className="circuit-card-title">{domain.name}</h3>
                 </div>
@@ -174,7 +172,7 @@ export const SectorCircuitExpertise: React.FC = () => {
             })}
           </div>
 
-          {/* 2. CENTRAL CIRCUIT CONDUIT (Smooth Flowing SVG Light Lines) */}
+          {/* 2. CENTRAL CIRCUIT CONDUIT (Light Emerald Green Lines, Zero Glow) */}
           <div className="relative w-full h-25 my-0 pointer-events-none">
             <svg
               className="w-full h-full overflow-visible"
@@ -183,34 +181,22 @@ export const SectorCircuitExpertise: React.FC = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <defs>
-                {/* Luminous Filter for #0E2015 */}
-                <filter id="smooth-circuit-glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="1" result="glow" />
-                  <feMerge>
-                    <feMergeNode in="glow" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* ── 1. PASSIVE BASE GRAY WIRES (NO DOTS) ── */}
+              {/* ── 1. PASSIVE LIGHT EMERALD STEM WIRES ── */}
               {/* Central Horizontal Trunk Line */}
-              <line x1="100" y1="50" x2="1100" y2="50" stroke="#CBD5E1" strokeWidth="1.25" strokeLinecap="round" />
+              <line x1="100" y1="50" x2="1100" y2="50" stroke="rgba(52, 211, 153, 0.25)" strokeWidth="1.5" strokeLinecap="round" />
 
               {/* Vertical Stems Connecting to Upper & Lower Cards */}
               {[100, 300, 500, 700, 900, 1100].map((x, idx) => (
                 <g key={`base-stem-${idx}`}>
                   {/* Upper branch: from Y=0 (upper card) down to Y=50 */}
-                  <line x1={x} y1="0" x2={x} y2="50" stroke="#CBD5E1" strokeWidth="1.25" strokeLinecap="round" />
+                  <line x1={x} y1="0" x2={x} y2="50" stroke="rgba(52, 211, 153, 0.25)" strokeWidth="1.5" strokeLinecap="round" />
                   {/* Lower branch: from Y=50 down to Y=100 (lower card) */}
-                  <line x1={x} y1="50" x2={x} y2="100" stroke="#CBD5E1" strokeWidth="1.25" strokeLinecap="round" />
+                  <line x1={x} y1="50" x2={x} y2="100" stroke="rgba(52, 211, 153, 0.25)" strokeWidth="1.5" strokeLinecap="round" />
                 </g>
               ))}
 
-              {/* ── 2. SMOOTH FLOWING TECH LIGHT BEAMS (#0E2015) ── */}
-              {/* 12 Dedicated Paths from Center (600, 50) directly into each domain */}
-              <g filter="url(#smooth-circuit-glow)">
+              {/* ── 2. SMOOTH FLOWING LIGHT EMERALD BEAMS ── */}
+              <g>
                 {DOMAINS.map((domain) => {
                   const x = 100 + domain.colIndex * 200;
                   const isUpper = domain.isUpper;
@@ -234,7 +220,7 @@ export const SectorCircuitExpertise: React.FC = () => {
             </svg>
           </div>
 
-          {/* 3. LOWER ROW: 6 Domain Cards (Icon + Title only) */}
+          {/* 3. LOWER ROW: 6 Floating Domain Nodes with Large Hero Icons */}
           <div className="grid grid-cols-6 gap-4 xl:gap-5 mt-0 relative z-10">
             {lowerDomains.map((domain) => {
               const Icon = domain.icon;
@@ -243,12 +229,12 @@ export const SectorCircuitExpertise: React.FC = () => {
               return (
                 <div
                   key={domain.id}
-                  className={`circuit-card ${isHovered ? "is-active" : ""}`}
+                  className={`circuit-card group ${isHovered ? "is-active" : ""}`}
                   onMouseEnter={() => setHoveredDomain(domain.id)}
                   onMouseLeave={() => setHoveredDomain(null)}
                 >
                   <div className="circuit-card-icon-box">
-                    <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                    <Icon className="w-12 h-12 lg:w-14 lg:h-14 transition-transform duration-300 group-hover:scale-105" strokeWidth={1.5} />
                   </div>
                   <h3 className="circuit-card-title">{domain.name}</h3>
                 </div>
@@ -261,16 +247,16 @@ export const SectorCircuitExpertise: React.FC = () => {
         {/* ══════════════════════════════════════════════════════════════════
             MOBILE CIRCUIT TIMELINE (< 1024px)
             Vertical Format: 6 Domains on Left, 6 Domains on Right
-            Smooth Flowing Light (#0E2015) without Dots
+            Light Emerald Conduit, Zero Glow
             ══════════════════════════════════════════════════════════════════ */}
         <div ref={mobileContainerRef} className="block lg:hidden relative py-4">
           
           {/* Continuous Central Vertical Line Structure */}
           <div className="relative">
-            {/* Background Continuous Gray Spine */}
+            {/* Background Continuous Light Emerald Spine */}
             <div className="mobile-trunk-line" />
 
-            {/* Flowing Ink-Green Spine (Tracks Scroll Progress Smoothly) */}
+            {/* Flowing Light Emerald Spine (Tracks Scroll Progress Smoothly) */}
             <div
               className="mobile-trunk-glow"
               style={{
@@ -293,45 +279,43 @@ export const SectorCircuitExpertise: React.FC = () => {
               return (
                 <div key={`mobile-row-${rowIdx}`} className={`relative flex items-center justify-between ${rowIdx < 5 ? "mb-7 sm:mb-9" : ""}`}>
                   
-                  {/* ── LEFT CARD (Icon + Title only) ── */}
+                  {/* ── LEFT NODE (Floating Hero Icon) ── */}
                   <div className="w-[43%] sm:w-[44%] relative">
-                    <div className={`circuit-card ${isRowLit ? "is-active" : ""}`}>
+                    <div className={`circuit-card group ${isRowLit ? "is-active" : ""}`}>
                       <div className="circuit-card-icon-box">
-                        <LeftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <LeftIcon className="w-9 h-9 sm:w-10 sm:h-10" strokeWidth={1.5} />
                       </div>
                       <h3 className="circuit-card-title">{leftDomain.name}</h3>
                     </div>
                   </div>
 
-                  {/* ── CENTRAL JUNCTION & CONNECTOR BRANCHES (NO DOTS) ── */}
+                  {/* ── CENTRAL JUNCTION & CONNECTOR BRANCHES (LIGHT EMERALD) ── */}
                   <div className="w-[14%] sm:w-[12%] flex items-center justify-center relative h-full">
-                    {/* Base Gray Horizontal Branch Wire (Across both cards) */}
-                    <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-[#CBD5E1]" />
+                    {/* Base Light Emerald Horizontal Branch Wire */}
+                    <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-[#34D399]/20" />
 
-                    {/* Smooth Flowing Branch to Left Card (expands outward from center to left) */}
+                    {/* Smooth Flowing Branch to Left Node */}
                     <div
-                      className="absolute right-1/2 top-1/2 -translate-y-1/2 h-[2.5px] bg-[#0E2015] transition-all duration-300"
+                      className="absolute right-1/2 top-1/2 -translate-y-1/2 h-[2px] bg-[#34D399] transition-all duration-300"
                       style={{
                         width: `${rowProgress * 50}%`,
-                        boxShadow: rowProgress > 0 ? "0 0 6px rgba(14, 32, 21, 0.45)" : "none",
                       }}
                     />
 
-                    {/* Smooth Flowing Branch to Right Card (expands outward from center to right) */}
+                    {/* Smooth Flowing Branch to Right Node */}
                     <div
-                      className="absolute left-1/2 top-1/2 -translate-y-1/2 h-[2.5px] bg-[#0E2015] transition-all duration-300"
+                      className="absolute left-1/2 top-1/2 -translate-y-1/2 h-[2px] bg-[#34D399] transition-all duration-300"
                       style={{
                         width: `${rowProgress * 50}%`,
-                        boxShadow: rowProgress > 0 ? "0 0 6px rgba(14, 32, 21, 0.45)" : "none",
                       }}
                     />
                   </div>
 
-                  {/* ── RIGHT CARD (Icon + Title only) ── */}
+                  {/* ── RIGHT NODE (Floating Hero Icon) ── */}
                   <div className="w-[43%] sm:w-[44%] relative">
-                    <div className={`circuit-card ${isRowLit ? "is-active" : ""}`}>
+                    <div className={`circuit-card group ${isRowLit ? "is-active" : ""}`}>
                       <div className="circuit-card-icon-box">
-                        <RightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <RightIcon className="w-9 h-9 sm:w-10 sm:h-10" strokeWidth={1.5} />
                       </div>
                       <h3 className="circuit-card-title">{rightDomain.name}</h3>
                     </div>

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-//  TZAR VENTURE — Services Data (migrated from legacy servicesDetails.js)
+//  TZAR DIGITAL AGENCY — Services Data (migrated from legacy servicesDetails.js)
 // ─────────────────────────────────────────────────────────────────
 
 export interface Service {

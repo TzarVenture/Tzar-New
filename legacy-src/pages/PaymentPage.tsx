@@ -156,7 +156,7 @@ export const PaymentPage: React.FC = () => {
           key: razorpayKey,
           amount: data.amount || finalAmount * 100,
           currency: "INR",
-          name: "TZAR VENTURE",
+          name: "TZAR DIGITAL AGENCY",
           description: "Digital Marketing & Agency Services",
           image: "/assets/images/tzarlogonew.png",
           order_id: orderId,
@@ -348,7 +348,7 @@ export const PaymentPage: React.FC = () => {
                   }`}
               >
                 <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${step > 1 ? 'bg-[#FFAE00] text-[#0E2015]' : 'bg-white/20'}`}>
-                  {step > 1 ? <Check className="w-3 h-3 stroke-[3]" /> : '1'}
+                  {step > 1 ? <Check className="w-3 h-3 stroke-3" /> : '1'}
                 </span>
                 <span>Services</span>
               </div>
@@ -365,7 +365,7 @@ export const PaymentPage: React.FC = () => {
                   }`}
               >
                 <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${step > 2 ? 'bg-[#FFAE00] text-[#0E2015]' : 'bg-white/20'}`}>
-                  {step > 2 ? <Check className="w-3 h-3 stroke-[3]" /> : '2'}
+                  {step > 2 ? <Check className="w-3 h-3 stroke-3" /> : '2'}
                 </span>
                 <span>Details</span>
               </div>
@@ -474,7 +474,7 @@ export const PaymentPage: React.FC = () => {
                                   : 'bg-white border border-[#0E2015]/20 text-transparent'
                                   }`}
                               >
-                                <Check className="w-3.5 h-3.5 stroke-[3]" />
+                                <Check className="w-3.5 h-3.5 stroke-3" />
                               </div>
                             </div>
 
@@ -552,7 +552,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="e.g. John Doe"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:border-[#1D4224] focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm"
                         />
                       </div>
 
@@ -566,7 +566,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="e.g. Acme Innovations Pvt Ltd"
                           value={company}
                           onChange={(e) => setCompany(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:border-[#1D4224] focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm"
                         />
                       </div>
 
@@ -581,7 +581,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="e.g. client@company.com"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:border-[#1D4224] focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm"
                         />
                       </div>
 
@@ -595,7 +595,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="e.g. +91 98765 43210"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:border-[#1D4224] focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm"
                         />
                       </div>
 
@@ -609,7 +609,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="e.g. 27AAAAA0000A1Z5"
                           value={gstNumber}
                           onChange={(e) => setGstNumber(e.target.value.toUpperCase())}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:border-[#1D4224] focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm font-mono uppercase"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all text-sm font-mono uppercase"
                         />
                       </div>
 
@@ -629,7 +629,7 @@ export const PaymentPage: React.FC = () => {
                             placeholder="Enter base amount"
                             value={manualAmount}
                             onChange={(e) => setManualAmount(e.target.value)}
-                            className="w-full pl-8 pr-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:border-[#1D4224] focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-mono font-bold text-base"
+                            className="w-full pl-8 pr-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-mono font-bold text-base"
                           />
                         </div>
                       </div>
@@ -645,7 +645,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="Enter complete billing address, street, city, state and PIN code"
                           value={address}
                           onChange={(e) => setAddress(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:border-[#1D4224] focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] outline-none transition-all font-inter text-sm resize-none"
                         />
                       </div>
                     </div>
@@ -679,7 +679,7 @@ export const PaymentPage: React.FC = () => {
                                 key={s.id}
                                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0E2015] text-[#FFAE00] font-montserrat font-bold text-xs shadow-sm"
                               >
-                                <Check className="w-3 h-3 stroke-[3]" />
+                                <Check className="w-3 h-3 stroke-3" />
                                 <span>{s.title}</span>
                               </span>
                             ))}
@@ -808,7 +808,7 @@ export const PaymentPage: React.FC = () => {
                         setStep(2);
                       }}
                       disabled={!canContinueFromStep1}
-                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg transition-all border border-[#FFAE00]/40 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg transition-all border border-[#FFAE00]/40 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
                     >
                       <span>Continue</span>
                       <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
@@ -827,7 +827,7 @@ export const PaymentPage: React.FC = () => {
                         setStep(3);
                       }}
                       disabled={!canContinueFromStep2}
-                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg transition-all border border-[#FFAE00]/40 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg transition-all border border-[#FFAE00]/40 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
                     >
                       <span>Continue</span>
                       <ArrowRight className="w-4 h-4 text-[#FFAE00]" />

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-//  TZAR VENTURE — Team, Testimonials, Portfolio, Packages Data
+//  TZAR DIGITAL AGENCY — Team, Testimonials, Portfolio, Packages Data
 //  Migrated from legacy tzar/ data directory with exact asset paths
 // ─────────────────────────────────────────────────────────────────
 
@@ -111,7 +111,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'Founder',
     company: 'TechVista Solutions',
     rating: 5,
-    text: 'Tzar Venture completely transformed our online presence. Our website speed went from 4.2s to under 1.1s and our SEO rankings jumped to page 1 within 60 days. Incredible ROI.',
+    text: 'Tzar Digital Agency completely transformed our online presence. Our website speed went from 4.2s to under 1.1s and our SEO rankings jumped to page 1 within 60 days. Incredible ROI.',
     avatar: '👨‍💼',
     image: '/assets/images/testimonial/testimonial-one-img-1.jpg',
   },
@@ -131,7 +131,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'CEO',
     company: 'StyleCraft Apparel',
     rating: 5,
-    text: 'Working with Tzar Venture on our e-commerce website and packaging design was the best decision we made. Revenue grew 120% in the first quarter post-launch.',
+    text: 'Working with Tzar Digital Agency on our e-commerce website and packaging design was the best decision we made. Revenue grew 120% in the first quarter post-launch.',
     avatar: '👨‍💻',
     image: '/assets/images/testimonial/testimonial-one-img-3.jpg',
   },

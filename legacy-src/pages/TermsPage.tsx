@@ -21,7 +21,7 @@ export const TermsPage: React.FC = () => {
           </h1>
           <div className="section-divider" />
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '.9rem', color: '#6B7280' }}>
-            Last Updated: January 2026 • Tzar Venture Digital Marketing & Tech Creative Agency
+            Last Updated: January 2026 • Tzar Digital Agency
           </p>
         </div>
       </section>

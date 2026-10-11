@@ -77,7 +77,7 @@ export const TechHeader: React.FC = () => {
     }
     closeTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 180);
+    }, 300);
   };
 
   useEffect(() => {
@@ -168,7 +168,7 @@ export const TechHeader: React.FC = () => {
           <Link href="/" className="flex items-center gap-2 shrink-0 group">
             <img
               src="/optimized/assets/images/tzar-logo-main.webp"
-              alt="Tzar Venture Logo"
+              alt="Tzar Digital Agency Logo"
               width={1506}
               height={248}
               decoding="async"
@@ -201,13 +201,18 @@ export const TechHeader: React.FC = () => {
                     )}
                   </Link>
 
-                  {/* Dropdown Menu with Hover Bridge */}
-                  {item.children && activeDropdown === item.name && (
+                  {/* Dropdown Menu with Seamless Hover Bridge */}
+                  {item.children && (
                     <div 
-                      className="absolute top-full left-0 min-w-60 pt-2 z-50 before:content-[''] before:absolute before:-top-3 before:-left-6 before:-right-6 before:h-5 before:pointer-events-auto"
-                      onMouseEnter={() => handleDropdownEnter(item.name)}
-                      onMouseLeave={handleDropdownLeave}
+                      className={`absolute top-full left-0 min-w-60 pt-2 z-50 transition-all duration-200 ease-out ${
+                        activeDropdown === item.name
+                          ? 'opacity-100 translate-y-0 pointer-events-auto visible'
+                          : 'opacity-0 -translate-y-1 pointer-events-none invisible'
+                      }`}
                     >
+                      {/* Transparent seamless hover bridge connecting the link to the card */}
+                      <div className="absolute top-0 left-0 right-0 h-2 pointer-events-auto" />
+
                       <div className="bg-[#0E2015]/95 text-white border border-white/15 rounded-2xl p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
                         {item.children.map((sub) => {
                           const isSubActive = pathname === sub.href;
@@ -215,6 +220,7 @@ export const TechHeader: React.FC = () => {
                             <Link
                               key={sub.name}
                               href={sub.href}
+                              onClick={() => setActiveDropdown(null)}
                               className={`block px-3.5 py-2.5 text-[14px] font-medium rounded-xl transition whitespace-nowrap ${isSubActive
                                   ? 'text-[#FFAE00] bg-white/8'
                                   : 'text-white/85 hover:text-[#FFAE00] hover:bg-white/8'

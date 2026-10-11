@@ -2,9 +2,9 @@ import { LogoDesignPage } from "@/legacy-src/pages/LogoDesignPage";
 
 export const metadata = {
   title:
-    "TZAR VENTURE - Digital Marketing Agency Logo Design Services - Custom Logo Design. Business logos design by professionals online - Tzar venture",
+    "TZAR DIGITAL AGENCY - Logo Design Services - Custom Logo Design. Business logos design by professionals online - Tzar Digital Agency",
   description:
-    "Custom Logo Design Services Online - Tzar Venture do not sell products we make ICONIC Brands.",
+    "Custom Logo Design Services Online - Tzar Digital Agency does not just design logos, we create iconic brands.",
 };
 
 export default function LogoDesignService() {

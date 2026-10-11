@@ -3,6 +3,7 @@
 import React from 'react';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
+import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
 
 const OUTDOOR_SERVICES = [
   { id: '1', title: 'HOARDING ADVERTISEMENT', img: '/assets/images/resources/Ads-service/a1.png' },
@@ -245,6 +246,16 @@ export const OutdoorAdsPage: React.FC = () => {
 
         </div>
       </section>
+
+      {/* ── 04. CONSISTENT REUSABLE CTA CARD ── */}
+      <ConsistentCTA
+        title="Ready to Launch High-Impact Outdoor Campaigns?"
+        description="Amplify your brand presence across high-traffic billboards, transit media, airports, and prime urban locations across pan-India."
+        primaryText="Plan Outdoor Campaign"
+        primaryHref="/contact"
+        secondaryText="View Portfolio"
+        secondaryHref="/portfolio"
+      />
 
     </div>
   );

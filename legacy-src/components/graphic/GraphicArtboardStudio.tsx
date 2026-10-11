@@ -17,7 +17,7 @@ export const GraphicArtboardStudio: React.FC<GraphicArtboardStudioProps> = ({ cl
       <div className="relative w-full rounded-2xl overflow-hidden border border-[#1D4224]/50 shadow-2xl shadow-black/80 bg-black group">
         <Image
           src="/assets/images/graphic-design-hero.webp"
-          alt="Tzar Venture Graphic Design & Brand Aesthetics Artboard"
+          alt="Tzar Digital Agency Graphic Design & Brand Aesthetics Artboard"
           width={1536}
           height={1024}
           priority

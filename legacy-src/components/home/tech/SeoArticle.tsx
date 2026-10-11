@@ -62,7 +62,7 @@ const SeoArticle: React.FC = () => {
               </h3>
               <p className="font-inter text-sm sm:text-base text-white/80 leading-relaxed mb-6">
                 Developing a website is relatively easy as compared to 
-                development of digital platforms. TZAR VENTURE as 
+                development of digital platforms. TZAR DIGITAL AGENCY as 
                 a website development agency offer website design services at 
                 affordable prices. The most important thing you should focus on is making sure you have a good 
                 conversion rate. This can be measured using various 
@@ -111,11 +111,11 @@ const SeoArticle: React.FC = () => {
 
               {/* Conclusion / Hiring Block */}
               <p className="font-inter text-sm sm:text-base text-white/80 leading-relaxed mb-6">
-                Hiring TZAR VENTURE as your 
+                Hiring TZAR DIGITAL AGENCY as your 
                 Digital marketing Agency has many advantages. 
                 We have good proven track record with adequate experience of creating niche brand. 
                 Also you can get Digital marketing Services at affordable rates. 
-                Thus, you can have TZAR VENTURE as an all rounder 
+                Thus, you can have TZAR DIGITAL AGENCY as an all rounder 
                 Digital Marketing Agency to assist you in promotion of 
                 your business in an effective manner that will surely bring success to you.
               </p>

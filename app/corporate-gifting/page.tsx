@@ -1,7 +1,7 @@
 import { CorporateGiftingPage } from "@/legacy-src/pages/CorporateGiftingPage";
 
 export const metadata = {
-  title: "Corporate Gifting & Welcome Kits | Tzar Venture",
+  title: "Corporate Gifting & Welcome Kits | Tzar Digital Agency",
   description: "Custom employee welcome kits, client appreciation hampers, and branded merchandise packaging.",
 };
 

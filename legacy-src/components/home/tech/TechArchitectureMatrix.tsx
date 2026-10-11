@@ -50,7 +50,7 @@ export const TechArchitectureMatrix: React.FC = () => {
 
           <h2 className="font-montserrat font-extrabold text-3xl sm:text-5xl text-white tracking-[-0.04em]">
             Why Business Founders Partner with <br />
-            <span className="text-[#D4AF37]">Tzar Venture Systems</span>
+            <span className="text-[#D4AF37]">Tzar Digital Agency Systems</span>
           </h2>
 
           <p className="font-inter text-sm sm:text-base text-[#999999]">
@@ -63,7 +63,7 @@ export const TechArchitectureMatrix: React.FC = () => {
           <div className="grid grid-cols-12 bg-[#1C1C1C] border-b border-[#262626] p-4 font-mono text-xs text-[#999999] uppercase tracking-widest font-bold">
             <div className="col-span-4 sm:col-span-3">Business Solution</div>
             <div className="col-span-4 sm:col-span-4 text-[#999999]">Traditional Agency</div>
-            <div className="col-span-4 sm:col-span-5 text-[#D4AF37] font-bold">Tzar Venture Platform</div>
+            <div className="col-span-4 sm:col-span-5 text-[#D4AF37] font-bold">Tzar Digital Agency Platform</div>
           </div>
 
           <div className="divide-y divide-[#262626] font-inter text-sm">
@@ -81,14 +81,14 @@ export const TechArchitectureMatrix: React.FC = () => {
 
                 {/* Old Way Column */}
                 <div className="col-span-4 sm:col-span-4 pr-2 flex items-center gap-2 text-[#999999] text-xs sm:text-sm">
-                  <X className="w-4 h-4 text-red-500 flex-shrink-0" />
+                  <X className="w-4 h-4 text-red-500 shrink-0" />
                   <span>{row.oldWay}</span>
                 </div>
 
                 {/* Tzar Way Column */}
                 <div className="col-span-4 sm:col-span-5 flex items-center justify-between gap-2 text-white font-medium text-xs sm:text-sm">
                   <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-full bg-[#1C1C1C] border border-[#262626] flex items-center justify-center flex-shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-[#1C1C1C] border border-[#262626] flex items-center justify-center shrink-0">
                       <Check className="w-3.5 h-3.5 text-[#D4AF37]" />
                     </div>
                     <span className="text-white font-semibold">{row.tzarWay}</span>

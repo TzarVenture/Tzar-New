@@ -42,7 +42,7 @@ export const InternshipPage: React.FC = () => {
         <div className="container-site" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.25rem' }}>
           <span className="badge-dark">Unlock Your Potential</span>
           <h1 className="display-hero" style={{ maxWidth: '820px' }}>
-            Internships At <span style={{ color: '#1D4224' }}>Tzar Venture</span>
+            Internships At <span style={{ color: '#1D4224' }}>Tzar Digital Agency</span>
           </h1>
           <div className="section-divider" />
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.1rem', color: '#4B5563', maxWidth: '640px', lineHeight: 1.75 }}>
@@ -115,7 +115,7 @@ export const InternshipPage: React.FC = () => {
                 <div>
                   <span className="badge-green" style={{ marginBottom: '.5rem' }}>Student / Fresh Graduate</span>
                   <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '1.35rem', color: '#0F1510' }}>
-                    Apply For Tzar Venture Internship
+                    Apply For Tzar Digital Agency Internship
                   </h3>
                   <div className="section-divider" style={{ marginTop: '.5rem' }} />
                 </div>
@@ -152,7 +152,7 @@ export const InternshipPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'Rubik, sans-serif', fontSize: '.7rem', fontWeight: 700, color: '#374151', marginBottom: '.35rem', textTransform: 'uppercase' }}>Why do you want to intern at Tzar Venture?</label>
+                  <label style={{ display: 'block', fontFamily: 'Rubik, sans-serif', fontSize: '.7rem', fontWeight: 700, color: '#374151', marginBottom: '.35rem', textTransform: 'uppercase' }}>Why do you want to intern at Tzar Digital Agency?</label>
                   <textarea className="field" rows={4} placeholder="Tell us about your interests, projects, or github/portfolio link..." value={formData.note} onChange={e => setFormData({ ...formData, note: e.target.value })} />
                 </div>
 

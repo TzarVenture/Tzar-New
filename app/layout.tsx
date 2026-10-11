@@ -19,9 +19,9 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.tzar.co"),
-  title: { default: "Tzar Venture | Digital Systems & Growth Agency", template: "%s | Tzar Venture" },
-  description: "Tzar Venture builds high-performing websites, business systems, performance SEO, and growth engines for ambitious companies.",
-  openGraph: { type: "website", locale: "en_IN", siteName: "Tzar Venture" },
+  title: { default: "Tzar Digital Agency | Digital Systems & Growth Agency", template: "%s | Tzar Digital Agency" },
+  description: "Tzar Digital Agency builds high-performing websites, business systems, performance SEO, and growth engines for ambitious companies.",
+  openGraph: { type: "website", locale: "en_IN", siteName: "Tzar Digital Agency" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

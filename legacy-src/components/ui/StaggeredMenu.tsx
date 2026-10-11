@@ -490,8 +490,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             <Link href="/" onClick={closeMenu} className="flex items-center gap-2">
               <img
                 src={logoUrl}
-                alt="TZAR VENTURE"
-                className="h-8 sm:h-9 w-auto max-w-[205px] object-contain"
+                alt="TZAR DIGITAL AGENCY"
+                className="h-8 sm:h-9 w-auto max-w-51.25 object-contain"
                 draggable={false}
                 loading="lazy"
                 decoding="async"
@@ -499,7 +499,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             </Link>
             <button
               onClick={closeMenu}
-              className="sm-toggle !text-white !bg-white/10 hover:!bg-white/20 !border-white/20"
+              className="sm-toggle text-white! bg-white/10! hover:bg-white/20! border-white/20!"
               aria-label="Close menu"
               type="button"
             >
@@ -587,7 +587,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                   {contactInfo.phone1 && (
                     <a
                       href={`tel:${contactInfo.phone1.replace(/[^0-9+]/g, '')}`}
-                      className="bg-white/[0.04] hover:bg-[#FFAE00]/10 border border-white/10 hover:border-[#FFAE00]/40 rounded-xl px-3.5 py-2.5 flex items-center gap-3 text-white hover:text-[#FFAE00] transition-all duration-200 active:scale-[0.98]"
+                      className="bg-white/4 hover:bg-[#FFAE00]/10 border border-white/10 hover:border-[#FFAE00]/40 rounded-xl px-3.5 py-2.5 flex items-center gap-3 text-white hover:text-[#FFAE00] transition-all duration-200 active:scale-[0.98]"
                     >
                       <div className="w-7 h-7 rounded-lg bg-[#FFAE00]/15 flex items-center justify-center text-[#FFAE00] shrink-0">
                         <Phone className="w-3.5 h-3.5" />
@@ -598,7 +598,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                   {contactInfo.phone2 && (
                     <a
                       href={`tel:${contactInfo.phone2.replace(/[^0-9+]/g, '')}`}
-                      className="bg-white/[0.04] hover:bg-[#FFAE00]/10 border border-white/10 hover:border-[#FFAE00]/40 rounded-xl px-3.5 py-2.5 flex items-center gap-3 text-white hover:text-[#FFAE00] transition-all duration-200 active:scale-[0.98]"
+                      className="bg-white/4 hover:bg-[#FFAE00]/10 border border-white/10 hover:border-[#FFAE00]/40 rounded-xl px-3.5 py-2.5 flex items-center gap-3 text-white hover:text-[#FFAE00] transition-all duration-200 active:scale-[0.98]"
                     >
                       <div className="w-7 h-7 rounded-lg bg-[#FFAE00]/15 flex items-center justify-center text-[#FFAE00] shrink-0">
                         <Phone className="w-3.5 h-3.5" />

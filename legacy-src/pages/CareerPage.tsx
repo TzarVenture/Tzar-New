@@ -64,7 +64,7 @@ export const CareerPage: React.FC = () => {
         style={{ borderBottom: '1px solid #E5E5DC', padding: 'clamp(3.5rem, 7vw, 6rem) 0', textAlign: 'center' }}
       >
         <div className="container-site" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.25rem' }}>
-          <span className="badge-dark">Careers At Tzar Venture</span>
+          <span className="badge-dark">Careers At Tzar Digital Agency</span>
           <h1 className="display-hero" style={{ maxWidth: '800px' }}>
             WE ARE HIRING — <span style={{ color: '#1D4224' }}>JOIN OUR TEAM</span>
           </h1>
@@ -159,7 +159,7 @@ export const CareerPage: React.FC = () => {
                 <div>
                   <span className="badge-green" style={{ marginBottom: '.5rem' }}>Quick Application</span>
                   <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '1.35rem', color: '#0F1510' }}>
-                    Apply For a Role at Tzar Venture
+                    Apply For a Role at Tzar Digital Agency
                   </h3>
                   <div className="section-divider" style={{ marginTop: '.5rem' }} />
                 </div>
@@ -197,7 +197,7 @@ export const CareerPage: React.FC = () => {
 
                 <div>
                   <label style={{ display: 'block', fontFamily: 'Rubik, sans-serif', fontSize: '.7rem', fontWeight: 700, color: '#374151', marginBottom: '.35rem', textTransform: 'uppercase' }}>Brief Introduction / Experience Summary</label>
-                  <textarea className="field" rows={4} placeholder="Tell us about your background and why you want to join Tzar Venture..." value={formData.resumeNote} onChange={e => setFormData({ ...formData, resumeNote: e.target.value })} />
+                  <textarea className="field" rows={4} placeholder="Tell us about your background and why you want to join Tzar Digital Agency..." value={formData.resumeNote} onChange={e => setFormData({ ...formData, resumeNote: e.target.value })} />
                 </div>
 
                 <button type="submit" className="btn-primary" disabled={loading} style={{ justifyContent: 'center' }}>

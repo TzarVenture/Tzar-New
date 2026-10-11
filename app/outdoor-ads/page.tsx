@@ -1,7 +1,7 @@
 import { OutdoorAdsPage } from "@/legacy-src/pages/OutdoorAdsPage";
 
 export const metadata = {
-  title: "Outdoor Advertising & Billboards | Tzar Venture",
+  title: "Outdoor Advertising & Billboards | Tzar Digital Agency",
   description: "Pan-India outdoor advertising, highway hoardings, bus shelter branding, cinema ads, and metro station campaigns.",
 };
 

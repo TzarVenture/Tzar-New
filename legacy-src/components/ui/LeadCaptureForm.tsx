@@ -187,26 +187,23 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     setLoading(true);
     setError(null);
 
-    const webhookUrl =
-      process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK ||
-      (typeof window !== 'undefined'
-        ? (window as unknown as { __ENV?: { VITE_GOOGLE_SHEETS_WEBHOOK?: string } })
-            .__ENV?.VITE_GOOGLE_SHEETS_WEBHOOK
-        : '');
-
     try {
-      if (webhookUrl) {
-        await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            ...formData,
-            submittedAt: new Date().toISOString(),
-            source: 'LeadCaptureForm',
-          }),
-        });
+      const res = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          fullname: formData.name,
+          submittedAt: new Date().toISOString(),
+          source: 'LeadCaptureForm',
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (data && data.success) {
+        setSubmitted(true);
+      } else {
+        setSubmitted(true);
       }
-      setSubmitted(true);
       if (onSuccess) onSuccess();
     } catch (err) {
       console.error('Form submission error:', err);

@@ -1,10 +1,12 @@
-import { CareerPage } from "@/legacy-src/pages/CareerPage";
+import { HireUsPage } from "@/legacy-src/pages/HireUsPage";
 
 export const metadata = {
-  title: "Hire Us | Tzar Venture",
-  description: "Work with Tzar Venture's expert engineering and marketing team.",
+  title: "Hire Us | Digital Marketing Agency & Dedicated Engineering Pods | Tzar Venture",
+  description:
+    "Hire Tzar Venture's dedicated engineering, performance marketing, SEO, and creative teams. Tailored solutions engineered for measurable commercial growth.",
 };
 
 export default function HireUs() {
-  return <CareerPage />;
+  return <HireUsPage />;
 }
+

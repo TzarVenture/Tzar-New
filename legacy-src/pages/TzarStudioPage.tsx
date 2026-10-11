@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { COMPANY } from '@/data/company';
+import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
 
 /* --------------------------------------------------------------------------
    01. AUTHENTIC MEDIA ASSETS & DATA FROM LIVE SITE (tzar-studio)
@@ -610,8 +611,18 @@ export const TzarStudioPage: React.FC = () => {
         </div>
       </section>
 
+      {/* ── 06. CONSISTENT REUSABLE CTA CARD ── */}
+      <ConsistentCTA
+        title="Ready to Book Your Next Shoot at Tzar Studio?"
+        description="From 4K multi-cam commercial shoots and 3D product renders to high-conversion reels and food photography, our Mumbai studio is fully equipped for your brand."
+        primaryText="Book Studio Session"
+        primaryHref="/contact"
+        secondaryText="View Portfolio"
+        secondaryHref="/portfolio"
+      />
+
       {/* ──────────────────────────────────────────────────────────────────
-          06. LIGHTBOX MODAL PREVIEW
+          07. LIGHTBOX MODAL PREVIEW
       ────────────────────────────────────────────────────────────────── */}
       {lightboxImage && (
         <div

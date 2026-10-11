@@ -1,7 +1,7 @@
 import { WebPackagesPage } from "@/legacy-src/pages/WebPackagesPage";
 
 export const metadata = {
-  title: "Website Development Pricing & Packages | Tzar Venture",
+  title: "Website Development Pricing & Packages | Tzar Digital Agency",
   description: "Transparent website development pricing for WordPress, Shopify, and Next.js custom web engineering.",
 };
 

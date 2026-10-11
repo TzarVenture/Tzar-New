@@ -35,7 +35,7 @@ export const TrafficGrowthSection: React.FC<TrafficGrowthSectionProps> = ({
             Engineer High-Impact Digital Platforms &amp; Scalable Traffic
           </h2>
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] text-white/60 mt-1.5">
-            TZAR VENTURE — TECHNOLOGY ARCHITECTURE &amp; PERFORMANCE SYSTEMS
+            TZAR DIGITAL AGENCY — TECHNOLOGY ARCHITECTURE &amp; PERFORMANCE SYSTEMS
           </p>
         </div>
 

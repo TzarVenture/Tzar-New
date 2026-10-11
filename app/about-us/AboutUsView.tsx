@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Phone } from "lucide-react";
 import { COMPANY } from "@/data/company";
+import { ConsistentCTA } from "@/app/components/ui/ConsistentCTA";
 
 
 // Performance stats
@@ -264,12 +265,12 @@ export default function AboutUsView() {
               </p>
 
               {/* Highlight Blockquote */}
-              <div className="p-5 rounded-2xl bg-white border border-[#1D4224]/10 border-l-4 border-l-[#FFAE00] shadow-sm">
+              <div className="p-5 rounded-2xl bg-white border-y border-r border-[#1D4224]/10 border-l-4 border-l-[#FFAE00] shadow-sm">
                 <p className="font-montserrat font-bold text-lg sm:text-xl text-[#1D4224] italic leading-snug">
                   "providing innovative Website solutions for future."
                 </p>
                 <span className="block mt-1 font-mono text-xs uppercase tracking-widest text-[#5C6860]">
-                  — Tzar Venture Core Philosophy
+                  — Tzar Digital Agency Core Philosophy
                 </span>
               </div>
 
@@ -369,46 +370,15 @@ export default function AboutUsView() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────────────
-          05. CLOSING BANNER (CTA ATTENTION CARD)
-      ────────────────────────────────────────────────────────────────── */}
-      <section className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 relative z-10 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="relative rounded-3xl sm:rounded-4xl bg-[#0E2015] border border-[#1D4224]/60 shadow-2xl overflow-hidden px-6 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20 text-center">
-            {/* Ambient luxury glow */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#1D4224]/30 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="relative z-10 max-w-4xl mx-auto space-y-5">
-              <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-5xl text-white tracking-tight leading-tight">
-                Ready to scale your business with Tzar?
-              </h2>
-
-              <p className="font-inter text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
-                Partner with our multidisciplinary team of senior engineers, visual creators, and performance marketers to build digital platforms that dominate your market.
-              </p>
-
-              <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
-                <Link
-                  href="/contact"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
-                >
-                  <span>Get Free Consultation</span>
-                  <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
-                </Link>
-
-                <a
-                  href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
-                >
-                  <Phone className="w-4 h-4 text-[#FFAE00]" />
-                  <span>Call: {COMPANY.phone}</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── 05. CONSISTENT REUSABLE CTA CARD ── */}
+      <ConsistentCTA
+        title="Ready to Scale Your Business With Tzar?"
+        description="Partner with our multidisciplinary team of senior engineers, visual creators, and performance marketers to build digital platforms that dominate your market."
+        primaryText="Get Free Consultation"
+        primaryHref="/contact"
+        secondaryText="View Portfolio"
+        secondaryHref="/portfolio"
+      />
     </div>
   );
 }

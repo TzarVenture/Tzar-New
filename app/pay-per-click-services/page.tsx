@@ -1,7 +1,7 @@
 import { ServiceDetailPage } from "@/legacy-src/pages/ServiceDetailPage";
 
 export const metadata = {
-  title: "Pay Per Click (PPC) Services | Tzar Venture",
+  title: "Pay Per Click (PPC) Services | Tzar Digital Agency",
   description: "High-ROI Google Ads, Meta Ads, and paid search performance campaigns tailored for maximum lead generation.",
 };
 

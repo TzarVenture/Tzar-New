@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-//  TZAR VENTURE — Blog Data (migrated from legacy blogdata.js)
+//  TZAR DIGITAL AGENCY — Blog Data (migrated from legacy blogdata.js)
 // ─────────────────────────────────────────────────────────────────
 
 export interface BlogPost {

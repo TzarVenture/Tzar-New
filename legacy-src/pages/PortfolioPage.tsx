@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ExternalLink, ArrowUpRight, Globe, Play, Sparkles } from 'lucide-react';
+import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
 
 /* --------------------------------------------------------------------------
    01. WEB DESIGN PROJECTS DATA (20 Real Client Websites from tzar)
@@ -576,44 +577,15 @@ export const PortfolioPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 09. CONSULTATION CALLOUT SECTION ── */}
-      <section className="pb-16 sm:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-3xl bg-[#0E2015] text-white p-8 sm:p-14 overflow-hidden border border-white/10 shadow-xl text-center">
-            {/* Ambient Lighting */}
-            <div className="absolute -right-20 -top-20 w-96 h-96 bg-[#1D4224]/40 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -left-20 -bottom-20 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="relative z-10 max-w-3xl mx-auto space-y-4">
-              <p className="font-serif italic text-xl sm:text-2xl text-[#FFAE00]">
-                Have a Vision for Your Brand?
-              </p>
-              <h2 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight uppercase">
-                Let&apos;s Build Something Iconic Together
-              </h2>
-              <p className="font-inter text-sm sm:text-base text-white/80 max-w-xl mx-auto leading-relaxed">
-                From high-conversion websites to national outdoor campaigns and custom corporate gifts, our team brings exceptional digital craftsmanship to every project.
-              </p>
-
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-                <Link
-                  href="/contact"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-2xl transition-all cursor-pointer border border-[#FFAE00]/40"
-                >
-                  <span>Start a Project</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#FFAE00]" />
-                </Link>
-                <a
-                  href="tel:+917304056607"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-montserrat font-bold text-xs uppercase tracking-wider backdrop-blur-sm transition-all cursor-pointer border border-white/20"
-                >
-                  <span>+91 730-405-6607</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── 09. CONSISTENT REUSABLE CTA CARD ── */}
+      <ConsistentCTA
+        title="Let's Build Something Iconic Together"
+        description="From high-conversion websites and custom digital systems to national outdoor campaigns, our team brings exceptional digital craftsmanship to every project."
+        primaryText="Start a Project"
+        primaryHref="/contact"
+        secondaryText="Explore Services"
+        secondaryHref="/services"
+      />
 
     </div>
   );

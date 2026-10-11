@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ExternalLink, ArrowUpRight } from 'lucide-react';
 import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
+import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
 
 /* --------------------------------------------------------------------------
    EXACT PRODUCT DATA FROM LIVE SITE (tzar/src/app/corporate-gifting/page.js)
@@ -293,44 +294,15 @@ export const CorporateGiftingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 03. "TAILORED SPECIFICALLY FOR YOUR BRAND" CONTACT SECTION (KEPT AS IS) ── */}
-      <section className="pb-12 sm:pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-3xl bg-[#0E2015] text-white p-8 sm:p-12 overflow-hidden border border-white/10 shadow-xl">
-            {/* Ambient subtle aura */}
-            <div className="absolute -right-16 -top-16 w-80 h-80 bg-[#1D4224]/40 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -left-16 -bottom-16 w-80 h-80 bg-[#FFAE00]/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="relative z-10 max-w-2xl mx-auto text-center space-y-4">
-              <p className="font-serif italic text-xl sm:text-2xl text-[#FFAE00]">
-                Tailored Specifically for Your Brand
-              </p>
-              <h2 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight uppercase">
-                Connect With Our Gifting Team
-              </h2>
-              <p className="font-inter text-sm sm:text-base text-white/80 max-w-xl mx-auto leading-relaxed">
-                Have questions about our corporate gifting solutions, orders, or need assistance? Get in touch with our team today.
-              </p>
-
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-                <Link
-                  href="/contact"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-2xl transition-all cursor-pointer border border-[#FFAE00]/40"
-                >
-                  <span>Contact Us</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#FFAE00]" />
-                </Link>
-                <a
-                  href="tel:+917304056607"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-montserrat font-bold text-xs uppercase tracking-wider backdrop-blur-sm transition-all cursor-pointer border border-white/20"
-                >
-                  <span>+91 730-405-6607</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── 03. CONSISTENT REUSABLE CTA CARD ── */}
+      <ConsistentCTA
+        title="Connect With Our Gifting Specialists"
+        description="Have questions about our luxury corporate gifting solutions, customized employee welcome kits, or bespoke brand hampers? Get in touch with our team today."
+        primaryText="Connect With Our Team"
+        primaryHref="/contact"
+        secondaryText="View Portfolio"
+        secondaryHref="/portfolio"
+      />
 
     </div>
   );

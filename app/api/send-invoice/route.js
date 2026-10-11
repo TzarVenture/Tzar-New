@@ -16,7 +16,7 @@ export async function POST(req) {
   });
 
   await transporter.sendMail({
-    from: `"Tzar Venture" <${process.env.EMAIL_USER}>`,
+    from: `"Tzar Digital Agency" <${process.env.EMAIL_USER}>`,
     to: data.email,
     subject: "Payment Successful - Invoice",
     html: `
@@ -27,7 +27,7 @@ export async function POST(req) {
           Download Invoice
         </a>
       </p>
-      <p>Regards,<br/>Tzar Venture</p>
+      <p>Regards,<br/>Tzar Digital Agency</p>
     `,
   });
 

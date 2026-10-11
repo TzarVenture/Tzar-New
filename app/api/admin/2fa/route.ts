@@ -8,7 +8,7 @@ export async function GET() {
       process.env.ADMIN_2FA_SECRET || "UA5JSGAY6WAVVENUC2GJRCOA23J2P3LZ";
     const otpauth = generateURI({
       secret,
-      issuer: "TZAR Venture Admin",
+      issuer: "TZAR Digital Agency Admin",
       label: "corporate@tzar.co",
     });
 

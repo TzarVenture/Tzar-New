@@ -1,10 +1,10 @@
 // ─────────────────────────────────────────────────────────────────
-//  TZAR VENTURE — Centralised Site Data
+//  TZAR DIGITAL AGENCY — Centralised Site Data
 //  All content migrated from legacy tzar/ data directory
 // ─────────────────────────────────────────────────────────────────
 
 export const COMPANY = {
-  name: 'Tzar Venture',
+  name: 'Tzar Digital Agency',
   tagline: 'Digital Marketing & Tech Creative Agency',
   description:
     "India's premier digital agency transforming brands through ultra-fast web development, strategic SEO, performance marketing, and creative media production.",

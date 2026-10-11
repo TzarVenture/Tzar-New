@@ -2,21 +2,21 @@ import { Metadata } from "next";
 import ServicesView from "./ServicesView";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing, Web & Growth Services | TZAR VENTURE",
+  title: "Digital Marketing, Web & Growth Services | Tzar Digital Agency",
   description:
-    "Explore Tzar Venture's full suite of enterprise web development, SEO, graphic design, social media marketing, PPC advertising, and digital brand scaling services.",
+    "Explore Tzar Digital Agency's full suite of custom web development, search engine optimization, graphic design, social media marketing, and brand packaging services.",
   openGraph: {
-    title: "Full-Service Agency Capabilities | Tzar Venture",
+    title: "Full-Service Capabilities | Tzar Digital Agency",
     description:
-      "Enterprise web engineering, search engine dominance, high-retention performance media, and iconic brand identities engineered for compounding ROI.",
+      "Custom web development, search engine optimization, graphic design, social media marketing, and brand packaging services built for real growth.",
     url: "https://www.tzar.co/services",
-    siteName: "Tzar Venture",
+    siteName: "Tzar Digital Agency",
     images: [
       {
         url: "/assets/images/backgrounds/page-header-bgOur-Services.jpg",
         width: 1200,
         height: 630,
-        alt: "Our Services - Tzar Venture",
+        alt: "Our Services - Tzar Digital Agency",
       },
     ],
     locale: "en_IN",

@@ -12,6 +12,7 @@ import {
   HelpCircle,
   CheckCircle2,
 } from "lucide-react";
+import { ConsistentCTA } from "@/app/components/ui/ConsistentCTA";
 
 interface FAQItem {
   id: number;
@@ -169,7 +170,7 @@ export default function FaqsView() {
         />
 
         {/* Ambient Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1D4224]/90 via-[#1D4224]/95 to-[#0E2015]" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#1D4224]/90 via-[#1D4224]/95 to-[#0E2015]" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb Strip */}
@@ -212,7 +213,7 @@ export default function FaqsView() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search topics (e.g., SEO timeline, Shopify, PPC budgets, migrations)..."
-              className="w-full pl-11 pr-4 py-2.5 sm:py-3 rounded-xl bg-[#FDFBF7] border border-[#1D4224]/10 text-xs sm:text-sm text-[#0E2015] placeholder:text-[#5C6860]/70 focus:outline-none focus:border-[#1D4224] focus:ring-1 focus:ring-[#1D4224] transition-all"
+              className="w-full pl-11 pr-4 py-2.5 sm:py-3 rounded-xl bg-[#FDFBF7] border border-[#1D4224]/10 text-xs sm:text-sm text-[#0E2015] placeholder:opacity-60 focus:outline-none focus:ring-2 focus:ring-[#1D4224] transition-all"
             />
             {searchQuery && (
               <button
@@ -290,7 +291,7 @@ export default function FaqsView() {
                       </h3>
 
                       <div
-                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                           isOpen
                             ? "bg-[#1D4224] text-[#FFAE00] rotate-180"
                             : "bg-[#F5F2EB] text-[#5C6860] group-hover:bg-[#1D4224]/10 group-hover:text-[#1D4224]"
@@ -316,7 +317,7 @@ export default function FaqsView() {
           {/* ── 04. DIRECT CONSULTATION HELP CARD ── */}
           <div className="mt-8 sm:mt-12 bg-white rounded-2xl border border-[#1D4224]/10 shadow-sm p-5 sm:p-7 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4 text-center md:text-left">
-              <div className="w-12 h-12 rounded-xl bg-[#1D4224] text-[#FFAE00] flex items-center justify-center flex-shrink-0 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-[#1D4224] text-[#FFAE00] flex items-center justify-center shrink-0 shadow-sm">
                 <PhoneCall className="w-6 h-6" />
               </div>
               <div>
@@ -345,7 +346,7 @@ export default function FaqsView() {
 
             <Link
               href="/contact"
-              className="bg-[#1D4224] text-white hover:bg-[#FFAE00] hover:text-[#0E2015] font-montserrat font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition-all duration-200 shadow-sm flex-shrink-0 inline-flex items-center gap-2 group"
+              className="bg-[#1D4224] text-white hover:bg-[#FFAE00] hover:text-[#0E2015] font-montserrat font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition-all duration-200 shadow-sm shrink-0 inline-flex items-center gap-2 group"
             >
               <span>Speak With An Expert</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -354,49 +355,15 @@ export default function FaqsView() {
         </div>
       </section>
 
-      {/* ── 05. CALL TO ACTION STRIP ── */}
-      <section className="py-10 sm:py-16 bg-[#1D4224] text-white relative overflow-hidden">
-        {/* Background Texture Pattern */}
-        <div
-          className="absolute inset-0 opacity-10 bg-repeat pointer-events-none"
-          style={{
-            backgroundImage: "url('/assets/images/resources/counter-one-pattern.png')",
-          }}
-        />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-            <div className="space-y-1.5 max-w-xl">
-              <span className="font-mono text-xs font-black uppercase tracking-widest text-[#FFAE00]">
-                READY TO START?
-              </span>
-              <h2 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
-                Let's Build Something Exceptional Together
-              </h2>
-              <p className="text-xs sm:text-sm text-white/80">
-                Whether you need enterprise web engineering, high-ranking SEO, or full-funnel digital campaigns, our team is ready to scale your brand.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/contact"
-                className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-montserrat font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all duration-200 shadow-lg inline-flex items-center gap-2 group"
-              >
-                <span>Request Custom Proposal</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-
-              <Link
-                href="/services"
-                className="border border-white/20 text-white hover:bg-white/10 font-montserrat font-bold text-xs sm:text-sm px-5 py-3.5 rounded-xl transition-all duration-200"
-              >
-                Explore Services
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── 05. CONSISTENT REUSABLE CTA CARD ── */}
+      <ConsistentCTA
+        title="Still Have Questions About Scaling Your Brand?"
+        description="Whether you need enterprise web engineering, high-ranking SEO, or full-funnel digital campaigns, our team is ready to scale your brand."
+        primaryText="Request Custom Proposal"
+        primaryHref="/contact"
+        secondaryText="Explore Services"
+        secondaryHref="/services"
+      />
     </div>
   );
 }

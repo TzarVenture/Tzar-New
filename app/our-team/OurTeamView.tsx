@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowDown } from "lucide-react";
-import { LazyDotLottie } from "@/legacy-src/components/ui/LazyDotLottie";
+import { ConsistentCTA } from "@/app/components/ui/ConsistentCTA";
 
 
 interface TeamMember {
@@ -136,23 +136,30 @@ export default function OurTeamView() {
 
   return (
     <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
-      {/* ── 01. EDITORIAL PAGE HEADER BANNER (90% VIEWPORT HEIGHT) ── */}
-      <section className="relative overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30 text-white min-h-[90vh] flex flex-col justify-between pt-28 pb-14 sm:pt-36 sm:pb-20">
-        {/* Ambient Dark Spruce & Gold Glows with Subtle Dot-Matrix Grid */}
+      {/* ── 01. EDITORIAL PAGE HEADER BANNER (ABOUT US STYLE BG WITH ORGANIC WAVE) ── */}
+      <section
+        className="relative w-full min-h-[85vh] lg:min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309] text-white flex flex-col justify-between overflow-hidden"
+        style={{
+          backgroundColor: '#061309',
+          backgroundImage: 'radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)',
+        }}
+      >
+        {/* Check Box Grid Texture into Hero Background (Zero Yellow Glow, Exclusively Home Page Hero Green) */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1D4224]/25 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
           <div
-            className="absolute inset-0 opacity-[0.04]"
+            className="absolute inset-0 opacity-[0.08]"
             style={{
-              backgroundImage: 'radial-gradient(circle at 1px 1px, #FFFFFF 1px, transparent 0)',
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 1px, transparent 1px)
+              `,
               backgroundSize: '32px 32px',
             }}
           />
         </div>
 
-        {/* Foreground Content Grid (relative z-10, completely above all background overlays) */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full">
+        {/* Foreground Content Grid */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full pb-6 sm:pb-8 lg:pb-10">
           {/* Breadcrumb Strip */}
           <nav className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wider mb-6 text-[#FFAE00]">
             <Link href="/" className="hover:underline opacity-80 hover:opacity-100">
@@ -163,45 +170,36 @@ export default function OurTeamView() {
           </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Left Column: Equal 50% Space with Simplified Copywriting & Modern Tech Stack */}
+            {/* Left Column: Short Headline, Simple Description, No Eyebrow */}
             <div className="space-y-6 relative z-20">
-              {/* Clean Typographic Eyebrow (No pill badge, No sparkles) */}
-              <div className="flex items-center gap-3 text-xs sm:text-sm font-mono tracking-[0.25em] text-[#FFAE00] uppercase font-bold">
-                <span className="w-8 h-px bg-[#FFAE00]" />
-                <span>Specialist Practitioners & Leadership</span>
-              </div>
-
-              {/* Bold Editorial Headline */}
+              {/* Short Headline */}
               <div className="space-y-2">
                 <h1 className="font-montserrat font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
-                  Meet Our <span className="text-[#FFAE00]">Specialists</span>
+                  Meet Our <span className="text-[#FFAE00]">Team</span>
                 </h1>
-                <p className="font-montserrat font-bold text-lg sm:text-2xl text-white/95 tracking-tight leading-snug">
-                  Engineers, product designers, and growth tacticians.
-                </p>
               </div>
 
-              {/* Simplified, Impactful Copywriting */}
+              {/* Very Short Simple Description */}
               <p className="font-sans text-sm sm:text-base lg:text-lg text-[#B6F8DD]/90 max-w-xl leading-relaxed">
-                Our in-house team in Mumbai develops modern web and mobile applications, scalable cloud backends, and organic search monopolies with obsessive attention to detail.
+                The designers, developers, and growth strategists behind every digital project we craft at Tzar.
               </p>
 
-              {/* Modern Tech Stack Focus Pillars */}
+              {/* Focus Pillars */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-white/10">
                 <div>
                   <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
                     Web & Mobile Apps
                   </span>
                   <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
-                    Next.js, React & iOS / Android
+                    Next.js, React & Mobile
                   </span>
                 </div>
                 <div>
                   <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
-                    Backend & Cloud
+                    Creative Design
                   </span>
                   <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
-                    Modern APIs, Node & DBs
+                    UI/UX & Branding
                   </span>
                 </div>
                 <div>
@@ -209,18 +207,18 @@ export default function OurTeamView() {
                     Growth & Strategy
                   </span>
                   <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
-                    Technical SEO & UX Design
+                    SEO & Performance
                   </span>
                 </div>
               </div>
 
-              {/* High-Converting Action Triggers */}
+              {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
                   href="#team-directory"
                   className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-2.5 text-sm sm:text-base group font-sans"
                 >
-                  <span>Explore All Specialists</span>
+                  <span>Explore Team</span>
                   <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1" />
                 </a>
 
@@ -234,22 +232,37 @@ export default function OurTeamView() {
               </div>
             </div>
 
-            {/* Right Column: Equal 50% Space with Sized-Up Lottie Art Shifted to Right to Eliminate Overlap */}
+            {/* Right Column: Hero Image */}
             <div className="flex items-center justify-center lg:justify-end overflow-visible relative z-10">
-              <div className="w-full max-w-xl lg:max-w-none aspect-[16/9] flex items-center justify-center transform scale-110 sm:scale-115 lg:scale-120 xl:scale-125 origin-center lg:translate-x-12 xl:translate-x-16 transition-transform duration-300">
-                <LazyDotLottie
-                  src="/assets/lottie/for-team-page.json"
-                  loop
-                  autoplay
-                  className="w-full h-full object-contain"
+              <div className="w-full max-w-xl lg:max-w-none flex items-center justify-center">
+                <Image
+                  src="/assets/images/our-team-page.webp"
+                  alt="Tzar Digital Agency Team"
+                  width={1536}
+                  height={1024}
+                  priority
+                  className="w-full h-auto max-h-115 object-contain drop-shadow-2xl"
                 />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Delicate Border Separator */}
-        <div className="absolute bottom-0 inset-x-0 h-px bg-white/10 pointer-events-none" />
+        {/* ── Smooth Organic Wave Transition: Dark Spruce into #EFE8E0 ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#EFE8E0"
+            />
+          </svg>
+        </div>
       </section>
 
       {/* ── 02. TEAM DIRECTORY WITH INTERACTIVE FILTER ── */}
@@ -284,7 +297,7 @@ export default function OurTeamView() {
                 className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300 group"
               >
                 {/* Photo container with natural 4:5 portrait ratio */}
-                <div className="relative w-full aspect-[4/5] bg-[#F5F2EB] overflow-hidden">
+                <div className="relative w-full aspect-4/5 bg-[#F5F2EB] overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -316,49 +329,15 @@ export default function OurTeamView() {
         </div>
       </section>
 
-      {/* ── 03. CTA SECTION (FROM ORIGINAL CTAONE COMPONENT) ── */}
-      <section className="py-10 sm:py-16 bg-[#FDFBF7] border-t border-[#1D4224]/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#1D4224] rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 shadow-xl">
-            {/* Background Texture Pattern */}
-            <div
-              className="absolute inset-0 opacity-10 bg-repeat pointer-events-none"
-              style={{
-                backgroundImage: "url('/assets/images/resources/counter-one-pattern.png')",
-              }}
-            />
-
-            <div className="relative z-10 space-y-2 text-center md:text-left">
-              <span className="font-mono text-xs font-black uppercase tracking-widest text-[#FFAE00]">
-                COLLABORATE WITH OUR SPECIALISTS
-              </span>
-              <h2 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
-                We deliver the best <br className="hidden sm:inline" /> customer experience
-              </h2>
-              <p className="text-xs sm:text-sm text-white/80 max-w-xl">
-                Partner with our multidisciplinary collective of engineers, designers, and growth strategists to scale your company online.
-              </p>
-            </div>
-
-            <div className="relative z-10 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/contact"
-                className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-montserrat font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all duration-200 shadow-lg inline-flex items-center gap-2 group"
-              >
-                <span>Let's Get Started</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-
-              <Link
-                href="/services"
-                className="border border-white/20 text-white hover:bg-white/10 font-montserrat font-bold text-xs sm:text-sm px-5 py-3.5 rounded-xl transition-all duration-200"
-              >
-                Explore Services
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── 03. CONSISTENT REUSABLE CTA CARD ── */}
+      <ConsistentCTA
+        title="Collaborate With Our Specialists"
+        description="Partner with our multidisciplinary collective of engineers, designers, and growth strategists to scale your company online."
+        primaryText="Let's Get Started"
+        primaryHref="/contact"
+        secondaryText="Explore Services"
+        secondaryHref="/services"
+      />
     </div>
   );
 }

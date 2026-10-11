@@ -156,7 +156,7 @@ export const PaymentPage: React.FC = () => {
           key: razorpayKey,
           amount: data.amount || finalAmount * 100,
           currency: "INR",
-          name: "TZAR VENTURE",
+          name: "TZAR DIGITAL AGENCY",
           description: "Digital Marketing & Agency Services",
           image: "/assets/images/tzarlogonew.png",
           order_id: orderId,
@@ -552,7 +552,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="e.g. John Doe"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/30 text-[#0E2015] transition-all font-inter text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] transition-all font-inter text-sm"
                         />
                       </div>
 
@@ -566,7 +566,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="e.g. Acme Innovations Pvt Ltd"
                           value={company}
                           onChange={(e) => setCompany(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/30 text-[#0E2015] transition-all font-inter text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] transition-all font-inter text-sm"
                         />
                       </div>
 
@@ -581,7 +581,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="e.g. client@company.com"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/30 text-[#0E2015] transition-all font-inter text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] transition-all font-inter text-sm"
                         />
                       </div>
 
@@ -595,7 +595,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="e.g. +91 98765 43210"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/30 text-[#0E2015] transition-all font-inter text-sm"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] transition-all font-inter text-sm"
                         />
                       </div>
 
@@ -609,7 +609,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="e.g. 27AAAAA0000A1Z5"
                           value={gstNumber}
                           onChange={(e) => setGstNumber(e.target.value.toUpperCase())}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/30 text-[#0E2015] transition-all font-mono text-sm uppercase"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] transition-all text-sm font-mono uppercase"
                         />
                       </div>
 
@@ -629,7 +629,7 @@ export const PaymentPage: React.FC = () => {
                             placeholder="Enter base amount"
                             value={manualAmount}
                             onChange={(e) => setManualAmount(e.target.value)}
-                            className="w-full pl-8 pr-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/30 text-[#0E2015] transition-all font-mono font-bold text-base"
+                            className="w-full pl-8 pr-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] transition-all font-mono font-bold text-base"
                           />
                         </div>
                       </div>
@@ -645,7 +645,7 @@ export const PaymentPage: React.FC = () => {
                           placeholder="Enter complete billing address, street, city, state and PIN code"
                           value={address}
                           onChange={(e) => setAddress(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/30 text-[#0E2015] transition-all font-inter text-sm resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-[#FAF9F5] border border-[#0E2015]/15 focus:outline-none focus:ring-2 focus:ring-[#1D4224]/20 text-[#0E2015] transition-all font-inter text-sm resize-none"
                         />
                       </div>
                     </div>

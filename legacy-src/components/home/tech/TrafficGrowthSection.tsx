@@ -9,11 +9,14 @@ export interface TrafficGrowthSectionProps {
   formBgColor?: string;
   /** Optional custom form text color override */
   formTextColor?: string;
+  /** Optional flag to remove ambient glow and gradient border from form */
+  noBorder?: boolean;
 }
 
 export const TrafficGrowthSection: React.FC<TrafficGrowthSectionProps> = ({
   formBgColor = '#0E2015',
   formTextColor = '#FFFFFF',
+  noBorder = false,
 }) => {
   return (
     <section id="contact-form" className="relative py-16 sm:py-20 bg-transparent overflow-hidden scroll-mt-8">
@@ -47,6 +50,7 @@ export const TrafficGrowthSection: React.FC<TrafficGrowthSectionProps> = ({
             <LeadCaptureForm
               bgColor={formBgColor}
               textColor={formTextColor}
+              noBorder={noBorder}
               title="Let's Build Together"
               titleColor="#FFAE00"
               buttonBgColor="#1D4224"

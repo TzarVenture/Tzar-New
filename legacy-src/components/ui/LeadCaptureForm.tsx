@@ -225,7 +225,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
       <div
         className={
           noBorder
-            ? 'relative rounded-2xl overflow-hidden'
+            ? 'relative rounded-2xl border border-white/12 shadow-xl overflow-hidden'
             : 'relative p-[1.5px] rounded-2xl bg-linear-to-b from-[#FFAE00]/50 via-white/10 to-[#B6F8DD]/40 shadow-none sm:shadow-2xl overflow-hidden'
         }
       >
@@ -308,7 +308,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
               {/* 1. Full Name Field (With Embedded Gold User Icon, No '*') */}
               <div className="relative flex items-center group">
-                <div className="absolute left-3.5 text-[#FFAE00] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100 group-focus-within:scale-110">
+                <div className="absolute left-3.5 text-[#FFAE00] pointer-events-none transition-transform duration-200 group-focus-within:scale-110">
                   <User className="w-4 h-4" />
                 </div>
                 <input
@@ -324,7 +324,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
               {/* 2. Phone Number Field (With Embedded Mint Phone Icon, No WhatsApp text) */}
               <div className="relative flex items-center group">
-                <div className="absolute left-3.5 text-[#B6F8DD] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100 group-focus-within:scale-110">
+                <div className="absolute left-3.5 text-[#B6F8DD] pointer-events-none transition-transform duration-200 group-focus-within:scale-110">
                   <Phone className="w-4 h-4" />
                 </div>
                 <input
@@ -339,7 +339,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
               {/* 3. Email Address Field (With Embedded Gold Mail Icon, No '*') */}
               <div className="relative flex items-center group">
-                <div className="absolute left-3.5 text-[#FFAE00] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100 group-focus-within:scale-110">
+                <div className="absolute left-3.5 text-[#FFAE00] pointer-events-none transition-transform duration-200 group-focus-within:scale-110">
                   <Mail className="w-4 h-4" />
                 </div>
                 <input
@@ -355,7 +355,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
               {/* 4. Services Dropdown (Stylized with Briefcase Icon) */}
               <div className="relative flex items-center group">
-                <div className="absolute left-3.5 text-[#B6F8DD] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100 group-focus-within:scale-110">
+                <div className="absolute left-3.5 text-[#B6F8DD] pointer-events-none transition-transform duration-200 group-focus-within:scale-110">
                   <Briefcase className="w-4 h-4" />
                 </div>
                 <select
@@ -383,7 +383,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
               {/* 5. PIN Code Field (With India Post API Auto-Lookup) */}
               <div className="space-y-1">
                 <div className="relative flex items-center group">
-                  <div className="absolute left-3.5 text-[#FFAE00] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100 group-focus-within:scale-110">
+                  <div className="absolute left-3.5 text-[#FFAE00] pointer-events-none transition-transform duration-200 group-focus-within:scale-110">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <input
@@ -426,7 +426,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
               {/* 6. City & State (Side by Side Auto-Populated from PIN code) */}
               <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
                 <div className="relative flex items-center group">
-                  <div className="absolute left-3 text-[#FFAE00] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100">
+                  <div className="absolute left-3 text-[#FFAE00] pointer-events-none transition-transform duration-200 group-focus-within:scale-110">
                     <MapPin className="w-3.5 h-3.5" />
                   </div>
                   <input
@@ -440,7 +440,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                 </div>
 
                 <div className="relative flex items-center group">
-                  <div className="absolute left-3 text-[#B6F8DD] opacity-80 pointer-events-none transition-all duration-200 group-focus-within:opacity-100">
+                  <div className="absolute left-3 text-[#B6F8DD] pointer-events-none transition-transform duration-200 group-focus-within:scale-110">
                     <Globe className="w-3.5 h-3.5" />
                   </div>
                   <input

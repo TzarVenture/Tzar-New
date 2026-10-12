@@ -1,0 +1,409 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  ArrowDown,
+  ArrowRight,
+  ExternalLink,
+  MessageSquare,
+  TrendingUp,
+  Target,
+  Sparkles,
+  CheckCircle2,
+} from "lucide-react";
+import { LeadCaptureForm } from "@/legacy-src/components/ui/LeadCaptureForm";
+import { ConsistentCTA } from "@/app/components/ui/ConsistentCTA";
+import { TypewriterHeadline } from "@/legacy-src/components/ui/TypewriterHeadline";
+import { COMPANY } from "@/legacy-src/data/company";
+
+export default function ContactView() {
+  return (
+    <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-hidden">
+      {/* ──────────────────────────────────────────────────────────────────
+          01. EDITORIAL HERO BANNER (MATCHING OUR NEW THEME)
+      ────────────────────────────────────────────────────────────────── */}
+      <section
+        className="relative w-full min-h-[60vh] sm:min-h-[65vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309] text-white flex flex-col justify-between overflow-hidden"
+        style={{
+          backgroundColor: "#061309",
+          backgroundImage:
+            "radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)",
+        }}
+      >
+        {/* Check Box Grid Texture */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 1px, transparent 1px)
+              `,
+              backgroundSize: "32px 32px",
+            }}
+          />
+        </div>
+
+        {/* Foreground Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full pb-8 sm:pb-12 text-center">
+          {/* Breadcrumb Strip */}
+          <nav className="flex items-center justify-center gap-2 text-xs sm:text-sm font-mono tracking-wider mb-6 text-[#FFAE00]">
+            <Link href="/" className="hover:underline opacity-80 hover:opacity-100">
+              HOME
+            </Link>
+            <span className="opacity-40">/</span>
+            <span className="text-white font-bold">CONTACT US</span>
+          </nav>
+
+          <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08] max-w-4xl mx-auto">
+            Get In Touch With Our{" "}
+            <span className="text-[#FFAE00] block mt-1 sm:mt-2">
+              <TypewriterHeadline text="Digital Specialists" delay={250} />
+            </span>
+          </h1>
+
+          <p className="font-sans text-sm sm:text-base lg:text-lg text-[#B6F8DD]/90 max-w-2xl mx-auto mt-4 leading-relaxed">
+            Have a project in mind or need a custom proposal? Reach out through our direct communication channels below or submit your project requirements.
+          </p>
+
+          <div className="pt-6 flex items-center justify-center">
+            <a
+              href="#Contactform"
+              className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-2.5 text-sm sm:text-base font-sans cursor-pointer group"
+            >
+              <span>Fill Inquiry Form</span>
+              <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+            </a>
+          </div>
+        </div>
+
+        {/* ── Smooth Organic Wave Transition: Dark Spruce into #EFE8E0 ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#EFE8E0"
+            />
+          </svg>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────────────
+          02. THREE LOCATION & COMMUNICATION CARDS (EXACT REPLICATION FROM OLD SITE)
+      ────────────────────────────────────────────────────────────────── */}
+      <section className="relative z-20 -mt-7 sm:-mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {/* Card 1: ABOUT */}
+          <div className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-lg p-6 sm:p-8 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-[#FFAE00]/15 text-[#0E2015] flex items-center justify-center mb-4">
+                <Clock className="w-6 h-6 text-[#1D4224]" />
+              </div>
+              <h3 className="font-montserrat font-black text-xl text-[#0E2015] uppercase tracking-wider mb-2">
+                About
+              </h3>
+              <p className="font-sans text-sm text-[#5C6860] leading-relaxed">
+                We appreciate your business and guarantee a response within 24 Business hours which would include our Packages and Pricing.
+              </p>
+            </div>
+            <div className="pt-4 border-t border-neutral-100 mt-4 flex items-center gap-1.5 text-xs font-semibold text-[#1D4224]">
+              <CheckCircle2 className="w-4 h-4 text-[#10B981]" />
+              <span>Guaranteed 24h Response</span>
+            </div>
+          </div>
+
+          {/* Card 2: ADDRESS */}
+          <div className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-lg p-6 sm:p-8 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-[#1D4224]/10 text-[#1D4224] flex items-center justify-center mb-4">
+                <MapPin className="w-6 h-6 text-[#1D4224]" />
+              </div>
+              <h3 className="font-montserrat font-black text-xl text-[#0E2015] uppercase tracking-wider mb-2">
+                Address
+              </h3>
+              <p className="font-sans text-sm text-[#5C6860] leading-relaxed">
+                B, Ground Floor, Andheri E, Saki Vihar Rd, behind Finch Restaurant, Ganesh Nagar, Marol, Andheri East, Mumbai, Maharashtra 400072
+              </p>
+            </div>
+            <div className="pt-4 border-t border-neutral-100 mt-4">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=B%2C+Ground+Floor%2C+Andheri+E%2C+Saki+Vihar+Rd%2C+behind+Finch+Restaurant%2C+Ganesh+Nagar%2C+Marol%2C+Andheri+East%2C+Mumbai%2C+Maharashtra+400072"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-montserrat font-bold text-[#1D4224] hover:text-[#FFAE00] transition-colors"
+              >
+                <span>Get Directions on Google Maps</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Card 3: CONTACT */}
+          <div className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-lg p-6 sm:p-8 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-[#FFAE00]/15 text-[#0E2015] flex items-center justify-center mb-4">
+                <Phone className="w-6 h-6 text-[#1D4224]" />
+              </div>
+              <h3 className="font-montserrat font-black text-xl text-[#0E2015] uppercase tracking-wider mb-2">
+                Contact
+              </h3>
+              <div className="space-y-1.5 font-sans text-sm">
+                <div className="block">
+                  <a
+                    href="tel:917760775875"
+                    className="font-semibold text-[#0E2015] hover:text-[#1D4224] transition-colors"
+                  >
+                    +91 776-077-5875
+                  </a>
+                </div>
+                <div className="block">
+                  <a
+                    href="tel:917304056607"
+                    className="text-[#5C6860] hover:text-[#1D4224] transition-colors"
+                  >
+                    +91 730-405-6607
+                  </a>
+                  <span className="mx-1.5 text-neutral-300">|</span>
+                  <a
+                    href="tel:919004250252"
+                    className="text-[#5C6860] hover:text-[#1D4224] transition-colors"
+                  >
+                    +91 900-425-0252
+                  </a>
+                </div>
+                <div className="block pt-1">
+                  <a
+                    href="mailto:corporate@tzar.co"
+                    className="font-medium text-[#1D4224] hover:text-[#FFAE00] transition-colors"
+                  >
+                    corporate@tzar.co
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Icons matching old site */}
+            <div className="pt-4 border-t border-neutral-100 mt-4 flex items-center gap-2.5">
+              <a
+                href={COMPANY.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-[#1D4224] hover:text-white text-[#0E2015] flex items-center justify-center transition-colors shadow-xs"
+                aria-label="LinkedIn"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.65 1.65 0 0 0 0-3.3 1.65 1.65 0 0 0 0 3.3m1.39 9.74v-8.37H5.07v8.37h2.78Z" />
+                </svg>
+              </a>
+              <a
+                href={COMPANY.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-[#1D4224] hover:text-white text-[#0E2015] flex items-center justify-center transition-colors shadow-xs"
+                aria-label="Instagram"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+              </a>
+              <a
+                href={COMPANY.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-[#1D4224] hover:text-white text-[#0E2015] flex items-center justify-center transition-colors shadow-xs"
+                aria-label="Facebook"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
+              <a
+                href={`https://wa.me/${COMPANY.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-[#25D366]/15 hover:bg-[#25D366] hover:text-white text-[#25D366] flex items-center justify-center transition-colors shadow-xs"
+                aria-label="WhatsApp"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────────────
+          03. MAIN CONTACT FORM SECTION (#Contactform)
+          Replicating: "We Can Get Massive Traffic To Your Website"
+      ────────────────────────────────────────────────────────────────── */}
+      <section id="Contactform" className="py-10 sm:py-14 scroll-mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-[#003108] tracking-tight leading-tight mb-2">
+              We Can Get Massive Traffic To Your Website
+            </h2>
+            <p className="font-mono text-xs sm:text-sm uppercase tracking-widest text-[#5C6860] font-bold">
+              TZAR DIGITAL MARKETING AGENCY
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* ── Left Column: Existing Contact LeadCaptureForm ── */}
+            <div className="lg:col-span-6 w-full flex justify-center">
+              <div className="w-full max-w-lg">
+                <LeadCaptureForm
+                  title="From Concept to Capture: We Do It All"
+                  titleColor="#FFAE00"
+                  bgColor="#061309"
+                  buttonBgColor="#FFAE00"
+                  buttonTextColor="#0E2015"
+                  className="shadow-2xl rounded-2xl"
+                />
+              </div>
+            </div>
+
+            {/* ── Right Column: Strategic Highlight Information (from old site) ── */}
+            <div className="lg:col-span-6 w-full space-y-6 lg:pt-2">
+              <div className="bg-white rounded-3xl border border-[#1D4224]/10 shadow-lg p-6 sm:p-8 space-y-6">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-wider text-[#FFAE00] font-bold block mb-1">
+                    OUR CORE DISCIPLINES
+                  </span>
+                  <p className="font-sans text-sm sm:text-base font-semibold text-[#333333] leading-relaxed border-b border-neutral-100 pb-4">
+                    SEO | Content Marketing | Paid Search Marketing | Social Media | Analytics | Programmatic Advertising
+                  </p>
+                </div>
+
+                {/* The 3 Core Highlights from old site */}
+                <div className="space-y-4">
+                  <div className="p-4 rounded-2xl bg-[#F8FAF7] border border-[#1D4224]/5">
+                    <h4 className="font-montserrat font-bold text-base text-[#003108] mb-1 flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4 text-[#FFAE00]" />
+                      <span>SEO</span>
+                    </h4>
+                    <p className="font-sans text-sm text-[#5C6860] leading-relaxed">
+                      Bring huge organic traffic and qualified leads through engineered technical and keyword SEO strategies.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-[#F8FAF7] border border-[#1D4224]/5">
+                    <h4 className="font-montserrat font-bold text-base text-[#003108] mb-1 flex items-center gap-2">
+                      <Target className="w-4 h-4 text-[#FFAE00]" />
+                      <span>Paid Media</span>
+                    </h4>
+                    <p className="font-sans text-sm text-[#5C6860] leading-relaxed">
+                      High-converting Google, Meta, and Programmatic advertising campaigns with guaranteed ROI.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-[#F8FAF7] border border-[#1D4224]/5">
+                    <h4 className="font-montserrat font-bold text-base text-[#003108] mb-1 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-[#FFAE00]" />
+                      <span>Content Marketing</span>
+                    </h4>
+                    <p className="font-sans text-sm text-[#5C6860] leading-relaxed">
+                      Attractive and creative multimedia content that drives viral engagement, brand retention, and repeat conversions.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Direct WhatsApp Quick Chat Box */}
+                <div className="pt-2">
+                  <a
+                    href={`https://wa.me/${COMPANY.whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full p-4 rounded-2xl bg-[#ECFDF5] border border-[#10B981]/20 hover:border-[#10B981]/50 flex items-center justify-between transition-all group no-underline"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-sm">
+                        <MessageSquare className="w-5 h-5" />
+                      </div>
+                      <div className="text-left">
+                        <div className="font-montserrat font-bold text-sm text-[#0E2015] group-hover:text-[#1D4224] transition-colors">
+                          Need Quick Consultation?
+                        </div>
+                        <div className="font-sans text-xs text-[#5C6860]">
+                          Chat directly with our team on WhatsApp
+                        </div>
+                      </div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-[#1D4224] transition-transform group-hover:translate-x-1" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────────────
+          04. EMBEDDED GOOGLE MAP CARD (SAKI VIHAR RD, ANDHERI EAST MUMBAI)
+      ────────────────────────────────────────────────────────────────── */}
+      <section className="pb-6 sm:pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl overflow-hidden border border-[#1D4224]/10 shadow-lg p-2 sm:p-4">
+            <div className="p-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-neutral-100 mb-2">
+              <div>
+                <span className="font-mono text-xs uppercase tracking-wider text-[#FFAE00] font-bold block">
+                  STUDIO LOCATION
+                </span>
+                <h3 className="font-montserrat font-bold text-lg text-[#0E2015] mt-0.5">
+                  B, Ground Floor, Saki Vihar Rd, behind Finch Restaurant, Ganesh Nagar, Marol, Andheri East, Mumbai 400072
+                </h3>
+              </div>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=B%2C+Ground+Floor%2C+Andheri+E%2C+Saki+Vihar+Rd%2C+behind+Finch+Restaurant%2C+Ganesh+Nagar%2C+Marol%2C+Andheri+East%2C+Mumbai%2C+Maharashtra+400072"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded-xl bg-[#1D4224] hover:bg-[#FFAE00] hover:text-[#0E2015] text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 inline-flex items-center gap-2"
+              >
+                <span>Open in Google Maps</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            <div className="w-full h-72 sm:h-80 rounded-2xl overflow-hidden border border-neutral-200">
+              <iframe
+                title="Tzar Digital Agency Office Location"
+                src="https://maps.google.com/maps?q=B%2C%20Ground%20Floor%2C%20Andheri%20E%2C%20Saki%20Vihar%20Rd%2C%20behind%20Finch%20Restaurant%2C%20Ganesh%20Nagar%2C%20Marol%2C%20Andheri%20East%2C%20Mumbai%2C%20Maharashtra%20400072&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────────────
+          05. CONSISTENT REUSABLE CTA CARD
+      ────────────────────────────────────────────────────────────────── */}
+      <ConsistentCTA
+        className="!py-6 sm:!py-8"
+        title="Ready to Scale Your Brand with Tzar?"
+        description="Whether you need high-impact web development, top-ranking SEO, or viral social campaigns, our specialists are ready to execute."
+        primaryText="Talk with Our Team"
+        primaryHref="/contact"
+        secondaryText="View Portfolio"
+        secondaryHref="/portfolio"
+      />
+    </div>
+  );
+}

@@ -11,15 +11,27 @@ export interface TrafficGrowthSectionProps {
   formTextColor?: string;
   /** Optional flag to remove ambient glow and gradient border from form */
   noBorder?: boolean;
+  /** Optional custom badge */
+  badge?: string;
+  /** Optional custom title */
+  title?: React.ReactNode;
+  /** Optional custom subtitle */
+  subtitle?: string;
+  /** Optional flag to hide the section header completely */
+  hideHeader?: boolean;
 }
 
 export const TrafficGrowthSection: React.FC<TrafficGrowthSectionProps> = ({
   formBgColor = '#0E2015',
   formTextColor = '#FFFFFF',
   noBorder = false,
+  badge = 'DIGITAL ARCHITECTURE & GROWTH SYSTEMS',
+  title = 'Engineer High-Impact Digital Platforms & Scalable Traffic',
+  subtitle = 'TZAR DIGITAL AGENCY — TECHNOLOGY ARCHITECTURE & PERFORMANCE SYSTEMS',
+  hideHeader = false,
 }) => {
   return (
-    <section id="contact-form" className="relative py-16 sm:py-20 bg-transparent overflow-hidden scroll-mt-8">
+    <section id="contact-form" className="relative py-12 sm:py-16 bg-transparent overflow-hidden scroll-mt-8">
       {/* Subtle diagonal micro-pattern backdrop */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
@@ -30,17 +42,23 @@ export const TrafficGrowthSection: React.FC<TrafficGrowthSectionProps> = ({
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-12">
-          <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-[#FFAE00] font-black block">
-            DIGITAL ARCHITECTURE &amp; GROWTH SYSTEMS
-          </span>
-          <h2 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight mt-2 leading-tight">
-            Engineer High-Impact Digital Platforms &amp; Scalable Traffic
-          </h2>
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] text-white/60 mt-1.5">
-            TZAR DIGITAL AGENCY — TECHNOLOGY ARCHITECTURE &amp; PERFORMANCE SYSTEMS
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="text-center mb-8 sm:mb-10">
+            {badge && (
+              <span className="font-mono text-xs uppercase tracking-widest text-[#FFAE00] font-bold bg-[#FFAE00]/10 border border-[#FFAE00]/25 px-3 py-1 rounded-full inline-block">
+                {badge}
+              </span>
+            )}
+            <h2 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight mt-3 leading-tight">
+              {title}
+            </h2>
+            {subtitle && (
+              <p className="text-xs sm:text-sm text-[#B6F8DD]/85 mt-2 max-w-xl mx-auto leading-relaxed">
+                {subtitle}
+              </p>
+            )}
+          </div>
+        )}
 
         {/* 2-Column Balanced Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">

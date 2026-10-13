@@ -204,20 +204,19 @@ export default function OurClientView() {
           </div>
         </div>
 
-        {/* ── Delicate Gold Accent Tracing Bottom Edge of the Hero Wave ── */}
-        <div className="absolute bottom-0 left-0 right-0 z-30 pointer-events-none leading-none overflow-hidden h-10 sm:h-12 md:h-16">
+        {/* Delicate golden accent curve tracing the wave bottom edge */}
+        <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-20">
           <svg
-            viewBox="0 0 1440 80"
+            viewBox="0 0 1440 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full preserve-3d"
+            className="w-full h-6 sm:h-10 lg:h-16 block pointer-events-none opacity-60"
             preserveAspectRatio="none"
           >
             <path
-              d="M0,38 C320,80 540,12 800,45 C1060,78 1260,22 1440,38"
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40"
               stroke="#FFAE00"
-              strokeWidth="2"
-              strokeOpacity="0.45"
+              strokeWidth="2.5"
               fill="none"
             />
           </svg>
@@ -328,25 +327,19 @@ export default function OurClientView() {
         </div>
       </section>
 
-      {/* ── 04. HIGH-CONVERTING LEAD ENQUIRY FORM SECTION (NO BLURRY GLOW, SEAMLESS INTEGRATION) ── */}
-      <section className="relative z-10 py-10 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#FFAE00] font-bold bg-[#FFAE00]/10 border border-[#FFAE00]/25 px-3 py-1 rounded-full inline-block">
-              GET IN TOUCH
-            </span>
-            <h2 className="font-montserrat font-black text-2xl sm:text-4xl text-white tracking-tight mt-3">
+      {/* ── 04. HIGH-CONVERTING LEAD ENQUIRY FORM SECTION (SINGLE CLEAN TITLE) ── */}
+      <div className="relative z-10 w-full overflow-hidden">
+        <TrafficGrowthSection
+          noBorder={true}
+          badge="GET IN TOUCH"
+          title={
+            <>
               Ready to Scale Your <span className="text-[#FFAE00]">Brand?</span>
-            </h2>
-            <p className="text-[#B6F8DD]/85 text-xs sm:text-sm mt-1.5">
-              Share your project goals with our technical architects and receive a tailored growth roadmap.
-            </p>
-          </div>
-
-          {/* Lead Capture Form without blurry glow */}
-          <TrafficGrowthSection noBorder={true} />
-        </div>
-      </section>
+            </>
+          }
+          subtitle="Share your project goals with our technical architects and receive a tailored growth roadmap."
+        />
+      </div>
 
       {/* ── 05. CONSISTENT REUSABLE CTA CARD ── */}
       <ConsistentCTA

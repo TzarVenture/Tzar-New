@@ -455,13 +455,13 @@ export default function FaqsView() {
             viewBox="0 0 1440 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-6 sm:h-10 lg:h-16 block pointer-events-none opacity-35"
+            className="w-full h-6 sm:h-10 lg:h-16 block pointer-events-none opacity-60"
             preserveAspectRatio="none"
           >
             <path
               d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40"
               stroke="#FFAE00"
-              strokeWidth="2"
+              strokeWidth="2.5"
               fill="none"
             />
           </svg>
@@ -611,9 +611,18 @@ export default function FaqsView() {
         id="enquiry-form"
         className="relative z-10 text-white pt-6 sm:pt-10 pb-12 sm:pb-20 overflow-hidden scroll-mt-12 bg-transparent"
       >
-        {/* Integrated Homepage Traffic Growth & Lead Form Section without aura glow */}
+        {/* Integrated Lead Form Section with single clean header */}
         <div className="relative z-10">
-          <TrafficGrowthSection noBorder={true} />
+          <TrafficGrowthSection
+            noBorder={true}
+            badge="GET IN TOUCH"
+            title={
+              <>
+                Still Have <span className="text-[#FFAE00]">Questions?</span>
+              </>
+            }
+            subtitle="Send our team a direct message and we will respond within 24 hours with clear answers."
+          />
         </div>
       </section>
 

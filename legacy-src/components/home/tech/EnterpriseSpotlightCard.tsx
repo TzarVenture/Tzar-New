@@ -72,7 +72,7 @@ const ENTERPRISE_SOLUTIONS: EnterpriseItem[] = [
     category: 'Lead Scoring, Sales Pipelines & SLA Automation',
     icon: CrmPipelineIcon,
     brandColor: '#D4AF37',
-    mockupImage: '/mockups/enterprise-showcase-crm.png',
+    mockupImage: '/mockups/enterprise-showcase-crm.webp',
     caseStudyLink: '/website-development-services#lead-form',
   },
   {
@@ -85,7 +85,7 @@ const ENTERPRISE_SOLUTIONS: EnterpriseItem[] = [
     category: 'Resource Planning, Compliance & Multi-Entity Auditing',
     icon: ErpGridIcon,
     brandColor: '#3B82F6',
-    mockupImage: '/mockups/enterprise-showcase-erp.png',
+    mockupImage: '/mockups/enterprise-showcase-erp.webp',
     caseStudyLink: '/website-development-services#lead-form',
   },
   {
@@ -98,7 +98,7 @@ const ENTERPRISE_SOLUTIONS: EnterpriseItem[] = [
     category: 'Vendor Portals, Multi-Tier Pricing & Order Workflows',
     icon: SaasCloudIcon,
     brandColor: '#8B5CF6',
-    mockupImage: '/mockups/enterprise-showcase-b2b.png',
+    mockupImage: '/mockups/enterprise-showcase-b2b.webp',
     caseStudyLink: '/website-development-services#lead-form',
   },
   {
@@ -111,7 +111,7 @@ const ENTERPRISE_SOLUTIONS: EnterpriseItem[] = [
     category: 'Telemetry, Role-Based Workspaces & Process Workflows',
     icon: PortalNetworkIcon,
     brandColor: '#10B981',
-    mockupImage: '/mockups/enterprise-showcase-internal-tools.png',
+    mockupImage: '/mockups/enterprise-showcase-internal-tools.webp',
     caseStudyLink: '/website-development-services#lead-form',
   },
 ];
@@ -314,7 +314,7 @@ export const EnterpriseSpotlightCard: React.FC = () => {
           RIGHT HALF: 50% WIDTH DEEP OBSIDIAN BRONZE CANVAS (#1C150A – #080602)
           FADING UP (EXIT) & COMING UP (ENTER) 3D ENTERPRISE DUO MOCKUP STACK
           ══════════════════════════════════════════════════════════════════════ */}
-      <div className="relative flex-1 flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden h-[250px] xs:h-[275px] sm:h-[340px] md:h-full min-h-[220px] md:min-h-[300px] bg-gradient-to-br from-[#1C150A] via-[#120E06] to-[#080602]">
+      <div className="relative flex-1 flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden h-62.5 xs:h-[275px] sm:h-85 md:h-full min-h-55 md:min-h-75 bg-linear-to-br from-[#1C150A] via-[#120E06] to-[#080602]">
         {/* Ambient Subtle Warm Gold Radial Glow */}
         <div
           className="absolute inset-0 pointer-events-none opacity-60"

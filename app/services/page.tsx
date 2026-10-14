@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import ServicesView from "./ServicesView";
+import { JsonLd } from "@/app/components/seo/JsonLd";
+import { createBreadcrumbSchema, SITE_URL } from "@/app/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Digital Marketing, Web & Growth Services | Tzar Digital Agency",
@@ -27,6 +29,16 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbSchema = createBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Services", url: "/services" },
+]);
+
 export default function ServicesPage() {
-  return <ServicesView />;
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <ServicesView />
+    </>
+  );
 }

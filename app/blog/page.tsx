@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import BlogView from "./BlogView";
+import { JsonLd } from "@/app/components/seo/JsonLd";
+import { createBreadcrumbSchema } from "@/app/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Strategic Insights & Tech Publications | Tzar Digital Agency",
@@ -41,6 +43,16 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbSchema = createBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Blog", url: "/blog" },
+]);
+
 export default function BlogPage() {
-  return <BlogView />;
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <BlogView />
+    </>
+  );
 }

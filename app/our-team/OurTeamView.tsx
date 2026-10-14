@@ -33,7 +33,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: "marketing",
     describe:
       "With in-depth knowledge of social media ecosystems, she crafts viral content strategies that drive authentic brand engagement and follower growth.",
-    image: "/assets/images/team/team-page-img-1.png",
+    image: "/assets/images/team/team-page-img-1.webp",
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: "marketing",
     describe:
       "I help businesses look good and connect authentically with people on social media platforms.",
-    image: "/assets/images/team/Artboard 2 (1).png",
+    image: "/assets/images/team/Artboard 2 (1).webp",
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: "marketing",
     describe:
       "Enthusiast passionate about building meaningful digital presence and high-ROI multi-channel funnels.",
-    image: "/assets/images/team/Artboard 1 (1).png",
+    image: "/assets/images/team/Artboard 1 (1).webp",
   },
   {
     id: 5,
@@ -69,7 +69,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: "engineering",
     describe:
       "Dedicated web developer focused on clean code, seamless UX micro-interactions, and robust technical implementations.",
-    image: "/assets/images/team/vivek11.png",
+    image: "/assets/images/team/vivek11.webp",
   },
   {
     id: 7,
@@ -78,7 +78,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: "design",
     describe:
       "Specializes in brand identity kits, vector graphics, print art, and high-impact visual marketing creatives.",
-    image: "/assets/images/team/sanskar11.png",
+    image: "/assets/images/team/sanskar11.webp",
   },
   {
     id: 8,

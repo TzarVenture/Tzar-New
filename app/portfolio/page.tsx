@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import PortfolioView from "./PortfolioView";
+import { JsonLd } from "@/app/components/seo/JsonLd";
+import { createBreadcrumbSchema } from "@/app/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Portfolio & Case Studies | Tzar Digital Agency",
@@ -27,7 +29,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PortfolioPage() {
-  return <PortfolioView />;
-}
+const breadcrumbSchema = createBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Portfolio", url: "/portfolio" },
+]);
 
+export default function PortfolioPage() {
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <PortfolioView />
+    </>
+  );
+}

@@ -44,7 +44,6 @@ export const TechFooter: React.FC = () => {
                 <img
                   src="/optimized/assets/images/tzar-logo-main.webp"
                   alt="TZAR DIGITAL"
-                  loading="lazy"
                   decoding="async"
                   className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
@@ -242,7 +241,7 @@ export const TechFooter: React.FC = () => {
                 src="/assets/images/footer-logos/payment-image.webp"
                 alt="100% Safe &amp; Secure Payment"
                 className="h-8 sm:h-11 md:h-12 w-auto max-w-full object-contain rounded drop-shadow-sm"
-                loading="lazy"
+                decoding="async"
               />
             </Link>
 

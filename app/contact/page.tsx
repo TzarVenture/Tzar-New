@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ContactView from "./ContactView";
+import { JsonLd } from "@/app/components/seo/JsonLd";
+import { createBreadcrumbSchema } from "@/app/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Contact Us | Tzar Digital Agency - Mumbai & Global",
@@ -19,7 +21,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Contact() {
-  return <ContactView />;
-}
+const breadcrumbSchema = createBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Contact Us", url: "/contact" },
+]);
 
+export default function Contact() {
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <ContactView />
+    </>
+  );
+}

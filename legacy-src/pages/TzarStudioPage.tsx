@@ -34,8 +34,8 @@ const SHOWCASE_ITEMS = [
   { id: 's2', title: 'Studio Portrait Frame #2', img: '/optimized/assets/images/MobileShowcase/show2.webp', tag: 'Fashion Shoot' },
   { id: 's3', title: 'Commercial Lifestyle Frame', img: '/assets/images/MobileShowcase/show3.jpg', tag: 'Commercial Frame' },
   { id: 's1-1', title: 'Cinematic Frame #1', img: '/optimized/assets/images/MobileShowcase/show1-1.webp', tag: 'Cinematic Reel' },
-  { id: 's1-2', title: 'Cinematic Frame #2', img: '/assets/images/MobileShowcase/show1-2.jpg', tag: 'Fashion Editorial' },
-  { id: 's1-3', title: 'Cinematic Frame #3', img: '/assets/images/MobileShowcase/show1-3.jpg', tag: 'Model Shoot' },
+  { id: 's1-2', title: 'Cinematic Frame #2', img: '/assets/images/MobileShowcase/show1-2.webp', tag: 'Fashion Editorial' },
+  { id: 's1-3', title: 'Cinematic Frame #3', img: '/assets/images/MobileShowcase/show1-3.webp', tag: 'Model Shoot' },
 ];
 
 // Restaurant Food Photography Showcase (from /assets/images/MobileShowcase/)

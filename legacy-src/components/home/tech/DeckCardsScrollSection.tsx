@@ -251,10 +251,10 @@ export const DeckCardsScrollSection: React.FC = () => {
                     style={{ animationDelay: `${idx * 1.4}s` }}
                   >
                     <div className="deck-card-inner">
-                      {/* CARD BACK (Exact TZAR-CARD.png, zero padding) */}
+                      {/* CARD BACK (Exact TZAR-CARD.webp, zero padding) */}
                       <div className="deck-card-face deck-card-back">
                         <Image
-                          src="/TZAR-CARD.png"
+                          src="/TZAR-CARD.webp"
                           alt="Tzar Luxury Card Back"
                           fill
                           sizes="(max-width: 1024px) 220px, 310px"
@@ -325,10 +325,10 @@ export const DeckCardsScrollSection: React.FC = () => {
                 style={{ animationDelay: `${idx * 1.2}s` }}
               >
                 <div className="deck-card-mobile-inner">
-                  {/* CARD BACK (Exact TZAR-CARD.png) */}
+                  {/* CARD BACK (Exact TZAR-CARD.webp) */}
                   <div className="deck-card-mobile-face deck-card-mobile-back">
                     <Image
-                      src="/TZAR-CARD.png"
+                      src="/TZAR-CARD.webp"
                       alt="Tzar Luxury Card Back"
                       fill
                       sizes="(max-width: 768px) 340px, 380px"

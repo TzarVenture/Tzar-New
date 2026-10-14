@@ -280,6 +280,16 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     // Mobile screens (< 768px) use native browser compositor sticky
     if (window.innerWidth < 768) return null;
 
+    // Harmonize with Global Lenis SmoothScrollProvider if active on window
+    const globalLenis = (window as any).__tzar_lenis;
+    if (useWindowScroll && globalLenis) {
+      globalLenis.on('scroll', () => {
+        updateCardTransforms(globalLenis.actualScroll ?? window.scrollY);
+      });
+      lenisRef.current = globalLenis;
+      return globalLenis;
+    }
+
     const scroller = scrollerRef.current;
     if (!useWindowScroll && !scroller) return;
 
@@ -301,10 +311,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       infinite: false
     });
 
-    // Position cards from the scroll offset the browser actually applied, not
-    // Lenis's fractional animated value. The two differ by sub-pixel amounts
-    // every frame, which made "pinned" cards wobble (visible as shaking while
-    // a new card slides over the stack).
     lenis.on('scroll', () => {
       updateCardTransforms(lenis.actualScroll);
     });
@@ -463,9 +469,11 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         touchScrollCleanupRef.current = null;
       }
       if (lenisRef.current) {
-        lenisRef.current.destroy();
+        // Only destroy local instance, preserve global SmoothScrollProvider instance
         if (typeof window !== 'undefined' && (window as any).__tzar_lenis === lenisRef.current) {
-          (window as any).__tzar_lenis = null;
+          // Keep global Lenis alive across pages
+        } else {
+          lenisRef.current.destroy();
         }
       }
       stackCompletedRef.current = false;

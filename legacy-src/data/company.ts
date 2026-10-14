@@ -24,6 +24,8 @@ export const COMPANY = {
     instagram: 'https://www.instagram.com/tzarmktagency/',
     facebook: 'https://www.facebook.com/TzarAgency',
     youtube: 'https://youtube.com',
+    telegram: 'https://t.me/tzardigital',
+    skype: 'skype:corporate@tzar.co?chat',
   },
   gst: '27AAAAA0000A1Z5',
 };

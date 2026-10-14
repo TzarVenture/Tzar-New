@@ -5,26 +5,23 @@ import { Phone, Mail, ArrowUpRight, Linkedin, Instagram } from 'lucide-react';
 export const TechFooter: React.FC = () => {
   return (
     <div className="w-full relative z-20">
-      {/* ── SVG CLIP PATH: SHAPES THE FOOTER TOP ITSELF AS AN ORGANIC WAVE (NO EXTRA SVG CONTAINER) ── */}
-      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-        <defs>
-          <clipPath id="footer-top-wave" clipPathUnits="objectBoundingBox">
-            <path d="M 0,0.035 C 0.222,0.08 0.375,0.01 0.556,0.045 C 0.736,0.08 0.875,0.02 1,0.04 L 1,1 L 0,1 Z" />
-          </clipPath>
-        </defs>
-      </svg>
-
-      {/* ── Golden Yellow Border Line on Footer Top Wave Edge ── */}
-      <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-30">
+      {/* ── ORGANIC WAVE TOP EDGE WITH INTEGRATED GOLDEN BORDER LINE ── */}
+      <div className="w-full overflow-hidden leading-none relative z-30 -mb-px pointer-events-none">
         <svg
-          viewBox="0 0 1440 100"
+          viewBox="0 0 1440 60"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-8 sm:h-12 lg:h-16 block pointer-events-none"
+          className="w-full h-7 sm:h-10 lg:h-14 block"
           preserveAspectRatio="none"
         >
+          {/* Wave body filled with footer background color #0E2015 */}
           <path
-            d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40"
+            d="M0,24 C320,52 540,8 800,30 C1060,52 1260,12 1440,22 L1440,60 L0,60 Z"
+            fill="#0E2015"
+          />
+          {/* Golden Yellow Border Line - precisely attached to the wave top edge */}
+          <path
+            d="M0,24 C320,52 540,8 800,30 C1060,52 1260,12 1440,22"
             stroke="#FFAE00"
             strokeWidth="3"
             strokeLinecap="round"
@@ -33,13 +30,7 @@ export const TechFooter: React.FC = () => {
         </svg>
       </div>
 
-      <footer
-        className="bg-[#0E2015] text-[#EFE8E0] font-inter relative overflow-hidden pt-12 sm:pt-16 pb-4 sm:pb-6"
-        style={{
-          clipPath: "url(#footer-top-wave)",
-          WebkitClipPath: "url(#footer-top-wave)",
-        }}
-      >
+      <footer className="bg-[#0E2015] text-[#EFE8E0] font-inter relative overflow-hidden pt-4 sm:pt-8 pb-4 sm:pb-6">
         {/* Subtle ambient luxury glow */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#1D4224]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#FFAE00]/5 rounded-full blur-3xl pointer-events-none" />
@@ -67,16 +58,16 @@ export const TechFooter: React.FC = () => {
               <div className="space-y-2.5 text-xs font-mono text-white/80 pt-1">
                 <div className="flex items-start gap-2.5">
                   <Phone className="w-3.5 h-3.5 text-[#FFAE00] shrink-0 mt-0.5" />
-                  <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                    <a href="tel:+917304056607" className="hover:text-[#FFAE00] transition-colors">
+                  <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs">
+                    <a href="tel:+917304056607" className="hover:text-[#FFAE00] transition-colors whitespace-nowrap">
                       91 730-405-6607
                     </a>
                     <span className="text-white/30">|</span>
-                    <a href="tel:+917760775875" className="hover:text-[#FFAE00] transition-colors">
+                    <a href="tel:+917760775875" className="hover:text-[#FFAE00] transition-colors whitespace-nowrap">
                       91 776-077-5875
                     </a>
                     <span className="text-white/30">|</span>
-                    <a href="tel:+919004250252" className="hover:text-[#FFAE00] transition-colors">
+                    <a href="tel:+919004250252" className="hover:text-[#FFAE00] transition-colors whitespace-nowrap">
                       91 900-425-0252
                     </a>
                   </div>
@@ -84,7 +75,7 @@ export const TechFooter: React.FC = () => {
 
                 <a
                   href="mailto:corporate@tzar.co"
-                  className="flex items-center gap-2.5 hover:text-[#FFAE00] transition-colors"
+                  className="flex items-center gap-2.5 hover:text-[#FFAE00] transition-colors text-[11px] sm:text-xs"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#FFAE00] shrink-0" />
                   <span>corporate@tzar.co</span>
@@ -181,13 +172,13 @@ export const TechFooter: React.FC = () => {
                   href="https://maps.app.goo.gl/ryxbajb4yg24TbrG8"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white hover:bg-white/90 px-3 py-1 rounded-lg flex items-center justify-center transition-transform hover:scale-105 h-10 shrink-0 shadow-sm"
+                  className="bg-white hover:bg-white/90 px-2.5 sm:px-3 py-1 rounded-lg flex items-center justify-center transition-transform hover:scale-105 h-9 sm:h-10 shrink-0 shadow-sm"
                   title="Google Certified Partner"
                 >
                   <img
                     src="/assets/images/footer-logos/google-partner-seeklogo.png"
                     alt="Google Partner"
-                    className="h-8 w-auto object-contain"
+                    className="h-7 sm:h-8 w-auto object-contain"
                   />
                 </a>
 
@@ -196,37 +187,37 @@ export const TechFooter: React.FC = () => {
                   href="https://www.facebook.com/TzarAgency"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white hover:bg-white/90 px-2 py-1 rounded-lg flex items-center justify-center transition-transform hover:scale-105 h-10 shrink-0 shadow-sm"
+                  className="bg-white hover:bg-white/90 px-2 py-1 rounded-lg flex items-center justify-center transition-transform hover:scale-105 h-9 sm:h-10 shrink-0 shadow-sm"
                   title="Facebook Marketing Partner"
                 >
                   <img
                     src="/assets/images/footer-logos/facebook-marketing-partner-seeklogo.png"
                     alt="Facebook Marketing Partner"
-                    className="h-8 w-auto object-contain"
+                    className="h-7 sm:h-8 w-auto object-contain"
                   />
                 </a>
 
                 {/* 3. Razorpay Partner Badge */}
                 <div
-                  className="bg-white px-3 py-1 rounded-lg flex items-center justify-center h-10 shrink-0 shadow-sm"
+                  className="bg-white px-2.5 sm:px-3 py-1 rounded-lg flex items-center justify-center h-9 sm:h-10 shrink-0 shadow-sm"
                   title="Razorpay"
                 >
                   <img
                     src="/assets/images/footer-logos/Razorpay_idJPs0Yq7Y_0.svg"
                     alt="Razorpay"
-                    className="h-6.5 w-auto object-contain"
+                    className="h-5.5 sm:h-6.5 w-auto object-contain"
                   />
                 </div>
 
                 {/* 4. Shiprocket Partner Badge */}
                 <div
-                  className="bg-white px-3 py-1 rounded-lg flex items-center justify-center h-10 shrink-0 shadow-sm"
+                  className="bg-white px-2.5 sm:px-3 py-1 rounded-lg flex items-center justify-center h-9 sm:h-10 shrink-0 shadow-sm"
                   title="Shiprocket"
                 >
                   <img
                     src="/assets/images/footer-logos/Shiprocket.svg"
                     alt="Shiprocket"
-                    className="h-6.5 w-auto object-contain"
+                    className="h-5.5 sm:h-6.5 w-auto object-contain"
                   />
                 </div>
               </div>
@@ -235,8 +226,8 @@ export const TechFooter: React.FC = () => {
           </div>
 
           {/* Bottom Legal Bar with Large Payment Gateway Strip */}
-          <div className="pt-6 sm:pt-8 mt-8 sm:mt-10 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 text-xs font-mono text-white/50">
-            <div className="flex items-center gap-6 sm:gap-8">
+          <div className="pt-6 sm:pt-8 mt-8 sm:mt-10 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 text-xs font-mono text-white/50 text-center md:text-left">
+            <div className="flex items-center gap-6 sm:gap-8 justify-center">
               <Link href="/terms-conditions" className="hover:text-[#FFAE00] transition-colors">Terms &amp; Conditions</Link>
               <Link href="/privacy-policy" className="hover:text-[#FFAE00] transition-colors">Privacy Policy</Link>
             </div>
@@ -250,12 +241,12 @@ export const TechFooter: React.FC = () => {
               <img
                 src="/assets/images/footer-logos/payment-image.webp"
                 alt="100% Safe &amp; Secure Payment"
-                className="h-10 sm:h-11 md:h-12 w-auto max-w-full object-contain rounded drop-shadow-sm"
+                className="h-8 sm:h-11 md:h-12 w-auto max-w-full object-contain rounded drop-shadow-sm"
                 loading="lazy"
               />
             </Link>
 
-            <p>© {new Date().getFullYear()} Tzar Digital Agency. All rights reserved.</p>
+            <p className="text-center md:text-right">© {new Date().getFullYear()} Tzar Digital Agency. All rights reserved.</p>
           </div>
         </div>
 

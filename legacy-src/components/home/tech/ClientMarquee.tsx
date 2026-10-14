@@ -59,7 +59,6 @@ export const ClientMarquee: React.FC = () => {
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  loading="lazy"
                   decoding="async"
                   className="h-7 sm:h-8 max-w-32.5 sm:max-w-37.5 w-auto object-contain brightness-0 invert opacity-60 group-hover/logo:opacity-100 transition-all duration-300 transform group-hover/logo:scale-105"
                 />
@@ -76,7 +75,6 @@ export const ClientMarquee: React.FC = () => {
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  loading="lazy"
                   decoding="async"
                   className="h-7 sm:h-8 max-w-32.5 sm:max-w-37.5 w-auto object-contain brightness-0 invert opacity-60 group-hover/logo:opacity-100 transition-all duration-300 transform group-hover/logo:scale-105"
                 />
@@ -99,7 +97,6 @@ export const ClientMarquee: React.FC = () => {
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  loading="lazy"
                   decoding="async"
                   className="h-7 sm:h-8 max-w-32.5 sm:max-w-37.5 w-auto object-contain brightness-0 invert opacity-60 group-hover/logo:opacity-100 transition-all duration-300 transform group-hover/logo:scale-105"
                 />
@@ -116,7 +113,6 @@ export const ClientMarquee: React.FC = () => {
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  loading="lazy"
                   decoding="async"
                   className="h-7 sm:h-8 max-w-32.5 sm:max-w-37.5 w-auto object-contain brightness-0 invert opacity-60 group-hover/logo:opacity-100 transition-all duration-300 transform group-hover/logo:scale-105"
                 />

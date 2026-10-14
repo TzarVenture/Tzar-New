@@ -36,7 +36,7 @@ export function DeferredShowcaseMockupSection() {
 
 export function DeferredClientMarquee() {
   return (
-    <DeferredSection className="min-h-60 bg-transparent">
+    <DeferredSection rootMargin="1200px 0px" className="min-h-60 bg-transparent">
       <ClientMarquee />
     </DeferredSection>
   );

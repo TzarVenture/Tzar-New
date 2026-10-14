@@ -226,7 +226,7 @@ export default function AboutUsView() {
             <div className="flex items-center justify-center lg:justify-end overflow-visible relative z-10">
               <div className="w-full max-w-sm sm:max-w-md lg:max-w-none flex items-center justify-center">
                 <Image
-                  src="/assets/lottie/teammates_about.png"
+                  src="/assets/lottie/teammates_about.webp"
                   alt="Tzar Digital Agency"
                   width={1536}
                   height={1024}
@@ -335,7 +335,7 @@ export default function AboutUsView() {
                 <div className="relative w-full max-w-sm aspect-4/5 sm:h-96 rounded-2xl sm:rounded-3xl bg-[#030A05] p-2.5 sm:p-3 border border-white/15 shadow-xl group">
                   <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden">
                     <Image
-                      src="/assets/images/resources/about-page-img-2.png"
+                      src="/assets/images/resources/about-page-img-2.webp"
                       alt="About Tzar Digital"
                       fill
                       className="object-cover rounded-xl sm:rounded-2xl transition-transform duration-500 group-hover:scale-105"

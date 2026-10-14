@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    formats: ["image/avif", "image/webp"],
+    formats: ["image/webp"],
     // Cache optimized next/image responses for 7 days (default is 60 seconds).
     minimumCacheTTL: 604800,
   },
@@ -17,9 +17,33 @@ const nextConfig: NextConfig = {
   // the new one within 7 days (rename the file to update it immediately).
   async headers() {
     const cacheControl = "public, max-age=604800, stale-while-revalidate=86400";
-    return ["/optimized/:path*", "/assets/:path*", "/mockups/:path*", "/tech-icons/:path*"].map(
+    return ["/optimized/:path*", "/assets/:path*", "/mockups/:path*", "/tech-icons/:path*", "/:file*.(webp|png|jpg|jpeg|svg|mp4)"].map(
       (source) => ({ source, headers: [{ key: "Cache-Control", value: cacheControl }] })
     );
+  },
+  async redirects() {
+    return [
+      {
+        source: "/TermsConditions",
+        destination: "/terms-conditions",
+        permanent: true,
+      },
+      {
+        source: "/payment",
+        destination: "/payment-gateway",
+        permanent: true,
+      },
+      {
+        source: "/seonewpage",
+        destination: "/search-engine-optimization-services",
+        permanent: true,
+      },
+      {
+        source: "/websitedevelopmentpricing",
+        destination: "/website-development-services",
+        permanent: true,
+      },
+    ];
   },
 };
 

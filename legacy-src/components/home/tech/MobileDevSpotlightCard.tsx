@@ -70,7 +70,7 @@ const MOBILE_TECHNOLOGIES: MobileTechItem[] = [
     category: 'Cross-Platform iOS & Android Systems',
     icon: ReactNativeIcon,
     brandColor: '#61DAFB',
-    mockupImage: '/mockups/mobile-showcase-react-native.png',
+    mockupImage: '/mockups/mobile-showcase-react-native.webp',
     caseStudyLink: '#lead-form',
   },
   {
@@ -83,7 +83,7 @@ const MOBILE_TECHNOLOGIES: MobileTechItem[] = [
     category: 'High-Performance Multi-Platform Native UI',
     icon: FlutterIcon,
     brandColor: '#02569B',
-    mockupImage: '/mockups/mobile-showcase-flutter.png',
+    mockupImage: '/mockups/mobile-showcase-flutter.webp',
     caseStudyLink: '#lead-form',
   },
   {
@@ -96,7 +96,7 @@ const MOBILE_TECHNOLOGIES: MobileTechItem[] = [
     category: 'Modern Jetpack Compose & Edge Device Ecosystems',
     icon: AndroidIcon,
     brandColor: '#3DDC84',
-    mockupImage: '/mockups/mobile-showcase-android.png',
+    mockupImage: '/mockups/mobile-showcase-android.webp',
     caseStudyLink: '#lead-form',
   },
   {
@@ -109,7 +109,7 @@ const MOBILE_TECHNOLOGIES: MobileTechItem[] = [
     category: 'Apple Silicon Optimized 120Hz Fluid Experiences',
     icon: SwiftAppleIcon,
     brandColor: '#000000',
-    mockupImage: '/mockups/mobile-showcase-swift.png',
+    mockupImage: '/mockups/mobile-showcase-swift.webp',
     caseStudyLink: '#lead-form',
   },
 ];

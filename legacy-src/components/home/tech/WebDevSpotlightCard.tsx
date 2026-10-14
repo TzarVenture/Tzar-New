@@ -98,7 +98,7 @@ const TECHNOLOGIES: TechItem[] = [
     category: 'Headless Shopify Plus & Liquid Storefronts',
     icon: ShopifyIcon,
     brandColor: '#95BF47',
-    mockupImage: '/mockups/web-showcase-shopify.png',
+    mockupImage: '/mockups/web-showcase-shopify.webp',
     caseStudyLink: '#lead-form'
   },
   {
@@ -111,7 +111,7 @@ const TECHNOLOGIES: TechItem[] = [
     category: 'Bespoke Themes & Headless Content Systems',
     icon: WordPressIcon,
     brandColor: '#21759B',
-    mockupImage: '/mockups/web-showcase-wordpress.png',
+    mockupImage: '/mockups/web-showcase-wordpress.webp',
     caseStudyLink: '#lead-form'
   },
   {
@@ -124,7 +124,7 @@ const TECHNOLOGIES: TechItem[] = [
     category: 'Full-Stack App Router & Global Edge SSR',
     icon: NextJsIcon,
     brandColor: '#000000',
-    mockupImage: '/mockups/web-showcase-nextjs.png',
+    mockupImage: '/mockups/web-showcase-nextjs.webp',
     caseStudyLink: '#lead-form'
   },
   {
@@ -137,7 +137,7 @@ const TECHNOLOGIES: TechItem[] = [
     category: 'High-Concurrency Client Dashboards & Portals',
     icon: ReactIcon,
     brandColor: '#61DAFB',
-    mockupImage: '/mockups/web-showcase-react.png',
+    mockupImage: '/mockups/web-showcase-react.webp',
     caseStudyLink: '#lead-form'
   }
 ];
@@ -341,7 +341,7 @@ export const WebDevSpotlightCard: React.FC = () => {
           RIGHT HALF: 50% WIDTH DEEP FOREST GREEN (#13301B) CANVAS
           FULL-HEIGHT SHOWCASE STACK (TRANSPARENT PNG MOCKUPS)
           ══════════════════════════════════════════════════════════════════════ */}
-      <div className="bg-[#13301B] relative flex-1 flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden h-[250px] xs:h-[275px] sm:h-[340px] md:h-full min-h-[220px] md:min-h-[300px]">
+      <div className="bg-[#13301B] relative flex-1 flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden h-62.5 xs:h-[275px] sm:h-85 md:h-full min-h-55 md:min-h-75">
         {/* Layered Stack: Old phone glides up & fades out, new phone rises up from below */}
         <div className="relative w-full h-full flex items-center justify-center select-none">
           {TECHNOLOGIES.map((tech, idx) => {

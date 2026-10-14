@@ -69,7 +69,7 @@
 
 .deck-card-outer {
   position: absolute;
-  /* Exact aspect ratio matching TZAR-CARD.png (1052 / 1495) */
+  /* Exact aspect ratio matching TZAR-CARD.webp (1052 / 1495) */
   width: var(--card-w);
   aspect-ratio: 1052 / 1495;
   height: auto;
@@ -130,7 +130,7 @@
   margin: 0;
 }
 
-/* Card Back: Exact TZAR-CARD.png with zero extra padding */
+/* Card Back: Exact TZAR-CARD.webp with zero extra padding */
 .deck-card-back {
   transform: rotateY(0deg);
   background: transparent !important;

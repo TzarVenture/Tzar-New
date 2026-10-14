@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { PaymentPage } from "@/legacy-src/pages/PaymentPage";
+import PaymentGatewayView from "./PaymentGatewayView";
 
 export const metadata: Metadata = {
-  title: "100% Secure Online Payment Gateway | Tzar Digital Agency",
-  description: "Make safe and instant payments for your active projects with 256-bit SSL encrypted Razorpay & UPI integration.",
+  title: "100% Secure Payment Gateway | Kotak Bank & UPI | Tzar Digital Agency",
+  description: "Official payment gateway for Tzar Digital Agency. Make safe and instant payments via Kotak Mahindra Bank transfer, UPI QR code, or secure 256-bit encrypted online checkout.",
   alternates: {
     canonical: "https://www.tzar.co/payment-gateway",
   },
   openGraph: {
-    title: "100% Secure Online Payment Gateway | Tzar Digital Agency",
-    description: "Make safe and instant payments for your active projects with 256-bit SSL encrypted Razorpay & UPI integration.",
+    title: "100% Secure Payment Gateway | Kotak Bank & UPI | Tzar Digital Agency",
+    description: "Official payment gateway for Tzar Digital Agency. Make safe and instant payments via Kotak Mahindra Bank transfer, UPI QR code, or secure 256-bit encrypted online checkout.",
     url: "https://www.tzar.co/payment-gateway",
     siteName: "Tzar Digital Agency",
     locale: "en_IN",
@@ -18,5 +18,5 @@ export const metadata: Metadata = {
 };
 
 export default function PaymentGateway() {
-  return <PaymentPage />;
+  return <PaymentGatewayView />;
 }

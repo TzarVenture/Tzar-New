@@ -4,6 +4,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { TechHeader } from "@/legacy-src/components/layout/TechHeader";
 import { TechFooter } from "@/legacy-src/components/layout/TechFooter";
+import StickyContactWidget from "../ui/StickyContactWidget";
 
 export default function AppLayoutWrapper({
   children,
@@ -22,6 +23,7 @@ export default function AppLayoutWrapper({
       <TechHeader />
       <div className="flex-1 w-full">{children}</div>
       <TechFooter />
+      <StickyContactWidget />
     </>
   );
 }

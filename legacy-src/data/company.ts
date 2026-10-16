@@ -26,6 +26,7 @@ export const COMPANY = {
     youtube: 'https://youtube.com',
     telegram: 'https://t.me/tzardigital',
     skype: 'skype:corporate@tzar.co?chat',
+    botim: 'https://botim.me',
   },
   gst: '27AAAAA0000A1Z5',
 };

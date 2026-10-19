@@ -192,11 +192,37 @@ export default function PaymentGatewayView() {
         const rzp = new window.Razorpay(options);
         rzp.open();
       } else {
-        setTimeout(() => {
+        try {
+          const verifyRes = await fetch("/api/verify-payment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              razorpay_order_id: orderId,
+              razorpay_payment_id: `SIM_PAY_${Date.now()}`,
+              razorpay_signature: "signature_ok",
+              customerName: name,
+              company,
+              customerEmail: email,
+              phone,
+              gstNumber,
+              address,
+              baseAmount,
+              gstAmount,
+              amount: finalAmount,
+              services: selected.map((s) => s.title),
+              webPlan,
+            }),
+          });
+          const result = await verifyRes.json();
+          setPaymentId(result.paymentId || `SIM_PAY_${Date.now()}`);
+          setInvoiceUrl(result.invoiceUrl || "#");
+          setPaymentSuccess(true);
+        } catch {
           setPaymentId(`SIM_PAY_${Date.now()}`);
           setPaymentSuccess(true);
+        } finally {
           setLoading(false);
-        }, 1000);
+        }
       }
     } catch (err) {
       console.error("Payment initiation error:", err);
@@ -378,6 +404,7 @@ export default function PaymentGatewayView() {
                     {invoiceUrl && invoiceUrl !== '#' && (
                       <a
                         href={invoiceUrl}
+                        download={`TZAR_Invoice_${paymentId || Date.now()}.pdf`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs shadow-lg transition-all border border-[#FFAE00]/40"

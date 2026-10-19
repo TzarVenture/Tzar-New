@@ -29,11 +29,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/payment",
-        destination: "/payment-gateway",
-        permanent: true,
-      },
-      {
         source: "/seonewpage",
         destination: "/search-engine-optimization-services",
         permanent: true,

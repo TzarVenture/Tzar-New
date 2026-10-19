@@ -106,7 +106,7 @@ export const TechFooter: React.FC = () => {
                 </a>
 
                 <Link
-                  href="/payment-gateway"
+                  href="/payment"
                   className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#FFAE00] hover:text-white transition-colors ml-1"
                 >
                   <span>MAKE ONLINE PAYMENT</span>

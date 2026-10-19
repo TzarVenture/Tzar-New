@@ -44,17 +44,22 @@ export async function POST(req) {
     }
 
     // 02. Generate Invoice In-Memory (No 3rd-party storage needed)
-    const invoiceResult = await generateInvoice({
-      customerName,
-      company,
-      customerEmail,
-      gstNumber,
-      address,
-      baseAmount,
-      gstAmount,
-      amount,
-      services,
-    });
+    let invoiceResult = null;
+    try {
+      invoiceResult = await generateInvoice({
+        customerName,
+        company,
+        customerEmail,
+        gstNumber,
+        address,
+        baseAmount,
+        gstAmount,
+        amount,
+        services,
+      });
+    } catch (invoiceErr) {
+      console.error("Invoice Generation Error:", invoiceErr);
+    }
 
     // 03. Forward Lead to Central CRM (Non-blocking)
     try {
@@ -83,7 +88,7 @@ export async function POST(req) {
     // 04. Send Email via Brevo with PDF Attachment (Non-blocking safe execution)
     let emailStatus = { success: false };
     try {
-      if (customerEmail) {
+      if (customerEmail && invoiceResult) {
         emailStatus = await sendPaymentInvoiceEmail({
           customerName,
           customerEmail,
@@ -101,8 +106,8 @@ export async function POST(req) {
     // 05. Return Success with Direct Data URL for instant browser download
     return NextResponse.json({
       success: true,
-      invoiceUrl: invoiceResult.dataUrl,
-      invoiceFileName: `TZAR_Invoice_${invoiceResult.invoiceNo}.pdf`,
+      invoiceUrl: invoiceResult?.dataUrl || null,
+      invoiceFileName: invoiceResult ? `TZAR_Invoice_${invoiceResult.invoiceNo}.pdf` : null,
       emailSent: emailStatus.success,
       paymentId: razorpay_payment_id,
     });

@@ -251,3 +251,67 @@ export function createBreadcrumbSchema(items: BreadcrumbItem[]) {
     })),
   };
 }
+
+export interface JobPostingSchemaParams {
+  title: string;
+  description: string;
+  datePosted: string;
+  validThrough?: string;
+  employmentType?: string;
+  locality?: string;
+  region?: string;
+  postalCode?: string;
+  country?: string;
+  url?: string;
+}
+
+export function createJobPostingSchema({
+  title,
+  description,
+  datePosted,
+  validThrough = "2027-12-31T23:59:59Z",
+  employmentType = "FULL_TIME",
+  locality = "Andheri East, Mumbai",
+  region = "Maharashtra",
+  postalCode = "400072",
+  country = "IN",
+  url = `${SITE_URL}/career`,
+}: JobPostingSchemaParams) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title,
+    description,
+    identifier: {
+      "@type": "PropertyValue",
+      name: "Tzar Digital Agency",
+      value: title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+    },
+    datePosted,
+    validThrough,
+    employmentType,
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "Tzar Digital Agency",
+      sameAs: SITE_URL,
+      logo: LOGO_URL,
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "B, Ground Floor, Saki Vihar Rd, behind Finch Restaurant, Ganesh Nagar, Marol",
+        addressLocality: locality,
+        addressRegion: region,
+        postalCode,
+        addressCountry: country,
+      },
+    },
+    applicantLocationRequirements: {
+      "@type": "Country",
+      name: "India",
+    },
+    directApply: true,
+    url,
+  };
+}

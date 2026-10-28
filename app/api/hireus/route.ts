@@ -1,8 +1,7 @@
 import clientPromise from "@/lib/mongodb";
 import { forwardToCrm } from "@/lib/forwardToCrm";
+import { uploadResumeToCloudinary } from "@/lib/cloudinary";
 import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
 
 export async function POST(req: Request) {
   try {
@@ -31,15 +30,9 @@ export async function POST(req: Request) {
         const bytes = await fileObj.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
-        const uploadsDir = path.join(process.cwd(), "public", "uploads");
-        await mkdir(uploadsDir, { recursive: true });
-
-        const safeName = `${Date.now()}-${fileObj.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
-        filePath = `/uploads/${safeName}`;
-        const fullPath = path.join(uploadsDir, safeName);
-
-        await writeFile(fullPath, buffer);
-        console.log("Resume file saved:", fullPath);
+        // Upload directly to Cloudinary (Bypasses serverless filesystem completely)
+        filePath = await uploadResumeToCloudinary(buffer, fileObj.name);
+        console.log("Resume uploaded to Cloudinary (hireus):", filePath);
       } else if (typeof file === "string") {
         filePath = file;
       }

@@ -1,8 +1,8 @@
 import clientPromise from "@/lib/mongodb";
 import { forwardToCrm } from "@/lib/forwardToCrm";
 import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
+import { uploadResumeToCloudinary } from "@/lib/cloudinary";
+
 
 export async function POST(req: Request) {
   try {
@@ -50,17 +50,9 @@ export async function POST(req: Request) {
         const bytes = await fileObj.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
-        const uploadsDir = path.join(process.cwd(), "public", "uploads", "resumes");
-        await mkdir(uploadsDir, { recursive: true });
-
-        const safeExt = path.extname(fileObj.name).toLowerCase() || ".pdf";
-        const cleanBase = path.basename(fileObj.name, safeExt).replace(/[^a-zA-Z0-9_-]/g, "_");
-        const safeName = `${Date.now()}-${cleanBase}${safeExt}`;
-        filePath = `/uploads/resumes/${safeName}`;
-        const fullPath = path.join(uploadsDir, safeName);
-
-        await writeFile(fullPath, buffer);
-        console.log("Career resume saved successfully:", fullPath);
+        // Upload directly to Cloudinary (Bypasses serverless filesystem completely)
+        filePath = await uploadResumeToCloudinary(buffer, fileObj.name);
+        console.log("Career resume uploaded successfully to Cloudinary:", filePath);
       } else if (typeof file === "string" && file.length > 0) {
         filePath = file;
       }

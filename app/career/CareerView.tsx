@@ -18,44 +18,7 @@ import {
   AlertCircle,
   Loader2,
 } from "lucide-react";
-
-interface RoleCard {
-  id: string;
-  type: string;
-  title: string;
-  description: string;
-}
-
-const ROLES: RoleCard[] = [
-  {
-    id: "full-stack-developer",
-    type: "Full Time / Hybrid",
-    title: "Full Stack Developer",
-    description:
-      "Build high-performance web applications, client platforms, and custom digital systems using modern React and Next.js stacks.",
-  },
-  {
-    id: "digital-marketing",
-    type: "Full Time",
-    title: "Digital Marketing",
-    description:
-      "Execute organic SEO, paid media campaigns, and social marketing funnels to scale traffic and customer acquisition.",
-  },
-  {
-    id: "business-development",
-    type: "Full Time",
-    title: "Business Development",
-    description:
-      "Drive strategic partnerships, lead generation, and client acquisition across our creative, web, and marketing solutions.",
-  },
-  {
-    id: "designer",
-    type: "Full Time",
-    title: "Designer",
-    description:
-      "Design digital UI/UX experiences, brand identity systems, and commercial creative assets for emerging and established brands.",
-  },
-];
+import { ROLES, type RoleCard } from "./rolesData";
 
 export default function CareerView() {
   const formRef = useRef<HTMLDivElement>(null);
@@ -99,6 +62,8 @@ export default function CareerView() {
 
   const handleHeroApplyClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    setSubmitted(false);
+    setError(null);
     scrollToTarget(formRef.current || "#application-form", -70);
     setTimeout(() => {
       nameInputRef.current?.focus();
@@ -111,6 +76,8 @@ export default function CareerView() {
   };
 
   const handleApplyClick = (roleTitle: string) => {
+    setSubmitted(false);
+    setError(null);
     setFormData((prev) => ({ ...prev, role: roleTitle }));
     scrollToTarget(formRef.current || "#application-form", -70);
     setTimeout(() => {
@@ -167,7 +134,11 @@ export default function CareerView() {
       if (res.ok && data.success) {
         setSubmitted(true);
       } else {
-        setError(data.error || "Submission encountered an error. Please try again.");
+        const friendlyError =
+          data.error && !data.error.includes("ENOENT") && !data.error.includes("mkdir")
+            ? data.error
+            : "Submission encountered an error. Please try again or reach out to us at corporate@tzar.co.";
+        setError(friendlyError);
       }
     } catch {
       setError("Network error. Please try again.");
@@ -310,7 +281,7 @@ export default function CareerView() {
                   width={1536}
                   height={1024}
                   priority
-                  className="w-full h-auto max-h-64 sm:max-h-80 lg:max-h-120 object-contain drop-shadow-2xl"
+                  className="w-full h-auto max-h-64 sm:max-h-80 lg:max-h-[460px] object-contain drop-shadow-2xl"
                 />
               </div>
             </div>
@@ -541,6 +512,7 @@ export default function CareerView() {
                         <button
                           type="button"
                           onClick={() => setResumeFile(null)}
+                          aria-label="Remove uploaded resume"
                           className="p-1 hover:text-red-400 text-white/60 transition-colors"
                         >
                           <X className="w-4 h-4" />
@@ -549,15 +521,16 @@ export default function CareerView() {
                     ) : (
                       <label className="flex items-center justify-center gap-2 p-3 rounded-xl border border-dashed border-white/25 hover:border-[#FFAE00] bg-white/[0.04] hover:bg-white/[0.07] cursor-pointer transition-all text-white/70 hover:text-white">
                         <Upload className="w-4 h-4 text-[#FFAE00]" />
-                        <span className="text-xs font-medium">Attach Resume / CV (.pdf, .doc)</span>
+                        <span className="text-xs font-medium">Attach Resume / CV (.pdf, .doc, .docx - max 15MB)</span>
                         <input
                           type="file"
-                          accept=".pdf,.doc,.docx"
+                          accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                           className="hidden"
                           onChange={(e) => {
                             if (e.target.files && e.target.files[0]) {
                               handleFileChange(e.target.files[0]);
                             }
+                            e.target.value = "";
                           }}
                         />
                       </label>

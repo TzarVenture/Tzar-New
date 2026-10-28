@@ -131,6 +131,7 @@ export const TechFooter: React.FC = () => {
                     <li><Link href="/our-client" className="hover:text-[#FFAE00] transition-colors">Clients &amp; Proof</Link></li>
                     <li><Link href="/faqs" className="hover:text-[#FFAE00] transition-colors">Client FAQs</Link></li>
                     <li><Link href="/career" className="hover:text-[#FFAE00] transition-colors">Careers at Tzar</Link></li>
+                    <li><Link href="/admin/leads" rel="nofollow" className="hover:text-[#FFAE00] transition-colors">Tzar Login</Link></li>
                   </ul>
                 </div>
 

@@ -17,7 +17,8 @@ import { TrafficGrowthSection } from "@/legacy-src/components/home/tech/TrafficG
 import PersistentBackdrop from "@/legacy-src/components/home/tech/PersistentBackdrop";
 import { TechText } from "@/legacy-src/components/home/tech/TechText";
 import { DeckCardsScrollSection } from "@/legacy-src/components/home/tech/DeckCardsScrollSection";
-import DiwaliDecor from "@/legacy-src/components/home/tech/DiwaliDecor";
+import DiwaliFireworks from "@/legacy-src/components/home/tech/DiwaliFireworks";
+import DeepawaliLoader from "@/legacy-src/components/home/tech/DeepawaliLoader";
 
 const PHOTOSHOOT_ITEMS = [
   {
@@ -59,7 +60,8 @@ export default function Home() {
       <PersistentBackdrop />
 
       {/* 01 • NEXT.JS CONNECTED CENTRAL NODE HERO */}
-      <DiwaliDecor />
+      <DeepawaliLoader />
+      <DiwaliFireworks />
       <TechHero />
 
       {/* 01.5 • KINETIC VIDEO-MASKED TYPOGRAPHY SHOWCASE */}

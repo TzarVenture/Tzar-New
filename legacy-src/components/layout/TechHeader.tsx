@@ -45,7 +45,7 @@ const STAGGERED_ITEMS = [
     children: item.children,
   })),
   { label: 'Hire Us', link: '/hire-us' },
-  { label: 'Payment', link: '/payment' },
+  { label: 'Payment', link: '/payment-gateway' },
   { label: 'Contact', link: '/contact' },
 ];
 
@@ -254,7 +254,7 @@ export const TechHeader: React.FC = () => {
 
             {/* Payment Pill */}
             <Link
-              href="/payment"
+              href="/payment-gateway"
               className={`px-3.5 xl:px-4 py-1.5 text-[12.5px] xl:text-[13px] font-black font-montserrat rounded-full transition-all duration-200 shadow-sm whitespace-nowrap ${
                 pathname === '/payment' || pathname === '/payment-gateway'
                   ? 'bg-white text-[#1D4224]'
@@ -297,7 +297,7 @@ export const TechHeader: React.FC = () => {
           <div className="lg:hidden flex items-center gap-2 shrink-0">
             {/* Quick Payment Button on sm-md */}
             <Link
-              href="/payment"
+              href="/payment-gateway"
               className="hidden sm:inline-flex px-3 py-1 text-xs font-black font-montserrat rounded-full bg-[#FFAE00] text-[#0E2015] hover:bg-white hover:text-[#1D4224] transition-all whitespace-nowrap"
             >
               Payment

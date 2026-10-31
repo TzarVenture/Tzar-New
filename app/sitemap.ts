@@ -34,6 +34,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/career", changeFrequency: "monthly", priority: 0.7 },
     { url: "/internship", changeFrequency: "monthly", priority: 0.7 },
     { url: "/blog", changeFrequency: "weekly", priority: 0.7 },
+    { url: "/payment", changeFrequency: "monthly", priority: 0.7 },
+    { url: "/payment-gateway", changeFrequency: "monthly", priority: 0.7 },
 
     // 04. Legal & Trust
     { url: "/privacy-policy", changeFrequency: "yearly", priority: 0.4 },

@@ -9,6 +9,7 @@ import {
   Sparkles,
   Video,
   ArrowRight,
+  ArrowDown,
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
@@ -19,9 +20,9 @@ import {
   UtensilsCrossed,
   Clapperboard,
 } from 'lucide-react';
-import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { COMPANY } from '@/data/company';
 import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
+import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 
 /* --------------------------------------------------------------------------
    01. AUTHENTIC MEDIA ASSETS & DATA FROM LIVE SITE (tzar-studio)
@@ -62,15 +63,7 @@ const CLIENT_LOGOS = [
   { id: 8, name: 'Brand Client 8', img: '/assets/images/Brandslogo/client8.jpg' },
 ];
 
-// Studio Service Options for Lead Capture Dropdown
-const STUDIO_SERVICES = [
-  'Product Photography',
-  'Restaurant Food Shoot',
-  'Commercial Video & Reels',
-  'Model & Fashion Shoot',
-  'E-Commerce 3D Packaging',
-  'Graphic Editing & Retouching',
-];
+
 
 // In-House Studio Capabilities
 const STUDIO_FACILITIES = [
@@ -92,55 +85,13 @@ const STUDIO_FACILITIES = [
   },
 ];
 
-/* --------------------------------------------------------------------------
-   02. COMPONENT: TYPEWRITER TEXT EFFECT
--------------------------------------------------------------------------- */
-const TYPEWRITER_PHRASES = [
-  'PRODUCT PHOTOGRAPHY SERVICES',
-  'COMMERCIAL REELS & VIDEOS',
-  'RESTAURANT FOOD STYLING',
-  'MODEL & FASHION CAMPAIGNS',
+// Studio Proof Metrics Bar (matching /portfolio stats strip)
+const STUDIO_METRICS = [
+  { value: "500+", label: "Commercial Frames Shot" },
+  { value: "50+", label: "Brand Campaigns Run" },
+  { value: "4K / 8K", label: "Cinema Master Quality" },
+  { value: "48h", label: "Rapid First-Cut Delivery" },
 ];
-
-const TypewriterHeadline: React.FC = () => {
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const fullText = TYPEWRITER_PHRASES[phraseIndex];
-    const typingSpeed = isDeleting ? 30 : 60;
-
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        if (currentText.length < fullText.length) {
-          setCurrentText(fullText.slice(0, currentText.length + 1));
-        } else {
-          // Pause at end before deleting
-          setTimeout(() => setIsDeleting(true), 1800);
-        }
-      } else {
-        if (currentText.length > 0) {
-          setCurrentText(fullText.slice(0, currentText.length - 1));
-        } else {
-          setIsDeleting(false);
-          setPhraseIndex((prev) => (prev + 1) % TYPEWRITER_PHRASES.length);
-        }
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [currentText, isDeleting, phraseIndex]);
-
-  return (
-    <div className="min-h-12 sm:min-h-14 flex items-center justify-center">
-      <h3 className="font-montserrat font-bold text-sm sm:text-base md:text-lg lg:text-xl text-[#FFAE00] tracking-wider uppercase text-center">
-        {currentText}
-        <span className="inline-block w-1.5 h-4 sm:h-5 bg-[#FFAE00] ml-1.5 animate-pulse align-middle" />
-      </h3>
-    </div>
-  );
-};
 
 /* --------------------------------------------------------------------------
    03. MAIN TZAR STUDIO PAGE COMPONENT
@@ -158,110 +109,168 @@ export const TzarStudioPage: React.FC = () => {
     }
   };
 
-  // Smooth scroll to lead form
-  const scrollToContactForm = () => {
-    const el = document.getElementById('Contactform');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-
   return (
     <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015]">
 
       {/* ──────────────────────────────────────────────────────────────────
-          01. STUDIO HERO BANNER (100% VH / DVH IMMERSIVE LUXURY STAGE)
+          01. EDITORIAL HERO BANNER (MATCHING /portfolio DESIGN SYSTEM)
+          Widescreen Background Art + 3D Visual on Right + Organic Wave
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative w-full min-h-dvh flex flex-col justify-center pt-28 pb-12 sm:pt-34 sm:pb-16 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/30">
-        
-        {/* Ambient Dark Spruce & Gold Glows */}
+      <section
+        className="relative w-full min-h-[85vh] lg:min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309] text-white flex flex-col justify-between overflow-hidden"
+        style={{
+          backgroundColor: "#061309",
+          backgroundImage:
+            "radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)",
+        }}
+      >
+        {/* Check Box Grid Texture into Hero Background */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1D4224]/25 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#FFAE00]/10 rounded-full blur-3xl" />
-          {/* Subtle Grid Pattern Overlay */}
           <div
-            className="absolute inset-0 opacity-[0.04]"
+            className="absolute inset-0 opacity-[0.08]"
             style={{
-              backgroundImage: 'radial-gradient(circle at 1px 1px, #FFFFFF 1px, transparent 0)',
-              backgroundSize: '32px 32px',
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 1px, transparent 1px)
+              `,
+              backgroundSize: "32px 32px",
             }}
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+        {/* Foreground Content Grid */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full pb-6 sm:pb-8 lg:pb-10">
+          {/* Breadcrumb Strip */}
+          <nav className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wider mb-6 text-[#FFAE00]">
+            <Link href="/" className="hover:underline opacity-80 hover:opacity-100">
+              HOME
+            </Link>
+            <span className="opacity-40">/</span>
+            <span className="text-white font-bold">TZAR STUDIO</span>
+          </nav>
 
-            {/* ── COLUMN 1: ROTATING CAMERA LENS (4 COLS) - ORDER-1 ON MOBILE ── */}
-            <div className="lg:col-span-4 flex flex-col items-center justify-center text-center order-1 lg:order-1">
-              {/* Rotating Lens Graphic with Gold Halo Ring */}
-              <div className="relative my-2 sm:my-4 flex items-center justify-center group">
-                <div className="absolute inset-0 rounded-full bg-[#FFAE00]/10 blur-xl scale-95 group-hover:scale-105 transition-transform duration-700" />
-                <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-68 md:h-68 lg:w-80 lg:h-80 flex items-center justify-center">
-                  <img
-                    src="/optimized/camlense.webp"
-                    alt="Tzar Studio Camera Lens"
-                    width={350}
-                    height={350}
-                    className="w-full h-full object-contain pointer-events-none drop-shadow-2xl animate-[spin_25s_linear_infinite]"
-                    onError={(e) => {
-                      // Fallback icon if image fails
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                  {/* Center Lens Accent Dot */}
-                  <div className="absolute w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#1D4224]/80 border border-[#FFAE00]/40 pointer-events-none backdrop-blur-sm" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Headline, Description, Focus Pillars, CTAs */}
+            <div className="lg:col-span-6 space-y-6 relative z-20 text-left">
+              {/* Main Headline */}
+              <div className="space-y-2">
+                <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
+                  <span className="block">Studio Shoots &amp;</span>
+                  <span className="text-[#FFAE00] block mt-1 sm:mt-2">
+                    <TypewriterHeadline text="Commercial Films" delay={250} />
+                  </span>
+                </h1>
+              </div>
+
+              {/* Description */}
+              <p className="font-sans text-sm sm:text-base lg:text-lg text-[#B6F8DD]/90 max-w-xl leading-relaxed">
+                Artisanal product styling, commercial lifestyle photography, and 4K cinematic video production engineered for premium consumer brands.
+              </p>
+
+              {/* Focus Pillars (matching /portfolio layout) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-white/10 text-left">
+                <div>
+                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
+                    Cinema Sensors
+                  </span>
+                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
+                    Sony FX3 &amp; RED 4K/8K
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
+                    Styling Kitchen
+                  </span>
+                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
+                    Dedicated In-House Bay
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
+                    Fast Turnaround
+                  </span>
+                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
+                    48–72h Delivery
+                  </span>
                 </div>
               </div>
-            </div>
 
-            {/* ── COLUMN 2: 2-LINE HEADING, TYPEWRITER & CTA (4 COLS) - ORDER-2 ON MOBILE ── */}
-            <div className="lg:col-span-4 flex flex-col items-center justify-center text-center space-y-4 sm:space-y-5 order-2 lg:order-2 px-2">
-              <h1 className="font-montserrat font-black text-lg sm:text-2xl md:text-3xl lg:text-[1.75rem] xl:text-[2.1rem] text-white tracking-tight uppercase leading-[1.15] text-center select-none">
-                <span className="block whitespace-nowrap">Commercial Studio</span>
-                <span className="block whitespace-nowrap">Production</span>
-              </h1>
-
-              {/* Dynamic Typewriter Headline */}
-              <div className="w-full max-w-sm py-2 px-3 rounded-xl bg-white/4 border border-white/10 backdrop-blur-sm">
-                <TypewriterHeadline />
-              </div>
-
-
-              {/* Action Button: Our Services */}
-              <div className="pt-2 flex justify-center w-full">
-                <Link
-                  href="/services"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 group cursor-pointer"
+              {/* Action Buttons (matching /portfolio layout and styling) */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-3 sm:gap-4 pt-2">
+                <a
+                  href="#studio-showcase"
+                  className="w-[210px] sm:w-auto h-12 bg-[#FFAE00] text-[#0E2015] hover:bg-white font-bold px-6 sm:px-7 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center justify-center gap-2 text-sm sm:text-base group font-sans cursor-pointer"
                 >
-                  <span>Our Services</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#FFAE00] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span>Explore Showcase</span>
+                  <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1 shrink-0" />
+                </a>
+
+                <Link
+                  href="/contact"
+                  className="w-[210px] sm:w-auto h-12 border border-white/25 text-white hover:bg-white/10 px-6 sm:px-7 rounded-xl font-bold transition-all text-sm sm:text-base inline-flex items-center justify-center gap-2 font-sans"
+                >
+                  <span>Book Studio Shoot</span>
+                  <ArrowRight className="w-4 h-4 shrink-0" />
                 </Link>
               </div>
             </div>
 
-            {/* ── COLUMN 3: DIRECT LEAD CAPTURE FORM (4 COLS) ── */}
-            <div id="Contactform" className="lg:col-span-4 flex justify-center items-center order-3 w-full">
-              <div className="w-full max-w-md rounded-2xl bg-[#07130A]/95 p-1 border border-[#1D4224]/60 shadow-2xl shadow-black/60 backdrop-blur-md">
-                <LeadCaptureForm
-                  title="Studio Consultation"
-                  titleColor="#FFFFFF"
-                  bgColor="#07130A"
-                  buttonBgColor="#1D4224"
-                  buttonTextColor="#FFFFFF"
-                  defaultService="Product Photography"
-                  serviceOptions={STUDIO_SERVICES}
+            {/* Right Column: Hero Visual (User Provided 3D Render) */}
+            <div className="lg:col-span-6 flex items-center justify-center lg:justify-end overflow-visible relative z-10">
+              <div className="w-full max-w-lg lg:max-w-none flex items-center justify-center">
+                <Image
+                  src="/assets/images/tzar-studio-hero.webp"
+                  alt="Tzar Studio Commercial Production Showcase"
+                  width={1536}
+                  height={1024}
+                  priority
+                  className="w-full h-auto max-h-125 object-contain drop-shadow-2xl"
                 />
               </div>
             </div>
-
           </div>
+        </div>
+
+        {/* ── Smooth Organic Wave Transition: Dark Spruce into #EFE8E0 ── */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+          <svg
+            viewBox="0 0 1440 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
+              fill="#EFE8E0"
+            />
+          </svg>
+        </div>
+      </section>
+
+      {/* ── 02. PROOF METRICS STRIP (MATCHING /portfolio) ── */}
+      <section className="relative z-20 -mt-7 sm:-mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-xl p-5 sm:p-7 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {STUDIO_METRICS.map((stat, idx) => (
+            <div
+              key={idx}
+              className="text-center p-2 rounded-xl transition-colors hover:bg-[#F3EFEA]"
+            >
+              <div className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
+                <span className="text-[#FFAE00]">{stat.value}</span>
+              </div>
+              <div className="font-sans font-semibold text-xs sm:text-sm text-[#1D4224] mt-1">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ──────────────────────────────────────────────────────────────────
-          02. WORK SHOWCASE (HORIZONTAL CAROUSEL OF AUTHENTIC MOBILE FRAMES)
+          03. WORK SHOWCASE (HORIZONTAL CAROUSEL OF AUTHENTIC MOBILE FRAMES)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative py-16 sm:py-24 overflow-hidden bg-[#EFE8E0]">
+      <section id="studio-showcase" className="relative py-16 sm:py-24 overflow-hidden bg-[#EFE8E0] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header */}
@@ -438,14 +447,13 @@ export const TzarStudioPage: React.FC = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 pt-3">
-                <button
-                  type="button"
-                  onClick={scrollToContactForm}
+                <Link
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-xl transition-all cursor-pointer border border-[#FFAE00]/30 group"
                 >
                   <span>Enquiry Now</span>
                   <ArrowUpRight className="w-4 h-4 text-[#FFAE00] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </button>
+                </Link>
 
                 <a
                   href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
@@ -566,14 +574,13 @@ export const TzarStudioPage: React.FC = () => {
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
-                <button
-                  type="button"
-                  onClick={scrollToContactForm}
+                <Link
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#1D4224] hover:bg-[#25552f] text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all border border-[#FFAE00]/40 cursor-pointer"
                 >
                   <span>Book Studio Shoot</span>
                   <ArrowRight className="w-4 h-4 text-[#FFAE00]" />
-                </button>
+                </Link>
 
                 <a
                   href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
@@ -662,16 +669,13 @@ export const TzarStudioPage: React.FC = () => {
                 </h4>
               </div>
 
-              <button
-                type="button"
-                onClick={() => {
-                  setLightboxImage(null);
-                  scrollToContactForm();
-                }}
+              <Link
+                href="/contact"
+                onClick={() => setLightboxImage(null)}
                 className="px-4 py-2 rounded-full bg-[#1D4224] text-white font-montserrat font-bold text-xs uppercase tracking-wider hover:bg-[#25552f] transition-all border border-[#FFAE00]/30 cursor-pointer"
               >
                 Inquire Shoot
-              </button>
+              </Link>
             </div>
           </div>
         </div>

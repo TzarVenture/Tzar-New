@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Mail,
@@ -23,16 +24,44 @@ import { COMPANY } from "@/legacy-src/data/company";
 
 export default function ContactView() {
   return (
-    <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-hidden">
+    <div className="relative min-h-screen text-white bg-transparent overflow-x-clip selection:bg-[#FFAE00] selection:text-[#061309]">
+      {/* ── FIXED PARALLAX BACKGROUND (MATCHING ABOUT-US DESIGN PATTERN) ── */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none overflow-hidden will-change-transform transform-gpu"
+        aria-hidden="true"
+      >
+        <Image
+          src="/assets/images/contact-page-bg.webp"
+          alt=""
+          fill
+          priority
+          quality={90}
+          className="object-cover object-center w-full h-full"
+        />
+        {/* Subtle ambient overlay to ensure perfect contrast on text content */}
+        <div className="absolute inset-0 bg-[#061309]/50 pointer-events-none" />
+      </div>
+
+      {/* ── SVG CLIP PATH: SHAPES THE HERO BOTTOM ITSELF AS AN ORGANIC WAVE (MATCHING /about-us) ── */}
+      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+        <defs>
+          <clipPath id="hero-bottom-wave" clipPathUnits="objectBoundingBox">
+            <path d="M 0,0 L 1,0 L 1,0.952 C 0.875,0.936 0.736,0.984 0.556,0.956 C 0.375,0.928 0.222,0.984 0,0.948 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+
       {/* ──────────────────────────────────────────────────────────────────
           01. EDITORIAL HERO BANNER (MATCHING OUR NEW THEME)
       ────────────────────────────────────────────────────────────────── */}
       <section
-        className="relative w-full min-h-[60vh] sm:min-h-[65vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309] text-white flex flex-col justify-between overflow-hidden"
+        className="relative z-10 w-full pt-24 sm:pt-28 lg:pt-36 pb-10 sm:pb-14 lg:pb-20 bg-[#061309] text-white flex flex-col justify-between overflow-hidden"
         style={{
           backgroundColor: "#061309",
           backgroundImage:
             "radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)",
+          clipPath: "url(#hero-bottom-wave)",
+          WebkitClipPath: "url(#hero-bottom-wave)",
         }}
       >
         {/* Check Box Grid Texture */}
@@ -50,7 +79,7 @@ export default function ContactView() {
         </div>
 
         {/* Foreground Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full pb-8 sm:pb-12 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full pb-8 sm:pb-12 lg:pb-16 text-center">
           {/* Breadcrumb Strip */}
           <nav className="flex items-center justify-center gap-2 text-xs sm:text-sm font-mono tracking-wider mb-6 text-[#FFAE00]">
             <Link href="/" className="hover:underline opacity-80 hover:opacity-100">
@@ -82,66 +111,69 @@ export default function ContactView() {
           </div>
         </div>
 
-        {/* ── Smooth Organic Wave Transition: Dark Spruce into #EFE8E0 ── */}
-        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
+        {/* Delicate golden accent curve tracing the wave bottom edge (100% matched to clipPath) */}
+        <div className="absolute bottom-0 left-0 right-0 w-full h-[8%] overflow-hidden leading-none pointer-events-none z-20">
           <svg
             viewBox="0 0 1440 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
+            className="w-full h-full block pointer-events-none opacity-80"
             preserveAspectRatio="none"
           >
             <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
-              fill="#EFE8E0"
+              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40"
+              stroke="#FFAE00"
+              strokeWidth="2.5"
+              vectorEffect="non-scaling-stroke"
+              fill="none"
             />
           </svg>
         </div>
       </section>
 
       {/* ──────────────────────────────────────────────────────────────────
-          02. THREE LOCATION & COMMUNICATION CARDS (EXACT REPLICATION FROM OLD SITE)
+          02. THREE LOCATION & COMMUNICATION CARDS (LUXURY OBSIDIAN GLASS)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="relative z-20 -mt-7 sm:-mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative z-20 pt-8 sm:pt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Card 1: ABOUT */}
-          <div className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-lg p-6 sm:p-8 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300">
+          <div className="relative overflow-hidden bg-[#061309]/85 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#FFAE00]/50 hover:shadow-[0_8px_30px_rgba(255,174,0,0.12)] transition-all duration-300 group">
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#FFAE00]/15 text-[#0E2015] flex items-center justify-center mb-4">
-                <Clock className="w-6 h-6 text-[#1D4224]" />
+              <div className="w-12 h-12 rounded-xl bg-[#FFAE00]/15 text-[#FFAE00] border border-[#FFAE00]/30 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <Clock className="w-6 h-6 text-[#FFAE00]" />
               </div>
-              <h3 className="font-montserrat font-black text-xl text-[#0E2015] uppercase tracking-wider mb-2">
+              <h3 className="font-montserrat font-black text-xl text-white uppercase tracking-wider mb-2">
                 About
               </h3>
-              <p className="font-sans text-sm text-[#5C6860] leading-relaxed">
+              <p className="font-sans text-sm text-[#B6F8DD]/80 leading-relaxed">
                 We appreciate your business and guarantee a response within 24 Business hours which would include our Packages and Pricing.
               </p>
             </div>
-            <div className="pt-4 border-t border-neutral-100 mt-4 flex items-center gap-1.5 text-xs font-semibold text-[#1D4224]">
+            <div className="pt-4 border-t border-white/10 mt-6 flex items-center gap-2 text-xs font-semibold text-[#FFAE00]">
               <CheckCircle2 className="w-4 h-4 text-[#10B981]" />
               <span>Guaranteed 24h Response</span>
             </div>
           </div>
 
           {/* Card 2: ADDRESS */}
-          <div className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-lg p-6 sm:p-8 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300">
+          <div className="relative overflow-hidden bg-[#061309]/85 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#FFAE00]/50 hover:shadow-[0_8px_30px_rgba(255,174,0,0.12)] transition-all duration-300 group">
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#1D4224]/10 text-[#1D4224] flex items-center justify-center mb-4">
-                <MapPin className="w-6 h-6 text-[#1D4224]" />
+              <div className="w-12 h-12 rounded-xl bg-[#FFAE00]/15 text-[#FFAE00] border border-[#FFAE00]/30 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <MapPin className="w-6 h-6 text-[#FFAE00]" />
               </div>
-              <h3 className="font-montserrat font-black text-xl text-[#0E2015] uppercase tracking-wider mb-2">
+              <h3 className="font-montserrat font-black text-xl text-white uppercase tracking-wider mb-2">
                 Address
               </h3>
-              <p className="font-sans text-sm text-[#5C6860] leading-relaxed">
+              <p className="font-sans text-sm text-[#B6F8DD]/80 leading-relaxed">
                 B, Ground Floor, Andheri E, Saki Vihar Rd, behind Finch Restaurant, Ganesh Nagar, Marol, Andheri East, Mumbai, Maharashtra 400072
               </p>
             </div>
-            <div className="pt-4 border-t border-neutral-100 mt-4">
+            <div className="pt-4 border-t border-white/10 mt-6">
               <a
                 href="https://www.google.com/maps/search/?api=1&query=B%2C+Ground+Floor%2C+Andheri+E%2C+Saki+Vihar+Rd%2C+behind+Finch+Restaurant%2C+Ganesh+Nagar%2C+Marol%2C+Andheri+East%2C+Mumbai%2C+Maharashtra+400072"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-montserrat font-bold text-[#1D4224] hover:text-[#FFAE00] transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-montserrat font-bold text-[#FFAE00] hover:text-white transition-colors"
               >
                 <span>Get Directions on Google Maps</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -150,19 +182,19 @@ export default function ContactView() {
           </div>
 
           {/* Card 3: CONTACT */}
-          <div className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-lg p-6 sm:p-8 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300">
+          <div className="relative overflow-hidden bg-[#061309]/85 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#FFAE00]/50 hover:shadow-[0_8px_30px_rgba(255,174,0,0.12)] transition-all duration-300 group">
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#FFAE00]/15 text-[#0E2015] flex items-center justify-center mb-4">
-                <Phone className="w-6 h-6 text-[#1D4224]" />
+              <div className="w-12 h-12 rounded-xl bg-[#FFAE00]/15 text-[#FFAE00] border border-[#FFAE00]/30 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <Phone className="w-6 h-6 text-[#FFAE00]" />
               </div>
-              <h3 className="font-montserrat font-black text-xl text-[#0E2015] uppercase tracking-wider mb-2">
+              <h3 className="font-montserrat font-black text-xl text-white uppercase tracking-wider mb-2">
                 Contact
               </h3>
               <div className="space-y-1.5 font-sans text-sm">
                 <div className="block">
                   <a
                     href="tel:917760775875"
-                    className="font-semibold text-[#0E2015] hover:text-[#1D4224] transition-colors"
+                    className="font-semibold text-white/90 hover:text-[#FFAE00] transition-colors"
                   >
                     +91 776-077-5875
                   </a>
@@ -170,14 +202,14 @@ export default function ContactView() {
                 <div className="block">
                   <a
                     href="tel:917304056607"
-                    className="font-semibold text-[#0E2015] hover:text-[#1D4224] transition-colors"
+                    className="font-semibold text-white/90 hover:text-[#FFAE00] transition-colors"
                   >
                     +91 730-405-6607
                   </a>
-                  <span className="mx-1.5 text-neutral-300">|</span>
+                  <span className="mx-2 text-white/20">|</span>
                   <a
                     href="tel:919004250252"
-                    className="font-semibold text-[#0E2015] hover:text-[#1D4224] transition-colors"
+                    className="font-semibold text-white/90 hover:text-[#FFAE00] transition-colors"
                   >
                     +91 900-425-0252
                   </a>
@@ -185,7 +217,7 @@ export default function ContactView() {
                 <div className="block pt-1">
                   <a
                     href="mailto:corporate@tzar.co"
-                    className="font-medium text-[#1D4224] hover:text-[#FFAE00] transition-colors"
+                    className="font-medium text-[#FFAE00] hover:text-white transition-colors"
                   >
                     corporate@tzar.co
                   </a>
@@ -194,13 +226,13 @@ export default function ContactView() {
             </div>
 
             {/* Direct Channels & Social Icons */}
-            <div className="pt-4 border-t border-neutral-100 mt-4 flex flex-wrap items-center gap-2">
+            <div className="pt-4 border-t border-white/10 mt-6 flex flex-wrap items-center gap-2">
               {/* WhatsApp */}
               <a
                 href={`https://wa.me/${COMPANY.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-[#25D366]/15 hover:bg-[#25D366] hover:text-white text-[#25D366] flex items-center justify-center transition-colors shadow-xs"
+                className="w-9 h-9 rounded-full bg-[#25D366]/20 hover:bg-[#25D366] hover:text-white text-[#25D366] border border-[#25D366]/30 flex items-center justify-center transition-all shadow-xs"
                 aria-label="WhatsApp"
                 title="WhatsApp"
               >
@@ -214,7 +246,7 @@ export default function ContactView() {
                 href={COMPANY.socials.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-[#0088cc]/15 hover:bg-[#0088cc] hover:text-white text-[#0088cc] flex items-center justify-center transition-colors shadow-xs"
+                className="w-9 h-9 rounded-full bg-[#0088cc]/20 hover:bg-[#0088cc] hover:text-white text-[#0088cc] border border-[#0088cc]/30 flex items-center justify-center transition-all shadow-xs"
                 aria-label="Telegram"
                 title="Telegram"
               >
@@ -226,7 +258,7 @@ export default function ContactView() {
               {/* Skype */}
               <a
                 href={COMPANY.socials.skype}
-                className="w-9 h-9 rounded-full bg-[#00aff0]/15 hover:bg-[#00aff0] hover:text-white text-[#00aff0] flex items-center justify-center transition-colors shadow-xs"
+                className="w-9 h-9 rounded-full bg-[#00aff0]/20 hover:bg-[#00aff0] hover:text-white text-[#00aff0] border border-[#00aff0]/30 flex items-center justify-center transition-all shadow-xs"
                 aria-label="Skype"
                 title="Skype"
               >
@@ -240,7 +272,7 @@ export default function ContactView() {
                 href={COMPANY.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-[#1D4224] hover:text-white text-[#0E2015] flex items-center justify-center transition-colors shadow-xs"
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#FFAE00] hover:text-[#061309] text-white border border-white/15 flex items-center justify-center transition-all shadow-xs"
                 aria-label="LinkedIn"
                 title="LinkedIn"
               >
@@ -254,7 +286,7 @@ export default function ContactView() {
                 href={COMPANY.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-[#1D4224] hover:text-white text-[#0E2015] flex items-center justify-center transition-colors shadow-xs"
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#FFAE00] hover:text-[#061309] text-white border border-white/15 flex items-center justify-center transition-all shadow-xs"
                 aria-label="Instagram"
                 title="Instagram"
               >
@@ -268,7 +300,7 @@ export default function ContactView() {
                 href={COMPANY.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-[#1D4224] hover:text-white text-[#0E2015] flex items-center justify-center transition-colors shadow-xs"
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#FFAE00] hover:text-[#061309] text-white border border-white/15 flex items-center justify-center transition-all shadow-xs"
                 aria-label="Facebook"
                 title="Facebook"
               >
@@ -285,14 +317,14 @@ export default function ContactView() {
           03. MAIN CONTACT FORM SECTION (#Contactform)
           Replicating: "We Can Get Massive Traffic To Your Website"
       ────────────────────────────────────────────────────────────────── */}
-      <section id="Contactform" className="py-10 sm:py-14 scroll-mt-16">
+      <section id="Contactform" className="relative z-10 py-10 sm:py-16 scroll-mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-6 sm:mb-8">
-            <h2 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-[#003108] tracking-tight leading-tight mb-2">
-              We Can Get Massive Traffic To Your Website
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight mb-2">
+              We Can Get Massive <span className="text-[#FFAE00]">Traffic To Your Website</span>
             </h2>
-            <p className="font-mono text-xs sm:text-sm uppercase tracking-widest text-[#5C6860] font-bold">
+            <p className="font-mono text-xs sm:text-sm uppercase tracking-widest text-[#B6F8DD]/80 font-bold">
               TZAR DIGITAL MARKETING AGENCY
             </p>
           </div>
@@ -300,58 +332,59 @@ export default function ContactView() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* ── Left Column: Existing Contact LeadCaptureForm ── */}
             <div className="lg:col-span-6 w-full flex justify-center">
-              <div className="w-full max-w-lg">
+              <div className="w-full max-w-lg rounded-3xl overflow-hidden border border-white/10 shadow-2xl backdrop-blur-xl bg-[#061309]/80 p-1">
                 <LeadCaptureForm
                   title="From Concept to Capture: We Do It All"
                   titleColor="#FFAE00"
                   bgColor="#061309"
                   buttonBgColor="#FFAE00"
-                  buttonTextColor="#0E2015"
-                  className="shadow-2xl rounded-2xl"
+                  buttonTextColor="#061309"
+                  className="shadow-none rounded-2xl border-none"
+                  noBorder={true}
                 />
               </div>
             </div>
 
-            {/* ── Right Column: Strategic Highlight Information (from old site) ── */}
+            {/* ── Right Column: Strategic Highlight Information ── */}
             <div className="lg:col-span-6 w-full space-y-6 lg:pt-2">
-              <div className="bg-white rounded-3xl border border-[#1D4224]/10 shadow-lg p-6 sm:p-8 space-y-6">
+              <div className="relative overflow-hidden bg-[#061309]/85 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl p-6 sm:p-8 space-y-6 text-white">
                 <div>
                   <span className="font-mono text-xs uppercase tracking-wider text-[#FFAE00] font-bold block mb-1">
                     OUR CORE DISCIPLINES
                   </span>
-                  <p className="font-sans text-sm sm:text-base font-semibold text-[#333333] leading-relaxed border-b border-neutral-100 pb-4">
+                  <p className="font-sans text-sm sm:text-base font-semibold text-white/90 leading-relaxed border-b border-white/10 pb-4">
                     SEO | Content Marketing | Paid Search Marketing | Social Media | Analytics | Programmatic Advertising
                   </p>
                 </div>
 
-                {/* The 3 Core Highlights from old site */}
+                {/* The 3 Core Highlights */}
                 <div className="space-y-4">
-                  <div className="p-4 rounded-2xl bg-[#F8FAF7] border border-[#1D4224]/5">
-                    <h4 className="font-montserrat font-bold text-base text-[#003108] mb-1 flex items-center gap-2">
+                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#FFAE00]/40 hover:bg-white/[0.07] transition-all duration-200">
+                    <h4 className="font-montserrat font-bold text-base text-white mb-1 flex items-center gap-2">
                       <TrendingUp className="w-4 h-4 text-[#FFAE00]" />
                       <span>SEO</span>
                     </h4>
-                    <p className="font-sans text-sm text-[#5C6860] leading-relaxed">
+                    <p className="font-sans text-sm text-[#B6F8DD]/80 leading-relaxed">
                       Bring huge organic traffic and qualified leads through engineered technical and keyword SEO strategies.
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#F8FAF7] border border-[#1D4224]/5">
-                    <h4 className="font-montserrat font-bold text-base text-[#003108] mb-1 flex items-center gap-2">
+                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#FFAE00]/40 hover:bg-white/[0.07] transition-all duration-200">
+                    <h4 className="font-montserrat font-bold text-base text-white mb-1 flex items-center gap-2">
                       <Target className="w-4 h-4 text-[#FFAE00]" />
                       <span>Paid Media</span>
                     </h4>
-                    <p className="font-sans text-sm text-[#5C6860] leading-relaxed">
+                    <p className="font-sans text-sm text-[#B6F8DD]/80 leading-relaxed">
                       High-converting Google, Meta, and Programmatic advertising campaigns with guaranteed ROI.
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#F8FAF7] border border-[#1D4224]/5">
-                    <h4 className="font-montserrat font-bold text-base text-[#003108] mb-1 flex items-center gap-2">
+                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#FFAE00]/40 hover:bg-white/[0.07] transition-all duration-200">
+                    <h4 className="font-montserrat font-bold text-base text-white mb-1 flex items-center gap-2">
                       <Sparkles className="w-4 h-4 text-[#FFAE00]" />
                       <span>Content Marketing</span>
                     </h4>
-                    <p className="font-sans text-sm text-[#5C6860] leading-relaxed">
+                    <p className="font-sans text-sm text-[#B6F8DD]/80 leading-relaxed">
                       Attractive and creative multimedia content that drives viral engagement, brand retention, and repeat conversions.
                     </p>
                   </div>
@@ -359,7 +392,7 @@ export default function ContactView() {
 
                 {/* Direct Messaging Quick Channels */}
                 <div className="pt-2">
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#5C6860] font-bold block mb-2.5">
+                  <span className="font-mono text-xs uppercase tracking-wider text-[#FFAE00] font-bold block mb-2.5">
                     DIRECT MESSAGING
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -368,7 +401,7 @@ export default function ContactView() {
                       href={`https://wa.me/${COMPANY.whatsapp}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-2xl bg-[#ECFDF5] hover:bg-[#D1FAE5] border border-[#10B981]/20 flex items-center gap-2.5 transition-all group no-underline"
+                      className="p-3 rounded-2xl bg-white/[0.04] hover:bg-[#25D366]/20 border border-white/10 hover:border-[#25D366]/40 flex items-center gap-2.5 transition-all group no-underline"
                       title="WhatsApp"
                     >
                       <div className="w-8 h-8 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-xs">
@@ -377,10 +410,10 @@ export default function ContactView() {
                         </svg>
                       </div>
                       <div className="min-w-0">
-                        <div className="font-montserrat font-bold text-xs text-[#0E2015] truncate">
+                        <div className="font-montserrat font-bold text-xs text-white truncate">
                           WhatsApp
                         </div>
-                        <div className="font-sans text-[11px] text-[#059669] font-medium">
+                        <div className="font-sans text-[11px] text-[#25D366] font-medium">
                           Quick Chat
                         </div>
                       </div>
@@ -391,7 +424,7 @@ export default function ContactView() {
                       href={COMPANY.socials.telegram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-2xl bg-[#F0F9FF] hover:bg-[#E0F2FE] border border-[#0284C7]/20 flex items-center gap-2.5 transition-all group no-underline"
+                      className="p-3 rounded-2xl bg-white/[0.04] hover:bg-[#0088cc]/20 border border-white/10 hover:border-[#0088cc]/40 flex items-center gap-2.5 transition-all group no-underline"
                       title="Telegram"
                     >
                       <div className="w-8 h-8 rounded-xl bg-[#0088cc] text-white flex items-center justify-center shrink-0 shadow-xs">
@@ -400,10 +433,10 @@ export default function ContactView() {
                         </svg>
                       </div>
                       <div className="min-w-0">
-                        <div className="font-montserrat font-bold text-xs text-[#0E2015] truncate">
+                        <div className="font-montserrat font-bold text-xs text-white truncate">
                           Telegram
                         </div>
-                        <div className="font-sans text-[11px] text-[#0284C7] font-medium">
+                        <div className="font-sans text-[11px] text-[#0088cc] font-medium">
                           @tzardigital
                         </div>
                       </div>
@@ -412,7 +445,7 @@ export default function ContactView() {
                     {/* Skype */}
                     <a
                       href={COMPANY.socials.skype}
-                      className="p-3 rounded-2xl bg-[#F0F9FF] hover:bg-[#E0F2FE] border border-[#00aff0]/20 flex items-center gap-2.5 transition-all group no-underline"
+                      className="p-3 rounded-2xl bg-white/[0.04] hover:bg-[#00aff0]/20 border border-white/10 hover:border-[#00aff0]/40 flex items-center gap-2.5 transition-all group no-underline"
                       title="Skype"
                     >
                       <div className="w-8 h-8 rounded-xl bg-[#00aff0] text-white flex items-center justify-center shrink-0 shadow-xs">
@@ -421,7 +454,7 @@ export default function ContactView() {
                         </svg>
                       </div>
                       <div className="min-w-0">
-                        <div className="font-montserrat font-bold text-xs text-[#0E2015] truncate">
+                        <div className="font-montserrat font-bold text-xs text-white truncate">
                           Skype
                         </div>
                         <div className="font-sans text-[11px] text-[#00aff0] font-medium">
@@ -440,15 +473,15 @@ export default function ContactView() {
       {/* ──────────────────────────────────────────────────────────────────
           04. EMBEDDED GOOGLE MAP CARD (SAKI VIHAR RD, ANDHERI EAST MUMBAI)
       ────────────────────────────────────────────────────────────────── */}
-      <section className="pb-6 sm:pb-8">
+      <section className="relative z-10 pb-8 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl overflow-hidden border border-[#1D4224]/10 shadow-lg p-2 sm:p-4">
-            <div className="p-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-neutral-100 mb-2">
+          <div className="relative overflow-hidden bg-[#061309]/85 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl p-4 sm:p-6 text-white">
+            <div className="p-2 sm:p-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/10 mb-4">
               <div>
                 <span className="font-mono text-xs uppercase tracking-wider text-[#FFAE00] font-bold block">
                   STUDIO LOCATION
                 </span>
-                <h3 className="font-montserrat font-bold text-lg text-[#0E2015] mt-0.5">
+                <h3 className="font-montserrat font-bold text-base sm:text-lg text-white mt-1">
                   B, Ground Floor, Saki Vihar Rd, behind Finch Restaurant, Ganesh Nagar, Marol, Andheri East, Mumbai 400072
                 </h3>
               </div>
@@ -456,14 +489,14 @@ export default function ContactView() {
                 href="https://www.google.com/maps/search/?api=1&query=B%2C+Ground+Floor%2C+Andheri+E%2C+Saki+Vihar+Rd%2C+behind+Finch+Restaurant%2C+Ganesh+Nagar%2C+Marol%2C+Andheri+East%2C+Mumbai%2C+Maharashtra+400072"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-xl bg-[#1D4224] hover:bg-[#FFAE00] hover:text-[#0E2015] text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 inline-flex items-center gap-2"
+                className="px-5 py-2.5 rounded-xl bg-[#FFAE00] hover:bg-white text-[#061309] font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 inline-flex items-center gap-2 shadow-md shrink-0"
               >
                 <span>Open in Google Maps</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
 
-            <div className="w-full h-72 sm:h-80 rounded-2xl overflow-hidden border border-neutral-200">
+            <div className="w-full h-72 sm:h-80 rounded-2xl overflow-hidden border border-white/10 shadow-inner">
               <iframe
                 title="Tzar Digital Agency Office Location"
                 src="https://maps.google.com/maps?q=B%2C%20Ground%20Floor%2C%20Andheri%20E%2C%20Saki%20Vihar%20Rd%2C%20behind%20Finch%20Restaurant%2C%20Ganesh%20Nagar%2C%20Marol%2C%20Andheri%20East%2C%20Mumbai%2C%20Maharashtra%20400072&t=&z=16&ie=UTF8&iwloc=&output=embed"

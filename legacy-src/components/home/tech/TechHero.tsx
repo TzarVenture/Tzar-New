@@ -274,6 +274,22 @@ export const TechHero: React.FC = () => {
 
   return (
     <section ref={heroRef} className="tech-hero-section relative w-full">
+      {/* Edge navigation arrows (PC) */}
+      <button
+        onClick={handlePrev}
+        className="hero-circle-btn hero-edge-btn hero-edge-btn--prev"
+        aria-label="Previous Slide"
+      >
+        <ChevronLeft className="w-5 h-5 stroke-[2.4]" />
+      </button>
+      <button
+        onClick={handleNext}
+        className="hero-circle-btn hero-edge-btn hero-edge-btn--next"
+        aria-label="Next Slide"
+      >
+        <ChevronRight className="w-5 h-5 stroke-[2.4]" />
+      </button>
+
       {/* ── CURRENT HERO BACKGROUND (COMMENTED OUT AS REQUESTED) ────────── */}
       {/*
       <div
@@ -356,10 +372,7 @@ export const TechHero: React.FC = () => {
 
         {/* ── UNIFIED BOTTOM CONTROLS: MOBILE PROGRESS DASHES + CTA; 3-COL ON PC ── */}
         <div className="hero-bottom-controls">
-          {/* Left balancing spacer on PC */}
-          <div className="hero-bottom-left-spacer" />
-
-          {/* Mobile-Only Progress Dashes (Cleanly centered above the CTA button, NO arrow icons) */}
+          {/* Progress dashes, centered above the CTA button */}
           <div className="hero-mobile-progress-wrapper">
             <div className="hero-dash-track-group">
               {HERO_SLIDES.map((slide, idx) => {
@@ -410,50 +423,6 @@ export const TechHero: React.FC = () => {
             </a>
           </div>
 
-          {/* Right on PC: Reference Navigation Section (Hidden on Mobile) */}
-          <div className="hero-bottom-nav-right">
-            <div className="hero-reference-nav">
-              {/* Circular Previous Button */}
-              <button
-                onClick={handlePrev}
-                className="hero-circle-btn"
-                aria-label="Previous Slide"
-              >
-                <ChevronLeft className="w-5 h-5 stroke-[2.4]" />
-              </button>
-
-              {/* Segmented Dash Progress Bars */}
-              <div className="hero-dash-track-group">
-                {HERO_SLIDES.map((slide, idx) => {
-                  const isActive = idx === activeRealSlide;
-                  return (
-                    <button
-                      key={slide.id}
-                      onClick={() => handleSelectSlide(idx)}
-                      className="hero-dash-pill"
-                      aria-label={`Go to slide ${idx + 1}`}
-                    >
-                      {isActive && (
-                        <span
-                          key={`anim-fill-${activeRealSlide}-${timerKey}`}
-                          className="hero-dash-fill-anim"
-                        />
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Circular Next Button */}
-              <button
-                onClick={handleNext}
-                className="hero-circle-btn"
-                aria-label="Next Slide"
-              >
-                <ChevronRight className="w-5 h-5 stroke-[2.4]" />
-              </button>
-            </div>
-          </div>
         </div>
 
       </div>

@@ -282,12 +282,30 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     // Window scroll is owned by the global SmoothScrollProvider Lenis. This layout effect runs
     // before the provider's effect, so creating a Lenis here made two instances fight over the
-    // window (the slow "rubber ball" bounce). Instead, follow the real scroll position: Lenis
-    // writes window.scrollY every frame, so the native scroll event stays in lockstep with it.
+    // window (slow "rubber ball" bounce). Native scroll events are no good either: they arrive a
+    // frame after Lenis moves the page, so pinned cards lag one frame and vibrate.
+    // Subscribe to the global Lenis instead: its scroll callback runs in the same rAF, right
+    // after it writes the new position, so transforms always match the painted scroll exactly.
     if (useWindowScroll) {
-      const onScroll = () => updateCardTransforms(window.scrollY);
-      window.addEventListener('scroll', onScroll, { passive: true });
-      touchScrollCleanupRef.current = () => window.removeEventListener('scroll', onScroll);
+      let unsubscribe: (() => void) | null = null;
+      let waitRaf: number | null = null;
+      const attach = () => {
+        const globalLenis = (window as any).__tzar_lenis as Lenis | null;
+        if (!globalLenis) {
+          waitRaf = requestAnimationFrame(attach);
+          return;
+        }
+        waitRaf = null;
+        unsubscribe = globalLenis.on('scroll', () => {
+          updateCardTransforms(globalLenis.animatedScroll);
+        });
+        updateCardTransforms(globalLenis.animatedScroll);
+      };
+      attach();
+      touchScrollCleanupRef.current = () => {
+        if (waitRaf !== null) cancelAnimationFrame(waitRaf);
+        unsubscribe?.();
+      };
       return null;
     }
 

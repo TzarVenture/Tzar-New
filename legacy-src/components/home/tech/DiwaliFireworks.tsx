@@ -44,6 +44,7 @@ interface Spark {
   life: number; maxLife: number; color: string;
   size: number; drag: number; gravity: number;
   trail: boolean; crackle: boolean; px: number; py: number;
+  hist: number[]; // recent positions as flat x,y pairs, drawn as the streak
 }
 
 const rand = (a: number, b: number) => a + Math.random() * (b - a);
@@ -105,6 +106,7 @@ export function startFireworks(canvas: HTMLCanvasElement, intensity = 1): () => 
       );
       const speed = rand(260, 380) * scale * (isMobile() ? 0.8 : 1);
       const tilt = rand(0, Math.PI);
+      if (sparks.length > 2200) return; // hard cap keeps low-end devices smooth
       for (let i = 0; i < count; i++) {
         let vx: number, vy: number;
         if (r.kind === "ring") {
@@ -130,12 +132,13 @@ export function startFireworks(canvas: HTMLCanvasElement, intensity = 1): () => 
           gravity: willow ? GRAVITY * 0.55 : GRAVITY * 0.35,
           trail: r.kind === "chrysanthemum" || willow,
           crackle: r.kind === "crackle",
+          hist: [],
         });
       }
       // Bright flash at the burst point
       sparks.push({
         x: r.x, y: r.y, px: r.x, py: r.y, vx: 0, vy: 0, life: 0.12, maxLife: 0.12,
-        color: "#ffffff", size: 26 * scale + 10, drag: 0, gravity: 0, trail: false, crackle: false,
+        color: "#ffffff", size: 26 * scale + 10, drag: 0, gravity: 0, trail: false, crackle: false, hist: [],
       });
     };
 
@@ -149,10 +152,10 @@ export function startFireworks(canvas: HTMLCanvasElement, intensity = 1): () => 
       last = now;
       const g = GRAVITY * scale;
 
-      // Fade previous frame while keeping the canvas transparent over the page
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.fillStyle = "rgba(0,0,0,0.22)";
-      ctx.fillRect(0, 0, w, h);
+      // Full clear every frame; streaks come from each spark's own position history.
+      // (Partial destination-out fading never reaches zero alpha in 8-bit and leaves ghost trails.)
+      ctx.globalCompositeOperation = "source-over";
+      ctx.clearRect(0, 0, w, h);
       ctx.globalCompositeOperation = "lighter";
 
       nextLaunch -= dt;
@@ -171,7 +174,7 @@ export function startFireworks(canvas: HTMLCanvasElement, intensity = 1): () => 
         r.y += r.vy * dt;
         r.fuse -= dt;
         r.trail.push({ x: r.x, y: r.y });
-        if (r.trail.length > 10) r.trail.shift();
+        if (r.trail.length > 14) r.trail.shift();
 
         ctx.beginPath();
         r.trail.forEach((p, j) => (j ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
@@ -193,7 +196,8 @@ export function startFireworks(canvas: HTMLCanvasElement, intensity = 1): () => 
         s.life -= dt;
         if (s.life <= 0) { sparks.splice(i, 1); continue; }
         const d = Math.exp(-s.drag * dt);
-        s.px = s.x; s.py = s.y;
+        s.hist.push(s.x, s.y);
+        if (s.hist.length > (s.trail ? 16 : 6)) s.hist.splice(0, 2);
         s.vx *= d;
         s.vy = s.vy * d + s.gravity * scale * dt;
         s.x += s.vx * dt;
@@ -216,9 +220,12 @@ export function startFireworks(canvas: HTMLCanvasElement, intensity = 1): () => 
           ctx.strokeStyle = s.color;
           ctx.lineWidth = s.size * (0.6 + 0.4 * k);
           ctx.beginPath();
-          ctx.moveTo(s.trail ? s.px - s.vx * dt * 2 : s.px, s.trail ? s.py - s.vy * dt * 2 : s.py);
+          ctx.moveTo(s.hist[0] ?? s.x, s.hist[1] ?? s.y);
           ctx.lineTo(s.x, s.y);
           ctx.stroke();
+          // bright head
+          ctx.fillStyle = s.color;
+          ctx.fillRect(s.x - s.size * 0.6, s.y - s.size * 0.6, s.size * 1.2, s.size * 1.2);
         }
       }
       ctx.globalAlpha = 1;

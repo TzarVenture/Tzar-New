@@ -280,14 +280,15 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     // Mobile screens (< 768px) use native browser compositor sticky
     if (window.innerWidth < 768) return null;
 
-    // Harmonize with Global Lenis SmoothScrollProvider if active on window
-    const globalLenis = (window as any).__tzar_lenis;
-    if (useWindowScroll && globalLenis) {
-      globalLenis.on('scroll', () => {
-        updateCardTransforms(globalLenis.actualScroll ?? window.scrollY);
-      });
-      lenisRef.current = globalLenis;
-      return globalLenis;
+    // Window scroll is owned by the global SmoothScrollProvider Lenis. This layout effect runs
+    // before the provider's effect, so creating a Lenis here made two instances fight over the
+    // window (the slow "rubber ball" bounce). Instead, follow the real scroll position: Lenis
+    // writes window.scrollY every frame, so the native scroll event stays in lockstep with it.
+    if (useWindowScroll) {
+      const onScroll = () => updateCardTransforms(window.scrollY);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      touchScrollCleanupRef.current = () => window.removeEventListener('scroll', onScroll);
+      return null;
     }
 
     const scroller = scrollerRef.current;

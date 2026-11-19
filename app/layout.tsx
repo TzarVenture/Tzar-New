@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.tzar.co"),
   title: { default: "Tzar Digital Agency | Digital Systems & Growth Agency", template: "%s | Tzar Digital Agency" },
   description: "Tzar Digital Agency builds high-performing websites, business systems, performance SEO, and growth engines for ambitious companies.",
+  icons: {
+    icon: [{ url: "/favicon.png?v=2", type: "image/png" }],
+    apple: "/favicon.png?v=2",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",

@@ -49,7 +49,7 @@ export default function NotFound() {
           <div className="flex items-center justify-center gap-3">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#FFAE00] hover:bg-[#FFAE00]/90 text-[#0E2015] font-semibold text-sm transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#FFAE00] text-[#0E2015] font-semibold text-sm tz-btn tz-btn-primary"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Return to home</span>

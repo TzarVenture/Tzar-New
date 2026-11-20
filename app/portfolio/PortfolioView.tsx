@@ -25,9 +25,9 @@ import {
   ModuleIconBadge,
   TechStack,
   TechGrid,
-} from "./components/PortfolioUI";
-import { DARK_GRADIENT } from "./theme";
-import { CardIllustration, SystemFlow, type IllustrationName } from "./components/Illustrations";
+} from "@/app/components/brand/BrandUI";
+import { DARK_GRADIENT } from "@/app/components/brand/theme";
+import { CardIllustration, SystemFlow, type IllustrationName } from "@/app/components/brand/Illustrations";
 
 
 /* --------------------------------------------------------------------------
@@ -422,7 +422,7 @@ function PlatformPanel({ study, index }: { study: CaseStudy; index: number }) {
         <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
           <Link
             href={`/portfolio/${study.slug}`}
-            className="h-11 bg-[#FFAE00] text-[#0E2015] font-bold px-6 rounded-xl inline-flex items-center gap-2 text-sm pf-btn pf-btn-primary"
+            className="h-11 bg-[#FFAE00] text-[#0E2015] font-bold px-6 rounded-xl inline-flex items-center gap-2 text-sm tz-btn tz-btn-primary"
           >
             Read case study
             <ArrowRight className="w-4 h-4" />
@@ -461,7 +461,7 @@ function WebBuildCard({ study }: { study: CaseStudy }) {
         <div className="mt-auto pt-6 flex items-center justify-between gap-3">
           <Link
             href={`/portfolio/${study.slug}`}
-            className="h-10 px-5 rounded-xl bg-[#FFAE00] text-[#0E2015] inline-flex items-center gap-2 text-sm font-bold pf-btn pf-btn-primary"
+            className="h-10 px-5 rounded-xl bg-[#FFAE00] text-[#0E2015] inline-flex items-center gap-2 text-sm font-bold tz-btn tz-btn-primary"
           >
             Read case study
             <ArrowRight className="w-4 h-4" />
@@ -636,7 +636,7 @@ export default function PortfolioView() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-3 sm:gap-4 pt-2">
                 <a
                   href="#portfolio-showcase"
-                  className="w-[210px] sm:w-auto h-12 bg-[#FFAE00] text-[#0E2015] font-bold px-6 sm:px-7 rounded-xl inline-flex items-center justify-center gap-2 text-sm sm:text-base group font-sans cursor-pointer pf-btn pf-btn-primary"
+                  className="w-[210px] sm:w-auto h-12 bg-[#FFAE00] text-[#0E2015] font-bold px-6 sm:px-7 rounded-xl inline-flex items-center justify-center gap-2 text-sm sm:text-base group font-sans cursor-pointer tz-btn tz-btn-primary"
                 >
                   <span>Explore Showcase</span>
                   <ArrowDown className="w-4 h-4 shrink-0" />
@@ -644,7 +644,7 @@ export default function PortfolioView() {
 
                 <Link
                   href="/contact"
-                  className="w-[210px] sm:w-auto h-12 border border-[#3A5A40] text-white px-6 sm:px-7 rounded-xl font-bold text-sm sm:text-base inline-flex items-center justify-center gap-2 font-sans pf-btn pf-btn-ghost"
+                  className="w-[210px] sm:w-auto h-12 border border-[#3A5A40] text-white px-6 sm:px-7 rounded-xl font-bold text-sm sm:text-base inline-flex items-center justify-center gap-2 font-sans tz-btn tz-btn-ghost"
                 >
                   <span>Start a Project</span>
                   <ArrowRight className="w-4 h-4 shrink-0" />
@@ -841,7 +841,7 @@ export default function PortfolioView() {
               <button
                 type="button"
                 onClick={() => setShowAllWeb(true)}
-                className="h-12 px-7 rounded-xl bg-[#FFAE00] text-[#0E2015] font-bold text-sm inline-flex items-center gap-2 cursor-pointer pf-btn pf-btn-primary"
+                className="h-12 px-7 rounded-xl bg-[#FFAE00] text-[#0E2015] font-bold text-sm inline-flex items-center gap-2 cursor-pointer tz-btn tz-btn-primary"
               >
                 Show all {visibleWeb.length} websites
                 <ArrowDown className="w-4 h-4" />

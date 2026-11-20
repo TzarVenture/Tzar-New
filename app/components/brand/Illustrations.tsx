@@ -431,3 +431,166 @@ export function SystemFlow({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+
+/* Small industry marks for the website development page. Same rules as the
+   card illustrations: still at rest, animated on hover (mouse) or while on
+   screen (touch), never with reduced motion. */
+export type IndustryName =
+  | "beauty"
+  | "fashion"
+  | "home"
+  | "food"
+  | "electronics"
+  | "health"
+  | "jewellery"
+  | "kids"
+  | "books"
+  | "conversion"
+  | "payback"
+  | "repeat"
+  | "support";
+
+const INDUSTRY_ART: Record<IndustryName, () => React.ReactElement> = {
+  beauty: () => (
+    <>
+      <rect x="15" y="24" width="12" height="18" rx="2" fill={C.green} />
+      <rect x="16.5" y="18" width="9" height="7" rx="1" fill={C.paper} />
+      <path d="M17 18 V11 L25 7 V18 Z" fill={C.gold} />
+      <path className="ia-pulse" d="M35 9 L36.6 13.4 L41 15 L36.6 16.6 L35 21 L33.4 16.6 L29 15 L33.4 13.4 Z" fill={C.mint} />
+    </>
+  ),
+  fashion: () => (
+    <g className="ia-swing">
+      <path d="M24 6 a3 3 0 1 1 3 3 v3" fill="none" stroke={C.paper} strokeWidth="2" strokeLinecap="round" />
+      <path d="M8 22 L24 12 L40 22" fill="none" stroke={C.paper} strokeWidth="2" strokeLinejoin="round" />
+      <path d="M14 20 L19 17 C20 20 28 20 29 17 L34 20 L37 27 L33 28.5 V42 H15 V28.5 L11 27 Z" fill={C.gold} />
+    </g>
+  ),
+  home: () => (
+    <>
+      <path className="ia-glow" d="M30 17 L22 34 H42 L34 17 Z" fill={C.gold} opacity="0.35" />
+      <path d="M27 8 H37 L40 17 H24 Z" fill={C.gold} />
+      <rect x="31" y="17" width="2" height="23" fill={C.paper} />
+      <rect x="26" y="40" width="12" height="2.5" rx="1.25" fill={C.paper} />
+      <rect x="5" y="26" width="18" height="10" rx="3" fill={C.green} />
+      <rect x="8" y="21" width="12" height="8" rx="2" fill={C.mint} />
+      <rect x="7" y="36" width="2" height="5" fill={C.paper} />
+      <rect x="19" y="36" width="2" height="5" fill={C.paper} />
+    </>
+  ),
+  food: () => (
+    <>
+      {[16, 22, 28].map((x, i) => (
+        <path key={x} className="ia-steam" style={d(i * 0.4)} d={`M${x} 16 c-2 -3 2 -5 0 -8`} fill="none" stroke={C.mint} strokeWidth="2" strokeLinecap="round" />
+      ))}
+      <path d="M10 20 H34 V32 a8 8 0 0 1 -8 8 H18 a8 8 0 0 1 -8 -8 Z" fill={C.gold} />
+      <path d="M34 23 h3 a4 4 0 0 1 0 8 h-3" fill="none" stroke={C.gold} strokeWidth="2.5" />
+      <rect x="8" y="41" width="28" height="2.5" rx="1.25" fill={C.paper} />
+    </>
+  ),
+  electronics: () => (
+    <>
+      <rect x="14" y="5" width="20" height="38" rx="4" fill={C.green} />
+      <rect x="17" y="10" width="14" height="26" rx="1.5" fill={C.ink} />
+      <rect x="21" y="39" width="6" height="1.6" rx="0.8" fill={C.paper} />
+      <rect x="20" y="17" width="8" height="14" rx="1.5" fill="none" stroke={C.paper} strokeWidth="1.5" />
+      <rect x="22.5" y="15.5" width="3" height="1.5" fill={C.paper} />
+      <rect className="ia-fill" x="21.5" y="18.5" width="5" height="11" rx="0.8" fill={C.gold} />
+    </>
+  ),
+  health: () => (
+    <>
+      <path d="M24 41 C10 31 5 24 5 17 a9 9 0 0 1 19 -4 a9 9 0 0 1 19 4 c0 7 -5 14 -19 24 Z" fill={C.green} />
+      <path
+        className="pf-a-draw"
+        pathLength={1}
+        d="M8 24 H17 L20 18 L24 30 L28 21 L30 24 H40"
+        fill="none"
+        stroke={C.gold}
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </>
+  ),
+  jewellery: () => (
+    <>
+      <path d="M14 10 H34 L42 19 L24 41 L6 19 Z" fill={C.mint} />
+      <path d="M6 19 H42 M14 10 L19 19 L24 10 L29 19 L34 10 M19 19 L24 41 L29 19" fill="none" stroke={C.ink} strokeWidth="1.2" strokeLinejoin="round" />
+      <path className="ia-shine" d="M14 10 L19 19 L12 19 Z" fill={C.paper} />
+      <path className="ia-pulse" style={d(0.6)} d="M40 4 L41 7 L44 8 L41 9 L40 12 L39 9 L36 8 L39 7 Z" fill={C.gold} />
+    </>
+  ),
+  kids: () => (
+    <>
+      <ellipse className="ia-shadow" cx="24" cy="43" rx="9" ry="2" fill={C.green} />
+      <g className="ia-bounce">
+        <circle cx="24" cy="25" r="12" fill={C.gold} />
+        <path d="M12 25 a12 12 0 0 0 24 0" fill={C.mint} />
+        <path d="M24 13 V37 M14 18 C20 22 28 22 34 18" fill="none" stroke={C.ink} strokeWidth="1.5" />
+      </g>
+    </>
+  ),
+  books: () => (
+    <>
+      <path d="M4 12 C10 10 18 10 24 14 V40 C18 36 10 36 4 38 Z" fill={C.green} />
+      <path d="M44 12 C38 10 30 10 24 14 V40 C30 36 38 36 44 38 Z" fill={C.green} />
+      <path className="ia-flip" d="M24 14 C29 11 35 11 40 13 V36 C35 34 29 35 24 38 Z" fill={C.paper} />
+      <path d="M28 19 h8 M28 24 h8 M28 29 h6" stroke={C.green} strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M8 17 h12 M8 22 h12 M8 27 h9" stroke={C.mint} strokeWidth="1.5" strokeLinecap="round" opacity="0.7" />
+    </>
+  ),
+  conversion: () => (
+    <>
+      {[[8, 26, 0], [19, 18, 0.15], [30, 10, 0.3]].map(([x, y, t]) => (
+        <rect key={x} className="ia-fill" style={d(t)} x={x} y={y} width="8" height={42 - y} rx="2" fill={x === 30 ? C.gold : C.green} />
+      ))}
+      <path d="M6 20 L18 12 L26 15 L40 5" fill="none" stroke={C.mint} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M34 5 H40 V11" fill="none" stroke={C.mint} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  payback: () => (
+    <>
+      <circle cx="24" cy="24" r="17" fill="none" stroke={C.green} strokeWidth="5" />
+      <circle className="pf-a-draw" pathLength={1} cx="24" cy="24" r="17" fill="none" stroke={C.gold} strokeWidth="5" strokeLinecap="round" transform="rotate(-90 24 24)" />
+      <text x="24" y="30" textAnchor="middle" fontFamily="Montserrat, sans-serif" fontWeight="800" fontSize="16" fill={C.paper}>₹</text>
+    </>
+  ),
+  repeat: () => (
+    <g className="ia-spin">
+      <path d="M38 20 A15 15 0 0 0 11 15" fill="none" stroke={C.gold} strokeWidth="3" strokeLinecap="round" />
+      <path d="M10 8 V15 H17" fill="none" stroke={C.gold} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10 28 A15 15 0 0 0 37 33" fill="none" stroke={C.mint} strokeWidth="3" strokeLinecap="round" />
+      <path d="M38 40 V33 H31" fill="none" stroke={C.mint} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+  ),
+  support: () => (
+    <>
+      <rect x="6" y="10" width="36" height="32" rx="5" fill={C.green} />
+      <rect x="6" y="10" width="36" height="9" rx="4" fill={C.gold} />
+      <rect x="14" y="6" width="3" height="8" rx="1.5" fill={C.paper} />
+      <rect x="31" y="6" width="3" height="8" rx="1.5" fill={C.paper} />
+      <path className="ia-pulse" d="M16 30 L22 35 L33 24" fill="none" stroke={C.mint} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+};
+
+export function IndustryArt({ name, className = "" }: { name: IndustryName; className?: string }) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [inView, setInView] = React.useState(false);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.6 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const Art = INDUSTRY_ART[name];
+  return (
+    <div ref={ref} aria-hidden="true" data-inview={inView ? "true" : "false"} className={`pf-illo ${className}`}>
+      <svg viewBox="0 0 48 48" className="block w-full h-full overflow-visible" xmlns="http://www.w3.org/2000/svg">
+        <Art />
+      </svg>
+    </div>
+  );
+}

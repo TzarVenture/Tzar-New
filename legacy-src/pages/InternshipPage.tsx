@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { GraduationCap, ArrowRight, CheckCircle2, Send, Code, Search, Palette, Megaphone } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import { PageHero } from "@/app/components/brand/BrandUI";
 
 const INTERNSHIP_DOMAINS = [
   { icon: <Code className="w-6 h-6" />, title: 'Web Development & Engineering', desc: 'Build modern React, Next.js, and TypeScript web applications with live client deployment.' },
@@ -32,28 +33,19 @@ export const InternshipPage: React.FC = () => {
   };
 
   return (
-    <div style={{ paddingTop: 'clamp(7rem, 14vw, 10rem)', background: '#FAF9F5' }}>
+    <div style={{ background: '#FAF9F5' }}>
 
-      {/* ── Page Hero Banner ── */}
-      <section
-        className="bg-dots"
-        style={{ borderBottom: '1px solid #E5E5DC', padding: 'clamp(3.5rem, 7vw, 6rem) 0', textAlign: 'center' }}
-      >
-        <div className="container-site" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.25rem' }}>
-          <span className="badge-dark">Unlock Your Potential</span>
-          <h1 className="display-hero" style={{ maxWidth: '820px' }}>
-            Internships At <span style={{ color: '#1D4224' }}>Tzar Digital Agency</span>
-          </h1>
-          <div className="section-divider" />
-          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.1rem', color: '#4B5563', maxWidth: '640px', lineHeight: 1.75 }}>
-            We are always on the lookout for raw talent! At Tzar, we promise you that you WON'T be just answering phone calls or making PPTs — you will gain real-world client experience.
-          </p>
-
-          <a href="#intern-apply" className="btn-primary" style={{ marginTop: '.5rem' }}>
-            Apply for Internship <ArrowRight className="w-4 h-4" style={{ color: '#D4AF37' }} />
+      <PageHero
+        crumbs={[{ label: "Internship" }]}
+        title="Internships at Tzar"
+        description="Real client work from day one, not phone calls and slides."
+        fill="#FFFFFF"
+        actions={
+          <a href="#intern-apply" className="h-12 px-6 rounded-xl text-sm font-bold font-montserrat inline-flex items-center gap-2 tz-btn tz-btn-primary">
+            Apply for an internship <ArrowRight className="w-4 h-4" />
           </a>
-        </div>
-      </section>
+        }
+      />
 
       {/* ── Program Overview ── */}
       <section style={{ padding: 'clamp(4rem, 8vw, 6rem) 0', background: '#fff', borderBottom: '1px solid #E5E5DC' }}>

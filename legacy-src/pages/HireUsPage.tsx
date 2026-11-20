@@ -16,6 +16,7 @@ import {
 import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
 import { COMPANY } from '@/data/company';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
+import { WaveDivider } from "@/app/components/brand/BrandUI";
 
 /* ── 01. SERVICES THAT DRIVE GROWTH (from https://tzar-five.vercel.app/hire-us) ── */
 interface ServiceItem {
@@ -178,7 +179,7 @@ export const HireUsPage: React.FC = () => {
                 </button>
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-medium text-xs transition-all border border-white/20"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 text-white font-montserrat font-medium text-xs border border-white/20 tz-btn tz-btn-ghost"
                 >
                   <span>Explore Capabilities</span>
                 </a>
@@ -192,20 +193,7 @@ export const HireUsPage: React.FC = () => {
         </div>
 
         {/* ── Smooth Organic Wave Transition into Section 02 (#FAF9F5) ── */}
-        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
-              fill="#FAF9F5"
-            />
-          </svg>
-        </div>
+        <WaveDivider fill="#FAF9F5" />
       </section>
 
       {/* ──────────────────────────────────────────────────────────────────

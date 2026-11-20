@@ -12,8 +12,8 @@ import {
   PhoneFrame,
   ModuleIconBadge,
   TechStack,
-} from "../components/PortfolioUI";
-import { DARK_GRADIENT } from "../theme";
+} from "@/app/components/brand/BrandUI";
+import { DARK_GRADIENT } from "@/app/components/brand/theme";
 
 const darkPanel = { backgroundColor: "#061309", backgroundImage: DARK_GRADIENT };
 
@@ -71,7 +71,7 @@ export default function CaseStudyView({ study, next }: { study: CaseStudy; next:
                     href={study.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-12 bg-[#FFAE00] text-[#0E2015] font-bold px-6 rounded-xl inline-flex items-center gap-2 text-sm pf-btn pf-btn-primary"
+                    className="h-12 bg-[#FFAE00] text-[#0E2015] font-bold px-6 rounded-xl inline-flex items-center gap-2 text-sm tz-btn tz-btn-primary"
                   >
                     Visit {study.domain}
                     <ArrowUpRight className="w-4 h-4" />
@@ -84,7 +84,7 @@ export default function CaseStudyView({ study, next }: { study: CaseStudy; next:
                 )}
                 <Link
                   href="/contact"
-                  className="h-12 border border-[#3A5A40] text-white px-6 rounded-xl font-bold text-sm inline-flex items-center gap-2 pf-btn pf-btn-ghost"
+                  className="h-12 border border-[#3A5A40] text-white px-6 rounded-xl font-bold text-sm inline-flex items-center gap-2 tz-btn tz-btn-ghost"
                 >
                   Start a similar project
                   <ArrowRight className="w-4 h-4" />
@@ -140,7 +140,7 @@ export default function CaseStudyView({ study, next }: { study: CaseStudy; next:
               key={m.title}
               className="bg-[#0E2015] rounded-2xl border border-[#244A2C] p-5 sm:p-6"
             >
-              <span className="w-10 h-10 rounded-xl bg-[#FFAE00] flex items-center justify-center pf-btn pf-btn-primary">
+              <span className="w-10 h-10 rounded-xl bg-[#FFAE00] flex items-center justify-center tz-btn tz-btn-primary">
                 <ModuleIconBadge icon={m.icon} className="w-5 h-5 text-[#0E2015]" />
               </span>
               <h3 className="mt-4 font-montserrat font-bold text-base sm:text-lg text-white">{m.title}</h3>

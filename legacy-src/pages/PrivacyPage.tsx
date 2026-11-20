@@ -4,27 +4,13 @@ import React from 'react';
 import Link from 'next/link';
 import { Lock, ArrowRight } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import { PageHero } from "@/app/components/brand/BrandUI";
 
 export const PrivacyPage: React.FC = () => {
   return (
-    <div style={{ paddingTop: 'clamp(7rem, 14vw, 10rem)', background: '#FAF9F5' }}>
+    <div style={{ background: '#FAF9F5' }}>
 
-      {/* ── Banner ── */}
-      <section
-        className="bg-grid"
-        style={{ borderBottom: '1px solid #E5E5DC', padding: 'clamp(3rem, 6vw, 5rem) 0', textAlign: 'center' }}
-      >
-        <div className="container-site" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.25rem' }}>
-          <span className="badge-green">Data Privacy & Security</span>
-          <h1 className="display-lg" style={{ maxWidth: '700px' }}>
-            Privacy <span style={{ color: '#1D4224' }}>Policy</span>
-          </h1>
-          <div className="section-divider" />
-          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '.9rem', color: '#6B7280' }}>
-            Last Updated: January 2026 • Tzar Digital Agency
-          </p>
-        </div>
-      </section>
+      <PageHero crumbs={[{ label: "Privacy policy" }]} title="Privacy policy" description="Last updated January 2026." />
 
       {/* ── Document Body ── */}
       <section style={{ padding: 'clamp(4rem, 8vw, 6rem) 0' }}>

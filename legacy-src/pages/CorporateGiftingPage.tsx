@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ExternalLink, ArrowUpRight } from 'lucide-react';
 import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
+import { WaveDivider } from "@/app/components/brand/BrandUI";
 
 /* --------------------------------------------------------------------------
    EXACT PRODUCT DATA FROM LIVE SITE (tzar/src/app/corporate-gifting/page.js)
@@ -164,7 +165,7 @@ export const CorporateGiftingPage: React.FC = () => {
     <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
 
       {/* ── 01. ENHANCED BESPOKE HERO BANNER (100% VH / DVH HEIGHT AS REQUESTED) ── */}
-      <section className="relative w-full min-h-dvh h-dvh flex flex-col justify-center pt-20 pb-8 sm:pt-20 sm:pb-8 overflow-hidden bg-[#0E2015] border-b border-[#1D4224]/20">
+      <section className="relative w-full min-h-dvh flex flex-col justify-center pt-20 pb-0 overflow-hidden bg-[#0E2015]">
         {/* Enhanced High-Resolution Luxury Banner Background */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
           <img
@@ -204,13 +205,14 @@ export const CorporateGiftingPage: React.FC = () => {
               </a>
               <a
                 href="#gifting-solutions"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-montserrat font-bold text-xs uppercase tracking-wider backdrop-blur-sm transition-all cursor-pointer border border-white/20"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/10 text-white font-montserrat font-bold text-xs uppercase tracking-wider backdrop-blur-sm cursor-pointer border border-white/20 tz-btn tz-btn-ghost"
               >
                 <span>Explore Solutions</span>
               </a>
             </div>
           </div>
         </div>
+        <WaveDivider fill="#EFE8E0" />
       </section>
 
       {/* ── 02. OUR GIFTING SOLUTIONS (EXACT MATCHED FILTERING FROM LIVE SITE) ── */}

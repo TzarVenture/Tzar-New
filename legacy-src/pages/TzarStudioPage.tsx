@@ -23,6 +23,7 @@ import {
 import { COMPANY } from '@/data/company';
 import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
 import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
+import { WaveDivider } from "@/app/components/brand/BrandUI";
 
 /* --------------------------------------------------------------------------
    01. AUTHENTIC MEDIA ASSETS & DATA FROM LIVE SITE (tzar-studio)
@@ -199,7 +200,7 @@ export const TzarStudioPage: React.FC = () => {
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-3 sm:gap-4 pt-2">
                 <a
                   href="#studio-showcase"
-                  className="w-[210px] sm:w-auto h-12 bg-[#FFAE00] text-[#0E2015] hover:bg-white font-bold px-6 sm:px-7 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center justify-center gap-2 text-sm sm:text-base group font-sans cursor-pointer"
+                  className="w-[210px] sm:w-auto h-12 bg-[#FFAE00] text-[#0E2015] font-bold px-6 sm:px-7 rounded-xl inline-flex items-center justify-center gap-2 text-sm sm:text-base group font-sans cursor-pointer tz-btn tz-btn-primary"
                 >
                   <span>Explore Showcase</span>
                   <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1 shrink-0" />
@@ -207,7 +208,7 @@ export const TzarStudioPage: React.FC = () => {
 
                 <Link
                   href="/contact"
-                  className="w-[210px] sm:w-auto h-12 border border-white/25 text-white hover:bg-white/10 px-6 sm:px-7 rounded-xl font-bold transition-all text-sm sm:text-base inline-flex items-center justify-center gap-2 font-sans"
+                  className="w-[210px] sm:w-auto h-12 border border-white/25 text-white px-6 sm:px-7 rounded-xl font-bold text-sm sm:text-base inline-flex items-center justify-center gap-2 font-sans tz-btn tz-btn-ghost"
                 >
                   <span>Book Studio Shoot</span>
                   <ArrowRight className="w-4 h-4 shrink-0" />
@@ -232,24 +233,11 @@ export const TzarStudioPage: React.FC = () => {
         </div>
 
         {/* ── Smooth Organic Wave Transition: Dark Spruce into #EFE8E0 ── */}
-        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
-              fill="#EFE8E0"
-            />
-          </svg>
-        </div>
+        <WaveDivider fill="#EFE8E0" />
       </section>
 
       {/* ── 02. PROOF METRICS STRIP (MATCHING /portfolio) ── */}
-      <section className="relative z-20 -mt-7 sm:-mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative z-20 pt-8 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-xl p-5 sm:p-7 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {STUDIO_METRICS.map((stat, idx) => (
             <div
@@ -584,7 +572,7 @@ export const TzarStudioPage: React.FC = () => {
 
                 <a
                   href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all border border-white/20"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 text-white font-montserrat font-bold text-xs uppercase tracking-wider border border-white/20 tz-btn tz-btn-ghost"
                 >
                   <Phone className="w-4 h-4 text-[#FFAE00]" />
                   <span>{COMPANY.phone}</span>

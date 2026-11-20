@@ -16,6 +16,8 @@ import {
   Package,
   ArrowRight,
 } from "lucide-react";
+import { WaveHero } from "@/app/components/brand/BrandUI";
+import { DARK_GRADIENT } from "@/app/components/brand/theme";
 
 interface ServiceItem {
   id: string;
@@ -97,17 +99,19 @@ export default function ServicesView() {
       <PersistentBackdrop />
 
       {/* ── 01. CENTERED HERO SECTION (NO BREADCRUMB, NO BADGES, NO SPARKLES) ── */}
-      <section className="relative pt-32 sm:pt-40 lg:pt-44 pb-12 sm:pb-16 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.15] mb-5 min-h-18 sm:min-h-28 lg:min-h-34 flex flex-col items-center justify-center">
-          <span className="block">Services Engineered For</span>
-          <span className="block text-[#FFAE00] mt-1 sm:mt-2">
-            <TypewriterHeadline text="Real Growth" delay={250} />
-          </span>
-        </h1>
-        <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-          From custom web development and search rankings to branding and packaging design, we build and run the digital assets that help ambitious companies grow.
-        </p>
-      </section>
+      <WaveHero className="relative z-10 w-full pt-32 sm:pt-40 lg:pt-44 pb-0 text-center overflow-hidden" style={{ backgroundColor: "#061309", backgroundImage: DARK_GRADIENT }}>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14">
+          <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.15] mb-5 min-h-18 sm:min-h-28 lg:min-h-34 flex flex-col items-center justify-center">
+            <span className="block">Services Engineered For</span>
+            <span className="block text-[#FFAE00] mt-1 sm:mt-2">
+              <TypewriterHeadline text="Real Growth" delay={250} />
+            </span>
+          </h1>
+          <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
+            Web, search, brand and packaging, built and run by one team.
+          </p>
+  </div>
+      </WaveHero>
 
       {/* ── 02. CORE 6 SERVICES GRID (BORDERGLOW GLASSMORPHIC CARDS) ── */}
       <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
@@ -162,7 +166,7 @@ export default function ServicesView() {
                 {/* CTA Button */}
                 <Link
                   href={service.href}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white/5 hover:bg-[#FFAE00] text-white hover:text-[#061309] border border-white/10 hover:border-[#FFAE00] font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white/5 text-white border border-white/10 font-montserrat font-bold text-xs uppercase tracking-wider tz-btn tz-btn-primary"
                 >
                   <span>{service.ctaText}</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { TrafficGrowthSection } from "@/legacy-src/components/home/tech/TrafficGrowthSection";
 import { ConsistentCTA } from "@/app/components/ui/ConsistentCTA";
+import { WaveHero } from "@/app/components/brand/BrandUI";
 
 interface TeamMember {
   id: number;
@@ -159,24 +160,14 @@ export default function OurTeamView() {
         />
       </div>
 
-      {/* ── SVG CLIP PATH: SHAPES THE HERO BOTTOM ITSELF AS AN ORGANIC WAVE ── */}
-      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-        <defs>
-          <clipPath id="hero-bottom-wave" clipPathUnits="objectBoundingBox">
-            <path d="M 0,0 L 1,0 L 1,0.952 C 0.875,0.936 0.736,0.984 0.556,0.956 C 0.375,0.928 0.222,0.984 0,0.948 Z" />
-          </clipPath>
-        </defs>
-      </svg>
 
       {/* ── 01. EDITORIAL AGENCY HERO BANNER (IDENTICAL HERO STYLING & MOBILE RESPONSIVENESS ACROSS PAGES) ── */}
-      <section
+      <WaveHero
         className="relative z-10 w-full pt-24 sm:pt-28 lg:pt-36 pb-10 sm:pb-14 lg:pb-20 bg-[#061309] text-white flex flex-col justify-between overflow-hidden"
         style={{
           backgroundColor: "#061309",
           backgroundImage:
             "radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)",
-          clipPath: "url(#hero-bottom-wave)",
-          WebkitClipPath: "url(#hero-bottom-wave)",
         }}
       >
         {/* Check Box Grid Texture into Hero Background */}
@@ -251,7 +242,7 @@ export default function OurTeamView() {
               <div className="flex flex-wrap items-center gap-3 pt-1 sm:pt-2">
                 <a
                   href="#team-directory"
-                  className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-bold px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-2 text-xs sm:text-sm group font-sans cursor-pointer"
+                  className="bg-[#FFAE00] text-[#0E2015] font-bold px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-xl inline-flex items-center gap-2 text-xs sm:text-sm group font-sans cursor-pointer tz-btn tz-btn-primary"
                 >
                   <span>Explore Team</span>
                   <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-y-1" />
@@ -259,7 +250,7 @@ export default function OurTeamView() {
 
                 <Link
                   href="/career"
-                  className="border border-white/25 text-white hover:bg-white/10 px-5 sm:px-6 py-2.5 sm:py-3.5 rounded-xl font-bold transition-all text-xs sm:text-sm inline-flex items-center gap-2 font-sans cursor-pointer"
+                  className="border border-white/25 text-white px-5 sm:px-6 py-2.5 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm inline-flex items-center gap-2 font-sans cursor-pointer tz-btn tz-btn-ghost"
                 >
                   <span>Join Our Team</span>
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -283,24 +274,7 @@ export default function OurTeamView() {
           </div>
         </div>
 
-        {/* Delicate golden accent curve tracing the wave bottom edge */}
-        <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-20">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-6 sm:h-10 lg:h-16 block pointer-events-none opacity-60"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40"
-              stroke="#FFAE00"
-              strokeWidth="2.5"
-              fill="none"
-            />
-          </svg>
-        </div>
-      </section>
+      </WaveHero>
 
       {/* ── 02. PROOF METRICS STRIP (WITH GENEROUS BREATHING SPACE BELOW HERO WAVE) ── */}
       <section className="relative z-20 pt-8 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

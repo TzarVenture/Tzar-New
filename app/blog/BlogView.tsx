@@ -12,6 +12,7 @@ import {
 import { BLOG_POSTS } from "@/lib/data/blogData";
 import { ConsistentCTA } from "@/app/components/ui/ConsistentCTA";
 import { TypewriterHeadline } from "@/legacy-src/components/ui/TypewriterHeadline";
+import { WaveDivider } from "@/app/components/brand/BrandUI";
 
 export default function BlogView() {
   return (
@@ -88,20 +89,7 @@ export default function BlogView() {
         </div>
 
         {/* ── Seamless Organic Wave Transition: Dark Spruce into #EFE8E0 with pb-0 so zero dark strip occurs ── */}
-        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
-              fill="#EFE8E0"
-            />
-          </svg>
-        </div>
+        <WaveDivider fill="#EFE8E0" />
       </section>
 
       {/* ── 02. MAIN ARTICLES GRID ── */}

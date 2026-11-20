@@ -21,6 +21,7 @@ import { LeadCaptureForm } from "@/legacy-src/components/ui/LeadCaptureForm";
 import { ConsistentCTA } from "@/app/components/ui/ConsistentCTA";
 import { TypewriterHeadline } from "@/legacy-src/components/ui/TypewriterHeadline";
 import { COMPANY } from "@/legacy-src/data/company";
+import { WaveHero } from "@/app/components/brand/BrandUI";
 
 export default function ContactView() {
   return (
@@ -42,26 +43,16 @@ export default function ContactView() {
         <div className="absolute inset-0 bg-[#061309]/50 pointer-events-none" />
       </div>
 
-      {/* ── SVG CLIP PATH: SHAPES THE HERO BOTTOM ITSELF AS AN ORGANIC WAVE (MATCHING /about-us) ── */}
-      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-        <defs>
-          <clipPath id="hero-bottom-wave" clipPathUnits="objectBoundingBox">
-            <path d="M 0,0 L 1,0 L 1,0.952 C 0.875,0.936 0.736,0.984 0.556,0.956 C 0.375,0.928 0.222,0.984 0,0.948 Z" />
-          </clipPath>
-        </defs>
-      </svg>
 
       {/* ──────────────────────────────────────────────────────────────────
           01. EDITORIAL HERO BANNER (MATCHING OUR NEW THEME)
       ────────────────────────────────────────────────────────────────── */}
-      <section
+      <WaveHero
         className="relative z-10 w-full pt-24 sm:pt-28 lg:pt-36 pb-10 sm:pb-14 lg:pb-20 bg-[#061309] text-white flex flex-col justify-between overflow-hidden"
         style={{
           backgroundColor: "#061309",
           backgroundImage:
             "radial-gradient(ellipse 85% 70% at 75% 30%, #1B4D25 0%, #0E2914 45%, #061309 80%, #030A05 100%)",
-          clipPath: "url(#hero-bottom-wave)",
-          WebkitClipPath: "url(#hero-bottom-wave)",
         }}
       >
         {/* Check Box Grid Texture */}
@@ -103,7 +94,7 @@ export default function ContactView() {
           <div className="pt-6 flex items-center justify-center">
             <a
               href="#Contactform"
-              className="bg-[#FFAE00] text-[#0E2015] hover:bg-white font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-2.5 text-sm sm:text-base font-sans cursor-pointer group"
+              className="bg-[#FFAE00] text-[#0E2015] font-bold px-7 py-3.5 rounded-xl inline-flex items-center gap-2.5 text-sm sm:text-base font-sans cursor-pointer group tz-btn tz-btn-primary"
             >
               <span>Enquire Now</span>
               <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1" />
@@ -111,25 +102,7 @@ export default function ContactView() {
           </div>
         </div>
 
-        {/* Delicate golden accent curve tracing the wave bottom edge (100% matched to clipPath) */}
-        <div className="absolute bottom-0 left-0 right-0 w-full h-[8%] overflow-hidden leading-none pointer-events-none z-20">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full block pointer-events-none opacity-80"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40"
-              stroke="#FFAE00"
-              strokeWidth="2.5"
-              vectorEffect="non-scaling-stroke"
-              fill="none"
-            />
-          </svg>
-        </div>
-      </section>
+      </WaveHero>
 
       {/* ──────────────────────────────────────────────────────────────────
           02. THREE LOCATION & COMMUNICATION CARDS (LUXURY OBSIDIAN GLASS)
@@ -489,7 +462,7 @@ export default function ContactView() {
                 href="https://www.google.com/maps/search/?api=1&query=B%2C+Ground+Floor%2C+Andheri+E%2C+Saki+Vihar+Rd%2C+behind+Finch+Restaurant%2C+Ganesh+Nagar%2C+Marol%2C+Andheri+East%2C+Mumbai%2C+Maharashtra+400072"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-xl bg-[#FFAE00] hover:bg-white text-[#061309] font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 inline-flex items-center gap-2 shadow-md shrink-0"
+                className="px-5 py-2.5 rounded-xl bg-[#FFAE00] text-[#061309] font-montserrat font-bold text-xs uppercase tracking-wider inline-flex items-center gap-2 shrink-0 tz-btn tz-btn-primary"
               >
                 <span>Open in Google Maps</span>
                 <ExternalLink className="w-3.5 h-3.5" />

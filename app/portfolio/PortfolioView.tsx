@@ -7,18 +7,28 @@ import {
   ArrowRight,
   ArrowDown,
   ArrowUpRight,
-  Globe,
-  Sparkles,
-  Play,
-  Layers,
-  Code2,
-  Package,
-  Film,
-  Palette,
-  CheckCircle2,
+  Lock,
 } from "lucide-react";
 import { ConsistentCTA } from "@/app/components/ui/ConsistentCTA";
 import { TypewriterHeadline } from "@/legacy-src/components/ui/TypewriterHeadline";
+import {
+  PLATFORM_CASE_STUDIES,
+  WEB_CASE_STUDIES,
+  CATEGORY_LABELS,
+  type CaseStudy,
+} from "./caseStudies";
+import {
+  GridTexture,
+  DarkBackdrop,
+  WaveHero,
+  DeviceDuo,
+  ModuleIconBadge,
+  TechStack,
+  TechGrid,
+} from "./components/PortfolioUI";
+import { DARK_GRADIENT } from "./theme";
+import { CardIllustration, SystemFlow, type IllustrationName } from "./components/Illustrations";
+
 
 /* --------------------------------------------------------------------------
    01. WEB DESIGN PROJECTS DATA (20 Real Client Websites from tzar)
@@ -196,16 +206,6 @@ const WEB_PROJECTS: WebProject[] = [
 ];
 
 /* Harmonious soft card backdrops matching site branding */
-const CARD_BG_COLORS = [
-  "#D0E4DA",
-  "#F3D2C4",
-  "#E5DCC2",
-  "#E6F0D1",
-  "#F1D3DD",
-  "#E1D9C9",
-  "#D3EEE4",
-  "#F3E0CF",
-];
 
 /* --------------------------------------------------------------------------
    02. CREATIVE BANNERS DATA (from tzar)
@@ -287,35 +287,302 @@ const NIGHT_CLUB_VIDEOS: VideoItem[] = [
 ];
 
 /* --------------------------------------------------------------------------
-   PORTFOLIO TABS LIST
+   ARCHIVE TABS (tech first, creative after)
 -------------------------------------------------------------------------- */
-const PORTFOLIO_TABS = [
-  { id: "web", label: "Web Design", count: 20 },
-  { id: "banners", label: "Creative Banners", count: 14 },
-  { id: "reels", label: "Reels", count: 10 },
-  { id: "packaging", label: "Print & Packaging", count: 4 },
-  { id: "nightclub", label: "Night Club Shoot", count: 10 },
+type WebFilter = "web-all" | "web-shopify" | "web-wordpress" | "web-custom";
+type ArchiveTab = WebFilter | "banners" | "reels" | "packaging" | "nightclub" | "behance";
+
+const webKind = (p: WebProject): "shopify" | "wordpress" | "custom" =>
+  p.services.some((s) => s.startsWith("Shopify"))
+    ? "shopify"
+    : p.services.some((s) => s.startsWith("WordPress"))
+      ? "wordpress"
+      : "custom";
+
+const WEB_TABS: { id: WebFilter; label: string; count: number }[] = [
+  { id: "web-all", label: "All Websites", count: WEB_PROJECTS.length },
+  { id: "web-shopify", label: "Shopify", count: WEB_PROJECTS.filter((p) => webKind(p) === "shopify").length },
+  { id: "web-wordpress", label: "WordPress", count: WEB_PROJECTS.filter((p) => webKind(p) === "wordpress").length },
+  { id: "web-custom", label: "Custom Web", count: WEB_PROJECTS.filter((p) => webKind(p) === "custom").length },
+];
+
+const CREATIVE_TABS: { id: ArchiveTab; label: string; count: number | null }[] = [
+  { id: "banners", label: "Creative Banners", count: CREATIVE_BANNERS.length },
+  { id: "reels", label: "Reels", count: REELS.length },
+  { id: "packaging", label: "Print & Packaging", count: PRINT_PACKAGING.length },
+  { id: "nightclub", label: "Night Club Shoot", count: NIGHT_CLUB_VIDEOS.length },
   { id: "behance", label: "Behance Gallery", count: null },
 ];
 
-// Proof Metrics Bar (matching /our-client stats strip)
+const ARCHIVE_PREVIEW = 8;
+
+/* Proof strip: figures already used across the site */
 const PROOF_METRICS = [
-  { value: "50+", label: "Live Websites Deployed" },
-  { value: "100+", label: "Brand Campaigns Run" },
-  { value: "10M+", label: "Video Impressions" },
-  { value: "95%", label: "Client Retention Rate" },
+  { value: "4", label: "CRM & SaaS platforms" },
+  { value: "50+", label: "Live websites" },
+  { value: "100+", label: "Brands served" },
+  { value: "95%", label: "Client retention" },
 ];
 
+/* "What we build" index: tech first */
+const CAPABILITIES = [
+  {
+    art: "crm" as IllustrationName,
+    title: CATEGORY_LABELS.crm,
+    desc: "CRMs, dialers and dashboards.",
+    href: "#platforms",
+  },
+  {
+    art: "webapp" as IllustrationName,
+    title: CATEGORY_LABELS.nextjs,
+    desc: "Fast web apps and sites.",
+    href: "#web-builds",
+  },
+  {
+    art: "store" as IllustrationName,
+    title: "Shopify stores",
+    desc: "Stores built to sell on mobile.",
+    href: "#web-builds",
+  },
+  {
+    art: "wordpress" as IllustrationName,
+    title: CATEGORY_LABELS.wordpress,
+    desc: "Sites your team can edit.",
+    href: "#web-builds",
+  },
+  {
+    art: "creative" as IllustrationName,
+    title: "Creative & media",
+    desc: "Banners, reels and packaging.",
+    href: "#archive",
+  },
+];
+
+const TECH_STACK = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Node.js",
+  "Vite",
+  "Tailwind CSS",
+  "Shopify",
+  "Liquid",
+  "WordPress",
+  "WooCommerce",
+  "MongoDB",
+  "Vercel",
+];
+
+const PROCESS = [
+  { art: "discover" as IllustrationName, title: "Discover", desc: "Map your workflow, users and data." },
+  { art: "design" as IllustrationName, title: "Design", desc: "Clickable designs, approved early." },
+  { art: "build" as IllustrationName, title: "Build", desc: "Weekly releases on a live link." },
+  { art: "launch" as IllustrationName, title: "Launch & support", desc: "Go-live, training and ongoing care." },
+];
+
+/* --------------------------------------------------------------------------
+   PLATFORM PANEL (large, alternating)
+-------------------------------------------------------------------------- */
+function PlatformPanel({ study, index }: { study: CaseStudy; index: number }) {
+  const flip = index % 2 === 1;
+  return (
+    <article className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className={`lg:col-span-7 ${flip ? "lg:order-2" : ""}`}>
+        <Link href={`/portfolio/${study.slug}`} className="block" aria-label={`${study.name} case study`}>
+          <DeviceDuo
+            desktop={study.images.desktop}
+            desktopAlt={study.images.desktopAlt}
+            mobile={study.images.mobile}
+            name={study.name}
+            domain={study.domain}
+            tone="dark"
+          />
+        </Link>
+      </div>
+
+      <div className={`lg:col-span-5 ${flip ? "lg:order-1" : ""}`}>
+        <h3 className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight">
+          {study.name}
+        </h3>
+        <p className="mt-3 text-base sm:text-lg text-[#B6F8DD] leading-snug">{study.tagline}</p>
+
+        <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3">
+          {study.modules.slice(0, 4).map((m) => (
+            <li key={m.title} className="flex items-center gap-3">
+              <span className="w-8 h-8 rounded-lg bg-[#FFAE00] flex items-center justify-center shrink-0">
+                <ModuleIconBadge icon={m.icon} className="w-4 h-4 text-[#0E2015]" />
+              </span>
+              <span className="text-sm text-white font-semibold leading-snug">{m.title}</span>
+            </li>
+          ))}
+        </ul>
+
+        <TechStack items={study.stack} className="mt-6" />
+
+        <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <Link
+            href={`/portfolio/${study.slug}`}
+            className="h-11 bg-[#FFAE00] text-[#0E2015] font-bold px-6 rounded-xl inline-flex items-center gap-2 text-sm pf-btn pf-btn-primary"
+          >
+            Read case study
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <span className="inline-flex items-center gap-1.5 text-xs text-white/60 font-medium">
+            <Lock className="w-3.5 h-3.5" />
+            Demo on request
+          </span>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   WEB BUILD CARD
+-------------------------------------------------------------------------- */
+function WebBuildCard({ study }: { study: CaseStudy }) {
+  return (
+    <article className="group h-full flex flex-col bg-[#0E2015] rounded-3xl border border-[#244A2C] hover:border-[#FFAE00] transition-colors duration-300 overflow-hidden">
+      <Link
+        href={`/portfolio/${study.slug}`}
+        aria-label={`${study.name} case study`}
+        className="relative block p-5 sm:p-7 pb-0 sm:pb-0 overflow-hidden bg-[#EFE8E0]"
+      >
+        <DeviceDuo desktop={study.images.desktop} mobile={study.images.mobile} name={study.name} domain={study.domain} />
+      </Link>
+      <div className="flex-1 flex flex-col p-5 sm:p-7">
+        <p className="text-sm text-[#FFAE00] font-semibold">
+          {study.industry}
+        </p>
+        <h3 className="mt-1 font-montserrat font-black text-xl sm:text-2xl text-white tracking-tight">
+          {study.name}
+        </h3>
+        <p className="mt-2 text-sm sm:text-[15px] text-[#B6F8DD] leading-relaxed">{study.tagline}</p>
+        <div className="mt-auto pt-6 flex items-center justify-between gap-3">
+          <Link
+            href={`/portfolio/${study.slug}`}
+            className="h-10 px-5 rounded-xl bg-[#FFAE00] text-[#0E2015] inline-flex items-center gap-2 text-sm font-bold pf-btn pf-btn-primary"
+          >
+            Read case study
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          {study.liveUrl && (
+            <a
+              href={study.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-white hover:text-[#FFAE00] underline-offset-4 hover:underline"
+            >
+              {study.domain}
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+const KIND_LABEL = { shopify: "Shopify store", wordpress: "WordPress site", custom: "Custom website" } as const;
+const hostOf = (url: string) => url.replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/.*$/, "");
+
+function ArchiveSiteCard({ item }: { item: WebProject }) {
+  const tags = item.services.filter((s) => !/^(Shopify|WordPress|Custom Web)/.test(s)).slice(0, 2);
+  return (
+    <a
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex flex-col rounded-2xl overflow-hidden bg-[#0E2015] border border-[#244A2C] hover:border-[#FFAE00] transition-[border-color,transform] duration-200 active:scale-[0.98] motion-reduce:transform-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFAE00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#061309]"
+    >
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#EFE8E0]">
+        <img
+          src={item.img}
+          alt={`${item.title} website on desktop and mobile`}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04] motion-reduce:transform-none"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div className="flex-1 flex flex-col p-4 sm:p-5">
+        <div className="flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <h3 className="font-montserrat font-bold text-base text-white leading-tight truncate">{item.title}</h3>
+            <p className="text-xs text-[#B6F8DD] truncate">{hostOf(item.link)}</p>
+          </div>
+          <span className="w-8 h-8 rounded-lg bg-[#1D4224] text-[#FFAE00] group-hover:bg-[#FFAE00] group-hover:text-[#0E2015] flex items-center justify-center shrink-0 transition-colors duration-200">
+            <ArrowUpRight className="w-4 h-4" />
+          </span>
+        </div>
+        <div className="mt-4 pt-3 border-t border-[#244A2C] flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span className="text-xs font-bold text-[#FFAE00]">{KIND_LABEL[webKind(item)]}</span>
+          {tags.map((t) => (
+            <span key={t} className="text-[11px] font-semibold text-white/80 bg-[#173322] rounded-md px-2 py-0.5">
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </a>
+  );
+}
+
+function ArchiveTabButton({
+  active,
+  label,
+  count,
+  onClick,
+}: {
+  active: boolean;
+  label: string;
+  count: number | null;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`shrink-0 px-4 sm:px-5 py-2.5 rounded-full font-montserrat font-bold text-sm pf-chip cursor-pointer select-none inline-flex items-center gap-2 ${
+        active
+          ? "bg-[#FFAE00] text-[#0E2015] border border-[#FFAE00]"
+          : "bg-[#0E2015] text-white hover:text-[#FFAE00] border border-[#2A4A31] hover:border-[#FFAE00]"
+      }`}
+    >
+      <span>{label}</span>
+      {count !== null && (
+        <span
+          className={`text-[11px] px-1.5 py-0.5 rounded-full ${
+            active ? "bg-[#0E2015] text-[#FFAE00]" : "bg-[#1D4224] text-white"
+          }`}
+        >
+          {count}
+        </span>
+      )}
+    </button>
+  );
+}
+
 export default function PortfolioView() {
-  const [activeTab, setActiveTab] = useState<string>("web");
+  const [activeTab, setActiveTab] = useState<ArchiveTab>("web-all");
+  const [showAllWeb, setShowAllWeb] = useState(false);
+  const selectTab = (id: ArchiveTab) => {
+    setActiveTab(id);
+    setShowAllWeb(false);
+  };
+  const webFilter = activeTab.startsWith("web-") ? activeTab : null;
+  const visibleWeb = WEB_PROJECTS.filter((p) =>
+    webFilter === "web-all" ? true : webFilter ? `web-${webKind(p)}` === webFilter : false
+  );
 
   return (
-    <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-hidden">
+    <div className="relative isolate text-white min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-clip">
+      <DarkBackdrop />
       {/* ──────────────────────────────────────────────────────────────────
           01. EDITORIAL HERO BANNER (MATCHING /our-client & SERVICES THEME)
           Widescreen Background Art + 3D Visual on Right + Organic Wave
       ────────────────────────────────────────────────────────────────── */}
-      <section
+      <WaveHero
         className="relative w-full min-h-[85vh] lg:min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309] text-white flex flex-col justify-between overflow-hidden"
         style={{
           backgroundColor: "#061309",
@@ -361,52 +628,23 @@ export default function PortfolioView() {
                 </h1>
               </div>
 
-              {/* Description */}
-              <p className="font-sans text-sm sm:text-base lg:text-lg text-[#B6F8DD]/90 max-w-xl leading-relaxed">
-                Explore our cutting-edge web platforms, viral video reels, luxury packaging editions, and high-impact digital systems engineered for ambitious brands.
+              <p className="font-sans text-base sm:text-lg text-[#B6F8DD] max-w-md leading-relaxed">
+                Selected CRMs, web apps and online stores we have built.
               </p>
-
-              {/* Focus Pillars (matching /our-client layout) */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-white/10 text-left">
-                <div>
-                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
-                    Brands Scaled
-                  </span>
-                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
-                    100+ Pan-India &amp; Global
-                  </span>
-                </div>
-                <div>
-                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
-                    Digital Systems
-                  </span>
-                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
-                    50+ Web &amp; Apps Shipped
-                  </span>
-                </div>
-                <div>
-                  <span className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#FFAE00] font-bold">
-                    Campaign Reach
-                  </span>
-                  <span className="text-xs sm:text-sm text-white/85 font-medium mt-0.5 block">
-                    10M+ Video &amp; Media Views
-                  </span>
-                </div>
-              </div>
 
               {/* Action Buttons (Left-aligned on mobile, matching identical width and height) */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-3 sm:gap-4 pt-2">
                 <a
                   href="#portfolio-showcase"
-                  className="w-[210px] sm:w-auto h-12 bg-[#FFAE00] text-[#0E2015] hover:bg-white font-bold px-6 sm:px-7 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center justify-center gap-2 text-sm sm:text-base group font-sans cursor-pointer"
+                  className="w-[210px] sm:w-auto h-12 bg-[#FFAE00] text-[#0E2015] font-bold px-6 sm:px-7 rounded-xl inline-flex items-center justify-center gap-2 text-sm sm:text-base group font-sans cursor-pointer pf-btn pf-btn-primary"
                 >
                   <span>Explore Showcase</span>
-                  <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1 shrink-0" />
+                  <ArrowDown className="w-4 h-4 shrink-0" />
                 </a>
 
                 <Link
                   href="/contact"
-                  className="w-[210px] sm:w-auto h-12 border border-white/25 text-white hover:bg-white/10 px-6 sm:px-7 rounded-xl font-bold transition-all text-sm sm:text-base inline-flex items-center justify-center gap-2 font-sans"
+                  className="w-[210px] sm:w-auto h-12 border border-[#3A5A40] text-white px-6 sm:px-7 rounded-xl font-bold text-sm sm:text-base inline-flex items-center justify-center gap-2 font-sans pf-btn pf-btn-ghost"
                 >
                   <span>Start a Project</span>
                   <ArrowRight className="w-4 h-4 shrink-0" />
@@ -430,168 +668,184 @@ export default function PortfolioView() {
           </div>
         </div>
 
-        {/* ── Smooth Organic Wave Transition: Dark Spruce into #EFE8E0 ── */}
-        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
-              fill="#EFE8E0"
-            />
-          </svg>
+      </WaveHero>
+
+      {/* ── 02. PROOF STRIP (dark card with breathing room below the hero wave, as on About) ── */}
+      <section
+        id="portfolio-showcase"
+        className="relative z-20 pt-10 sm:pt-14 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24"
+      >
+        <div
+          className="relative overflow-hidden text-white rounded-2xl sm:rounded-3xl border border-[#244A2C] shadow-2xl p-5 sm:p-7 lg:p-8"
+          style={{ backgroundColor: "#061309", backgroundImage: DARK_GRADIENT }}
+        >
+          <GridTexture />
+          <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {PROOF_METRICS.map((stat, idx) => (
+              <div
+                key={stat.label}
+                className={`flex flex-col items-center sm:items-start text-center sm:text-left ${
+                  idx !== 0 ? "lg:border-l lg:border-white/10 lg:pl-6" : ""
+                }`}
+              >
+                <span className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-[#FFAE00] tracking-tight">
+                  {stat.value}
+                </span>
+                <span className="font-bold text-xs sm:text-sm text-white/90 mt-1">{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── 02. PROOF METRICS STRIP (MATCHING /our-client) ── */}
-      <section className="relative z-20 -mt-7 sm:-mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-2xl border border-[#1D4224]/10 shadow-xl p-5 sm:p-7 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {PROOF_METRICS.map((stat, idx) => (
-            <div
-              key={idx}
-              className="text-center p-2 rounded-xl transition-colors hover:bg-[#F3EFEA]"
-            >
-              <div className="font-montserrat font-black text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
-                <span className="text-[#FFAE00]">{stat.value}</span>
+      {/* ── 03. WHAT WE BUILD (tech-first index) ── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-10 items-end mb-8 sm:mb-10">
+          <h2 className="lg:col-span-7 font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.08]">
+            What we build
+          </h2>
+          <p className="lg:col-span-5 text-sm sm:text-base text-[#B6F8DD] leading-relaxed">
+            Engineering at the core. Design and media to launch it.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
+          {CAPABILITIES.map((cap, i) => {
+            const lead = i === 0;
+            return (
+              <a
+                key={cap.title}
+                href={cap.href}
+                className={`group flex flex-col rounded-2xl p-3 sm:p-3.5 border bg-[#0E2015] text-white transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFAE00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#061309] ${
+                  lead ? "sm:col-span-2 lg:col-span-1 border-[#FFAE00]" : "border-[#244A2C] hover:border-[#FFAE00]"
+                }`}
+              >
+                <CardIllustration name={cap.art} />
+                <div className="flex items-end justify-between gap-3 px-1.5 pt-4 pb-1.5">
+                  <div>
+                    <h3 className="font-montserrat font-black text-base leading-tight">{cap.title}</h3>
+                    <p className="mt-1 text-[13px] leading-snug text-[#B6F8DD]">{cap.desc}</p>
+                  </div>
+                  <ArrowDown className="w-4 h-4 shrink-0 mb-0.5 text-[#FFAE00] transition-transform duration-200 group-hover:translate-y-0.5" />
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── 04. PLATFORMS: CRM, ERP & SaaS case studies ── */}
+      <section id="platforms" className="py-14 sm:py-20 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="relative overflow-hidden rounded-3xl sm:rounded-[2rem] border border-[#244A2C] shadow-2xl px-5 py-10 sm:p-10 lg:p-14"
+            style={{ backgroundColor: "#061309", backgroundImage: DARK_GRADIENT }}
+          >
+            <GridTexture />
+            <div className="relative z-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                <div className="lg:col-span-6">
+                  <h2 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.08]">
+                    CRM, ERP &amp; SaaS platforms
+                  </h2>
+                  <p className="mt-4 text-sm sm:text-base text-[#B6F8DD] leading-relaxed">
+                    Software that runs sales, finance and call centres.
+                  </p>
+                </div>
+                <div className="lg:col-span-6 rounded-2xl border border-[#244A2C] bg-[#0A1C10] px-3 sm:px-5 py-4">
+                  <SystemFlow className="block w-full h-auto" />
+                </div>
               </div>
-              <div className="font-sans font-semibold text-xs sm:text-sm text-[#1D4224] mt-1">
-                {stat.label}
+
+              <div className="mt-12 sm:mt-16 space-y-16 sm:space-y-20">
+                {PLATFORM_CASE_STUDIES.map((study, i) => (
+                  <div key={study.slug} className={i > 0 ? "pt-16 sm:pt-20 border-t border-white/10" : ""}>
+                    <PlatformPanel study={study} index={i} />
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      {/* ── 03. CATEGORY FILTER TABS BAR & SHOWCASE ── */}
-      <section id="portfolio-showcase" className="py-12 sm:py-16 scroll-mt-20">
+      {/* ── 05. WEB BUILDS: Next.js, Shopify, WordPress ── */}
+      <section id="web-builds" className="pb-14 sm:pb-20 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-12">
-            <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-[#1D4224] font-black block mb-2">
-              PORTFOLIO SHOWCASE
-            </span>
-            <h2 className="font-montserrat font-black text-2xl sm:text-4xl text-[#0E2015] tracking-tight leading-tight">
-              Engineered for High Conversion &amp; Brand Authority
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-10 items-end mb-8 sm:mb-12">
+            <h2 className="lg:col-span-7 font-montserrat font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.08]">
+              Websites &amp; online stores
             </h2>
+            <p className="lg:col-span-5 text-sm sm:text-base text-[#B6F8DD] leading-relaxed">
+              Next.js for speed. Shopify to sell. WordPress to self-edit.
+            </p>
           </div>
 
-          {/* Filter Tabs Container: Native Touch Swipe on Mobile */}
-          <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto px-2 sm:px-0 pb-3 mb-10 no-scrollbar scroll-smooth">
-            {PORTFOLIO_TABS.map((tab) => {
-              const isActive = activeTab === tab.id;
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-7">
+            {WEB_CASE_STUDIES.map((study) => (
+              <WebBuildCard key={study.slug} study={study} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-              return (
-                <button
-                  key={tab.id}
-                  id={`portfolio-tab-${tab.id}`}
-                  type="button"
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`shrink-0 px-5 sm:px-6 py-2.5 rounded-full font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer select-none active:scale-95 inline-flex items-center gap-2 ${
-                    isActive
-                      ? "bg-[#0E2015] text-[#FFAE00] shadow-md border-2 border-[#FFAE00]"
-                      : "bg-white text-[#5C6860] hover:text-[#0E2015] border border-neutral-300 hover:border-[#1D4224]/50 shadow-xs"
-                  }`}
-                >
-                  <span>{tab.label}</span>
-                  {tab.count !== null && (
-                    <span
-                      className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
-                        isActive
-                          ? "bg-[#FFAE00] text-[#0E2015]"
-                          : "bg-neutral-100 text-[#5C6860]"
-                      }`}
-                    >
-                      {tab.count}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+      {/* ── 06. ARCHIVE: all existing work, tech first ── */}
+      <section id="archive" className="pb-14 sm:pb-20 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+            <h2 className="font-montserrat font-black text-2xl sm:text-4xl text-white tracking-tight leading-tight">
+              More work
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-[#B6F8DD]">
+              Websites first, then campaigns and creative.
+            </p>
+          </div>
+
+          {/* Tabs: websites first, creative after */}
+          <div className="flex items-center justify-start lg:justify-center lg:flex-wrap gap-2 sm:gap-3 overflow-x-auto lg:overflow-visible pb-3 mb-8 sm:mb-10 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+            {WEB_TABS.map((tab) => (
+              <ArchiveTabButton
+                key={tab.id}
+                active={activeTab === tab.id}
+                label={tab.label}
+                count={tab.count}
+                onClick={() => selectTab(tab.id)}
+              />
+            ))}
+            <span className="shrink-0 w-px h-6 bg-[#2A4A31] mx-1" aria-hidden="true" />
+            {CREATIVE_TABS.map((tab) => (
+              <ArchiveTabButton
+                key={tab.id}
+                active={activeTab === tab.id}
+                label={tab.label}
+                count={tab.count}
+                onClick={() => selectTab(tab.id)}
+              />
+            ))}
           </div>
 
           {/* ── TAB 1: WEB DESIGN GRID (20 Verified Client Builds) ── */}
-          {activeTab === "web" && (
+          {webFilter && (
             <div
               key="web-grid"
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-in fade-in duration-300"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 animate-in fade-in duration-300"
             >
-              {WEB_PROJECTS.map((item, index) => {
-                const bgColor = CARD_BG_COLORS[index % CARD_BG_COLORS.length];
+              {(showAllWeb ? visibleWeb : visibleWeb.slice(0, ARCHIVE_PREVIEW)).map((item) => (
+                <ArchiveSiteCard key={item.id} item={item} />
+              ))}
+            </div>
+          )}
 
-                return (
-                  <a
-                    key={item.id}
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block rounded-2xl overflow-hidden border border-[#1D4224]/10 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 group cursor-pointer text-inherit no-underline"
-                    style={{ backgroundColor: bgColor }}
-                  >
-                    <div className="p-6 h-full flex flex-col justify-between min-h-105">
-                      {/* Top Service Tags */}
-                      <div className="flex flex-wrap gap-1.5 mb-4 h-14 overflow-hidden content-start">
-                        {item.services.map((srv, i) => (
-                          <span
-                            key={i}
-                            className="bg-white/95 text-[#0E2015] text-[11px] font-montserrat font-semibold px-2.5 py-0.5 rounded-full shadow-xs whitespace-nowrap"
-                          >
-                            {srv}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Brand Logo Stage */}
-                      <div className="h-14 flex items-center justify-center mb-4">
-                        <img
-                          src={item.logo}
-                          alt={`${item.title} Logo`}
-                          className="max-h-12 max-w-35 object-contain drop-shadow-xs"
-                          onError={(e) => {
-                            const target = e.currentTarget as HTMLImageElement;
-                            target.style.display = "none";
-                          }}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-
-                      {/* Website Mockup Image Stage */}
-                      <div className="h-36 flex items-center justify-center mb-4 overflow-hidden">
-                        <img
-                          src={item.img}
-                          alt={item.title}
-                          className="max-h-32 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-md"
-                          onError={(e) => {
-                            const target = e.currentTarget as HTMLImageElement;
-                            target.style.display = "none";
-                          }}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-
-                      {/* Title & Outbound Indicator */}
-                      <div className="pt-2 border-t border-[#0E2015]/10 flex items-center justify-between">
-                        <div className="text-left">
-                          <span className="text-[11px] text-[#0E2015]/70 uppercase tracking-wider block font-medium">
-                            Web Development
-                          </span>
-                          <h3 className="font-montserrat font-bold text-sm text-[#0E2015] leading-snug">
-                            {item.title}
-                          </h3>
-                        </div>
-                        <div className="w-8 h-8 rounded-full bg-white/80 group-hover:bg-[#1D4224] group-hover:text-white flex items-center justify-center transition-colors shrink-0 shadow-xs">
-                          <ArrowUpRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                );
-              })}
+          {webFilter && !showAllWeb && visibleWeb.length > ARCHIVE_PREVIEW && (
+            <div className="mt-8 sm:mt-10 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAllWeb(true)}
+                className="h-12 px-7 rounded-xl bg-[#FFAE00] text-[#0E2015] font-bold text-sm inline-flex items-center gap-2 cursor-pointer pf-btn pf-btn-primary"
+              >
+                Show all {visibleWeb.length} websites
+                <ArrowDown className="w-4 h-4" />
+              </button>
             </div>
           )}
 
@@ -731,14 +985,53 @@ export default function PortfolioView() {
         </div>
       </section>
 
-      {/* ── 04. CONSISTENT REUSABLE CTA CARD (MATCHING SERVICES & CLIENT PAGES) ── */}
+      {/* ── 07. STACK + HOW WE SHIP ── */}
+      <section className="pb-14 sm:pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="relative overflow-hidden rounded-3xl sm:rounded-[2rem] border border-[#244A2C] shadow-2xl px-5 py-10 sm:p-10 lg:p-14 text-white"
+            style={{ backgroundColor: "#061309", backgroundImage: DARK_GRADIENT }}
+          >
+            <GridTexture />
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+              <div className="lg:col-span-5 flex flex-col">
+                <h2 className="font-montserrat font-black text-3xl sm:text-4xl text-white tracking-tight leading-[1.1]">
+                  One team, brief to launch
+                </h2>
+                <p className="mt-4 text-sm sm:text-base text-[#B6F8DD] leading-relaxed">
+                  Designers and engineers in Mumbai, under one roof.
+                </p>
+                <div className="mt-8 lg:flex-1 lg:flex lg:flex-col">
+                  <TechGrid items={TECH_STACK} className="lg:flex-1" />
+                </div>
+              </div>
+
+              <ol className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                {PROCESS.map((step, i) => (
+                  <li key={step.title} tabIndex={-1} className="group rounded-2xl border border-[#244A2C] bg-[#0C1F12] p-3 sm:p-3.5 hover:border-[#FFAE00] transition-colors duration-300">
+                    <CardIllustration name={step.art} />
+                    <div className="px-1.5 pt-4 pb-1.5">
+                      <h3 className="font-montserrat font-bold text-base sm:text-lg text-white">
+                        <span className="text-[#FFAE00]">{i + 1}.</span> {step.title}
+                      </h3>
+                      <p className="mt-1 text-sm text-white/75 leading-snug">{step.desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 08. CONSISTENT REUSABLE CTA CARD ── */}
       <ConsistentCTA
-        title="Let's Build Something Iconic Together"
-        description="From high-conversion websites and custom digital systems to national outdoor campaigns, our team brings exceptional digital craftsmanship to every project."
+        title="Have a CRM, web app or store in mind?"
+        description="Tell us how your team works. We'll reply with a plan, timeline and stack."
         primaryText="Start a Project"
         primaryHref="/contact"
-        secondaryText="Explore Services"
-        secondaryHref="/services"
+        secondaryText="Website Development"
+        secondaryHref="/website-development-services"
       />
     </div>
   );

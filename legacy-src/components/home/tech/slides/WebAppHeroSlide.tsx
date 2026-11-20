@@ -1,13 +1,8 @@
 "use client";
 
 import React from "react";
-import {
-  Lightning,
-  DeviceMobile,
-  Globe,
-  ShieldCheck,
-} from "@phosphor-icons/react";
 import "./WebAppHeroSlide.css";
+import { HeroChipArt } from "./HeroChipArt";
 
 // ── TECH STACK SATELLITES AROUND DUAL PHONES ──────────────────────────────
 const STACK_SATELLITES = [
@@ -77,9 +72,7 @@ export const WebAppHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
           <div className="hidden lg:flex lg:col-span-3 flex-col items-end gap-6 text-left z-20">
             {/* Feature 1: Sub-Second Edge Performance */}
             <div className="webapp-feature-card webapp-card-1">
-              <div className="webapp-icon-box box-teal">
-                <Lightning size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="speed" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 Sub-Second Edge Performance
               </h3>
@@ -87,9 +80,7 @@ export const WebAppHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
 
             {/* Feature 2: Mobile-First Responsive PWA */}
             <div className="webapp-feature-card webapp-card-2">
-              <div className="webapp-icon-box box-emerald">
-                <DeviceMobile size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="pwa" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 Mobile-First Responsive PWA
               </h3>
@@ -150,9 +141,7 @@ export const WebAppHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
           <div className="hidden lg:flex lg:col-span-3 flex-col items-start gap-6 text-left z-20">
             {/* Feature 3: SEO & Search Indexing Mastery */}
             <div className="webapp-feature-card webapp-card-3">
-              <div className="webapp-icon-box box-indigo">
-                <Globe size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="seo" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 SEO &amp; Search Indexing Mastery
               </h3>
@@ -160,9 +149,7 @@ export const WebAppHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
 
             {/* Feature 4: Zero-Downtime Cloud Scaling */}
             <div className="webapp-feature-card webapp-card-4">
-              <div className="webapp-icon-box box-orange">
-                <ShieldCheck size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="cloud" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 Zero-Downtime Cloud Scaling
               </h3>
@@ -174,36 +161,28 @@ export const WebAppHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
         {/* ── 2x2 GRID FOR MOBILE (< 1024px) ─────────────────────────── */}
         <div className="grid grid-cols-2 gap-2 sm:gap-2.5 lg:hidden mt-3 sm:mt-4 z-20 px-1">
           <div className="webapp-feature-card webapp-mobile-card">
-            <div className="webapp-icon-box box-teal">
-              <Lightning size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="speed" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               Sub-Second Edge Performance
             </h3>
           </div>
 
           <div className="webapp-feature-card webapp-mobile-card">
-            <div className="webapp-icon-box box-emerald">
-              <DeviceMobile size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="pwa" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               Mobile-First Responsive PWA
             </h3>
           </div>
 
           <div className="webapp-feature-card webapp-mobile-card">
-            <div className="webapp-icon-box box-indigo">
-              <Globe size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="seo" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               SEO &amp; Search Indexing
             </h3>
           </div>
 
           <div className="webapp-feature-card webapp-mobile-card">
-            <div className="webapp-icon-box box-orange">
-              <ShieldCheck size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="cloud" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               Zero-Downtime Cloud Scaling
             </h3>

@@ -1,13 +1,8 @@
 "use client";
 
 import React from "react";
-import {
-  Lightning,
-  ChartLineUp,
-  CreditCard,
-  Kanban,
-} from "@phosphor-icons/react";
 import "./CrmHeroSlide.css";
+import { HeroChipArt } from "./HeroChipArt";
 
 // ── TECH STACK ICONS FROM thesvg.org (via @thesvg/cli) ────────────────────
 const TECH_ICONS = [
@@ -102,9 +97,7 @@ export const CrmHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ im
           <div className="hidden lg:flex lg:col-span-3 flex-col items-end gap-6 text-left z-20">
             {/* Pod 1: Instant Lead & WhatsApp Routing */}
             <div className="hero-orbit-card pod-custom-1">
-              <div className="orbit-icon-box box-blue">
-                <Lightning size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="routing" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 Instant Lead &amp; WhatsApp Routing
               </h3>
@@ -112,9 +105,7 @@ export const CrmHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ im
 
             {/* Pod 2: Real-Time Revenue Analytics */}
             <div className="hero-orbit-card pod-custom-2">
-              <div className="orbit-icon-box box-green">
-                <ChartLineUp size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="analytics" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 Real-Time Revenue Analytics
               </h3>
@@ -141,9 +132,7 @@ export const CrmHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ im
           <div className="hidden lg:flex lg:col-span-3 flex-col items-start gap-6 text-left z-20">
             {/* Pod 3: Visual Pipeline & Auto Follow-ups */}
             <div className="hero-orbit-card pod-custom-3">
-              <div className="orbit-icon-box box-amber">
-                <Kanban size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="pipeline" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 Visual Pipeline &amp; Auto Follow-ups
               </h3>
@@ -151,9 +140,7 @@ export const CrmHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ im
 
             {/* Pod 4: Automated Invoicing & Payments */}
             <div className="hero-orbit-card pod-custom-4">
-              <div className="orbit-icon-box box-purple">
-                <CreditCard size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="invoice" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 Automated Invoicing &amp; Payments
               </h3>
@@ -166,9 +153,7 @@ export const CrmHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ im
         <div className="grid grid-cols-2 gap-2 sm:gap-2.5 lg:hidden mt-3 sm:mt-4 z-20 px-1">
           {/* 1. Instant Lead */}
           <div className="hero-orbit-card mobile-orbit-card">
-            <div className="orbit-icon-box box-blue">
-              <Lightning size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="routing" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               Instant Lead &amp; WhatsApp Routing
             </h3>
@@ -176,9 +161,7 @@ export const CrmHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ im
 
           {/* 2. Real-Time Revenue */}
           <div className="hero-orbit-card mobile-orbit-card">
-            <div className="orbit-icon-box box-green">
-              <ChartLineUp size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="analytics" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               Real-Time Revenue Analytics
             </h3>
@@ -186,9 +169,7 @@ export const CrmHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ im
 
           {/* 3. Visual Pipeline */}
           <div className="hero-orbit-card mobile-orbit-card">
-            <div className="orbit-icon-box box-amber">
-              <Kanban size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="pipeline" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               Visual Pipeline &amp; Auto Follow-ups
             </h3>
@@ -196,9 +177,7 @@ export const CrmHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({ im
 
           {/* 4. Automated Invoicing */}
           <div className="hero-orbit-card mobile-orbit-card">
-            <div className="orbit-icon-box box-purple">
-              <CreditCard size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="invoice" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               Automated Invoicing &amp; Payments
             </h3>

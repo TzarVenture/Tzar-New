@@ -1,34 +1,24 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
-  ExternalLink,
   ArrowUpRight,
   ArrowRight,
-  Phone,
   Check,
-  ChevronLeft,
-  ChevronRight,
   ChevronDown,
-  ShoppingBag,
-  Globe,
-  Layers,
-  Smartphone,
-  TrendingUp,
-  ShieldCheck,
-  Zap,
   Clock,
-  Play,
-  Pause,
 } from 'lucide-react';
 import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { LazyLoopVideo } from '@/legacy-src/components/ui/LazyLoopVideo';
 import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 import { COMPANY } from '@/data/company';
-import { WaveDivider } from "@/app/components/brand/BrandUI";
+import { WEB_CASE_STUDIES } from '@/app/portfolio/caseStudies';
+import { WaveHero, DarkBackdrop, BrowserFrame, TechGrid, WAVE_CURVE } from "@/app/components/brand/BrandUI";
+import { DARK_GRADIENT } from "@/app/components/brand/theme";
+import { CardIllustration, type IllustrationName } from "@/app/components/brand/Illustrations";
 
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -39,11 +29,11 @@ import { WaveDivider } from "@/app/components/brand/BrandUI";
 interface PricingPackage {
   id: string;
   name: string;
-  badge?: string;
+  fit: string;
   isPopular?: boolean;
   timeline: string;
   price: string;
-  iconImg: string;
+  mark: string;
   primaryFeatures: string[];
   additionalFeatures: string[];
 }
@@ -52,10 +42,10 @@ const PRICING_PACKAGES: PricingPackage[] = [
   {
     id: 'wordpress',
     name: 'WordPress & WooCommerce',
-    badge: 'B2B / B2C / D2C',
+    fit: 'Content-led sites and WooCommerce stores.',
     timeline: '2 - 3 weeks',
     price: '₹29,999',
-    iconImg: '/optimized/assets/images/icons/wordpress.webp',
+    mark: 'WordPress',
     primaryFeatures: [
       'Up to 15 page custom responsive website',
       'Payment gateway setup (Razorpay & 1-click UPI)',
@@ -74,37 +64,13 @@ const PRICING_PACKAGES: PricingPackage[] = [
     ],
   },
   {
-    id: 'shopify',
-    name: 'Shopify E-Commerce Store',
-    badge: 'Flagship Choice',
-    isPopular: true,
-    timeline: '3 - 4 weeks',
-    price: '₹49,999',
-    iconImg: '/optimized/assets/images/icons/shopify2.webp',
-    primaryFeatures: [
-      'Full Shopify store setup & custom theme styling',
-      'Catalog upload for up to 100 products',
-      '1-click UPI, cards & net banking checkout',
-      '1 year free maintenance & ongoing support',
-    ],
-    additionalFeatures: [
-      'High-converting homepage & product detail banners',
-      'Shiprocket automated shipping & label creation',
-      'E-commerce SEO structure & Google indexing',
-      'Google Analytics 4 & Meta Pixel tracking',
-      'Custom domain connection & SSL certification',
-      'Discount coupons & abandoned cart recovery',
-      'Admin walk-through training to manage orders easily',
-      'Full cross-device testing & launch assurance',
-    ],
-  },
-  {
     id: 'nextjs',
     name: 'React.js & Custom Next.js',
-    badge: 'Bespoke Web App',
+    fit: 'Our recommended stack. Fast, custom, fully yours.',
+    isPopular: true,
     timeline: '8 - 12 weeks',
     price: '₹79,999',
-    iconImg: '/assets/images/icons/nextjs2.png',
+    mark: 'Next.js',
     primaryFeatures: [
       'Bespoke tailored UI/UX design & modern code',
       'Customer login & private member portal',
@@ -120,6 +86,30 @@ const PRICING_PACKAGES: PricingPackage[] = [
       'Custom domain, cloud hosting & SSL certificate setup',
       'Custom admin dashboard for easy real-time updates',
       'Full ownership of Git repository & source code',
+    ],
+  },
+  {
+    id: 'shopify',
+    name: 'Shopify E-Commerce Store',
+    fit: 'Product brands selling online.',
+    timeline: '3 - 4 weeks',
+    price: '₹49,999',
+    mark: 'Shopify',
+    primaryFeatures: [
+      'Full Shopify store setup & custom theme styling',
+      'Catalog upload for up to 100 products',
+      '1-click UPI, cards & net banking checkout',
+      '1 year free maintenance & ongoing support',
+    ],
+    additionalFeatures: [
+      'High-converting homepage & product detail banners',
+      'Shiprocket automated shipping & label creation',
+      'E-commerce SEO structure & Google indexing',
+      'Google Analytics 4 & Meta Pixel tracking',
+      'Custom domain connection & SSL certification',
+      'Discount coupons & abandoned cart recovery',
+      'Admin walk-through training to manage orders easily',
+      'Full cross-device testing & launch assurance',
     ],
   },
 ];
@@ -164,57 +154,45 @@ const SHOPIFY_STORES = [
   },
 ];
 
-// 3. Core Solutions We Build (Curated from websiteDevCards.js & Designway UX)
-const CORE_SOLUTIONS = [
+// 3. What we build (cards carry an animated illustration)
+const CORE_SOLUTIONS: { id: number; title: string; desc: string; art: IllustrationName }[] = [
   {
     id: 1,
-    title: 'E-Commerce online stores',
-    subtitle: 'Shopify & WooCommerce platforms',
-    desc: 'High-converting digital storefronts built for instant mobile UPI checkouts, fast browsing, and effortless catalog management.',
-    pills: ['1-Click UPI & Razorpay', 'Shiprocket Logistics', 'Product Catalogs', 'Cart Recovery'],
-    icon: <ShoppingBag className="w-8 h-8 text-[#FFAE00]" />,
-    accentBorder: 'border-[#FFAE00]/30 hover:border-[#FFAE00]',
+    title: 'Online stores',
+    desc: 'Shopify and WooCommerce stores with UPI checkout, shipping and an easy catalogue.',
+    art: 'store',
   },
   {
     id: 2,
-    title: 'Corporate & business websites',
-    subtitle: 'Authority & inbound lead capture',
-    desc: 'High-credibility web platforms designed to showcase your services, build brand authority, and turn visitors into qualified inquiries.',
-    pills: ['High-Trust UI/UX', 'Inbound Lead Funnel', 'Google SEO Ready', 'SSL & Cloud Security'],
-    icon: <Globe className="w-8 h-8 text-[#FFAE00]" />,
-    accentBorder: 'border-[#1D4224]/30 hover:border-[#1D4224]',
+    title: 'Business websites',
+    desc: 'Clear, fast company sites that explain what you do and bring in enquiries.',
+    art: 'wordpress',
   },
   {
     id: 3,
-    title: 'Custom web apps & portals',
-    subtitle: 'Bespoke React.js & Next.js builds',
-    desc: 'Tailor-made cloud applications with role-based member logins, real-time client dashboards, and automated business workflows.',
-    pills: ['Client Dashboards', 'Custom Logic', 'Database Sync', 'Role-Based Access'],
-    icon: <Layers className="w-8 h-8 text-[#FFAE00]" />,
-    accentBorder: 'border-[#1D4224]/30 hover:border-[#FFAE00]',
+    title: 'Web apps and portals',
+    desc: 'Custom Next.js builds with logins, dashboards and your own workflows.',
+    art: 'webapp',
   },
   {
     id: 4,
-    title: 'Website redesign & upgrades',
-    subtitle: 'Modernization & performance revamp',
-    desc: 'Transform outdated legacy websites into fast, modern platforms with zero downtime and 2x higher visitor retention.',
-    pills: ['2x Faster Speed', 'Modern UI/UX', 'Mobile-First Revamp', 'Zero Downtime'],
-    icon: <Smartphone className="w-8 h-8 text-[#FFAE00]" />,
-    accentBorder: 'border-[#FFAE00]/30 hover:border-[#1D4224]',
+    title: 'Redesigns',
+    desc: 'Move an old site to a faster, modern build without taking it offline.',
+    art: 'design',
   },
 ];
 
 // 4. Industry Verticals (from OurIndustryExpertise.js)
 const INDUSTRIES = [
-  { name: 'Beauty & cosmetics', icon: '/assets/images/icons/beauty.png', highlight: 'Catalog & Shade Finders' },
-  { name: 'Fashion & lifestyle', icon: '/assets/images/icons/fashion.png', highlight: 'Lookbooks & Size Guides' },
-  { name: 'Furniture & home décor', icon: '/assets/images/icons/furniture.png', highlight: 'Room Visualizer & AR' },
-  { name: 'Food & beverages', icon: '/assets/images/icons/food.png', highlight: 'Subscriptions & Fast Delivery' },
-  { name: 'Electronics & gadgets', icon: '/assets/images/icons/mobile.png', highlight: 'Spec Compare & Warranty' },
-  { name: 'Health & wellness', icon: '/assets/images/icons/health.png', highlight: 'Dosage Guides & Trust Badges' },
-  { name: 'Jewellery & diamonds', icon: '/assets/images/icons/jewellery.png', highlight: 'Luxury Showcase & Certs' },
-  { name: 'Baby care & kids', icon: '/assets/images/icons/baby-care.png', highlight: 'Safety First & Bundles' },
-  { name: 'Books & stationery', icon: '/assets/images/icons/stationery.png', highlight: 'Quick Search & Multi-Author' },
+  { name: 'Beauty & cosmetics', highlight: 'Catalogues and shade finders' },
+  { name: 'Fashion & lifestyle', highlight: 'Lookbooks and size guides' },
+  { name: 'Furniture & home décor', highlight: 'Room visualisers and AR' },
+  { name: 'Food & beverages', highlight: 'Subscriptions and fast delivery' },
+  { name: 'Electronics & gadgets', highlight: 'Spec comparison and warranty' },
+  { name: 'Health & wellness', highlight: 'Dosage guides and trust signals' },
+  { name: 'Jewellery & diamonds', highlight: 'Luxury showcases and certificates' },
+  { name: 'Baby care & kids', highlight: 'Safety details and bundles' },
+  { name: 'Books & stationery', highlight: 'Fast search across authors' },
 ];
 
 // 5. Mobile Mockup Showcase Slides (from WebDesignMock.js)
@@ -243,52 +221,31 @@ const BUSINESS_BENEFITS = [
   {
     stat: '+45%',
     statLabel: 'Higher conversion rate',
-    title: 'More visitors turned into paying customers',
-    desc: 'Clear visual hierarchy, effortless 1-click checkout, and instant mobile load speeds prevent drop-offs and drive higher completed orders.',
-    icon: <TrendingUp className="w-7 h-7 text-[#FFAE00]" />,
+    desc: 'Clear pages, fast mobile loads and one-tap checkout mean fewer drop-offs.',
   },
   {
     stat: '2 - 3 Mo.',
-    statLabel: 'Rapid ROI payback',
-    title: 'Fast return on your development investment',
-    desc: 'Every design decision is tied to tangible business growth. Our clients typically recoup their build costs within 60 to 90 days from increased direct sales.',
-    icon: <Zap className="w-7 h-7 text-[#FFAE00]" />,
+    statLabel: 'Typical payback',
+    desc: 'Most clients recover the build cost within 60 to 90 days of launch.',
   },
   {
     stat: '3 - 5x',
     statLabel: 'Customer lifetime value',
-    title: 'Repeat orders and long-term retention',
-    desc: 'Seamless mobile experiences, automated order tracking, and intuitive account portals turn first-time buyers into loyal brand advocates.',
-    icon: <ShoppingBag className="w-7 h-7 text-[#FFAE00]" />,
+    desc: 'Order tracking and simple accounts bring first-time buyers back.',
   },
   {
     stat: '365 Days',
     statLabel: 'Free support included',
-    title: 'Zero stress with 1 year free maintenance',
-    desc: 'Zero post-launch anxiety. We actively monitor your store, handle platform updates, fix bugs, and provide direct technical help whenever you need it.',
-    icon: <ShieldCheck className="w-7 h-7 text-[#FFAE00]" />,
+    desc: 'Updates, fixes and help from the team that built it, for a full year.',
   },
 ];
 
-// 7. Backend & Modern Tech Stack Logos (from /tech-icons SVGs)
-const TECH_STACK_LOGOS = [
-  { id: 'nodejs', name: 'Node.js', img: '/tech-icons/nodejs.svg' },
-  { id: 'postgresql', name: 'PostgreSQL', img: '/tech-icons/postgresql.svg' },
-  { id: 'mongodb', name: 'MongoDB', img: '/tech-icons/mongodb.svg' },
-  { id: 'redis', name: 'Redis', img: '/tech-icons/redis.svg' },
-  { id: 'nextjs', name: 'Next.js', img: '/tech-icons/nextjs.svg' },
-  { id: 'react', name: 'React.js', img: '/tech-icons/react.svg' },
-  { id: 'typescript', name: 'TypeScript', img: '/tech-icons/typescript.svg' },
-  { id: 'python', name: 'Python', img: '/tech-icons/python.svg' },
-  { id: 'docker', name: 'Docker', img: '/tech-icons/docker.svg' },
-  { id: 'firebase', name: 'Firebase', img: '/tech-icons/firebase.svg' },
-  { id: 'tailwindcss', name: 'Tailwind CSS', img: '/tech-icons/tailwindcss.svg' },
-  { id: 'flutter', name: 'Flutter', img: '/tech-icons/flutter.svg' },
-  { id: 'kotlin', name: 'Kotlin', img: '/tech-icons/kotlin.svg' },
-  { id: 'swift', name: 'Swift', img: '/tech-icons/swift.svg' },
-  { id: 'android', name: 'Android', img: '/tech-icons/android.svg' },
-  { id: 'apple', name: 'Apple iOS', img: '/tech-icons/apple.svg' },
-  { id: 'expo', name: 'Expo', img: '/tech-icons/expo.svg' },
+// 7. Stack, shown as logo tiles
+const TECH_GROUPS: { title: string; items: string[] }[] = [
+  { title: 'Front end', items: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'] },
+  { title: 'Back end and data', items: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'Redis', 'Firebase', 'Docker'] },
+  { title: 'Commerce and payments', items: ['Shopify', 'WordPress', 'WooCommerce', 'Razorpay', 'Stripe'] },
+  { title: 'Mobile', items: ['Flutter', 'Kotlin', 'Swift', 'Android', 'iOS', 'Expo'] },
 ];
 
 
@@ -343,12 +300,86 @@ const WEB_FORM_SERVICES = [
 
 /* ──────────────────────────────────────────────────────────────────────────
    02. COMPONENT: WEBSITE DEVELOPMENT SERVICES PAGE
+   Hero stays as designed; the body sits on the portfolio's dark backdrop.
 ────────────────────────────────────────────────────────────────────────── */
+const H2 = 'font-montserrat font-black text-3xl sm:text-4xl lg:text-[2.75rem] tracking-tight leading-[1.08] text-white';
+const LEAD = 'text-base sm:text-lg text-[#B6F8DD] max-w-md leading-relaxed';
+
+/* Plan colours: header, the darker wave layer behind it, header text, secondary text, tick colour, body. */
+const PLAN_TONES: Record<string, { head: string; back: string; ink: string; sub: string; accent: string; body: string }> = {
+  wordpress: { head: "#244A2C", back: "#1A3820", ink: "#FFFFFF", sub: "#B6F8DD", accent: "#B6F8DD", body: "#0C1F12" },
+  nextjs: { head: "#FFAE00", back: "#D99200", ink: "#0E2015", sub: "#3B2A00", accent: "#FFAE00", body: "#0E2015" },
+  shopify: { head: "#B6F8DD", back: "#8ED9BA", ink: "#0E2015", sub: "#1D4224", accent: "#B6F8DD", body: "#0C1F12" },
+};
+
+/** Counts a price like "₹79,999" up from zero the first time it scrolls into view. */
+function CountUpPrice({ value, className = '' }: { value: string; className?: string }) {
+  const target = Number(value.replace(/[^\d]/g, ''));
+  const prefix = value.match(/^[^\d]*/)?.[0] ?? '';
+  const ref = useRef<HTMLSpanElement>(null);
+  const [n, setN] = useState(target);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // The real price shows until the observer confirms the card is off screen,
+    // so a missed callback can never leave it at zero.
+    let raf = 0;
+    let done = 0;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) {
+          setN(0);
+          return;
+        }
+        io.disconnect();
+        const start = performance.now();
+        const tick = (t: number) => {
+          const p = Math.min(1, Math.max(0, t - start) / 1400);
+          const eased = 1 - Math.pow(1 - p, 4);
+          setN(Math.round(target * eased));
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+        // Background tabs pause rAF; make sure the real price always lands.
+        done = window.setTimeout(() => setN(target), 1600);
+      },
+      { threshold: 0.3 }
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+      window.clearTimeout(done);
+    };
+  }, [target]);
+
+  return (
+    <span ref={ref} className={`tabular-nums ${className}`} aria-label={value}>
+      {prefix}
+      {n.toLocaleString('en-IN')}
+    </span>
+  );
+}
+
+function PhoneSlide({ slide }: { slide: (typeof MOCKUP_SLIDES)[number] }) {
+  return (
+    <figure className="flex-none w-44 sm:w-52 md:w-56">
+      <div className="rounded-[26px] bg-[#0E2015] border border-[#244A2C] p-1.5">
+        <div className="relative aspect-9/18 overflow-hidden rounded-[20px] bg-[#12301A]">
+          <img src={slide.img} alt={slide.title} className="w-full h-full object-cover" decoding="async" />
+        </div>
+      </div>
+      <figcaption className="mt-3 text-center font-montserrat font-semibold text-xs sm:text-sm text-white/80 truncate">
+        {slide.title}
+      </figcaption>
+    </figure>
+  );
+}
+
 export const WebsiteDevelopmentPage: React.FC = () => {
   const [openFaqId, setOpenFaqId] = useState<number | null>(1);
   const [expandedPackages, setExpandedPackages] = useState<Record<string, boolean>>({});
-  const [isMockupMarqueePaused, setIsMockupMarqueePaused] = useState(false);
-  const mockupMarqueeRef = useRef<HTMLDivElement>(null);
 
   const toggleFaq = (id: number) => {
     setOpenFaqId((prev) => (prev === id ? null : id));
@@ -368,14 +399,13 @@ export const WebsiteDevelopmentPage: React.FC = () => {
     }
   };
 
-  return (
-    <div className="bg-[#EAF1EB] text-[#0E2015] min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-hidden">
+  const tel = `tel:${COMPANY.phone.replace(/\s+/g, '')}`;
 
-      {/* ──────────────────────────────────────────────────────────────────
-          01. HERO BANNER WITH CODE VIEWER & STANDARDIZED FORM
-          Flush bottom (pb-0) with smooth wave transition into Section 02.
-      ────────────────────────────────────────────────────────────────── */}
-      <section
+  return (
+    <div className="relative isolate text-white min-h-screen selection:bg-[#FFAE00] selection:text-[#0E2015] overflow-x-clip">
+      <DarkBackdrop />
+
+      <WaveHero
         className="relative w-full min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-0 bg-[#061309]"
         style={{
           backgroundColor: '#061309',
@@ -461,685 +491,333 @@ export const WebsiteDevelopmentPage: React.FC = () => {
 
           </div>
         </div>
+      </WaveHero>
 
-        {/* ── Smooth Organic Wave Transition: Dark Spruce to Subtle Green Tint ── */}
-        <WaveDivider fill="#EAF1EB" />
-      </section>
-
-      {/* ──────────────────────────────────────────────────────────────────
-          02. WEBSITE DEVELOPMENT PACKAGES & PRICING
-          Modern, compact, interactive pricing cards with expandable details.
-      ────────────────────────────────────────────────────────────────── */}
-      <section id="packages-pricing" className="py-14 sm:py-18 lg:py-24 bg-[#EAF1EB] relative">
+      {/* ── 02. Packages and pricing ──
+          Each plan has a coloured header that ends in the brand wave, over a dark body.
+          The recommended Next.js plan is gold and stands taller. */}
+      <section id="packages-pricing" className="py-16 sm:py-20 lg:py-24 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
-              Website packages &amp; pricing
-            </h2>
-            <p className="font-inter text-base sm:text-lg text-[#142C1D]/85 max-w-2xl mx-auto leading-relaxed">
-              Transparent fixed-price packages with zero hidden fees. Includes payment gateway setup, Shiprocket shipping automation, and 1 year of free ongoing support.
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-12 sm:mb-16">
+            <h2 className={`${H2} max-w-xl`}>Packages and pricing</h2>
+            <p className={LEAD}>One fixed fee. Payments, shipping and a year of support included.</p>
           </div>
 
-          {/* Pricing Cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+          {/* items-start: opening one card never stretches the others */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-start max-w-md md:max-w-none mx-auto">
             {PRICING_PACKAGES.map((pkg) => {
               const isExpanded = !!expandedPackages[pkg.id];
+              const lead = !!pkg.isPopular;
+              const tone = PLAN_TONES[pkg.id] ?? PLAN_TONES.wordpress;
+              const total = pkg.primaryFeatures.length + pkg.additionalFeatures.length;
+              const Tick = () => (
+                <span className="mt-px w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: tone.accent, color: '#0E2015' }}>
+                  <Check className="w-3 h-3" strokeWidth={3.5} />
+                </span>
+              );
               return (
-                <div
+                <article
                   key={pkg.id}
-                  className={`relative flex flex-col rounded-3xl p-6 sm:p-7 transition-all duration-300 ${pkg.isPopular
-                    ? 'bg-[#0E2015] text-white shadow-2xl border-2 border-[#FFAE00] lg:-translate-y-2'
-                    : 'bg-white text-[#0E2015] shadow-lg border border-[#0E2015]/10 hover:shadow-xl hover:border-[#1D4224]/30'
-                    }`}
+                  className={`relative flex flex-col rounded-[28px] overflow-hidden border transition-colors duration-300 ${
+                    lead
+                      ? 'border-[#FFAE00] order-first md:col-span-2 lg:col-span-1 lg:order-none lg:-mt-6'
+                      : 'border-[#244A2C] hover:border-[#3A5A40]'
+                  }`}
+                  style={{ backgroundColor: tone.body }}
                 >
-                  {pkg.isPopular && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#FFAE00] text-[#0E2015] font-montserrat font-bold text-xs shadow-md whitespace-nowrap">
-                      Most Popular Choice
-                    </div>
-                  )}
-
-                  {/* Package Header */}
-                  <div className="flex items-center justify-between gap-4 mb-5">
-                    <div className="w-14 h-14 rounded-2xl bg-[#F2F7F3] p-2 flex items-center justify-center border border-[#0E2015]/10 shadow-sm shrink-0">
-                      <img
-                        src={pkg.iconImg}
-                        alt={pkg.name}
-                        className="w-full h-full object-contain"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <span
-                      className={`text-xs font-montserrat font-semibold px-3 py-1 rounded-full ${pkg.isPopular
-                        ? 'bg-white/10 text-[#FFAE00] border border-[#FFAE00]/30'
-                        : 'bg-[#1D4224]/10 text-[#1D4224]'
-                        }`}
-                    >
-                      {pkg.badge}
-                    </span>
-                  </div>
-
-                  <h3 className="font-montserrat font-bold text-xl sm:text-2xl leading-tight mb-2">
-                    {pkg.name}
-                  </h3>
-
-                  <div className="flex items-center gap-1.5 text-xs font-inter mb-5">
-                    <Clock className="w-4 h-4 text-[#FFAE00]" />
-                    <span className={pkg.isPopular ? 'text-white/80' : 'text-[#142C1D]/80'}>
-                      Estimated: {pkg.timeline}
-                    </span>
-                  </div>
-
-                  {/* Price Display */}
-                  <div className="py-4 my-1 border-y border-current/10">
-                    <div className="flex items-baseline gap-2">
-                      <span className="font-montserrat font-black text-3xl sm:text-4xl text-[#FFAE00]">
-                        {pkg.price}
+                  {/* Header */}
+                  <div className={`relative px-7 sm:px-8 pt-8 ${lead ? 'pb-16 sm:pb-20' : 'pb-14 sm:pb-16'}`} style={{ backgroundColor: tone.head, color: tone.ink }}>
+                    {lead && (
+                      <span className="inline-block mb-4 rounded-full bg-[#0E2015] px-3 py-1 text-xs font-bold font-montserrat text-[#FFAE00]">
+                        Recommended
                       </span>
-                      <span className={`text-xs font-medium ${pkg.isPopular ? 'text-white/70' : 'text-[#142C1D]/70'}`}>
-                        + GST • Fixed project fee
-                      </span>
-                    </div>
-                  </div>
+                    )}
+                    <h3 className="font-montserrat font-black text-xl sm:text-2xl leading-tight">{pkg.name}</h3>
+                    <p className="mt-1.5 text-sm font-medium" style={{ color: tone.sub }}>{pkg.fit}</p>
 
-                  {/* Key Highlights (Always Visible) */}
-                  <div className="py-4">
-                    <p className={`text-xs font-montserrat font-bold uppercase tracking-wider mb-3.5 ${pkg.isPopular ? 'text-[#FFAE00]' : 'text-[#1D4224]'
-                      }`}>
-                      Core Deliverables:
+                    <CountUpPrice
+                      value={pkg.price}
+                      className={`mt-6 block font-montserrat font-black tracking-tight leading-none ${lead ? 'text-5xl sm:text-6xl' : 'text-5xl'}`}
+                    />
+                    <p className="mt-3 text-sm font-semibold">
+                      One-time fee, plus GST
+                      <span className="block font-medium" style={{ color: tone.sub }}>Live in {pkg.timeline}</span>
                     </p>
-                    <ul className="space-y-2.5 text-sm font-inter">
-                      {pkg.primaryFeatures.map((feat, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 leading-snug">
-                          <Check className="w-4 h-4 text-[#FFAE00] shrink-0 mt-0.5" />
-                          <span className={pkg.isPopular ? 'text-white/90 font-medium' : 'text-[#0E2015] font-medium'}>
-                            {feat}
-                          </span>
+
+                    {/* Two-layer wave into the body */}
+                    <svg
+                      viewBox="0 0 1440 100"
+                      preserveAspectRatio="none"
+                      aria-hidden="true"
+                      className="absolute inset-x-0 -bottom-px w-full h-10 sm:h-12"
+                    >
+                      <path d={`${WAVE_CURVE} L1440,100 L0,100 Z`} transform="translate(0 -22)" fill={tone.back} />
+                      <path d={`${WAVE_CURVE} L1440,100 L0,100 Z`} fill={tone.body} />
+                      <path d={WAVE_CURVE} fill="none" stroke="#FFAE00" strokeWidth="2.5" vectorEffect="non-scaling-stroke" />
+                    </svg>
+                  </div>
+
+                  {/* Body */}
+                  <div className="flex flex-col px-7 sm:px-8 pt-4 pb-8">
+                    <ul className="space-y-3.5 text-sm">
+                      {pkg.primaryFeatures.map((f) => (
+                        <li key={f} className="flex items-start gap-3 leading-snug">
+                          <Tick />
+                          <span className="text-white/90">{f}</span>
                         </li>
                       ))}
                     </ul>
 
-                    {/* Expandable Additional Deliverables */}
-                    {isExpanded && (
-                      <div className="pt-3 mt-3 border-t border-current/10 animate-fadeIn">
-                        <p className={`text-xs font-montserrat font-semibold mb-2.5 ${pkg.isPopular ? 'text-white/80' : 'text-[#142C1D]/80'
-                          }`}>
-                          Also Included:
-                        </p>
-                        <ul className="space-y-2 text-xs sm:text-sm font-inter">
-                          {pkg.additionalFeatures.map((feat, idx) => (
-                            <li key={idx} className="flex items-start gap-2 leading-snug">
-                              <Check className="w-3.5 h-3.5 text-[#FFAE00] shrink-0 mt-0.5" />
-                              <span className={pkg.isPopular ? 'text-white/80' : 'text-[#142C1D]/80'}>
-                                {feat}
-                              </span>
+                    <div
+                      id={`more-${pkg.id}`}
+                      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                    >
+                      <div className="overflow-hidden">
+                        <ul className="pt-3.5 space-y-3.5 text-sm">
+                          {pkg.additionalFeatures.map((f) => (
+                            <li key={f} className="flex items-start gap-3 leading-snug">
+                              <Tick />
+                              <span className="text-white/90">{f}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
-                    )}
+                    </div>
 
-                    {/* Interactive Toggle Button */}
                     <button
                       type="button"
                       onClick={() => togglePackageExpand(pkg.id)}
-                      className={`mt-4 inline-flex items-center gap-1.5 text-xs font-montserrat font-bold py-1.5 px-3 rounded-lg transition-all cursor-pointer ${pkg.isPopular
-                        ? 'bg-white/10 text-[#FFAE00] hover:bg-white/20'
-                        : 'bg-[#1D4224]/10 text-[#1D4224] hover:bg-[#1D4224]/20'
-                        }`}
+                      aria-expanded={isExpanded}
+                      aria-controls={`more-${pkg.id}`}
+                      className="mt-5 self-start inline-flex items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline cursor-pointer"
+                      style={{ color: tone.accent }}
                     >
-                      <span>{isExpanded ? 'Hide detailed checklist' : `+ View all ${pkg.primaryFeatures.length + pkg.additionalFeatures.length} inclusions`}</span>
-                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                      {isExpanded ? 'Show less' : `See all ${total} inclusions`}
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
                     </button>
-                  </div>
 
-                  {/* Action Buttons */}
-                  <div className="pt-5 mt-2 border-t border-current/10 flex flex-col gap-2.5">
                     <button
                       type="button"
                       onClick={() => scrollToSection('Contactform')}
-                      className={`w-full py-3.5 px-6 rounded-full font-montserrat font-bold text-xs transition-all shadow-md cursor-pointer ${pkg.isPopular
-                        ? 'bg-[#1D4224] text-white hover:bg-[#25552f] border border-[#FFAE00]/40 hover:shadow-xl'
-                        : 'bg-[#0E2015] text-white hover:bg-[#1D4224]'
-                        }`}
+                      className={`mt-8 h-12 w-full rounded-full text-sm font-bold font-montserrat inline-flex items-center justify-center gap-2 tz-btn ${lead ? 'tz-btn-primary' : 'tz-btn-ghost'}`}
                     >
-                      Select Plan &amp; Consult
+                      Start with this plan <ArrowRight className="w-4 h-4" />
                     </button>
-
-                    <a
-                      href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`}
-                      className={`w-full py-2.5 px-6 rounded-full font-montserrat font-medium text-xs text-center transition-all border ${pkg.isPopular
-                        ? 'border-white/20 text-white/90 hover:bg-white/10'
-                        : 'border-[#0E2015]/20 text-[#0E2015] hover:bg-[#F2F7F3]'
-                        }`}
-                    >
-                      Call: {COMPANY.phone}
+                    <a href={tel} className="mt-3 text-center text-sm text-white/65 hover:text-white hover:underline underline-offset-4">
+                      or call {COMPANY.phone}
                     </a>
                   </div>
-
-                </div>
+                </article>
               );
             })}
           </div>
-
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────────────
-          03. BUILT IN SHOPIFY - LIVE STORES SHOWCASE
-      ────────────────────────────────────────────────────────────────── */}
-      <section className="py-14 sm:py-18 lg:py-24 bg-white relative border-t border-[#0E2015]/10">
+      {/* ── 03. Recent websites (from the portfolio) ── */}
+      <section className="py-16 sm:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
-              Built in Shopify
-            </h2>
-            <p className="font-inter text-base sm:text-lg text-[#142C1D]/85 max-w-xl mx-auto leading-relaxed">
-              Explore live e-commerce stores designed, customized, and launched by our team.
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-10 sm:mb-14">
+            <h2 className={`${H2} max-w-xl`}>Recent websites</h2>
+            <Link href="/portfolio" className="h-11 px-5 rounded-xl text-sm font-bold font-montserrat inline-flex items-center gap-2 tz-btn tz-btn-ghost self-start lg:self-auto">
+              All work <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {SHOPIFY_STORES.map((store, i) => (
-              <div
-                key={i}
-                className="group flex flex-col rounded-3xl overflow-hidden bg-[#F2F7F3] border border-[#0E2015]/10 shadow-sm hover:shadow-xl hover:border-[#1D4224]/30 transition-all duration-300"
-              >
-                <div className="relative aspect-4/3 overflow-hidden bg-[#0E2015]">
-                  <LazyLoopVideo
-                    src={store.video}
-                    poster={store.poster}
-                    label={store.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="px-4 py-2 rounded-full bg-[#1D4224] text-white font-montserrat font-bold text-xs flex items-center gap-1.5 shadow-lg">
-                      <span>Visit Live Store</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-[#FFAE00]" />
-                    </span>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            {WEB_CASE_STUDIES.map((cs) => (
+              <Link key={cs.slug} href={`/portfolio/${cs.slug}`} className="group block">
+                <div className="transition-transform duration-300 group-hover:-translate-y-1">
+                  <BrowserFrame src={cs.images.desktop} alt={`${cs.name} website`} domain={cs.domain} tone="dark" sizes="(min-width: 768px) 600px, 100vw" />
                 </div>
-
-                <div className="p-6 flex flex-col flex-1 justify-between">
+                <div className="flex items-start justify-between gap-4 pt-5">
                   <div>
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-xs font-montserrat font-bold text-[#1D4224]">
-                        {store.category}
-                      </span>
-                      <span className="text-[11px] font-inter font-medium text-[#142C1D]/60 bg-white px-2 py-0.5 rounded-full border border-[#0E2015]/10">
-                        {store.tag}
-                      </span>
-                    </div>
-                    <h4 className="font-montserrat font-bold text-lg text-[#0E2015]">
-                      {store.title}
-                    </h4>
+                    <h3 className="font-montserrat font-black text-xl leading-tight">{cs.name}</h3>
+                    <p className="mt-1.5 text-sm text-white/70 leading-relaxed max-w-md">{cs.tagline}</p>
                   </div>
-
-                  <a
-                    href={store.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-1.5 text-xs font-montserrat font-bold text-[#1D4224] hover:text-[#0E2015] transition-colors"
-                  >
-                    <span>View Live Website</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#FFAE00]" />
-                  </a>
+                  <span className="w-10 h-10 rounded-xl bg-[#FFAE00] text-[#0E2015] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────────────
-          04. WHAT WE BUILD FOR YOUR BUSINESS
-          Visual cards with 64px pedestals, concise readable copy, and feature pills.
-      ────────────────────────────────────────────────────────────────── */}
-      <section className="py-14 sm:py-18 lg:py-24 bg-[#EAF1EB] relative border-t border-[#0E2015]/10">
+      {/* ── 04. Live Shopify stores ── */}
+      <section className="py-16 sm:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
-              What we build for your business
-            </h2>
-            <p className="font-inter text-base sm:text-lg text-[#142C1D]/85 max-w-2xl mx-auto leading-relaxed">
-              Every website is engineered for clean aesthetics, effortless catalog management, and seamless payments.
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-10 sm:mb-14">
+            <h2 className={`${H2} max-w-xl`}>Shopify stores we&apos;ve launched</h2>
+            <p className={LEAD}>Live stores, designed and built by our team.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+            {SHOPIFY_STORES.map((store) => (
+              <a
+                key={store.title}
+                href={store.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block rounded-2xl border border-[#244A2C] bg-[#0C1F12] p-2 sm:p-2.5 hover:border-[#FFAE00] transition-colors duration-200"
+              >
+                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-white">
+                  <LazyLoopVideo src={store.video} poster={store.poster} label={store.title} className="w-full h-full object-cover" />
+                </div>
+                <div className="flex items-end justify-between gap-2 px-1 pt-3 pb-1">
+                  <div className="min-w-0">
+                    <h3 className="font-montserrat font-black text-sm sm:text-base leading-tight truncate">{store.title}</h3>
+                    <p className="mt-1 text-xs sm:text-sm text-white/65 truncate">{store.category}</p>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-[#FFAE00] shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 05. What we build ── */}
+      <section className="py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-10 sm:mb-14">
+            <h2 className={`${H2} max-w-xl`}>What we build</h2>
+            <p className={LEAD}>From a first store to a full custom platform.</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {CORE_SOLUTIONS.map((sol) => (
-              <div
+              <article
                 key={sol.id}
-                className={`group p-7 rounded-3xl bg-white border border-[#0E2015]/10 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between ${sol.accentBorder}`}
+                tabIndex={-1}
+                className="group rounded-2xl border border-[#244A2C] bg-[#0C1F12] p-3 hover:border-[#FFAE00] transition-colors duration-300"
               >
-                <div>
-                  {/* Large Visual Pedestal */}
-                  <div className="w-16 h-16 rounded-2xl bg-[#0E2015] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform mb-5">
-                    {sol.icon}
-                  </div>
-
-                  <span className="text-xs font-montserrat font-bold text-[#1D4224] block mb-1">
-                    {sol.subtitle}
-                  </span>
-
-                  <h3 className="font-montserrat font-bold text-xl text-[#0E2015] leading-snug mb-3">
-                    {sol.title}
-                  </h3>
-
-                  <p className="font-inter text-sm text-[#142C1D]/85 leading-relaxed mb-5">
-                    {sol.desc}
-                  </p>
-
-                  {/* Visual Deliverable Feature Pills */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {sol.pills.map((pill, pIdx) => (
-                      <span
-                        key={pIdx}
-                        className="inline-flex items-center text-xs font-inter font-medium px-2.5 py-1 rounded-full bg-[#F2F7F3] border border-[#0E2015]/10 text-[#0E2015]"
-                      >
-                        {pill}
-                      </span>
-                    ))}
-                  </div>
+                <CardIllustration name={sol.art} />
+                <div className="px-1.5 pt-4 pb-2">
+                  <h3 className="font-montserrat font-black text-lg leading-tight">{sol.title}</h3>
+                  <p className="mt-2 text-sm text-white/75 leading-relaxed">{sol.desc}</p>
                 </div>
-
-                <div className="pt-4 border-t border-[#0E2015]/10">
-                  <button
-                    type="button"
-                    onClick={() => scrollToSection('Contactform')}
-                    className="text-xs font-montserrat font-bold text-[#1D4224] hover:text-[#0E2015] flex items-center gap-1.5 group-hover:gap-2 transition-all cursor-pointer"
-                  >
-                    <span>Inquire About This Solution</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#FFAE00]" />
-                  </button>
-                </div>
-              </div>
+              </article>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────────────
-          05. OUR INDUSTRY EXPERTISE GRID
-          Large 80px pedestals with crisp icons and readable copy.
-      ────────────────────────────────────────────────────────────────── */}
-      <section className="py-14 sm:py-18 lg:py-24 bg-white relative border-t border-[#0E2015]/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
-              Our industry expertise
-            </h2>
-            <p className="font-inter text-base sm:text-lg text-[#142C1D]/85 max-w-2xl mx-auto leading-relaxed">
-              We have extensive experience building websites across consumer goods, retail, corporate, and lifestyle verticals.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {INDUSTRIES.map((ind, i) => (
-              <div
-                key={i}
-                className="group p-6 rounded-3xl bg-[#F2F7F3] border border-[#0E2015]/10 hover:bg-white hover:border-[#1D4224]/30 hover:shadow-lg transition-all duration-300 flex items-center gap-5"
-              >
-                {/* Generous 76px Icon Pedestal */}
-                <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl bg-white p-3 flex items-center justify-center border border-[#0E2015]/10 shrink-0 shadow-sm group-hover:scale-105 group-hover:border-[#FFAE00]/40 transition-all">
-                  <img
-                    src={ind.icon}
-                    alt={ind.name}
-                    className="w-12 h-12 sm:w-14 sm:h-14 object-contain group-hover:scale-110 transition-transform"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-montserrat font-bold text-base sm:text-lg text-[#0E2015] leading-snug">
-                    {ind.name}
-                  </h4>
-                  <span className="text-xs sm:text-sm font-inter text-[#142C1D]/80 block mt-1">
-                    {ind.highlight}
-                  </span>
-                  <span className="inline-block mt-2 text-[11px] font-montserrat font-semibold px-2.5 py-0.5 rounded-full bg-[#1D4224]/10 text-[#1D4224]">
-                    Custom Funnel &amp; Architecture
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
+      {/* ── 06. Mobile showcase (continuous, no pause) ── */}
+      <section className="py-16 sm:py-20 lg:py-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-12">
+          <h2 className={H2}>Built for the phone first</h2>
+          <p className={`mt-4 ${LEAD}`}>Most of your customers will shop on one.</p>
         </div>
-      </section>
-
-      {/* ──────────────────────────────────────────────────────────────────
-          06. MOBILE UI/UX SHOWCASE CAROUSEL (SMOOTH AUTO SLIDER)
-          Smooth infinite auto-scrolling marquee with pause on hover.
-      ────────────────────────────────────────────────────────────────── */}
-      <section className="py-14 sm:py-18 lg:py-24 bg-[#EAF1EB] relative overflow-hidden border-t border-[#0E2015]/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-4">
-            <div className="space-y-3">
-              <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
-                Mobile showcase
-              </h2>
-              <p className="font-inter text-base sm:text-lg text-[#142C1D]/85 max-w-xl leading-relaxed">
-                Clean mobile experiences engineered for fluid touch navigation and easy checkouts.
-              </p>
-            </div>
-
-            {/* Auto-Scroll Indicator / Toggle */}
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={() => setIsMockupMarqueePaused(!isMockupMarqueePaused)}
-                aria-label={isMockupMarqueePaused ? 'Resume auto-scroll' : 'Pause auto-scroll'}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0E2015] text-[#FFAE00] hover:bg-[#1D4224] font-montserrat font-semibold text-xs shadow-md border border-[#FFAE00]/30 transition-all cursor-pointer"
-              >
-                {isMockupMarqueePaused ? (
-                  <>
-                    <Play className="w-3.5 h-3.5 fill-current" />
-                    <span>Resume Auto-Scroll</span>
-                  </>
-                ) : (
-                  <>
-                    <Pause className="w-3.5 h-3.5 fill-current" />
-                    <span>Pause Auto-Scroll</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Infinite Smooth Auto-Scrolling Marquee Track */}
-          <div
-            ref={mockupMarqueeRef}
-            className="relative w-full overflow-hidden group py-4"
-            onMouseEnter={() => setIsMockupMarqueePaused(true)}
-            onMouseLeave={() => setIsMockupMarqueePaused(false)}
-          >
-            {/* Ambient Fade Edge Masks */}
-            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-linear-to-r from-[#EAF1EB] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-linear-to-l from-[#EAF1EB] to-transparent z-10 pointer-events-none" />
-
-            <div
-              className="flex w-max animate-marquee-left"
-              style={{
-                animationDuration: '45s',
-                animationPlayState: isMockupMarqueePaused ? 'paused' : 'running',
-              }}
-            >
-              {/* Track 1 */}
-              <div className="flex items-center gap-5 sm:gap-6 px-3">
+        <div className="relative w-full overflow-hidden">
+          <div className="flex w-max animate-marquee-left motion-reduce:animate-none" style={{ animationDuration: '60s' }}>
+            {[0, 1].map((track) => (
+              <div key={track} className="flex items-start gap-5 sm:gap-6 px-2.5 sm:px-3" aria-hidden={track === 1 ? true : undefined}>
                 {MOCKUP_SLIDES.map((slide) => (
-                  <div
-                    key={`m1-${slide.id}`}
-                    className="flex-none w-50 sm:w-57.5 md:w-62.5 group/item cursor-pointer"
-                  >
-                    <div className="rounded-3xl overflow-hidden bg-white border border-[#0E2015]/10 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col p-2">
-                      <div className="relative aspect-9/18 overflow-hidden rounded-2xl bg-neutral-900">
-                        <img
-                          src={slide.img}
-                          alt={slide.title}
-                          className="w-full h-full object-cover group-hover/item:scale-105 transition-transform duration-500"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="p-3 text-center bg-white">
-                        <span className="font-montserrat font-bold text-xs sm:text-sm text-[#0E2015] group-hover/item:text-[#1D4224] transition-colors block truncate">
-                          {slide.title}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                  <PhoneSlide key={`${track}-${slide.id}`} slide={slide} />
                 ))}
-              </div>
-
-              {/* Track 2 (Duplicate for Seamless Infinite Loop) */}
-              <div className="flex items-center gap-5 sm:gap-6 px-3" aria-hidden="true">
-                {MOCKUP_SLIDES.map((slide) => (
-                  <div
-                    key={`m2-${slide.id}`}
-                    className="flex-none w-50 sm:w-57.5 md:w-62.5 group/item cursor-pointer"
-                  >
-                    <div className="rounded-3xl overflow-hidden bg-white border border-[#0E2015]/10 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col p-2">
-                      <div className="relative aspect-9/18 overflow-hidden rounded-2xl bg-neutral-900">
-                        <img
-                          src={slide.img}
-                          alt={slide.title}
-                          className="w-full h-full object-cover group-hover/item:scale-105 transition-transform duration-500"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="p-3 text-center bg-white">
-                        <span className="font-montserrat font-bold text-xs sm:text-sm text-[#0E2015] group-hover/item:text-[#1D4224] transition-colors block truncate">
-                          {slide.title}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-4 text-center">
-            <span className="font-inter text-xs text-[#142C1D]/70">
-              Hover to pause • Smooth auto-sliding 18 mobile showcase screens
-            </span>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ──────────────────────────────────────────────────────────────────
-          07. MEASURABLE BUSINESS OUTCOMES (FROM BenefitsWD.js)
-          Bold stat metrics, 20px headings, and readable 15px body copy.
-      ────────────────────────────────────────────────────────────────── */}
-      <section className="py-14 sm:py-18 lg:py-24 bg-white relative border-t border-[#0E2015]/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
-              Benefits for your business
-            </h2>
-            <p className="font-inter text-base sm:text-lg text-[#142C1D]/85 max-w-xl mx-auto leading-relaxed">
-              We design websites focused on measurable business outcomes, not vanity metrics.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {BUSINESS_BENEFITS.map((b, i) => (
-              <div
-                key={i}
-                className="p-7 sm:p-8 rounded-3xl bg-[#F2F7F3] border border-[#0E2015]/10 hover:border-[#FFAE00]/60 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-[#0E2015] flex items-center justify-center shadow-md mb-5">
-                    {b.icon}
-                  </div>
-
-                  <span className="font-montserrat font-black text-3xl sm:text-4xl text-[#FFAE00] tracking-tight block mb-1">
-                    {b.stat}
-                  </span>
-
-                  <span className="font-montserrat font-bold text-xs text-[#1D4224] uppercase tracking-wider block mb-3">
-                    {b.statLabel}
-                  </span>
-
-                  <h3 className="font-montserrat font-bold text-lg sm:text-xl text-[#0E2015] leading-snug mb-3">
-                    {b.title}
-                  </h3>
-
-                  <p className="font-inter text-sm sm:text-base text-[#142C1D]/85 leading-relaxed">
-                    {b.desc}
-                  </p>
-                </div>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────────────
-          08. BACK-END DEVELOPMENT & SUPPORTED PLATFORMS
-          Continuous auto-scrolling logo marquee with larger logos & zero empty space.
-      ────────────────────────────────────────────────────────────────── */}
-      <section className="py-14 sm:py-18 lg:py-24 bg-[#EAF1EB] relative border-t border-[#0E2015]/10 overflow-hidden">
+      {/* ── 07. Business outcomes ── */}
+      <section className="py-16 sm:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="text-center space-y-3 mb-10 sm:mb-12">
-            <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
-              Back-end development &amp; integrations
-            </h2>
-            <p className="font-inter text-base sm:text-lg text-[#142C1D]/85 max-w-xl mx-auto leading-relaxed">
-              Fully integrated with leading payment gateways, courier shipping providers, and modern database stacks.
-            </p>
+          <div className="rounded-3xl border border-[#244A2C] bg-[#0A1A0F] p-6 sm:p-10 lg:p-12">
+            <h2 className={`${H2} max-w-xl mb-10 sm:mb-12`}>What a better site does for you</h2>
+            <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+              {BUSINESS_BENEFITS.map((b) => (
+                <div key={b.statLabel} className="border-t-2 border-[#FFAE00] pt-5">
+                  <dt className="font-montserrat font-black text-4xl sm:text-5xl tracking-tight text-[#FFAE00]">{b.stat}</dt>
+                  <dd className="mt-3">
+                    <span className="block font-montserrat font-bold text-base text-white">{b.statLabel}</span>
+                    <span className="block mt-2 text-sm text-white/70 leading-relaxed">{b.desc}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
-
-          {/* Continuous Auto-Scrolling Logo Marquee */}
-          <div className="relative w-full overflow-hidden group py-4">
-            {/* Fade Edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-linear-to-r from-[#EAF1EB] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-linear-to-l from-[#EAF1EB] to-transparent z-10 pointer-events-none" />
-
-            <div
-              className="flex w-max animate-marquee-left hover:[animation-play-state:paused]"
-              style={{ animationDuration: '32s' }}
-            >
-              {/* Track 1 */}
-              <div className="flex items-center gap-4 sm:gap-6 px-3">
-                {TECH_STACK_LOGOS.map((tech) => (
-                  <div
-                    key={`tech1-${tech.id}`}
-                    className="inline-flex items-center gap-3.5 px-6 py-4 rounded-2xl bg-white border border-[#0E2015]/10 shadow-xs hover:border-[#FFAE00]/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300 min-w-46.25 sm:min-w-52.5 h-21 sm:h-22.5 group/item cursor-default"
-                  >
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center shrink-0">
-                      <img
-                        src={tech.img}
-                        alt={tech.name}
-                        className="w-10 h-10 sm:w-12 sm:h-12 object-contain group-hover/item:scale-110 transition-transform duration-300"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <span className="font-montserrat font-bold text-base sm:text-lg text-[#0E2015] whitespace-nowrap">
-                      {tech.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Track 2 (Duplicate for Smooth Infinite Loop) */}
-              <div className="flex items-center gap-4 sm:gap-6 px-3" aria-hidden="true">
-                {TECH_STACK_LOGOS.map((tech) => (
-                  <div
-                    key={`tech2-${tech.id}`}
-                    className="inline-flex items-center gap-3.5 px-6 py-4 rounded-2xl bg-white border border-[#0E2015]/10 shadow-xs hover:border-[#FFAE00]/60 hover:shadow-md hover:-translate-y-1 transition-all duration-300 min-w-46.25 sm:min-w-52.5 h-21 sm:h-22.5 group/item cursor-default"
-                  >
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center shrink-0">
-                      <img
-                        src={tech.img}
-                        alt={tech.name}
-                        className="w-10 h-10 sm:w-12 sm:h-12 object-contain group-hover/item:scale-110 transition-transform duration-300"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <span className="font-montserrat font-bold text-base sm:text-lg text-[#0E2015] whitespace-nowrap">
-                      {tech.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Integration Category Badges */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-montserrat font-semibold">
-            <span className="px-4 py-2 rounded-full bg-white border border-[#0E2015]/10 text-[#0E2015] shadow-xs">
-              Backend &amp; APIs: Node.js • Python • Firebase • Next.js
-            </span>
-            <span className="px-4 py-2 rounded-full bg-white border border-[#0E2015]/10 text-[#0E2015] shadow-xs">
-              Databases: PostgreSQL • MongoDB • Redis
-            </span>
-            <span className="px-4 py-2 rounded-full bg-white border border-[#0E2015]/10 text-[#0E2015] shadow-xs">
-              Frontend &amp; Mobile: React • TypeScript • Tailwind • Flutter • Swift
-            </span>
-          </div>
-
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────────────
-          09. FREQUENTLY ASKED QUESTIONS (ACCORDION)
-          Flush bottom (pb-0) with smooth wave transition into Closing Banner.
-      ────────────────────────────────────────────────────────────────── */}
-      <section className="pt-14 sm:pt-18 lg:pt-24 pb-0 bg-white relative border-t border-[#0E2015]/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 sm:pb-18 lg:pb-24">
-
-          <div className="text-center space-y-3 mb-12 sm:mb-16">
-            <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0E2015] tracking-tight">
-              Frequently asked questions
-            </h2>
-            <p className="font-inter text-base sm:text-lg text-[#142C1D]/85 max-w-xl mx-auto">
-              Everything you need to know about our web development process, pricing, and support.
-            </p>
+      {/* ── 08. Industries ── */}
+      <section className="py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="lg:col-span-4">
+            <h2 className={H2}>Industries we build for</h2>
+            <p className={`mt-4 ${LEAD}`}>Each one sells differently, so each site does too.</p>
           </div>
+          <ul className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-6 border-t border-[#244A2C]">
+            {INDUSTRIES.map((ind) => (
+              <li key={ind.name} className="py-5 border-b border-[#244A2C]">
+                <h3 className="font-montserrat font-bold text-base text-white">{ind.name}</h3>
+                <p className="mt-1 text-sm text-white/65">{ind.highlight}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-          <div className="space-y-4">
+      {/* ── 09. Stack and integrations ── */}
+      <section className="py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-10 sm:mb-14">
+            <h2 className={`${H2} max-w-xl`}>Stack and integrations</h2>
+            <p className={LEAD}>Payments, shipping, data and apps, wired in from day one.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
+            {TECH_GROUPS.map((g) => (
+              <div key={g.title}>
+                <h3 className="font-montserrat font-bold text-base text-white mb-4">{g.title}</h3>
+                <TechGrid items={g.items} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 10. FAQs ── */}
+      <section className="py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="lg:col-span-4">
+            <h2 className={H2}>Questions, answered</h2>
+            <p className={`mt-4 ${LEAD}`}>Platforms, timelines, ownership and support.</p>
+          </div>
+          <div className="lg:col-span-8 border-t border-[#244A2C]">
             {FAQS.map((faq) => {
               const isOpen = openFaqId === faq.id;
               return (
-                <div
-                  key={faq.id}
-                  className={`rounded-2xl border transition-all duration-200 overflow-hidden ${isOpen
-                    ? 'bg-[#F2F7F3] border-[#1D4224]/40 shadow-sm'
-                    : 'bg-white border-[#0E2015]/10 hover:border-[#1D4224]/20'
-                    }`}
-                >
+                <div key={faq.id} className="border-b border-[#244A2C]">
                   <button
                     type="button"
                     onClick={() => toggleFaq(faq.id)}
-                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
+                    aria-expanded={isOpen}
+                    className="w-full py-5 sm:py-6 text-left flex items-center justify-between gap-4 cursor-pointer group"
                   >
-                    <span className="font-montserrat font-bold text-base sm:text-lg text-[#0E2015]">
-                      {faq.question}
-                    </span>
+                    <span className="font-montserrat font-bold text-base sm:text-lg text-white">{faq.question}</span>
                     <span
-                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[#1D4224] text-white' : 'bg-[#EAF1EB] text-[#0E2015]'
-                        }`}
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-200 ${isOpen ? 'bg-[#FFAE00] text-[#0E2015]' : 'bg-[#12301A] text-white group-hover:bg-[#1D4224]'}`}
                     >
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                     </span>
                   </button>
-
-                  {isOpen && (
-                    <div className="px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base font-inter text-[#142C1D]/90 leading-relaxed border-t border-[#0E2015]/5">
-                      {faq.answer}
-                    </div>
-                  )}
+                  {isOpen && <p className="pb-6 pr-12 text-sm sm:text-base text-white/75 leading-relaxed">{faq.answer}</p>}
                 </div>
               );
             })}
           </div>
-
         </div>
       </section>
 
-      {/* ── 10. CONSISTENT REUSABLE CTA CARD ── */}
       <ConsistentCTA
-        title="Ready to Build a High-Performance Website?"
-        description="Turn your brand vision into an online sales engine. Let our specialists architect a clean, mobile-first website complete with payment gateways and ongoing engineering support."
-        primaryText="Get Free Project Proposal"
+        title="Ready to build your website?"
+        description="Tell us what you sell. We'll come back with a plan and a fixed price."
+        primaryText="Get a proposal"
         primaryHref="/contact"
-        secondaryText="View Portfolio"
+        secondaryText="See our work"
         secondaryHref="/portfolio"
       />
     </div>

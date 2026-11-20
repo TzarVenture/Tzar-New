@@ -188,6 +188,25 @@
   }
 }
 
+
+/* Featured card: a slow gold line travels its edge (same idea as buttons). */
+.tz-card-trace::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--tz-angle), transparent 0deg 220deg, #ffae00 300deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: tz-trace 6s linear infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tz-card-trace::before { animation: none; background: #ffae00; }
+}
+
 /* ── Chips (filter tabs) ───────────────────────────────────────────────── */
 .pf-chip {
   -webkit-tap-highlight-color: transparent;

@@ -76,7 +76,7 @@ export const ConsistentCTA: React.FC<ConsistentCTAProps> = ({
           <div className="pt-4 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link
               href={primaryHref}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#FFAE00] text-[#061309] font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider cursor-pointer tz-btn tz-btn-primary"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#FFAE00] text-[#061309] font-montserrat font-bold text-sm cursor-pointer tz-btn tz-btn-primary"
             >
               <span>{primaryText}</span>
               <ArrowRight className="w-4 h-4" />

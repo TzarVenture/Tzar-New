@@ -86,7 +86,7 @@ export function DarkBackdrop() {
 /* ── Hero with an organic wave bottom edge and the gold accent line ───────
    The section is masked along the curve so the page backdrop shows below it,
    and the gold line is drawn on exactly the same curve outside the mask. */
-const WAVE_CURVE = "M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40";
+export const WAVE_CURVE = "M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40";
 const WAVE_MASK_SVG =
   "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'><path d='M0,0 H1440 V40 C1260,20 1060,80 800,45 C540,10 320,80 0,35 Z'/></svg>\")";
 const WAVE_MASK: React.CSSProperties = {

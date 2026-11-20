@@ -207,6 +207,33 @@
   .tz-card-trace::before { animation: none; background: #ffae00; }
 }
 
+
+/* Industry marks (website development page) */
+.ia-pulse, .ia-swing, .ia-glow, .ia-steam, .ia-fill, .ia-shine, .ia-bounce, .ia-shadow, .ia-flip, .ia-spin {
+  transform-box: fill-box;
+}
+.ia-pulse { transform-origin: center; animation: ia-pulse 1.6s ease-in-out infinite; }
+@keyframes ia-pulse { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(0.6) rotate(45deg); } }
+.ia-swing { transform-origin: 50% 0; animation: ia-swing 2.4s ease-in-out infinite; }
+@keyframes ia-swing { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(6deg); } 75% { transform: rotate(-6deg); } }
+.ia-glow { animation: ia-glow 2.2s ease-in-out infinite; }
+@keyframes ia-glow { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.08; } }
+.ia-steam { animation: ia-steam 2s ease-out infinite; }
+@keyframes ia-steam { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-5px); opacity: 0; } }
+.ia-fill { transform-origin: 50% 100%; animation: ia-fill 2.4s ease-in-out infinite; }
+@keyframes ia-fill { 0% { transform: scaleY(0.15); } 70%, 100% { transform: scaleY(1); } }
+.ia-shine { animation: ia-shine 2.4s ease-in-out infinite; }
+@keyframes ia-shine { 0%, 100% { opacity: 0; } 40%, 60% { opacity: 0.9; } }
+.ia-bounce { transform-origin: 50% 100%; animation: ia-bounce 1.4s cubic-bezier(0.5, 0, 0.5, 1) infinite; }
+@keyframes ia-bounce { 0%, 100% { transform: translateY(0) scaleY(0.94); } 50% { transform: translateY(-7px) scaleY(1); } }
+.ia-shadow { transform-origin: center; animation: ia-shadow 1.4s cubic-bezier(0.5, 0, 0.5, 1) infinite; }
+@keyframes ia-shadow { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(0.6); } }
+.ia-flip { transform-origin: 0 50%; animation: ia-flip 2.6s ease-in-out infinite; }
+@keyframes ia-flip { 0%, 30% { transform: scaleX(1); } 60% { transform: scaleX(-1); } 100% { transform: scaleX(-1); opacity: 0; } }
+
+.ia-spin { transform-origin: center; animation: ia-spin 3s cubic-bezier(0.6, 0, 0.3, 1) infinite; }
+@keyframes ia-spin { 0%, 20% { transform: rotate(0); } 70%, 100% { transform: rotate(360deg); } }
+
 /* ── Chips (filter tabs) ───────────────────────────────────────────────── */
 .pf-chip {
   -webkit-tap-highlight-color: transparent;
@@ -248,22 +275,7 @@
 }
 
 /* ── Card illustrations ───────────────────────────────────────────────────
-   Paused on the resting frame; run while the card is hovered/focused
-   (mouse) or on screen (touch). */
-.pf-illo * {
-  animation-play-state: paused;
-}
-@media (hover: hover) and (pointer: fine) {
-  .group:hover .pf-illo *,
-  .group:focus-visible .pf-illo * {
-    animation-play-state: running;
-  }
-}
-@media (hover: none) {
-  .pf-illo[data-inview="true"] * {
-    animation-play-state: running;
-  }
-}
+   Always animating; the reduced-motion block below stops them. */
 
 .pf-a-grow {
   transform-box: fill-box;

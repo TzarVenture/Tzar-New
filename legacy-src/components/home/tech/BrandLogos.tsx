@@ -1,179 +1,185 @@
-/* Client logos redrawn as single-colour SVGs (currentColor) at one height,
-   so the homepage ticker reads evenly. All share a 40-unit tall viewBox;
-   width varies with each mark. */
+/* Client logos as single-colour marks: live text in the site fonts plus small
+   SVG symbols, all in currentColor. The parent sets the font size; every logo
+   scales from it, so spacing follows the real text width. */
 
 import React from "react";
 
-const SANS = "var(--font-montserrat), Montserrat, Arial, sans-serif";
-const SERIF = "Georgia, 'Times New Roman', serif";
+const DARK = "#0E2015";
+const SERIF: React.CSSProperties = { fontFamily: "Georgia, 'Times New Roman', serif" };
 
-type Logo = { name: string; w: number; art: React.ReactNode };
+const Mark = ({ w = 1, children, className = "" }: { w?: number; children: React.ReactNode; className?: string }) => (
+  <svg
+    viewBox={`0 0 ${40 * w} 40`}
+    style={{ height: "1.15em", width: `${1.15 * w}em` }}
+    className={`shrink-0 ${className}`}
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    {children}
+  </svg>
+);
+
+type Logo = { name: string; node: React.ReactNode };
 
 export const BRAND_LOGOS: Logo[] = [
   {
     name: "Amazon",
-    w: 124,
-    art: (
-      <>
-        <text x="2" y="27" fontFamily={SANS} fontWeight={700} fontSize="30" letterSpacing="-1">amazon</text>
-        <path d="M8 31 Q52 42 92 31" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        <path d="M86 27.5 L94 30.5 L88 36" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-      </>
+    node: (
+      <span className="relative inline-block pb-[0.28em]">
+        <span className="font-bold text-[1.18em] tracking-[-0.03em] leading-none">amazon</span>
+        <svg
+          viewBox="0 0 100 24"
+          preserveAspectRatio="none"
+          className="absolute left-[4%] bottom-[-0.12em] w-[80%] h-[0.5em]"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M2 5 Q48 24 92 6" strokeWidth="3.4" vectorEffect="non-scaling-stroke" />
+          <path d="M83 3 L95 5 L91 15" strokeWidth="3.4" vectorEffect="non-scaling-stroke" />
+        </svg>
+      </span>
     ),
   },
   {
     name: "Myntra",
-    w: 132,
-    art: (
+    node: (
       <>
-        <path d="M2 34 L9 6 L19 24 L29 6 L36 34 H29 L26 20 L19 32 L12 20 L9 34 Z" fill="currentColor" />
-        <text x="44" y="29" fontFamily={SANS} fontWeight={700} fontSize="22">Myntra</text>
+        <Mark>
+          <path d="M3 36 L11 4 L20 22 L29 4 L37 36 H30 L26.5 19 L20 32 L13.5 19 L10 36 Z" />
+        </Mark>
+        <span className="font-bold">Myntra</span>
       </>
     ),
   },
   {
     name: "IndiGo",
-    w: 140,
-    art: (
+    node: (
       <>
-        <text x="0" y="29" fontFamily={SANS} fontWeight={600} fontSize="27" letterSpacing="-0.5">IndiGo</text>
-        {[
-          [104, 20], [110, 20], [116, 20], [122, 20], [128, 20], [134, 20],
-          [122, 14], [125, 9], [122, 26], [125, 31], [116, 14], [116, 26],
-        ].map(([cx, cy]) => (
-          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.8" fill="currentColor" />
-        ))}
+        <span className="font-semibold text-[1.12em] tracking-[-0.01em]">IndiGo</span>
+        <Mark w={1.2}>
+          {[
+            [4, 20], [11, 20], [18, 20], [25, 20], [32, 20], [39, 20], [45, 20],
+            [28, 13], [31, 7], [28, 27], [31, 33], [9, 15], [9, 25],
+          ].map(([cx, cy]) => (
+            <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="2.3" />
+          ))}
+        </Mark>
       </>
     ),
   },
   {
     name: "Axis Bank",
-    w: 168,
-    art: (
+    node: (
       <>
-        <path d="M2 34 L17 6 L23 17 L13 34 Z" fill="currentColor" />
-        <path d="M25 21 L32 34 H18 Z" fill="currentColor" />
-        <text x="40" y="28" fontFamily={SANS} fontWeight={700} fontSize="20" letterSpacing="0.5">AXIS BANK</text>
+        <Mark>
+          <path d="M2 37 L20 3 L27 16 L15 37 Z" />
+          <path d="M29 20 L38 37 H20 Z" />
+        </Mark>
+        <span className="font-bold tracking-[0.04em]">AXIS BANK</span>
       </>
     ),
   },
   {
     name: "Glenmark",
-    w: 150,
-    art: (
+    node: (
       <>
-        <circle cx="16" cy="20" r="14" fill="currentColor" />
-        <path d="M22 14 A8 8 0 1 0 23 23 H17" fill="none" stroke="#0E2015" strokeWidth="3.4" strokeLinecap="round" />
-        <text x="38" y="28" fontFamily={SERIF} fontWeight={700} fontSize="23">Glenmark</text>
+        <Mark>
+          <circle cx="20" cy="20" r="18" />
+          <path d="M27.5 12.5 A10.5 10.5 0 1 0 30 23 H20.5" fill="none" stroke={DARK} strokeWidth="4.4" strokeLinecap="round" />
+        </Mark>
+        <span style={SERIF} className={`font-bold tracking-[0.02em]`}>Glenmark</span>
       </>
     ),
   },
   {
     name: "Urban Ladder",
-    w: 118,
-    art: (
+    node: (
       <>
-        <path d="M3 34 V6 H31" fill="none" stroke="currentColor" strokeWidth="4" />
-        <path d="M12 34 V15 H31" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.6" />
-        <text x="38" y="18" fontFamily={SANS} fontWeight={600} fontSize="15">Urban</text>
-        <text x="38" y="34" fontFamily={SANS} fontWeight={600} fontSize="15">Ladder</text>
+        <Mark>
+          <path d="M4 38 V4 H36" fill="none" stroke="currentColor" strokeWidth="5" />
+          <path d="M14 38 V14 H36" fill="none" stroke="currentColor" strokeWidth="2.6" />
+        </Mark>
+        <span className="flex flex-col font-semibold text-[0.62em] leading-[1.05]">
+          <span>Urban</span>
+          <span>Ladder</span>
+        </span>
       </>
     ),
   },
   {
     name: "Apollo",
-    w: 104,
-    art: (
-      <>
-        <defs>
-          <mask id="bl-apollo">
-            <rect width="104" height="40" fill="#fff" />
-            <text x="52" y="28" textAnchor="middle" fontFamily={SERIF} fontStyle="italic" fontWeight={700} fontSize="24" fill="#000">Apollo</text>
-          </mask>
-        </defs>
-        <path d="M6 8 Q52 1 98 6 L96 33 Q52 38 8 33 Z" fill="currentColor" mask="url(#bl-apollo)" />
-      </>
+    node: (
+      <span
+        style={SERIF} className={`italic font-bold rounded-[0.3em] bg-current px-[0.45em] py-[0.05em] -skew-x-6`}
+      >
+        <span style={{ color: DARK }}>Apollo</span>
+      </span>
     ),
   },
   {
     name: "Femella",
-    w: 168,
-    art: (
-      <text x="0" y="28" fontFamily={SANS} fontWeight={400} fontSize="25" letterSpacing="6">FƎMELLA</text>
-    ),
+    node: <span className="font-normal tracking-[0.32em] text-[0.92em]">FƎMELLA</span>,
   },
   {
     name: "CHRMP",
-    w: 104,
-    art: (
-      <>
-        <text x="0" y="29" fontFamily={SANS} fontWeight={600} fontSize="31" letterSpacing="-0.5">chrmp</text>
-        <circle cx="99" cy="9" r="3.6" fill="none" stroke="currentColor" strokeWidth="1.2" />
-      </>
+    node: (
+      <span className="font-semibold text-[1.15em] tracking-[-0.02em]">
+        chrmp<sup className="text-[0.4em] align-super ml-[0.1em]">®</sup>
+      </span>
     ),
   },
   {
     name: "Crownleaf",
-    w: 150,
-    art: (
-      <text x="0" y="29" fontFamily={SERIF} fontWeight={700} fontSize="28">Crownleaf</text>
-    ),
+    node: <span style={SERIF} className={`font-bold text-[1.08em]`}>Crownleaf</span>,
   },
   {
     name: "Titepo",
-    w: 112,
-    art: (
-      <>
-        <text x="0" y="29" fontFamily={SANS} fontWeight={800} fontSize="27" letterSpacing="-0.5">Titepo</text>
-        <circle cx="104" cy="11" r="6" fill="currentColor" />
-        <path d="M101 13 Q104 6 107 9" fill="none" stroke="#0E2015" strokeWidth="1.6" strokeLinecap="round" />
-      </>
+    node: (
+      <span className="inline-flex items-start">
+        <span className="font-extrabold text-[1.08em] tracking-[-0.02em]">Titepo</span>
+        <svg viewBox="0 0 20 20" className="w-[0.5em] h-[0.5em] ml-[0.1em]" aria-hidden="true">
+          <circle cx="10" cy="10" r="10" fill="currentColor" />
+          <path d="M6 13 Q9 4 15 6" fill="none" stroke={DARK} strokeWidth="2.4" strokeLinecap="round" />
+        </svg>
+      </span>
     ),
   },
   {
     name: "Rexmed",
-    w: 118,
-    art: (
-      <>
-        <text x="0" y="29" fontFamily={SANS} fontWeight={800} fontSize="25" letterSpacing="-0.5">REX</text>
-        <text x="54" y="29" fontFamily={SANS} fontWeight={500} fontSize="25" letterSpacing="-0.5">MED</text>
-      </>
+    node: (
+      <span className="tracking-[-0.02em] text-[1.05em]">
+        <span className="font-black">REX</span>
+        <span className="font-medium">MED</span>
+      </span>
     ),
   },
   {
     name: "TSW",
-    w: 108,
-    art: (
+    node: (
       <>
-        {[2, 8, 14, 20, 26].map((x, i) => (
-          <rect key={x} x={x} y={i % 2 ? 10 : 4} width="3" height={i % 2 ? 26 : 32} fill="currentColor" />
-        ))}
-        <path d="M36 4 V36" stroke="currentColor" strokeWidth="1.5" />
-        <text x="44" y="30" fontFamily={SANS} fontWeight={800} fontSize="25" letterSpacing="2">TSW</text>
+        <Mark>
+          {[2, 9, 16, 23, 30].map((x, i) => (
+            <rect key={x} x={x} y={i % 2 ? 9 : 2} width="4" height={i % 2 ? 29 : 36} />
+          ))}
+          <rect x="37" y="2" width="1.6" height="36" />
+        </Mark>
+        <span className="font-black tracking-[0.12em]">TSW</span>
       </>
     ),
   },
   {
     name: "Ellixee",
-    w: 108,
-    art: (
-      <text x="0" y="29" fontFamily={SANS} fontWeight={700} fontSize="26" letterSpacing="-0.5">Ellixee</text>
-    ),
+    node: <span className="font-bold text-[1.05em] tracking-[-0.01em]">Ellixee</span>,
   },
 ];
 
 export function BrandLogo({ logo, className = "" }: { logo: Logo; className?: string }) {
   return (
-    <svg
-      viewBox={`0 0 ${logo.w} 40`}
-      role="img"
-      aria-label={logo.name}
-      className={className}
-      style={{ aspectRatio: `${logo.w} / 40` }}
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {logo.art}
-    </svg>
+    <span role="img" aria-label={logo.name} className={`inline-flex items-center gap-[0.35em] whitespace-nowrap leading-none font-montserrat ${className}`}>
+      {logo.node}
+    </span>
   );
 }

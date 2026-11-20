@@ -4,9 +4,9 @@ import { JsonLd } from "@/app/components/seo/JsonLd";
 import { createBreadcrumbSchema } from "@/app/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Portfolio & Case Studies | Tzar Digital Agency",
+  title: "Portfolio & Case Studies: CRM, Next.js, Shopify & WordPress",
   description:
-    "Explore Tzar Digital Agency's portfolio of custom web applications, e-commerce stores, video reels, brand identities, and performance case studies.",
+    "Case studies of custom CRMs, dialer and SaaS platforms, Next.js web apps, Shopify stores and WordPress sites built by Tzar Digital Agency, plus our creative and video work.",
   openGraph: {
     title: "Our Work & Case Studies | Tzar Digital Agency",
     description:

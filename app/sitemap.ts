@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { BLOG_POSTS } from "@/lib/data/blogData";
+import { CASE_STUDIES } from "@/app/portfolio/caseStudies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: Array<{
@@ -56,5 +57,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticEntries, ...blogEntries];
+  const caseStudyEntries: MetadataRoute.Sitemap = CASE_STUDIES.map((study) => ({
+    url: `https://www.tzar.co/portfolio/${study.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticEntries, ...caseStudyEntries, ...blogEntries];
 }

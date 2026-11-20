@@ -1,13 +1,8 @@
 "use client";
 
 import React from "react";
-import {
-  DeviceMobileCamera,
-  Devices,
-  BellRinging,
-  Database,
-} from "@phosphor-icons/react";
 import "./AppDevHeroSlide.css";
+import { HeroChipArt } from "./HeroChipArt";
 
 // ── TECH STACK SATELLITES AROUND DUAL PHONES (REACT NATIVE, EXPO, FLUTTER, SWIFT, KOTLIN) ──
 const APPDEV_SATELLITES = [
@@ -77,9 +72,7 @@ export const AppDevHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
           <div className="hidden lg:flex lg:col-span-3 flex-col items-end gap-6 text-left z-20">
             {/* Feature 1: 60FPS Native UI */}
             <div className="appdev-feature-card appdev-card-1">
-              <div className="appdev-icon-box box-cyan">
-                <DeviceMobileCamera size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="fps" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 60FPS Native UI &amp; Fluid Gestures
               </h3>
@@ -87,9 +80,7 @@ export const AppDevHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
 
             {/* Feature 2: Cross-Platform Single Codebase */}
             <div className="appdev-feature-card appdev-card-2">
-              <div className="appdev-icon-box box-violet">
-                <Devices size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="crossplatform" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 Single Codebase iOS &amp; Android
               </h3>
@@ -147,9 +138,7 @@ export const AppDevHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
           <div className="hidden lg:flex lg:col-span-3 flex-col items-start gap-6 text-left z-20">
             {/* Feature 3: Instant Push & Notifications */}
             <div className="appdev-feature-card appdev-card-3">
-              <div className="appdev-icon-box box-rose">
-                <BellRinging size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="push" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 Instant Push &amp; WhatsApp Triggers
               </h3>
@@ -157,9 +146,7 @@ export const AppDevHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
 
             {/* Feature 4: Offline-First SQLite Architecture */}
             <div className="appdev-feature-card appdev-card-4">
-              <div className="appdev-icon-box box-amber">
-                <Database size={20} weight="duotone" />
-              </div>
+              <HeroChipArt name="offline" />
               <h3 className="font-montserrat font-bold text-xs xl:text-[13px] text-[#0E2015] leading-snug">
                 Offline-First SQLite Architecture
               </h3>
@@ -171,36 +158,28 @@ export const AppDevHeroSlide: React.FC<{ imageLoading?: 'eager' | 'lazy' }> = ({
         {/* ── 2x2 GRID FOR MOBILE (< 1024px) ─────────────────────────── */}
         <div className="grid grid-cols-2 gap-2 sm:gap-2.5 lg:hidden mt-3 sm:mt-4 z-20 px-1">
           <div className="appdev-feature-card appdev-mobile-card">
-            <div className="appdev-icon-box box-cyan">
-              <DeviceMobileCamera size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="fps" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               60FPS Native UI &amp; Gestures
             </h3>
           </div>
 
           <div className="appdev-feature-card appdev-mobile-card">
-            <div className="appdev-icon-box box-violet">
-              <Devices size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="crossplatform" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               Single Codebase iOS &amp; Android
             </h3>
           </div>
 
           <div className="appdev-feature-card appdev-mobile-card">
-            <div className="appdev-icon-box box-rose">
-              <BellRinging size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="push" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               Instant Push Notifications
             </h3>
           </div>
 
           <div className="appdev-feature-card appdev-mobile-card">
-            <div className="appdev-icon-box box-amber">
-              <Database size={17} weight="duotone" />
-            </div>
+            <HeroChipArt name="offline" />
             <h3 className="font-montserrat font-extrabold text-[11px] sm:text-xs text-[#0E2015] leading-tight">
               Offline-First SQLite Cache
             </h3>

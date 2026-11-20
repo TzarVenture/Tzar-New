@@ -143,13 +143,13 @@
     display: flex !important;
     position: absolute !important;
     top: 50%;
-    transform: translateY(-50%);
+    /* Centre with the translate property so hover/press scale never fights it
+       (a transform override here made the arrow jump and flicker on hover). */
+    translate: 0 -50%;
     z-index: 35;
   }
   .hero-edge-btn--prev { left: 24px; }
   .hero-edge-btn--next { right: 24px; }
-  .hero-edge-btn:hover { transform: translateY(-50%) scale(1.08); }
-  .hero-edge-btn:active { transform: translateY(-50%) scale(0.95); }
 }
 
 /* ── EXACT NAVIGATION SECTION FROM REFERENCE IMAGE ──────────────────── */
@@ -175,20 +175,28 @@
   justify-content: center;
   color: #1D4224;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.2s ease, color 0.2s ease, scale 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
   flex-shrink: 0;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.hero-circle-btn:hover {
-  transform: scale(1.08);
-  background: #FFB81C;
-  color: #0E2015;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+@media (hover: hover) and (pointer: fine) {
+  .hero-circle-btn:hover {
+    scale: 1.06;
+    background: #1D4224;
+    color: #FFAE00;
+  }
 }
 
 .hero-circle-btn:active {
-  transform: scale(0.95);
+  scale: 0.94;
+  transition-duration: 70ms;
+}
+
+.hero-circle-btn:focus-visible {
+  outline: 2px solid #FFAE00;
+  outline-offset: 3px;
 }
 
 /* ── PROMINENT THEME YELLOW PROGRESS DASHES ───────────────────────────── */

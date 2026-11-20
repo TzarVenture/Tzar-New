@@ -172,7 +172,7 @@ export const TechHeader: React.FC = () => {
               width={1506}
               height={248}
               decoding="async"
-              className="h-9 sm:h-10 xl:h-10 w-auto max-w-51.25 sm:max-w-57.5 xl:max-w-57.5 object-contain transition-transform group-hover:scale-105"
+              className="h-9 sm:h-10 xl:h-10 w-auto max-w-51.25 sm:max-w-57.5 xl:max-w-57.5 object-contain"
             />
           </Link>
 
@@ -243,7 +243,7 @@ export const TechHeader: React.FC = () => {
             {/* Hire Us Pill */}
             <Link
               href="/hire-us"
-              className={`px-3 xl:px-3.5 py-1.5 text-[12.5px] xl:text-[13px] font-bold font-montserrat rounded-full whitespace-nowrap tz-btn ${
+              className={`px-3 xl:px-3.5 py-1.5 text-[12.5px] xl:text-[13px] font-bold font-montserrat rounded-full whitespace-nowrap tz-btn tz-nav-btn ${
                 pathname === '/hire-us' ? 'tz-btn-primary' : 'tz-btn-ghost'
               }`}
             >
@@ -253,7 +253,7 @@ export const TechHeader: React.FC = () => {
             {/* Payment Pill */}
             <Link
               href="/payment-gateway"
-              className="px-3.5 xl:px-4 py-1.5 text-[12.5px] xl:text-[13px] font-black font-montserrat rounded-full whitespace-nowrap tz-btn tz-btn-primary"
+              className="px-3.5 xl:px-4 py-1.5 text-[12.5px] xl:text-[13px] font-black font-montserrat rounded-full whitespace-nowrap tz-btn tz-nav-btn tz-btn-primary"
             >
               Payment
             </Link>
@@ -292,7 +292,7 @@ export const TechHeader: React.FC = () => {
             {/* Quick Payment Button on sm-md */}
             <Link
               href="/payment-gateway"
-              className="hidden sm:inline-flex px-3 py-1 text-xs font-black font-montserrat rounded-full whitespace-nowrap tz-btn tz-btn-primary"
+              className="hidden sm:inline-flex px-3 py-1 text-xs font-black font-montserrat rounded-full whitespace-nowrap tz-btn tz-nav-btn tz-btn-primary"
             >
               Payment
             </Link>

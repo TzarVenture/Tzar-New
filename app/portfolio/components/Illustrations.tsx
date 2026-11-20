@@ -359,37 +359,75 @@ export function CardIllustration({ name, className = "" }: { name: IllustrationN
   );
 }
 
-/* Sales pipeline with deals flowing through it. One slow, continuous loop
-   beside the platforms heading; static for reduced-motion visitors. */
-export function PipelineFlow({ className = "" }: { className?: string }) {
-  const stages: [string, string][] = [
-    ["Lead", "128"],
-    ["Qualified", "64"],
-    ["Proposal", "31"],
-    ["Won", "18"],
-  ];
-  const xs = [48, 162, 276, 390];
+/* System architecture beside the platforms heading: web and mobile apps
+   call one API, which routes to CRM, billing and dialer services that share
+   a database. Requests travel the routes as small packets (one slow loop);
+   reduced-motion visitors get the still diagram. */
+const ROUTES = [
+  "M104 45 C130 45 130 75 156 75 L236 75 C262 75 262 32 288 32 L372 32 C392 32 392 75 412 75",
+  "M104 105 C130 105 130 75 156 75 L412 75",
+  "M104 45 C130 45 130 75 156 75 L236 75 C262 75 262 118 288 118 L372 118 C392 118 392 75 412 75",
+];
+
+function Box({ x, y, w, h, label, tone = "panel" }: { x: number; y: number; w: number; h: number; label: string; tone?: "panel" | "api" }) {
+  const api = tone === "api";
   return (
-    <svg viewBox="0 0 440 112" className={className} aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-      <line x1="48" y1="40" x2="390" y2="40" stroke={C.line} strokeWidth="2" strokeDasharray="4 5" />
-      {[0, 1.5, 3].map((delay) => (
-        <circle key={delay} className="pf-a-flow" style={{ animationDelay: `${delay}s` }} cx="48" cy="40" r="4.5" fill={C.gold} />
+    <g>
+      <rect x={x} y={y} width={w} height={h} rx="8" fill={api ? C.ink : C.panel} stroke={api ? C.gold : C.line} strokeWidth={api ? 1.5 : 1} />
+      <text
+        x={x + w / 2}
+        y={y + h / 2 + 4}
+        textAnchor="middle"
+        fontFamily="Montserrat, sans-serif"
+        fontWeight="700"
+        fontSize={api ? 14 : 11.5}
+        fill={api ? C.gold : C.paper}
+      >
+        {label}
+      </text>
+    </g>
+  );
+}
+
+export function SystemFlow({ className = "" }: { className?: string }) {
+  const [still, setStill] = React.useState(false);
+  React.useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setStill(mq.matches);
+    const on = () => setStill(mq.matches);
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+
+  return (
+    <svg viewBox="0 0 480 150" className={className} aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      {ROUTES.map((d) => (
+        <path key={d} d={d} fill="none" stroke={C.line} strokeWidth="1.5" strokeDasharray="3 4" />
       ))}
-      {stages.map(([label, n], i) => {
-        const won = i === stages.length - 1;
-        return (
-          <g key={label}>
-            {won && <rect className="pf-a-glow" x={xs[i] - 46} y="22" width="92" height="36" rx="18" fill="none" stroke={C.gold} strokeWidth="2" />}
-            <rect x={xs[i] - 42} y="25" width="84" height="30" rx="15" fill={won ? C.gold : C.panel} stroke={won ? C.gold : C.line} />
-            <text x={xs[i]} y="44.5" textAnchor="middle" fontFamily="Montserrat, sans-serif" fontWeight="700" fontSize="12" fill={won ? C.ink : C.paper}>
-              {label}
-            </text>
-            <text x={xs[i]} y="84" textAnchor="middle" fontFamily="Montserrat, sans-serif" fontWeight="800" fontSize="18" fill={won ? C.gold : C.paper}>
-              {n}
-            </text>
-          </g>
-        );
-      })}
+
+      {/* Packets travel under the boxes, so they look processed at each stop */}
+      {!still &&
+        ROUTES.map((d, i) => (
+          <circle key={`p${i}`} r="4" fill={i === 1 ? C.mint : C.gold} opacity="0">
+            <animateMotion dur="3.6s" begin={`${i * 1.2}s`} repeatCount="indefinite" path={d} />
+            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.9;1" dur="3.6s" begin={`${i * 1.2}s`} repeatCount="indefinite" />
+          </circle>
+        ))}
+
+      <Box x={16} y={30} w={88} h={30} label="Web app" />
+      <Box x={16} y={90} w={88} h={30} label="Mobile app" />
+      <Box x={156} y={45} w={80} h={60} label="API" tone="api" />
+      <Box x={288} y={18} w={84} h={28} label="CRM" />
+      <Box x={288} y={61} w={84} h={28} label="Billing" />
+      <Box x={288} y={104} w={84} h={28} label="Dialer" />
+
+      {/* Database */}
+      <path d="M412 56 V94 C412 104 464 104 464 94 V56" fill={C.panel} stroke={C.line} />
+      <ellipse cx="438" cy="56" rx="26" ry="8" fill={C.green} stroke={C.line} />
+      <path d="M412 69 C412 78 464 78 464 69 M412 82 C412 91 464 91 464 82" fill="none" stroke={C.line} />
+      <text x="438" y="122" textAnchor="middle" fontFamily="Montserrat, sans-serif" fontWeight="700" fontSize="11" fill={C.mint}>
+        Database
+      </text>
     </svg>
   );
 }

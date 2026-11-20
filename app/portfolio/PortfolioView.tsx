@@ -27,7 +27,7 @@ import {
   TechGrid,
 } from "./components/PortfolioUI";
 import { DARK_GRADIENT } from "./theme";
-import { CardIllustration, PipelineFlow, type IllustrationName } from "./components/Illustrations";
+import { CardIllustration, SystemFlow, type IllustrationName } from "./components/Illustrations";
 
 
 /* --------------------------------------------------------------------------
@@ -753,7 +753,7 @@ export default function PortfolioView() {
                   </p>
                 </div>
                 <div className="lg:col-span-6 rounded-2xl border border-[#244A2C] bg-[#0A1C10] px-3 sm:px-5 py-4">
-                  <PipelineFlow className="block w-full h-auto" />
+                  <SystemFlow className="block w-full h-auto" />
                 </div>
               </div>
 

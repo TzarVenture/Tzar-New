@@ -2,7 +2,7 @@
    Unlayered on purpose so these win over Tailwind utility hover colours. */
 
 .pf-backdrop-shapes {
-  filter: blur(16px) saturate(110%);
+  filter: blur(8px) saturate(110%);
   opacity: 0.8;
   transform: translateZ(0);
 }
@@ -278,29 +278,3 @@
   }
 }
 
-/* Platforms heading pipeline: deals travel left to right under the stages */
-.pf-a-flow {
-  animation: pf-flow 4.5s linear infinite;
-  opacity: 0;
-}
-@keyframes pf-flow {
-  0% { transform: translateX(0); opacity: 0; }
-  6% { opacity: 1; }
-  94% { opacity: 1; }
-  100% { transform: translateX(342px); opacity: 0; }
-}
-.pf-a-glow {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: pf-glow 1.5s ease-out infinite;
-}
-@keyframes pf-glow {
-  0% { opacity: 0.8; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.18); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .pf-a-flow,
-  .pf-a-glow {
-    animation: none;
-  }
-}

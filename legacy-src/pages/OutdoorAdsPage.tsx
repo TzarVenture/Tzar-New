@@ -4,6 +4,7 @@ import React from 'react';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
+import { WaveDivider } from "@/app/components/brand/BrandUI";
 
 const OUTDOOR_SERVICES = [
   { id: '1', title: 'HOARDING ADVERTISEMENT', img: '/assets/images/resources/Ads-service/a1.png' },
@@ -59,7 +60,7 @@ export const OutdoorAdsPage: React.FC = () => {
     <div className="bg-[#EFE8E0] text-[#0E2015] min-h-screen">
 
       {/* ── 01. ABOVE THE FOLD (ATF) HERO SECTION WITH BACKGROUND MARKETING VIDEO ── */}
-      <section className="relative w-full min-h-dvh flex flex-col justify-center pt-28 sm:pt-32 pb-6 sm:pb-6 overflow-hidden border-b border-[#1D4224]/10 bg-[#0E2015]">
+      <section className="relative w-full min-h-dvh flex flex-col justify-center pt-28 sm:pt-32 pb-0 overflow-hidden bg-[#0E2015]">
         {/* Background Marketing Video - Visible across PC & Mobile */}
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <video
@@ -113,6 +114,7 @@ export const OutdoorAdsPage: React.FC = () => {
 
           </div>
         </div>
+        <WaveDivider fill="#EFE8E0" />
       </section>
 
       {/* ── 02. OUTDOOR ADVERTISING SERVICES (12 CARDS) ── */}

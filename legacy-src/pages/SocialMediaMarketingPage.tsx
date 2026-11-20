@@ -26,6 +26,7 @@ import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
 import { COMPANY } from '@/data/company';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
+import { WaveDivider } from "@/app/components/brand/BrandUI";
 
 /* ── 01. SOCIAL MEDIA MARKETING GOALS (Authentic Data from smmcard.js) ────── */
 const SMM_GOALS = [
@@ -232,20 +233,7 @@ export const SocialMediaMarketingPage: React.FC = () => {
         </div>
 
         {/* ── Smooth Organic Wave Transition: Dark Spruce to Section 02 (#FAF9F5) ── */}
-        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
-              fill="#FAF9F5"
-            />
-          </svg>
-        </div>
+        <WaveDivider fill="#FAF9F5" />
       </section>
 
       {/* ──────────────────────────────────────────────────────────────────
@@ -299,7 +287,7 @@ export const SocialMediaMarketingPage: React.FC = () => {
               <div className="pt-2">
                 <button
                   onClick={scrollToContactForm}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-[#1D4224] text-white font-montserrat font-bold text-xs uppercase tracking-wider hover:bg-[#FFAE00] hover:text-[#0E2015] transition-all duration-200 shadow-md cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-[#1D4224] text-white font-montserrat font-bold text-xs uppercase tracking-wider cursor-pointer tz-btn tz-btn-primary"
                 >
                   <span>Enquire Now</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -381,7 +369,7 @@ export const SocialMediaMarketingPage: React.FC = () => {
           <div className="text-center mt-8">
             <button
               onClick={scrollToContactForm}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#1D4224] text-white font-montserrat font-bold text-xs uppercase tracking-wider hover:bg-[#FFAE00] hover:text-[#0E2015] transition-all duration-200 shadow-md cursor-pointer"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#1D4224] text-white font-montserrat font-bold text-xs uppercase tracking-wider cursor-pointer tz-btn tz-btn-primary"
             >
               <span>Enquire Now</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -437,7 +425,7 @@ export const SocialMediaMarketingPage: React.FC = () => {
           <div className="text-center mt-8">
             <button
               onClick={scrollToContactForm}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#1D4224] text-white font-montserrat font-bold text-xs uppercase tracking-wider hover:bg-[#FFAE00] hover:text-[#0E2015] transition-all duration-200 shadow-md cursor-pointer"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#1D4224] text-white font-montserrat font-bold text-xs uppercase tracking-wider cursor-pointer tz-btn tz-btn-primary"
             >
               <span>Enquire Now</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -494,7 +482,7 @@ export const SocialMediaMarketingPage: React.FC = () => {
           <div className="text-center mt-8">
             <button
               onClick={scrollToContactForm}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#1D4224] text-white font-montserrat font-bold text-xs uppercase tracking-wider hover:bg-[#FFAE00] hover:text-[#0E2015] transition-all duration-200 shadow-md cursor-pointer"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#1D4224] text-white font-montserrat font-bold text-xs uppercase tracking-wider cursor-pointer tz-btn tz-btn-primary"
             >
               <span>Enquire Now</span>
               <ArrowRight className="w-3.5 h-3.5" />

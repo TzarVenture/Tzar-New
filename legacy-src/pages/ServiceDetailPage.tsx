@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { CheckCircle2, ArrowRight, ArrowUpRight, Zap, ShieldCheck, Star, Phone, MessageSquare, Send } from 'lucide-react';
 import { SERVICES } from '@/data/services';
 import { COMPANY } from '@/data/company';
+import { PageHero } from "@/app/components/brand/BrandUI";
 
 interface Props {
   slug?: string;
@@ -34,72 +35,44 @@ export const ServiceDetailPage: React.FC<Props> = ({ slug: propSlug }) => {
   };
 
   return (
-    <div style={{ paddingTop: 'clamp(7rem, 14vw, 10rem)', background: '#FAF9F5' }}>
+    <div style={{ background: '#FAF9F5' }}>
 
-      {/* ── Page Hero Banner ── */}
-      <section
-        className="bg-grid"
-        style={{ borderBottom: '1px solid #E5E5DC', padding: 'clamp(3.5rem, 7vw, 6rem) 0', position: 'relative' }}
-      >
-        <div className="container-site">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 420px', gap: '4rem', alignItems: 'center' }} className="max-md:grid-cols-1 max-md:gap-10">
-
-            {/* Left Column */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div style={{ display: 'flex', gap: '.75rem', flexWrap: 'wrap' }}>
-                <span className="badge-green">{service.badge}</span>
-                {service.results && (
-                  <span className="badge-gold">Proven Results: {service.results}</span>
-                )}
-              </div>
-
-              <h1 className="display-lg">
-                {service.title}
-              </h1>
-
-              <div className="section-divider" />
-
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.1rem', color: '#374151', lineHeight: 1.7, fontWeight: 500 }}>
-                {service.subtitle}
-              </p>
-
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '.92rem', color: '#6B7280', lineHeight: 1.75 }}>
-                {service.description}
-              </p>
-
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', paddingTop: '.5rem' }}>
-                <a href="#inquiry-form" className="btn-primary">
-                  Request {service.title} Quote <ArrowRight className="w-4 h-4" style={{ color: '#D4AF37' }} />
-                </a>
-                <a href={`tel:${COMPANY.phone.replace(/\s+/g,'')}`} className="btn-outline">
-                  <Phone className="w-4 h-4" /> Call {COMPANY.phone}
-                </a>
-              </div>
-            </div>
-
-            {/* Right Card — Quick Highlight */}
-            <div className="card" style={{ padding: '2.25rem', background: '#fff', borderRadius: '1.5rem' }}>
-              <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '1.15rem', color: '#0F1510', marginBottom: '1.25rem' }}>
-                Key Service Features
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem 0', display: 'flex', flexDirection: 'column', gap: '.75rem' }}>
-                {service.features.slice(0, 5).map((f, i) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '.625rem', fontFamily: 'Inter, sans-serif', fontSize: '.85rem', color: '#374151', lineHeight: 1.5 }}>
-                    <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#1D4224' }} />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <div style={{ background: '#FAF9F5', padding: '1rem', borderRadius: '1rem', border: '1px solid #E5E5DC', display: 'flex', alignItems: 'center', gap: '.75rem' }}>
-                <ShieldCheck className="w-6 h-6 shrink-0" style={{ color: '#D4AF37' }} />
-                <span style={{ fontFamily: 'Rubik, sans-serif', fontSize: '.75rem', fontWeight: 600, color: '#374151' }}>
-                  Includes 1 Year Free Support & Dedicated Manager
-                </span>
-              </div>
+      <PageHero
+        crumbs={[{ label: "Services", href: "/services" }, { label: service.title }]}
+        title={service.title}
+        description={service.subtitle}
+        actions={
+          <>
+            <a href="#inquiry-form" className="h-12 px-6 rounded-xl text-sm font-bold font-montserrat inline-flex items-center gap-2 tz-btn tz-btn-primary">
+              Request a quote <ArrowRight className="w-4 h-4" />
+            </a>
+            <a href={`tel:${COMPANY.phone.replace(/\s+/g, '')}`} className="h-12 px-6 rounded-xl text-sm font-bold font-montserrat inline-flex items-center gap-2 tz-btn tz-btn-ghost">
+              <Phone className="w-4 h-4" /> Call {COMPANY.phone}
+            </a>
+          </>
+        }
+        aside={
+          <div className="card" style={{ padding: '2.25rem', background: '#fff', borderRadius: '1.5rem' }}>
+            <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '1.15rem', color: '#0F1510', marginBottom: '1.25rem' }}>
+              Key Service Features
+            </h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem 0', display: 'flex', flexDirection: 'column', gap: '.75rem' }}>
+              {service.features.slice(0, 5).map((f, i) => (
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '.625rem', fontFamily: 'Inter, sans-serif', fontSize: '.85rem', color: '#374151', lineHeight: 1.5 }}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#1D4224' }} />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <div style={{ background: '#FAF9F5', padding: '1rem', borderRadius: '1rem', border: '1px solid #E5E5DC', display: 'flex', alignItems: 'center', gap: '.75rem' }}>
+              <ShieldCheck className="w-6 h-6 shrink-0" style={{ color: '#D4AF37' }} />
+              <span style={{ fontFamily: 'Rubik, sans-serif', fontSize: '.75rem', fontWeight: 600, color: '#374151' }}>
+                Includes 1 Year Free Support & Dedicated Manager
+              </span>
             </div>
           </div>
-        </div>
-      </section>
+        }
+      />
 
       {/* ── Features Checklist & Benefits Grid ── */}
       <section style={{ padding: 'clamp(4rem, 8vw, 6rem) 0' }}>

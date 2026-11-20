@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Montserrat } from "next/font/google";
 import "./globals.css";
+import "./components/brand/brand.css";
 import AppLayoutWrapper from "./components/layout/AppLayoutWrapper";
 import SmoothScrollProvider from "./components/providers/SmoothScrollProvider";
 import { AnalyticsTracking, AnalyticsNoscript } from "./components/analytics/AnalyticsTracking";

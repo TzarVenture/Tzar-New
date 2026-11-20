@@ -28,6 +28,7 @@ import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import { LazyLoopVideo } from '@/legacy-src/components/ui/LazyLoopVideo';
 import { TypewriterHeadline } from '@/legacy-src/components/ui/TypewriterHeadline';
 import { COMPANY } from '@/data/company';
+import { WaveDivider } from "@/app/components/brand/BrandUI";
 
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -462,20 +463,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
         </div>
 
         {/* ── Smooth Organic Wave Transition: Dark Spruce to Subtle Green Tint ── */}
-        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
-              fill="#EAF1EB"
-            />
-          </svg>
-        </div>
+        <WaveDivider fill="#EAF1EB" />
       </section>
 
       {/* ──────────────────────────────────────────────────────────────────

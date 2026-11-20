@@ -25,6 +25,7 @@ import { ConsistentCTA } from '@/app/components/ui/ConsistentCTA';
 import { COMPANY } from '@/data/company';
 import { LeadCaptureForm } from '@/legacy-src/components/ui/LeadCaptureForm';
 import dynamic from 'next/dynamic';
+import { WaveDivider } from "@/app/components/brand/BrandUI";
 
 // Recharts (~120 kB) is loaded as a separate chunk after the page renders.
 // The placeholder is identical to the one the chart itself shows before mount,
@@ -422,20 +423,7 @@ export const SeoServicePage: React.FC = () => {
         </div>
 
         {/* ── Smooth Organic Wave Transition: Dark Spruce to Section 02 (#FAF9F5) ── */}
-        <div className="w-full overflow-hidden leading-none relative z-10 -mb-px">
-          <svg
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-16 lg:h-24 block pointer-events-none"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,35 C320,80 540,10 800,45 C1060,80 1260,20 1440,40 L1440,100 L0,100 Z"
-              fill="#FAF9F5"
-            />
-          </svg>
-        </div>
+        <WaveDivider fill="#FAF9F5" />
       </section>
 
 
@@ -662,7 +650,7 @@ export const SeoServicePage: React.FC = () => {
 
                 <button
                   onClick={scrollToContactForm}
-                  className="w-full py-3 rounded-xl font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer bg-[#1D4224] text-white hover:bg-[#FFAE00] hover:text-[#0E2015]"
+                  className="w-full py-3 rounded-xl font-montserrat font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer bg-[#1D4224] text-white tz-btn tz-btn-primary"
                 >
                   <span>Get Pricing</span>
                   <ArrowRight className="w-3.5 h-3.5" />

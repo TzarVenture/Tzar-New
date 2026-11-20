@@ -243,10 +243,8 @@ export const TechHeader: React.FC = () => {
             {/* Hire Us Pill */}
             <Link
               href="/hire-us"
-              className={`px-3 xl:px-3.5 py-1.5 text-[12.5px] xl:text-[13px] font-bold font-montserrat rounded-full border transition-all duration-200 whitespace-nowrap ${
-                pathname === '/hire-us'
-                  ? 'bg-[#FFAE00] text-[#0E2015] border-[#FFAE00]'
-                  : 'border-[#FFAE00]/40 text-white hover:bg-[#FFAE00] hover:text-[#0E2015] hover:border-[#FFAE00]'
+              className={`px-3 xl:px-3.5 py-1.5 text-[12.5px] xl:text-[13px] font-bold font-montserrat rounded-full whitespace-nowrap tz-btn ${
+                pathname === '/hire-us' ? 'tz-btn-primary' : 'tz-btn-ghost'
               }`}
             >
               Hire Us
@@ -255,11 +253,7 @@ export const TechHeader: React.FC = () => {
             {/* Payment Pill */}
             <Link
               href="/payment-gateway"
-              className={`px-3.5 xl:px-4 py-1.5 text-[12.5px] xl:text-[13px] font-black font-montserrat rounded-full transition-all duration-200 shadow-sm whitespace-nowrap ${
-                pathname === '/payment' || pathname === '/payment-gateway'
-                  ? 'bg-white text-[#1D4224]'
-                  : 'bg-[#FFAE00] text-[#0E2015] hover:bg-white hover:text-[#1D4224]'
-              }`}
+              className="px-3.5 xl:px-4 py-1.5 text-[12.5px] xl:text-[13px] font-black font-montserrat rounded-full whitespace-nowrap tz-btn tz-btn-primary"
             >
               Payment
             </Link>
@@ -298,7 +292,7 @@ export const TechHeader: React.FC = () => {
             {/* Quick Payment Button on sm-md */}
             <Link
               href="/payment-gateway"
-              className="hidden sm:inline-flex px-3 py-1 text-xs font-black font-montserrat rounded-full bg-[#FFAE00] text-[#0E2015] hover:bg-white hover:text-[#1D4224] transition-all whitespace-nowrap"
+              className="hidden sm:inline-flex px-3 py-1 text-xs font-black font-montserrat rounded-full whitespace-nowrap tz-btn tz-btn-primary"
             >
               Payment
             </Link>

@@ -7,95 +7,188 @@
   transform: translateZ(0);
 }
 
-/* ── Buttons ───────────────────────────────────────────────────────────── */
-.pf-btn {
+/* ── Buttons (site-wide) ───────────────────────────────────────────────────
+   One system for every call to action.
+   - Rest: solid fill, crisp 1px edge, no glow.
+   - Hover (mouse) and keyboard focus: a thin line travels around the edge.
+   - Press: settles 1px down and slightly in, with a short inset shadow.
+   Variants: primary (gold), ghost (on dark), dark (on light), outline (on light).
+   Legacy .btn-primary / .btn-outline map onto the same system. */
+@property --tz-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.tz-btn,
+.btn-primary,
+.btn-outline {
+  --tz-trace: #ffae00;
   position: relative;
   isolation: isolate;
-  overflow: hidden;
   -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
   transition:
-    background-color 180ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 180ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    color 180ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 120ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.pf-btn:focus-visible {
-  outline: 2px solid #ffae00;
-  outline-offset: 3px;
+    background-color 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 160ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 140ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Icon nudges toward where the button goes */
-.pf-btn svg {
-  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-/* Primary (gold): warms and glows on hover, presses in on click/tap */
-.pf-btn-primary {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    0 1px 2px rgba(0, 0, 0, 0.3);
-}
-/* Soft sheen that passes once across the face on hover */
-.pf-btn-primary::after {
+/* The travelling edge line */
+.tz-btn::before,
+.btn-primary::before,
+.btn-outline::before {
   content: "";
   position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
-  transform: translateX(-120%);
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--tz-angle),
+    transparent 0deg 250deg,
+    var(--tz-trace) 300deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 200ms ease;
   pointer-events: none;
 }
 
-/* Ghost (outline on dark) */
-.pf-btn-ghost {
-  box-shadow: inset 0 0 0 0 rgba(255, 174, 0, 0);
+.tz-btn svg,
+.btn-primary svg,
+.btn-outline svg {
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Variants at rest */
+.tz-btn-primary,
+.btn-primary {
+  --tz-trace: #0e2015;
+  background-color: #ffae00;
+  color: #0e2015;
+  border: 1px solid #e89e00;
+  font-weight: 700;
+}
+.tz-btn-ghost {
+  --tz-trace: #ffae00;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #3a5a40;
+}
+.tz-btn-dark {
+  --tz-trace: #ffae00;
+  background-color: #0e2015;
+  color: #ffffff;
+  border: 1px solid #0e2015;
+}
+.btn-outline {
+  --tz-trace: #ffae00;
+  background-color: #ffffff;
+  color: #0e2015;
+  border: 1px solid #c9c2b6;
+  font-weight: 700;
+}
+.btn-primary,
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.75rem;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .pf-btn-primary:hover {
-    background-color: #ffbd2e;
+  .tz-btn:hover::before,
+  .btn-primary:hover::before,
+  .btn-outline:hover::before {
+    opacity: 1;
+    animation: tz-trace 2.2s linear infinite;
+  }
+  .tz-btn-primary:hover,
+  .btn-primary:hover {
+    background-color: #ffb820;
     color: #0e2015;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.45),
-      0 10px 28px -10px rgba(255, 174, 0, 0.75);
   }
-  .pf-btn-primary:hover::after {
-    transform: translateX(120%);
-    transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-  .pf-btn-ghost:hover {
+  .tz-btn-ghost:hover {
     background-color: #0e2015;
-    border-color: #ffae00;
+    border-color: #4c6e52;
     color: #ffffff;
   }
-  .pf-btn:hover .lucide-arrow-right {
+  .tz-btn-dark:hover {
+    background-color: #1d4224;
+    color: #ffffff;
+  }
+  .btn-outline:hover {
+    background-color: #f6f2ec;
+    color: #0e2015;
+  }
+  .tz-btn:hover .lucide-arrow-right,
+  .btn-primary:hover .lucide-arrow-right,
+  .btn-outline:hover .lucide-arrow-right {
     transform: translateX(3px);
   }
-  .pf-btn:hover .lucide-arrow-down {
+  .tz-btn:hover .lucide-arrow-down {
     transform: translateY(3px);
   }
-  .pf-btn:hover .lucide-arrow-up-right {
+  .tz-btn:hover .lucide-arrow-up-right,
+  .tz-btn:hover .lucide-external-link {
     transform: translate(2px, -2px);
   }
 }
 
-.pf-btn:active {
-  transform: scale(0.975);
-  transition-duration: 60ms;
+.tz-btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-outline:focus-visible {
+  outline: none;
 }
-.pf-btn-primary:active {
-  background-color: #f2a400;
-  box-shadow:
-    inset 0 2px 4px rgba(14, 32, 21, 0.25),
-    0 0 0 rgba(0, 0, 0, 0);
+.tz-btn:focus-visible::before,
+.btn-primary:focus-visible::before,
+.btn-outline:focus-visible::before {
+  opacity: 1;
+  padding: 2px;
+  animation: tz-trace 2.2s linear infinite;
 }
-.pf-btn-ghost:active {
-  background-color: #12301a;
-  border-color: #ffae00;
+.tz-btn-primary:focus-visible,
+.btn-primary:focus-visible {
+  box-shadow: 0 0 0 2px #061309, 0 0 0 4px #ffae00;
 }
 
-/* ── Chips (archive tabs) ──────────────────────────────────────────────── */
+/* Press */
+.tz-btn:active,
+.btn-primary:active,
+.btn-outline:active {
+  transform: translateY(1px) scale(0.98);
+  transition-duration: 70ms;
+}
+.tz-btn-primary:active,
+.btn-primary:active {
+  background-color: #f0a200;
+  box-shadow: inset 0 2px 3px rgba(14, 32, 21, 0.28);
+}
+.tz-btn-ghost:active,
+.tz-btn-dark:active {
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.35);
+}
+.btn-outline:active {
+  box-shadow: inset 0 2px 3px rgba(14, 32, 21, 0.12);
+}
+
+@keyframes tz-trace {
+  to {
+    --tz-angle: 360deg;
+  }
+}
+
+/* ── Chips (filter tabs) ───────────────────────────────────────────────── */
 .pf-chip {
   -webkit-tap-highlight-color: transparent;
   transition:
@@ -114,17 +207,24 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pf-btn,
-  .pf-btn svg,
+  .tz-btn,
+  .btn-primary,
+  .btn-outline,
+  .tz-btn svg,
   .pf-chip {
     transition-duration: 0ms !important;
   }
-  .pf-btn:active,
+  .tz-btn:active,
+  .btn-primary:active,
+  .btn-outline:active,
   .pf-chip:active {
     transform: none;
   }
-  .pf-btn-primary::after {
-    display: none;
+  .tz-btn::before,
+  .btn-primary::before,
+  .btn-outline::before {
+    animation: none !important;
+    background: var(--tz-trace);
   }
 }
 

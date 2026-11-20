@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import "../portfolio.css";
+import Link from "next/link";
+import { DARK_GRADIENT } from "./theme";
 import {
   BarChart3,
   Droplet,
@@ -28,7 +29,7 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
-import type { ModuleIcon } from "../caseStudies";
+import type { ModuleIcon } from "@/app/portfolio/caseStudies";
 import { BRAND_PATHS } from "./brandPaths";
 
 export function GridTexture({ opacity = 0.06 }: { opacity?: number }) {
@@ -347,5 +348,81 @@ export function TechGrid({ items, className = "" }: { items: string[]; className
         </li>
       ))}
     </ul>
+  );
+}
+
+/* ── Wave divider (fill variant) ─────────────────────────────────────────
+   For heroes followed by a light section: the wave is filled with the next
+   section's colour and the gold line sits on exactly the same curve as
+   WaveHero, at the same responsive height. */
+export function WaveDivider({ fill }: { fill: string }) {
+  return (
+    <div
+      aria-hidden="true"
+      className="relative z-10 w-full leading-none -mb-px [--wave-h:40px] sm:[--wave-h:64px] lg:[--wave-h:96px]"
+    >
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="block w-full" style={{ height: "var(--wave-h)" }}>
+        <path d={`${WAVE_CURVE} L1440,100 L0,100 Z`} fill={fill} />
+        <path d={WAVE_CURVE} fill="none" stroke="#FFAE00" strokeWidth="2.5" vectorEffect="non-scaling-stroke" />
+      </svg>
+    </div>
+  );
+}
+
+/* ── Page hero ────────────────────────────────────────────────────────────
+   Standard dark hero for content pages: breadcrumb, title, one line, actions,
+   optional side panel, ending on the gold wave into the next section. */
+export function PageHero({
+  crumbs,
+  title,
+  description,
+  actions,
+  aside,
+  fill = "#FAF9F5",
+}: {
+  crumbs: { label: string; href?: string }[];
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  actions?: React.ReactNode;
+  aside?: React.ReactNode;
+  fill?: string;
+}) {
+  return (
+    <section
+      className="relative w-full pt-28 sm:pt-32 lg:pt-36 pb-0 text-white overflow-hidden"
+      style={{ backgroundColor: "#061309", backgroundImage: DARK_GRADIENT }}
+    >
+      <GridTexture opacity={0.08} />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14">
+        <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-mono tracking-wider mb-6 text-[#FFAE00] uppercase">
+          <Link href="/" className="hover:underline opacity-80 hover:opacity-100">
+            Home
+          </Link>
+          {crumbs.map((c, i) => (
+            <React.Fragment key={c.label}>
+              <span className="opacity-40">/</span>
+              {c.href && i < crumbs.length - 1 ? (
+                <Link href={c.href} className="hover:underline opacity-80 hover:opacity-100">
+                  {c.label}
+                </Link>
+              ) : (
+                <span className="text-white font-bold">{c.label}</span>
+              )}
+            </React.Fragment>
+          ))}
+        </nav>
+        <div className={aside ? "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center" : ""}>
+          <div className={aside ? "lg:col-span-7" : ""}>
+            <h1 className="font-montserrat font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.05] max-w-3xl">
+              {title}
+            </h1>
+            {description && <p className="mt-4 text-base sm:text-lg text-[#B6F8DD] leading-relaxed max-w-xl">{description}</p>}
+            {actions && <div className="mt-7 flex flex-wrap items-center gap-3">{actions}</div>}
+          </div>
+          {aside && <div className="lg:col-span-5">{aside}</div>}
+        </div>
+      </div>
+      <WaveDivider fill={fill} />
+    </section>
   );
 }
